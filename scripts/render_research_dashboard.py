@@ -261,7 +261,7 @@ def render_markdown(e011: dict, e012: dict, e013: dict) -> str:
     e013_rule = "| --- | " + " | ".join("---:" for _ in mechanisms) + " |"
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience

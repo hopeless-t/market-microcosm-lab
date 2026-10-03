@@ -81,3 +81,18 @@ Current preliminary knee matrix:
 Failure modes also separate: churn primarily removes the user population, platform cost attacks platform solvency, and price pressure can propagate into publisher/catalog/service-quality failure.
 
 The most important comparison is E011 vs E013: joint pressure collapses at levels 3–4 while no single axis collapses before 6. The next experiment should therefore map interaction surfaces rather than continue one-dimensional escalation.
+
+
+## E014 — pairwise interaction surfaces
+
+E014 recombines the E013 axes two at a time on 7×7 grids.
+
+An interaction-only cell means the pair is below 90% survival while each matched single-axis intervention is still at or above 90%.
+
+The current run found 155 interaction-only cells across all pair/mechanism surfaces.
+
+Important frontiers include creator-heavy price × cost at 2+4, diversity-heavy price × churn at 3+3, creator-heavy cost × churn at 3+3, and balanced/light-floor/usage-only price × cost at 4+5.
+
+Failure biopsy shows that pair identity matters: price × cost tends to attack platform solvency, while price × churn can attack service quality. Platform-heavy had no interaction-only cost × churn cells in the tested range.
+
+The exhaustive E014 surfaces now act as an oracle for the next meta experiment: recover the same boundary with fewer evaluations.

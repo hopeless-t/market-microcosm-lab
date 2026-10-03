@@ -98,8 +98,34 @@ The key comparison is that E011's joint pressure collapsed at levels 3–4, well
 
 ---
 
+## E014 — Pairwise interaction surfaces
+
+**Purpose:** test whether two matched moderate stresses can cross the viability boundary when neither stress does so alone.
+
+Three 7×7 surfaces are evaluated for every mechanism:
+
+- Price × Platform cost
+- Price × Churn
+- Platform cost × Churn
+
+The experiment found **155 interaction-only cells** across the tested surfaces.
+
+Notable interaction frontiers include:
+
+- creator-heavy Price × Cost at 2+4;
+- diversity-heavy Price × Churn at 3+3;
+- creator-heavy Cost × Churn at 3+3;
+- usage-only, light-floor, and balanced Price × Cost at 4+5;
+- platform-heavy Price × Cost only at 6+6.
+
+The failure channel is not universal: price × cost usually reaches platform insolvency, while price × churn can first destroy service quality.
+
+[Read the E014 ODD](ODD_E014.md)
+
+---
+
 ## What comes next
 
-Map two-dimensional interaction surfaces around the E013 knees before introducing richer recommendation, pricing, bargaining, and causal-attribution controllers.
+Use E014 as the exhaustive reference surface and test adaptive boundary samplers that attempt to recover the same frontier with far fewer simulator calls.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).

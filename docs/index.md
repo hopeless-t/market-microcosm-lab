@@ -52,6 +52,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Pressure decomposition</h3>
     <p>Price, platform cost, and churn are isolated to expose which pressure kills which layer.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E014</div>
+    <div class="mm-metric">155</div>
+    <h3>Interaction-only cells</h3>
+    <p>Pairwise stress surfaces show where two survivable single shocks become a joint collapse.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -63,6 +69,8 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
 ![E012 evaluator meta-improvement](generated/e012-evaluator.svg)
 
 ![E013 pressure decomposition](generated/e013-decomposition.svg)
+
+![E014 pairwise interaction frontiers](generated/e014-interactions.svg)
 
 These figures are generated from experiment JSON and checked by CI so the public display cannot silently drift away from the current evidence.
 
@@ -76,7 +84,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E010** closes the economic circulation.  
 **E011** finds viability boundaries and captures collapse traces.  
 **E012** makes the evaluation curriculum itself an object of meta-improvement.  
-**E013** decomposes the composite stress axis and exposes interaction-driven early collapse.
+**E013** decomposes the composite stress axis and exposes interaction-driven early collapse.  
+**E014** maps pairwise surfaces and directly identifies interaction-only collapse regions.
 
 This produces a repeating research pattern:
 
@@ -109,6 +118,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E011 ODD](ODD_E011.md)
 - [E012 ODD](ODD_E012.md)
 - [E013 ODD](ODD_E013.md)
+- [E014 ODD](ODD_E014.md)
 
 ## Run locally
 
@@ -120,6 +130,7 @@ python scripts/run_e010.py
 python scripts/run_e011.py
 python scripts/run_e012.py
 python scripts/run_e013.py
+python scripts/run_e014.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
