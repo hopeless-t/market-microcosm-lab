@@ -1,6 +1,6 @@
 # Generated research dashboard
 
-> Generated from E011/E012 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -27,5 +27,17 @@
 | boundary-curriculum | platform-heavy |
 
 **Outer winner:** mild-curriculum → platform-heavy
+
+## E013 — one-dimensional pressure decomposition
+
+![E013 pressure decomposition](e013-decomposition.svg)
+
+| Axis | usage-only | light-floor | balanced | diversity-heavy | creator-heavy | platform-heavy |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Price ↓ | 8 | 8 | 7 | 6 | 7 | 7 |
+| Platform cost ↑ | 9 | 10 | 10 | 10 | 6 | 10+ |
+| Churn ↑ | 6 | 6 | 6 | 6 | 6 | 6 |
+
+Composite E011 knees were 3–4, while the earliest E013 single-axis knee is 6. That gap is evidence of interaction inside the declared synthetic world.
 
 These are model-relative synthetic results. They are not real-market recommendations.

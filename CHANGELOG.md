@@ -4,7 +4,7 @@
 
 ### Presentation and research UX
 
-- deterministic live research dashboard generated from E011/E012 JSON;
+- deterministic live research dashboard generated from E011/E012/E013 JSON;
 - CI freshness check for visual result surfaces and Actions job summary;
 - dashboard page and social-preview artwork source;
 
@@ -14,6 +14,12 @@
 - research-hypothesis and failure-biopsy issue forms;
 - evidence-oriented pull request template;
 - citation metadata.
+
+### Research
+
+- E013 one-dimensional decomposition of subscription-price, platform-cost, and churn pressure;
+- axis-specific knee matrix and failure biopsy;
+- interaction hypothesis from the gap between E011 composite knees (3–4) and E013 single-axis knees (6+).
 
 ## v0.2 — Ecological market dynamics
 

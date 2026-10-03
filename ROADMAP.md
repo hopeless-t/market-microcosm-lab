@@ -31,6 +31,8 @@
 - [x] failure-state biopsy with explicit collapse causes
 - [x] resilience area across pressure levels
 - [x] stress-curriculum meta-evaluation
+- [x] one-dimensional decomposition of composite price / cost / churn pressure
+- [x] axis-specific failure biopsy and knee matrix
 
 ## v0.3 — Causal and allocation research
 - Monte Carlo Shapley approximations checked against exact small worlds
@@ -39,7 +41,9 @@
 - causal contribution vs observed usage
 - mechanism gaming / Goodhart stress tests
 - adaptive adversarial agents
-- one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
+- [ ] two-dimensional interaction surfaces around E013 knees
+- [ ] quantify composite-stress synergy / super-additivity
+- [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 
 ## v0.4 — Structural uncertainty
 - multiple alternative world models

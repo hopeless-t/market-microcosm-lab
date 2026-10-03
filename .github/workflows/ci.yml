@@ -109,6 +109,36 @@ jobs:
           })
           PY
 
+      - name: Run one-dimensional pressure decomposition
+        run: python scripts/run_e013.py
+      - name: Validate E013 report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e013/pressure-decomposition-report.json").read_text())
+          assert x["experiment"] == "E013"
+          assert set(x["axes"]) == {
+              "subscription_price_multiplier",
+              "platform_cost_multiplier",
+              "base_churn_rate",
+          }
+          assert all(len(rows) > 0 for rows in x["axes"].values())
+          assert all(
+              abs(row.get("conservation_error", 0.0)) < 1e-6
+              for biopsy in x["biopsies"]
+              for row in biopsy["trace"]
+          )
+          print({
+              "knees": x["knees"],
+              "failure_modes": {
+                  f"{b['axis']}::{b['mechanism_name']}": b["failure_reasons"]
+                  for b in x["biopsies"]
+                  if b["failed"]
+              },
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -123,6 +153,8 @@ jobs:
             artifacts/e010/report.json
             artifacts/e011/pressure-report.json
             artifacts/e012/evaluation-design-report.json
+            artifacts/e013/pressure-decomposition-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
+            docs/generated/e013-decomposition.svg
             docs/generated/research-dashboard.md
