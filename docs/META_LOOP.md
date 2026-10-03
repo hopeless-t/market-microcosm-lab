@@ -53,3 +53,19 @@ E012 treats the evaluation-world distribution itself as mutable improvement mach
 Candidate evaluators train/select mechanisms on different pressure curricula, then their selected mechanisms are compared on a common isolated stress holdout. This prevents a neutral benchmark from being treated as sufficient merely because every candidate survives it.
 
 The current implementation explicitly prices search cost into tie-breaking, so a wider curriculum is not automatically preferred when a smaller curriculum generalizes equally well.
+
+
+## Implemented experiment-cost meta-improvement
+
+E015 treats the experimenter's query strategy as mutable meta-level machinery.
+
+The exhaustive E014 interaction surfaces act as verifier truth. A monotone staircase sampler competes on fidelity and cost, with promotion requiring exact cell classification, exact frontier recovery, exact interaction-only counts, zero observed monotonicity violations, and at least 50% query savings.
+
+The promoted E015 candidate reduced 882 pair-surface queries to 205, a 76.8% reduction, while reproducing the exhaustive truth exactly on all 18 tested surfaces.
+
+This creates two distinct planes:
+
+- **adaptive exploration plane** — cheaper boundary discovery under a certified monotonicity assumption;
+- **exhaustive certification plane** — periodic reference audit and re-certification.
+
+The adaptive sampler may not certify its own structural assumption. A world, transition, viability, or evaluator-generation change invalidates the previous certificate and requires an exhaustive audit before the cheaper path can be trusted again.

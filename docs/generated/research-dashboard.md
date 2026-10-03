@@ -1,6 +1,6 @@
 # Generated research dashboard
 
-> Generated from E011/E012/E013/E014 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -56,5 +56,20 @@ Composite E011 knees were 3–4, while the earliest E013 single-axis knee is 6. 
 Each cell is `frontier level_a+level_b · interaction-only cell count`. ★ means the first failing frontier itself is interaction-only.
 
 **Total interaction-only cells:** 155
+
+## E015 — adaptive boundary sampling
+
+![E015 adaptive boundary sampling](e015-sampling.svg)
+
+| Metric | Exhaustive | Adaptive |
+| --- | ---: | ---: |
+| Pair-surface queries | 882 | 205 |
+| Mean queries / surface | 49.0 | 11.39 |
+
+- Query savings: **76.8%**
+- Cell classification accuracy: **100%**
+- Exact frontier recovery: **100%**
+- Monotonicity violations: **0**
+- Promotion: **PASS**
 
 These are model-relative synthetic results. They are not real-market recommendations.

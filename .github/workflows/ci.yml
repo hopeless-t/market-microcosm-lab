@@ -209,4 +209,5 @@ jobs:
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
             docs/generated/e014-interactions.svg
+            docs/generated/e015-sampling.svg
             docs/generated/research-dashboard.md

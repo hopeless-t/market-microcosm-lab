@@ -96,3 +96,12 @@ Important frontiers include creator-heavy price × cost at 2+4, diversity-heavy 
 Failure biopsy shows that pair identity matters: price × cost tends to attack platform solvency, while price × churn can attack service quality. Platform-heavy had no interaction-only cost × churn cells in the tested range.
 
 The exhaustive E014 surfaces now act as an oracle for the next meta experiment: recover the same boundary with fewer evaluations.
+
+
+## E015 — adaptive boundary sampling
+
+E015 uses exhaustive E014 as a verifier and asks whether the same 18 pairwise boundaries can be reconstructed with fewer expensive pair-cell evaluations.
+
+The promoted monotone staircase sampler reduced the query count from 882 to 205 (76.8% savings) while preserving 100% cell classification, 18/18 first-frontier recovery, and exact interaction-only counts. The current E014 surfaces had zero monotonicity violations.
+
+This does not replace exhaustive verification. The promoted architecture is two-plane: adaptive sampling for exploration and periodic exhaustive sampling for certification/audit. A world or evaluator generation change should invalidate the monotonicity certificate and force re-certification.
