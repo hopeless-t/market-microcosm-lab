@@ -72,6 +72,10 @@ neutral saturation
 
 The project explicitly separates **World truth**, **Operational truth**, and **Certification truth**. The Oracle is an exact checker and upper-bound comparator, not hidden information available to deployable policies.
 
+## Explore the lab
+
+[Experiments](experiments.md) · [Research Contract](research-contract.md) · [Contribute](contribute.md) · [GitHub repository](https://github.com/hopeless-t/market-microcosm-lab)
+
 ## Core documents
 
 - [Architecture](ARCHITECTURE.md)
