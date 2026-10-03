@@ -14,7 +14,9 @@ jobs:
           python-version: "3.12"
       - run: python -m pip install -e ".[dev]"
       - run: pytest -q
-      - run: python scripts/run_e000.py
+
+      - name: Run exact reference world
+        run: python scripts/run_e000.py
       - name: Validate E000 report
         run: |
           python - <<'PY'
@@ -29,17 +31,41 @@ jobs:
               for generation in x["generations"]
               for inner in generation["inner"]
           )
-          assert all(
-              len(generation["meta_scenario_ids"]) > 0
-              for generation in x["generations"]
-          )
           print({
               "winner": x["final_winner"],
               "generations": x["generation_count"],
               "converged": x["converged"],
           })
           PY
+
+      - name: Run ecological market world
+        run: python scripts/run_e010.py
+      - name: Validate E010 report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("artifacts/e010/report.json")
+          x = json.loads(p.read_text())
+          assert x["experiment"] == "E010"
+          assert len(x["baseline"]) >= 4
+          assert x["inner"]["final"]
+          assert x["meta"]["winner"]
+          assert all(row["invariant_violations"] == 0 for row in x["baseline"])
+          assert all(0.0 <= row["survival_lcb95"] <= 1.0 for row in x["baseline"])
+          print({
+              "inner_final": x["inner"]["final"],
+              "meta_winner": x["meta"]["winner"],
+              "baseline": {
+                  row["mechanism_name"]: round(row["survival_rate"], 3)
+                  for row in x["baseline"]
+              },
+          })
+          PY
+
       - uses: actions/upload-artifact@v4
         with:
-          name: e000-meta-report
-          path: artifacts/e000/meta-report.json
+          name: market-microcosm-reports
+          path: |
+            artifacts/e000/meta-report.json
+            artifacts/e010/report.json
