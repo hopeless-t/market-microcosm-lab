@@ -68,6 +68,16 @@ Actor cash buffers, costs, exits, and a bounded entrant mechanism are explicit. 
 
 Mechanisms currently include usage-only allocation, survival floors, ecosystem funds, and different platform/creator splits. These are synthetic research mechanisms, not policy recommendations for any named service.
 
+## Current synthetic findings
+
+- E010 neutral baseline: all six initial mechanisms survived all 40 neutral 60-month scenarios. Neutral survival alone was therefore not discriminative.
+- E011 pressure knees: balanced and platform-heavy first fell below 90% observed survival at pressure level 4; usage-only, light-floor, diversity-heavy, and creator-heavy did so at level 3.
+- E011 resilience area across the tested ladder was highest for platform-heavy, followed closely by balanced.
+- Collapse modes differed: several creator-favoring or usage mechanisms eventually exhausted platform reserves, while platform-heavy could preserve the platform but lose publishers and service quality.
+- E012 showed evaluator choice matters: neutral-only selected balanced, while stress-aware curricula selected platform-heavy. A mild stress curriculum generalized best on the isolated outer stress holdout while using less search than the wider boundary curriculum.
+
+These are model-relative findings from the declared synthetic world, not recommendations for real services.
+
 ## Verification stack
 
 The laboratory does not allow the optimizer to certify itself.

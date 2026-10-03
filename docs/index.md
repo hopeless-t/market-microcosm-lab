@@ -41,6 +41,20 @@ Mechanisms include usage-only allocation, survival floors, ecosystem funds, and 
 
 [ODD model description](ODD_E010.md) · [Research protocol](RESEARCH_PROTOCOL.md)
 
+### E011 — pressure-knee and failure biopsy
+
+The neutral world did not expose survival differences, so E011 progressively lowers revenue while raising operating cost and churn. It records each mechanism's preliminary collapse knee and retains concrete failure trajectories instead of discarding them as outliers.
+
+[ODD addendum](ODD_E011.md)
+
+### E012 — meta-improvement of the evaluator
+
+E012 makes the test curriculum itself a candidate: neutral-only, mild-stress, and boundary-stress evaluation designs each select a mechanism, then compete on a common unseen stress holdout.
+
+In the current synthetic world, mild-stress evaluation generalized best while using less search than the widest curriculum.
+
+[ODD addendum](ODD_E012.md)
+
 ## Trust boundary
 
 The project explicitly distinguishes:

@@ -27,6 +27,10 @@
 - [ ] endogenous price controller
 - [ ] multiple competing platforms
 - [ ] richer publisher contracting and bargaining
+- [x] composite pressure ladder and preliminary viability knees
+- [x] failure-state biopsy with explicit collapse causes
+- [x] resilience area across pressure levels
+- [x] stress-curriculum meta-evaluation
 
 ## v0.3 — Causal and allocation research
 - Monte Carlo Shapley approximations checked against exact small worlds
@@ -35,7 +39,7 @@
 - causal contribution vs observed usage
 - mechanism gaming / Goodhart stress tests
 - adaptive adversarial agents
-- pressure-knee search over platform take, floors, and ecosystem-fund size
+- one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 
 ## v0.4 — Structural uncertainty
 - multiple alternative world models
