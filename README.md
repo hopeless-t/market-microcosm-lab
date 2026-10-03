@@ -50,6 +50,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E015 · Adaptive Sampling** | Can the lab recover E014 with fewer expensive evaluations? | 882 → 205 queries (-76.8%) with exact recovery |
 | **E016 · Adaptive Guard** | What happens when the adaptive sampler's assumptions stop being true? | generation mismatch and non-monotone audit both fail closed to exhaustive |
 | **E017 · Certificate Lifecycle** | When should the expensive verifier run again? | 12-epoch stable schedule saves 51.2% while audits/expiry remain fail-closed |
+| **E018 · Audit Portfolio** | Which certificates should receive scarce authoritative audit budget first? | bounded-DP matches exact oracle on 48/48 portfolios with 87.3% less search work |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -160,6 +161,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Verification has a lifecycle and a budget.** E017 turns certificate authority into deterministic evidence epochs. Auditing every 3 epochs with a hard expiry at 6 cuts a stable 12-epoch schedule from 10,584 to 5,168 queries (51.2% savings). A generation drift at epoch 5 still saves 44.8% because the changed epoch immediately recertifies exhaustively.
 
+**Audit budget allocation also needs an oracle.** E018 compares an exhaustive portfolio scheduler, a bounded dynamic program, and a plausible greedy value-per-cost heuristic. Bounded-DP matches the exact oracle on 48/48 generated portfolios while reducing scheduler search work by 87.3%. Greedy matches only 79.2% and fails a fixed counterexample 160 vs exact 220.
+
 That sequence matters:
 
 ```text
@@ -175,6 +178,7 @@ neutral saturation
   → adversarial guard / certificate invalidation
   → fail-closed fallback
   → certificate lifecycle / audit cadence
+  → exact audit-portfolio allocation
 ```
 
 ## Verification stack
@@ -215,6 +219,7 @@ python scripts/run_e014.py
 python scripts/run_e015.py
 python scripts/run_e016.py
 python scripts/run_e017.py
+python scripts/run_e018.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
@@ -225,7 +230,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site

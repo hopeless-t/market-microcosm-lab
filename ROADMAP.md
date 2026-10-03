@@ -50,8 +50,10 @@
 - [x] adversarial non-monotone surface benchmark
 - [x] certificate lifecycle / expiry / renewal state machine
 - [x] audit scheduling by evidence age and structural change
-- [ ] risk-weighted audit priority across multiple certified evaluators
+- [x] exact audit-budget scheduling across multiple certified evaluators
+- [x] greedy audit-priority counterexample + exact DP promotion
 - [ ] durable certificate ledger / provenance chain
+- [ ] multi-epoch audit portfolio planning under uncertain future drift
 - [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 
 ## v0.4 — Structural uncertainty

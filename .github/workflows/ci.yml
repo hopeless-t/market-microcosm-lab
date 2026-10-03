@@ -238,6 +238,34 @@ jobs:
           })
           PY
 
+      - name: Run audit portfolio scheduler
+        run: python scripts/run_e018.py
+      - name: Validate E018 audit portfolio
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e018/audit-portfolio-report.json").read_text())
+          assert x["experiment"] == "E018"
+          assert x["promoted_scheduler"] == "bounded-dp"
+          a = x["aggregate"]
+          assert a["dp_exact_match_rate"] == 1.0
+          assert a["dp_work_reduction_fraction"] >= 0.50
+          trap = x["greedy_trap"]
+          assert trap["oracle"]["total_restoration_value"] == 220
+          assert trap["greedy"]["total_restoration_value"] == 160
+          assert x["infeasible_mandatory_case"]["dp"]["fail_closed"] is True
+          assert all(x["promotion_gate"].values())
+          print({
+              "aggregate": a,
+              "greedy_trap": {
+                  "oracle": trap["oracle"]["total_restoration_value"],
+                  "greedy": trap["greedy"]["total_restoration_value"],
+              },
+              "promoted": x["promoted_scheduler"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -257,6 +285,7 @@ jobs:
             artifacts/e015/adaptive-boundary-report.json
             artifacts/e016/adaptive-guard-report.json
             artifacts/e017/certificate-lifecycle-report.json
+            artifacts/e018/audit-portfolio-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
@@ -264,4 +293,5 @@ jobs:
             docs/generated/e015-sampling.svg
             docs/generated/e016-guard.svg
             docs/generated/e017-lifecycle.svg
+            docs/generated/e018-audit-portfolio.svg
             docs/generated/research-dashboard.md

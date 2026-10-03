@@ -129,3 +129,14 @@ Across 12 stable epochs, always-exhaustive evaluation would cost 10,584 pair-sur
 When the generation changes at epoch 5, that epoch is exhaustive recertification. The drift schedule still saves 44.8%.
 
 A failed audit remains REVOKED/exhaustive; skipped audits eventually become EXPIRED/exhaustive. Evidence age therefore removes adaptive authority rather than relaxing verification.
+
+
+## E018 — audit portfolio scheduling
+
+E018 extends E017 from one certificate lifecycle to many certificates competing for bounded authoritative-audit budget.
+
+An exhaustive subset enumerator is the small-world oracle. The promoted bounded-DP scheduler matches the exact optimum on all 48 generated 8-certificate portfolios while reducing scheduler search work from 12,288 to 1,558 units (87.3%).
+
+A plausible value-per-cost greedy scheduler matches the oracle only 79.2% of the time. The fixed A/B/C trap yields value 160 for greedy and 220 for exact/DP.
+
+If mandatory audits alone exceed the budget, the scheduler marks the portfolio infeasible and fails closed rather than silently dropping an authority requirement.

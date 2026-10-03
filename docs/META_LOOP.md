@@ -95,3 +95,14 @@ The scheduler may save evaluation cost by using a certified adaptive evaluator b
 The current deterministic policy audits every three evidence epochs and hard-expires after six epochs without a successful audit. In the stable 12-epoch benchmark this cuts pair-surface queries by 51.2%. A generation drift at epoch 5 forces immediate exhaustive recertification and still retains 44.8% savings across the full schedule.
 
 Evidence age therefore acts on **authority**, not on truth: older evidence reduces permission to use the optimized evaluator until authoritative verification refreshes it.
+
+
+## Audit portfolio optimization
+
+E018 treats authoritative verifier budget allocation as another meta-level control problem.
+
+The laboratory does not allow a plausible local ranking rule to become authoritative merely because each per-certificate score is sensible. A value-per-cost greedy scheduler is tested against an exact subset oracle and has a fixed failure case.
+
+The promoted bounded-DP scheduler reproduces the exact audit portfolio optimum across the deterministic generated suite while reducing scheduler search work by 87.3%.
+
+Mandatory audits are constitutional constraints, not soft objective terms. If they cannot fit inside the declared audit budget, the portfolio fails closed instead of silently optimizing around them.

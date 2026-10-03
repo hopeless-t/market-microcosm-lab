@@ -176,8 +176,26 @@ Failed audits remain REVOKED/exhaustive, and skipped audits reach EXPIRED/exhaus
 
 ---
 
+## E018 — Audit portfolio scheduler
+
+**Purpose:** allocate a limited authoritative-audit budget across multiple optimized evaluator certificates.
+
+E018 uses exhaustive subset enumeration as a small-world oracle and tests a bounded dynamic program plus a greedy value-per-cost heuristic.
+
+Across 48 deterministic 8-certificate portfolios:
+
+- bounded-DP exact match: **100%**;
+- bounded-DP work reduction: **87.3%**;
+- greedy exact match: **79.2%**.
+
+A fixed counterexample produces **160** under greedy selection versus **220** under the exact oracle / DP. A mandatory-over-budget portfolio fails closed.
+
+[Read the E018 ODD](ODD_E018.md)
+
+---
+
 ## What comes next
 
-Extend the certificate scheduler to multiple optimized evaluators, where audit priority depends on evidence age, structural drift, expected failure cost, and verifier budget.
+Persist issuance, audit, renewal, revocation, and scheduler decisions in a durable certificate ledger so every optimized authority decision has a replayable provenance chain.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).
