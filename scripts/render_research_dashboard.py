@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 E011 = ROOT / "artifacts/e011/pressure-report.json"
 E012 = ROOT / "artifacts/e012/evaluation-design-report.json"
 E013 = ROOT / "artifacts/e013/pressure-decomposition-report.json"
+E014 = ROOT / "artifacts/e014/interaction-surface-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -134,7 +135,6 @@ def render_e012(payload: dict) -> str:
 '''
 
 
-
 def render_e013(payload: dict) -> str:
     mechanisms = (
         "usage-only",
@@ -220,7 +220,116 @@ def render_e013(payload: dict) -> str:
 </svg>
 '''
 
-def render_markdown(e011: dict, e012: dict, e013: dict) -> str:
+
+def render_e014(payload: dict) -> str:
+    mechanisms = (
+        "usage-only",
+        "light-floor",
+        "balanced",
+        "diversity-heavy",
+        "creator-heavy",
+        "platform-heavy",
+    )
+    pairs = (
+        (
+            "subscription_price_multiplier__platform_cost_multiplier",
+            "Price × Cost",
+        ),
+        (
+            "subscription_price_multiplier__base_churn_rate",
+            "Price × Churn",
+        ),
+        (
+            "platform_cost_multiplier__base_churn_rate",
+            "Cost × Churn",
+        ),
+    )
+
+    width = 1040
+    height = 520
+    left = 220
+    top = 126
+    cell_width = 255
+    cell_height = 58
+
+    def fill(count):
+        if count == 0:
+            return "#26354d"
+        if count <= 5:
+            return "#0e7490"
+        if count <= 10:
+            return "#7c3aed"
+        return "#be185d"
+
+    header = []
+    for index, (_, label) in enumerate(pairs):
+        x = left + index * cell_width + cell_width / 2
+        header.append(
+            f'<text x="{x}" y="103" text-anchor="middle" class="head">'
+            f'{html.escape(label)}</text>'
+        )
+
+    cells = []
+    total_interaction_only = 0
+    for row_index, mechanism in enumerate(mechanisms):
+        y = top + row_index * cell_height
+        cells.append(
+            f'<text x="28" y="{y + 36}" class="axis">'
+            f'{html.escape(mechanism)}</text>'
+        )
+        for col_index, (pair_key, _) in enumerate(pairs):
+            summary = payload["summaries"][pair_key][mechanism]
+            count = int(summary["interaction_only_cells"])
+            total_interaction_only += count
+            frontier = summary["frontier"]
+            if frontier is None:
+                frontier_text = "none"
+            else:
+                frontier_text = (
+                    f'{frontier["level_a"]}+{frontier["level_b"]}'
+                )
+            marker = "★" if frontier and frontier["interaction_only"] else ""
+            x = left + col_index * cell_width
+            cells.append(
+                f'<rect x="{x + 5}" y="{y + 5}" width="{cell_width - 10}" '
+                f'height="{cell_height - 10}" rx="12" fill="{fill(count)}"/>'
+                f'<text x="{x + 22}" y="{y + 27}" class="frontier">'
+                f'{html.escape(frontier_text)}{marker}</text>'
+                f'<text x="{x + cell_width - 18}" y="{y + 27}" '
+                f'text-anchor="end" class="count">{count} cells</text>'
+                f'<text x="{x + 22}" y="{y + 45}" class="small">'
+                f'first failing frontier</text>'
+            )
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E014 pairwise pressure interactions</title>
+<desc id="desc">First failing pairwise pressure frontier and count of interaction-only cells by mechanism.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .head {{ font: 700 16px Inter,Segoe UI,Arial,sans-serif; fill: #dbeafe; }}
+  .axis {{ font: 650 16px Inter,Segoe UI,Arial,sans-serif; fill: #e5edf8; }}
+  .frontier {{ font: 800 18px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .count {{ font: 700 13px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .small {{ font: 11px Inter,Segoe UI,Arial,sans-serif; fill: #d7e3f4; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#2a1538"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="28" y="42" class="title">E014 · Pairwise Interaction Frontiers</text>
+<text x="28" y="68" class="sub">★ = the first failing frontier is interaction-only · cell count = joint failures not reproduced by either matched single axis</text>
+{''.join(header)}
+{''.join(cells)}
+<text x="28" y="495" class="sub">Total interaction-only cells across all 3 surfaces × 6 mechanisms: {total_interaction_only}</text>
+</svg>
+'''
+
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -232,6 +341,7 @@ def render_markdown(e011: dict, e012: dict, e013: dict) -> str:
         f"| {row['design_name']} | {row['selected_mechanism']} |"
         for row in e012["results"]
     )
+
     mechanisms = (
         "usage-only",
         "light-floor",
@@ -259,9 +369,45 @@ def render_markdown(e011: dict, e012: dict, e013: dict) -> str:
     )
     e013_header = "| Axis | " + " | ".join(mechanisms) + " |"
     e013_rule = "| --- | " + " | ".join("---:" for _ in mechanisms) + " |"
+
+    pair_defs = (
+        (
+            "subscription_price_multiplier__platform_cost_multiplier",
+            "Price × Cost",
+        ),
+        (
+            "subscription_price_multiplier__base_churn_rate",
+            "Price × Churn",
+        ),
+        (
+            "platform_cost_multiplier__base_churn_rate",
+            "Cost × Churn",
+        ),
+    )
+    e014_rows = []
+    total_interaction_only = 0
+    for mechanism in mechanisms:
+        cells = []
+        for pair_key, _ in pair_defs:
+            summary = e014["summaries"][pair_key][mechanism]
+            frontier = summary["frontier"]
+            count = int(summary["interaction_only_cells"])
+            total_interaction_only += count
+            if frontier is None:
+                cells.append(f"none · {count}")
+            else:
+                marker = "★" if frontier["interaction_only"] else ""
+                cells.append(
+                    f'{frontier["level_a"]}+{frontier["level_b"]}{marker} · {count}'
+                )
+        e014_rows.append(
+            "| " + mechanism + " | " + " | ".join(cells) + " |"
+        )
+    e014_rows_text = "\n".join(e014_rows)
+
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -292,16 +438,34 @@ def render_markdown(e011: dict, e012: dict, e013: dict) -> str:
 
 Composite E011 knees were 3–4, while the earliest E013 single-axis knee is 6. That gap is evidence of interaction inside the declared synthetic world.
 
+## E014 — pairwise interaction surfaces
+
+![E014 pairwise interaction frontiers](e014-interactions.svg)
+
+| Mechanism | Price × Cost | Price × Churn | Cost × Churn |
+| --- | ---: | ---: | ---: |
+{e014_rows_text}
+
+Each cell is `frontier level_a+level_b · interaction-only cell count`. ★ means the first failing frontier itself is interaction-only.
+
+**Total interaction-only cells:** {total_interaction_only}
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
 
-def generated_files(e011: dict, e012: dict, e013: dict) -> dict[Path, str]:
+def generated_files(
+    e011: dict,
+    e012: dict,
+    e013: dict,
+    e014: dict,
+) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
         OUT / "e012-evaluator.svg": render_e012(e012),
         OUT / "e013-decomposition.svg": render_e013(e013),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013),
+        OUT / "e014-interactions.svg": render_e014(e014),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014),
     }
 
 
@@ -317,12 +481,13 @@ def main() -> None:
     e011 = _read(E011)
     e012 = _read(E012)
     e013 = _read(E013)
-    outputs = generated_files(e011, e012, e013)
+    e014 = _read(E014)
+    outputs = generated_files(e011, e012, e013, e014)
 
     if args.check:
         stale: list[str] = []
-        for path, content in outputs.items():
-            if not path.exists() or path.read_text(encoding="utf-8") != content:
+        for path, generated in outputs.items():
+            if not path.exists() or path.read_text(encoding="utf-8") != generated:
                 stale.append(str(path.relative_to(ROOT)))
         if stale:
             raise SystemExit(
@@ -333,8 +498,8 @@ def main() -> None:
         return
 
     OUT.mkdir(parents=True, exist_ok=True)
-    for path, content in outputs.items():
-        path.write_text(content, encoding="utf-8")
+    for path, generated in outputs.items():
+        path.write_text(generated, encoding="utf-8")
         print(path.relative_to(ROOT))
 
 

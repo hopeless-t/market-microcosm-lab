@@ -92,9 +92,45 @@ Failure biopsy separated the mechanisms cleanly:
 
 The strongest result is comparative: E011's composite pressure produced knees at levels 3–4, but no E013 single axis produced a knee before level 6. Inside the declared synthetic world, simultaneous moderate stresses therefore interact to advance collapse substantially.
 
+## E014 — pairwise pressure interactions
+
+E014 evaluated three 7×7 pairwise surfaces for every mechanism:
+
+- subscription price × platform cost;
+- subscription price × churn;
+- platform cost × churn.
+
+A cell is **interaction-only** when the pair falls below 90% survival while both matched single-axis interventions remain at or above 90%.
+
+Across all 882 evaluated pair/mechanism cells, **155 were interaction-only**.
+
+Selected first failing frontiers:
+
+| Mechanism | Price × Cost | Price × Churn | Cost × Churn |
+| --- | ---: | ---: | ---: |
+| usage-only | 4+5 ★ | 0+6 | 0+6 |
+| light-floor | 4+5 ★ | 0+6 | 0+6 |
+| balanced | 4+5 ★ | 0+6 | 0+6 |
+| diversity-heavy | 6+0 | 3+3 ★ | 0+6 |
+| creator-heavy | 2+4 ★ | 0+6 | 3+3 ★ |
+| platform-heavy | 6+6 ★ | 0+6 | 0+6 |
+
+★ marks a frontier where the pair itself is interaction-only.
+
+The corresponding interaction-only cell counts were especially large for creator-heavy (17 on price × cost, 15 on price × churn, 14 on cost × churn) and diversity-heavy on price × churn (15).
+
+Frontier failure biopsy showed distinct channels:
+
+- price × cost interaction frontiers primarily fail through **platform insolvency**;
+- price × churn can create **service-quality collapse** even when matched single axes survive, as seen for diversity-heavy at 3+3;
+- cost × churn exposes creator-heavy platform insolvency at 3+3;
+- platform-heavy is unusually resistant to cost × churn interaction in the tested region, with zero interaction-only cells there.
+
+The strongest strict metric also reached its maximum: for many mechanism/pair surfaces, observed pair survival loss exceeded the sum of matched single-axis survival losses by as much as 1.0 in the tested grid.
+
 ## Theory update
 
-The working theory after E010–E013 is:
+The working theory after E010–E014 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -105,6 +141,10 @@ The working theory after E010–E013 is:
 7. churn pressure is largely mechanism-insensitive once it dominates user population dynamics;
 8. platform-cost pressure strongly exposes the platform-take trade-off;
 9. revenue pressure can propagate from platform solvency into publisher/catalog/service-quality collapse;
-10. the early E011 composite knee is not explained by any single component alone, so interaction effects are now a primary target.
+10. the early E011 composite knee is not explained by any single component alone;
+11. pairwise interaction-only regions are large rather than rare artifacts in the current synthetic world;
+12. the interaction topology depends on the allocation mechanism — creator-heavy is fragile across all three pair surfaces, while platform-heavy is much more resistant to cost × churn;
+13. the first failing frontier and the dominant failure mode are separate objects and both matter;
+14. full-grid interaction mapping is informative but expensive enough to become a target for meta-improvement.
 
-Next work should map two-dimensional interaction surfaces around the localized E013 knees, then return to richer recommendation, pricing, bargaining, and causal-attribution controllers.
+Next work should treat E014 as the exhaustive oracle and test whether adaptive boundary sampling can recover the same frontiers and interaction regions with substantially fewer simulator evaluations.

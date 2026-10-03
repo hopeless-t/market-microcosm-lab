@@ -139,6 +139,32 @@ jobs:
           })
           PY
 
+      - name: Run pairwise interaction surfaces
+        run: python scripts/run_e014.py
+      - name: Validate E014 report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e014/interaction-surface-report.json").read_text())
+          assert x["experiment"] == "E014"
+          assert len(x["pairs"]) == 3
+          assert len(x["cells"]) > 0
+          assert all(
+              abs(row.get("conservation_error", 0.0)) < 1e-6
+              for biopsy in x["biopsies"]
+              for row in biopsy["trace"]
+          )
+          interaction_cells = sum(
+              1 for row in x["cells"] if row["interaction_only"]
+          )
+          assert interaction_cells > 0
+          print({
+              "interaction_only_cells": interaction_cells,
+              "pairs": x["pairs"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -154,7 +180,9 @@ jobs:
             artifacts/e011/pressure-report.json
             artifacts/e012/evaluation-design-report.json
             artifacts/e013/pressure-decomposition-report.json
+            artifacts/e014/interaction-surface-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
+            docs/generated/e014-interactions.svg
             docs/generated/research-dashboard.md

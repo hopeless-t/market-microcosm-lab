@@ -1,6 +1,6 @@
 # Generated research dashboard
 
-> Generated from E011/E012/E013 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -39,5 +39,22 @@
 | Churn ↑ | 6 | 6 | 6 | 6 | 6 | 6 |
 
 Composite E011 knees were 3–4, while the earliest E013 single-axis knee is 6. That gap is evidence of interaction inside the declared synthetic world.
+
+## E014 — pairwise interaction surfaces
+
+![E014 pairwise interaction frontiers](e014-interactions.svg)
+
+| Mechanism | Price × Cost | Price × Churn | Cost × Churn |
+| --- | ---: | ---: | ---: |
+| usage-only | 4+5★ · 10 | 0+6 · 4 | 0+6 · 6 |
+| light-floor | 4+5★ · 10 | 0+6 · 6 | 0+6 · 6 |
+| balanced | 4+5★ · 9 | 0+6 · 15 | 0+6 · 6 |
+| diversity-heavy | 6+0 · 5 | 3+3★ · 15 | 0+6 · 6 |
+| creator-heavy | 2+4★ · 17 | 0+6 · 15 | 3+3★ · 14 |
+| platform-heavy | 6+6★ · 1 | 0+6 · 10 | 0+6 · 0 |
+
+Each cell is `frontier level_a+level_b · interaction-only cell count`. ★ means the first failing frontier itself is interaction-only.
+
+**Total interaction-only cells:** 155
 
 These are model-relative synthetic results. They are not real-market recommendations.

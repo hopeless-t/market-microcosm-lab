@@ -41,8 +41,10 @@
 - causal contribution vs observed usage
 - mechanism gaming / Goodhart stress tests
 - adaptive adversarial agents
-- [ ] two-dimensional interaction surfaces around E013 knees
-- [ ] quantify composite-stress synergy / super-additivity
+- [x] two-dimensional interaction surfaces around E013 knees
+- [x] quantify pairwise interaction-only regions and survival-loss super-additivity
+- [ ] adaptive frontier sampling versus exhaustive E014 oracle
+- [ ] boundary-search cost / recall / false-negative benchmark
 - [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 
 ## v0.4 — Structural uncertainty
