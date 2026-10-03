@@ -1,138 +1,232 @@
-# market-microcosm-lab
+<p align="center">
+  <img src="docs/assets/hero.svg" alt="Market Microcosm Lab" width="100%">
+</p>
 
-A research laboratory for **sustainable market microcosms**: closed economic ecosystems in which users, creators/developers, publishers, and platforms must remain viable over long horizons while service quality, diversity, innovation, and entry remain healthy.
+<p align="center">
+  <a href="https://github.com/hopeless-t/market-microcosm-lab/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/hopeless-t/market-microcosm-lab/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://hopeless-t.github.io/market-microcosm-lab/"><img alt="Pages" src="https://img.shields.io/website?url=https%3A%2F%2Fhopeless-t.github.io%2Fmarket-microcosm-lab%2F&label=Pages"></a>
+  <img alt="Python 3.11+" src="https://img.shields.io/badge/Python-3.11%2B-3776AB">
+  <img alt="Research status" src="https://img.shields.io/badge/research-synthetic%20evidence-8B5CF6">
+  <img alt="Self improvement" src="https://img.shields.io/badge/self--improvement-closed%20loop-22C55E">
+  <img alt="Meta loop" src="https://img.shields.io/badge/meta--loop-active-06B6D4">
+</p>
 
-The repository is intentionally built as a **self-improving research system**. It contains both a loop that improves ecosystem policy and a separate meta-loop that improves how policy improvement itself is performed.
+<p align="center">
+  <strong>A self-improving research laboratory for sustainable market ecosystems.</strong><br>
+  Users, developers, publishers, content, and platforms are treated as a living economic microcosm whose long-run viability must survive shocks, strategic adaptation, and imperfect observation.
+</p>
+
+<p align="center">
+  <a href="https://hopeless-t.github.io/market-microcosm-lab/"><strong>Research site</strong></a>
+  ·
+  <a href="RESULTS.md"><strong>Current results</strong></a>
+  ·
+  <a href="NORTH_STAR.md"><strong>North Star</strong></a>
+  ·
+  <a href="ROADMAP.md"><strong>Roadmap</strong></a>
+  ·
+  <a href="CONTRIBUTING.md"><strong>Contributing</strong></a>
+</p>
+
+> [!IMPORTANT]
+> **Synthetic evidence only.** Current experiments are structural research worlds, not empirical estimates or policy recommendations for Netflix, Game Pass, SARTRAS, Spotify, or any named service.
 
 ## North Star
 
-> Discover allocation and governance rules that keep the whole ecosystem inside a robust viability region for as long as possible, under uncertainty, strategic adaptation, shocks, and imperfect observation.
+> **Discover allocation and governance rules that keep the whole ecosystem inside a robust viability region for as long as possible, under uncertainty, shocks, strategic adaptation, and imperfect observation.**
 
-The target is not maximum one-period profit, watch time, play time, or any other single proxy.
+The target is not maximum one-period profit, watch time, play time, or another single proxy. The target is a market that remains worth participating in for all essential layers.
 
-## Architecture
+## Research dashboard
 
-The laboratory separates seven roles:
+| Experiment | Question | Current signal |
+| --- | --- | --- |
+| **E000 · Exact World** | Can the laboratory verify itself against a fully enumerable universe? | Exact robust viability kernel + closed inner/meta loops |
+| **E010 · Ecological Market** | What happens when revenue, creators, publishers, content, utility, churn, entry, and exit circulate? | Neutral survival saturated at 1.0 across all six initial mechanisms |
+| **E011 · Pressure Knee** | Where does each mechanism actually break? | balanced/platform-heavy knee at 4; four other mechanisms at 3 |
+| **E012 · Evaluator Meta-Loop** | Can the lab improve how it chooses mechanisms? | mild-stress curriculum generalized best on isolated outer stress holdout |
 
-1. **World** — authoritative simulated ecosystem dynamics.
-2. **Oracle** — god-view truth used only for exact checking and upper bounds.
-3. **Observer** — information a deployable policy is allowed to see.
-4. **Governor** — allocation/governance intervention policy.
-5. **Experimenter** — counterfactual, Monte Carlo, and stress-test machinery.
-6. **Verifier** — independent promotion gate and invariant checker.
-7. **Meta-Governor** — improves observer/search/evaluation machinery.
+See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
-A minimal **Root of Trust** sits outside same-generation self-modification. If that constitution changes, incumbent and challengers must be re-certified under a new generation.
+## The ecosystem
 
-## Two closed loops
+```mermaid
+flowchart LR
+    U[Users] -->|subscription revenue| P[Platform]
+    P -->|creator pool| PB[Publishers]
+    PB --> D[Developers]
+    D --> C[Content]
+    C -->|quality + diversity| U
+    U -->|utility / churn / acquisition| U
 
-### L1: ecosystem self-improvement
+    P -. allocation rules .-> D
+    P -. survival floor .-> D
+    P -. ecosystem fund .-> C
+```
 
-Observe → generate challengers → shadow evaluate → held-out verify → promote/reject → repeat until no verified improvement remains.
+The world closes the economic cycle:
 
-There are now two executable worlds:
+```text
+users
+  → subscription revenue
+  → platform / creator pool
+  → publishers + developers
+  → content availability
+  → user utility
+  → churn / acquisition
+  → next-period users
+```
 
-- **E000 exact finite world** — the correctness oracle for the laboratory.
-- **E010 ecological market** — a stylized subscription economy with users, developers, publishers, content, entry/exit, survival floors, and ecosystem funds.
+Cash buffers, operating costs, actor exit, bounded entry, content disappearance, and explicit external sources/sinks are all represented.
 
-### L2: meta self-improvement
+## The self-improving laboratory
 
-Generate alternative improvement systems → run complete L1 instances → evaluate them on a **third, isolated meta-holdout** → select better machinery → mutate machinery → repeat.
+The repository contains **two coupled closed loops**.
 
-Discovery, inner promotion, and outer meta-evaluation use disjoint scenario banks.
+```mermaid
+flowchart TD
+    W[World] --> O[Observer]
+    O --> G[Governor]
+    G --> X[Experimenter]
+    X --> V[Independent Verifier]
+    V -->|promote / reject| G
 
-## Mathematical anchor: robust viability
+    W --> OR[Oracle / God View]
+    OR --> V
 
-For ecosystem state x, action a, uncertain model parameters theta, and disturbance w:
+    M[Meta-Governor] --> O
+    M --> X
+    M --> V
 
-    x[t+1] = F_theta(x[t], a[t], w[t])
+    R[Root of Trust] -. constrains .-> V
+    R -. isolates .-> OR
+    R -. separates holdouts .-> X
+```
 
-The main object is the robust viability kernel: states from which some policy can keep the ecosystem inside all hard survival/integrity constraints under every declared bounded disturbance.
+### L1 — ecosystem self-improvement
 
-E000 is finite, so its robust viability kernel is computed **exactly by fixed-point enumeration**. Approximate methods introduced at larger scale must continue to reproduce this small-world truth.
+Observe → generate challengers → shadow simulation → untouched promotion holdout → independent verification → promote/reject → repeat.
 
-## E010: a circulating economic ecosystem
+### L2 — meta self-improvement
 
-E010 closes the first complete economic cycle:
+Alternative observers, search widths, stress curricula, horizons, and evaluation budgets run complete L1 instances. Their resulting policies compete on a **third isolated meta-holdout**.
 
-    users
-      -> subscription revenue
-      -> platform / creator pool
-      -> publishers + developers
-      -> content availability
-      -> user utility
-      -> churn / acquisition
-      -> next-period users
+The optimizer does not certify itself.
 
-Actor cash buffers, costs, exits, and a bounded entrant mechanism are explicit. Internal transfers conserve cash; subscription revenue and entrant capital are explicit external sources; operating and production costs are explicit sinks.
+## Why the Oracle is not the Governor
 
-Mechanisms currently include usage-only allocation, survival floors, ecosystem funds, and different platform/creator splits. These are synthetic research mechanisms, not policy recommendations for any named service.
+The simulator can expose complete latent state, but a deployable policy should not receive hidden truth just because the research harness has it.
+
+The lab therefore distinguishes:
+
+- **World truth** — complete simulator state.
+- **Operational truth** — what the Governor may observe.
+- **Certification truth** — evidence independently accepted by the Verifier.
+
+The Oracle is a checksum and upper-bound comparator, not a secret information channel.
+
+## Mathematical anchor
+
+For state `x`, intervention `a`, structural parameters `θ`, and disturbance `w`:
+
+```text
+x[t+1] = F_θ(x[t], a[t], w[t])
+```
+
+The core object is the **robust viability kernel**: states from which at least one policy can keep the ecosystem inside declared survival and integrity constraints under every bounded disturbance in the experiment.
+
+E000 computes this exactly by fixed-point enumeration. Larger approximate worlds must continue to reproduce the small-world truth where both apply.
 
 ## Current synthetic findings
 
-- E010 neutral baseline: all six initial mechanisms survived all 40 neutral 60-month scenarios. Neutral survival alone was therefore not discriminative.
-- E011 pressure knees: balanced and platform-heavy first fell below 90% observed survival at pressure level 4; usage-only, light-floor, diversity-heavy, and creator-heavy did so at level 3.
-- E011 resilience area across the tested ladder was highest for platform-heavy, followed closely by balanced.
-- Collapse modes differed: several creator-favoring or usage mechanisms eventually exhausted platform reserves, while platform-heavy could preserve the platform but lose publishers and service quality.
-- E012 showed evaluator choice matters: neutral-only selected balanced, while stress-aware curricula selected platform-heavy. A mild stress curriculum generalized best on the isolated outer stress holdout while using less search than the wider boundary curriculum.
+**Neutral worlds can lie by being too easy.** In E010 every initial mechanism survived the neutral 60-month baseline, so survival alone could not discriminate mechanisms.
 
-These are model-relative findings from the declared synthetic world, not recommendations for real services.
+**Pressure reveals ecology.** E011 exposed different knees and different collapse modes. Several creator-favoring or usage mechanisms eventually exhausted platform reserves; platform-heavy could instead preserve the platform while losing publishers and service quality.
+
+**The evaluator is part of the system.** E012 showed that neutral-only evaluation selected a different mechanism than stress-aware evaluation. A mild stress curriculum generalized better than the widest curriculum at lower search cost.
+
+That sequence matters:
+
+```text
+neutral saturation
+  → pressure search
+  → viability knee
+  → failure biopsy
+  → theory update
+  → evaluator meta-improvement
+```
 
 ## Verification stack
 
-The laboratory does not allow the optimizer to certify itself.
+The research harness is designed to make self-deception expensive.
 
-- accounting/state invariants;
-- exact finite-world viability oracle;
+- accounting and state invariants;
+- exact finite-world oracle;
 - deterministic seeded scenarios;
 - replay identities;
 - discovery / promotion / meta-holdout isolation;
-- independent promotion rules;
-- Wilson lower confidence bound for ecological survival;
+- independent promotion gate;
+- Wilson lower confidence bounds for ecological survival;
+- failure-state biopsy;
 - reference implementations;
-- property/differential testing hooks;
-- CI-generated experiment artifacts.
+- property / differential testing hooks;
+- CI-generated JSON evidence.
 
-See docs/VALIDATION.md, docs/THREATS_TO_VALIDITY.md, and spec/ROOT_OF_TRUST.md.
+Read **[Root of Trust](spec/ROOT_OF_TRUST.md)**, **[Validation](docs/VALIDATION.md)**, and **[Threats to Validity](docs/THREATS_TO_VALIDITY.md)** before interpreting results.
 
-## Run
+## Quickstart
 
 Requires Python 3.11+.
 
-    python -m pip install -e ".[dev]"
-    pytest -q
-    python scripts/run_e000.py
-    python scripts/run_e010.py
+```bash
+git clone https://github.com/hopeless-t/market-microcosm-lab.git
+cd market-microcosm-lab
+python -m pip install -e ".[dev]"
 
-GitHub Actions runs both experiments and uploads their JSON reports.
+pytest -q
+
+python scripts/run_e000.py
+python scripts/run_e010.py
+python scripts/run_e011.py
+python scripts/run_e012.py
+```
+
+GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
 
 ## Repository map
 
-- NORTH_STAR.md — research objective and optimization ordering
-- spec/ROOT_OF_TRUST.md — minimal constitution
-- docs/ARCHITECTURE.md — system planes and trust boundaries
-- docs/MATHEMATICAL_MODEL.md — model contracts
-- docs/VALIDATION.md — verification ladder
-- docs/META_LOOP.md — meta-improvement design
-- docs/ODD_E000.md — exact reference world
-- docs/ODD_E010.md — ecological market world
-- docs/RESEARCH_PROTOCOL.md — promotion/research protocol
-- docs/THREATS_TO_VALIDITY.md — known ways the lab can fool itself
-- experiments/E000_reference — exact reference experiment
-- experiments/E010_ecological_market — circulating market experiment
-- wiki — source-of-truth drafts for the optional GitHub Wiki
-- ROADMAP.md — staged expansion toward causal allocation and empirical case studies
+```text
+market-microcosm-lab/
+├── spec/                 # Root of Trust / constitutional invariants
+├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
+├── experiments/          # E000 / E010 / E011 / E012 protocols
+├── scripts/              # executable experiment entrypoints
+├── tests/                # invariants and research-harness verification
+├── docs/                 # architecture + GitHub Pages site
+├── wiki/                 # version-controlled Wiki source
+├── RESULTS.md            # current model-relative findings
+├── NORTH_STAR.md
+├── ROADMAP.md
+├── GOVERNANCE.md
+└── CONTRIBUTING.md
+```
 
-## Public documentation
+## Research contract
 
-The docs directory is GitHub-Pages-ready. After Pages is enabled with **main /docs** as the source, the expected URL is:
+A higher score is not sufficient for promotion.
 
-    https://hopeless-t.github.io/market-microcosm-lab/
+A result must remain replayable, satisfy hard invariants, survive untouched evaluation, preserve Oracle isolation, retain failure cases, and state the assumptions under which it could be falsified.
 
-Exact repository settings to apply are documented in docs/GITHUB_SETUP.md.
+> **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
 
-## Research discipline
+## Contributing
 
-A result is not accepted because its score improved. It must remain replayable, satisfy hard invariants, survive untouched evaluation, preserve oracle isolation, and state the assumptions under which it could be falsified.
+Research hypotheses, new mechanisms, stress worlds, exact checkers, failure biopsies, and evaluator improvements are welcome.
 
-**Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
+Use the repository's **Research hypothesis** or **Failure biopsy** issue forms, and see **[CONTRIBUTING.md](CONTRIBUTING.md)** and **[GOVERNANCE.md](GOVERNANCE.md)**.
+
+---
+
+<p align="center">
+  <strong>Build the aquarium. Stress the aquarium. Learn why it survives.</strong>
+</p>

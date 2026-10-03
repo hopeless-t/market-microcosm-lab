@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use Market Microcosm Lab in research, please cite the repository and the specific experiment/result revision you relied on."
+title: "Market Microcosm Lab"
+type: software
+authors:
+  - name: "hopeless-t"
+repository-code: "https://github.com/hopeless-t/market-microcosm-lab"
+url: "https://hopeless-t.github.io/market-microcosm-lab/"
+keywords:
+  - market design
+  - mechanism design
+  - agent-based modeling
+  - viability theory
+  - computational economics
+  - self-improving systems
+  - simulation

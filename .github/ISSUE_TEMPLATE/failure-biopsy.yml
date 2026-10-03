@@ -1,0 +1,36 @@
+name: Failure biopsy
+description: Record a collapse, invariant violation, or surprising trajectory
+title: "[Biopsy] "
+labels: ["failure-biopsy"]
+body:
+  - type: input
+    id: experiment
+    attributes:
+      label: Experiment / run
+      placeholder: E011 / run id / seed
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: Failure symptom
+      description: What crossed the viability boundary?
+    validations:
+      required: true
+  - type: textarea
+    id: trajectory
+    attributes:
+      label: Trajectory evidence
+      description: Relevant months, metrics, state transitions, and logs.
+    validations:
+      required: true
+  - type: textarea
+    id: theory
+    attributes:
+      label: Working theory
+      description: What mechanism may have caused the failure?
+  - type: textarea
+    id: next
+    attributes:
+      label: Next falsification step
+      description: What experiment would distinguish competing explanations?

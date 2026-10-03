@@ -3,71 +3,78 @@ layout: default
 title: Market Microcosm Lab
 ---
 
-# Market Microcosm Lab
+<div class="mm-hero">
+  <img src="assets/hero.svg" alt="Market Microcosm Lab ecosystem diagram">
+</div>
 
-**A self-improving research laboratory for sustainable market ecosystems.**
+<div class="mm-kicker">Research system · synthetic evidence · verified loops</div>
 
-The project studies pooled-revenue markets as miniature ecosystems: users, developers, publishers, content, and platforms exchange value over time, and a locally profitable rule can still destroy the long-run system that generated the profit.
+# Sustainable markets as living systems
+
+Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Users, developers, publishers, content, and platforms exchange value over time, and a locally efficient rule can still destroy the long-run system that generated the value.
+
+<div class="mm-warning">
+<strong>Synthetic evidence only.</strong> Current experiments are structural research worlds, not empirical estimates or policy recommendations for a named service.
+</div>
+
+## Research dashboard
+
+<div class="mm-grid">
+  <div class="mm-card">
+    <div class="mm-kicker">E000</div>
+    <div class="mm-metric">Exact</div>
+    <h3>Finite-world oracle</h3>
+    <p>Exhaustive robust viability checks provide a mathematical checksum for the laboratory.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E010</div>
+    <div class="mm-metric">Closed loop</div>
+    <h3>Ecological market</h3>
+    <p>Revenue, creators, publishers, content, utility, churn, entry, and exit circulate over time.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E011</div>
+    <div class="mm-metric">3 → 4</div>
+    <h3>Pressure knees</h3>
+    <p>Mechanisms separate only after the neutral world is stressed toward its viability boundary.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E012</div>
+    <div class="mm-metric">Meta</div>
+    <h3>Evaluator improvement</h3>
+    <p>The laboratory improves how it tests mechanisms, not only the mechanisms themselves.</p>
+  </div>
+</div>
 
 ## North Star
 
-Find allocation and governance rules that keep essential actors viable while preserving user value, service quality, diversity, innovation, and entry under uncertainty and shocks.
+> Discover allocation and governance rules that keep the whole ecosystem inside a robust viability region for as long as possible, under uncertainty, strategic adaptation, shocks, and imperfect observation.
 
-## The laboratory has two loops
+## Research arc
 
-### Ecosystem improvement loop
+**E000** builds an exact finite universe.  
+**E010** closes the economic circulation.  
+**E011** finds viability boundaries and captures collapse traces.  
+**E012** makes the evaluation curriculum itself an object of meta-improvement.
 
-Observation → challenger generation → shadow simulation → untouched holdout → independent verification → promotion/rejection → repeat.
+This produces a repeating research pattern:
 
-### Meta-improvement loop
-
-The lab also changes **how it improves**: observation granularity, search width, simulation budget, horizon, estimators, and stress generation can themselves compete under an outer holdout.
-
-The evaluator that certifies a proposal is deliberately separated from the optimizer that proposed it.
-
-## Experiments
-
-### E000 — exact finite universe
-
-A tiny market with an exhaustively enumerable state/action graph. It computes an exact robust viability kernel and acts as the laboratory's mathematical checksum.
-
-[ODD model description](ODD_E000.md) · [Architecture](ARCHITECTURE.md)
-
-### E010 — ecological subscription market
-
-A larger synthetic cycle with users, platform revenue, creator pools, publishers, developers, content availability, user utility, churn/acquisition, entry, and exit.
-
-Mechanisms include usage-only allocation, survival floors, ecosystem funds, and different platform/creator splits.
-
-[ODD model description](ODD_E010.md) · [Research protocol](RESEARCH_PROTOCOL.md)
-
-### E011 — pressure-knee and failure biopsy
-
-The neutral world did not expose survival differences, so E011 progressively lowers revenue while raising operating cost and churn. It records each mechanism's preliminary collapse knee and retains concrete failure trajectories instead of discarding them as outliers.
-
-[ODD addendum](ODD_E011.md)
-
-### E012 — meta-improvement of the evaluator
-
-E012 makes the test curriculum itself a candidate: neutral-only, mild-stress, and boundary-stress evaluation designs each select a mechanism, then compete on a common unseen stress holdout.
-
-In the current synthetic world, mild-stress evaluation generalized best while using less search than the widest curriculum.
-
-[ODD addendum](ODD_E012.md)
+```text
+neutral saturation
+→ pressure search
+→ failure biopsy
+→ theory update
+→ improve the evaluator
+→ repeat
+```
 
 ## Trust boundary
 
-The project explicitly distinguishes:
+The project explicitly separates **World truth**, **Operational truth**, and **Certification truth**. The Oracle is an exact checker and upper-bound comparator, not hidden information available to deployable policies.
 
-- **World truth** — complete simulator state;
-- **Operational truth** — what a deployable Governor may observe;
-- **Certification truth** — evidence independently accepted by the Verifier.
+## Explore the lab
 
-The Oracle is a benchmark, not a hidden information channel to the Governor.
-
-## What this project does not claim
-
-E010 is not an empirical model of Netflix, Game Pass, SARTRAS, Spotify, or any other named service. Synthetic experiments are used to discover structural questions and failure modes. Real-world calibration and causal claims require separate evidence.
+[Experiments](experiments.md) · [Research Contract](research-contract.md) · [Contribute](contribute.md) · [GitHub repository](https://github.com/hopeless-t/market-microcosm-lab)
 
 ## Core documents
 
@@ -76,6 +83,20 @@ E010 is not an empirical model of Netflix, Game Pass, SARTRAS, Spotify, or any o
 - [Validation](VALIDATION.md)
 - [Meta-loop](META_LOOP.md)
 - [Threats to validity](THREATS_TO_VALIDITY.md)
-- [GitHub setup](GITHUB_SETUP.md)
+- [E000 ODD](ODD_E000.md)
+- [E010 ODD](ODD_E010.md)
+- [E011 ODD](ODD_E011.md)
+- [E012 ODD](ODD_E012.md)
+
+## Run locally
+
+```bash
+python -m pip install -e ".[dev]"
+pytest -q
+python scripts/run_e000.py
+python scripts/run_e010.py
+python scripts/run_e011.py
+python scripts/run_e012.py
+```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

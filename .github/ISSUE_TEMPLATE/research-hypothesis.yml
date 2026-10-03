@@ -1,0 +1,35 @@
+name: Research hypothesis
+description: Propose a falsifiable experiment or mechanism
+title: "[Research] "
+labels: ["research"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: What are we trying to learn?
+    validations:
+      required: true
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Falsifiable hypothesis
+      description: What observation would make the hypothesis wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: mechanism
+    attributes:
+      label: Candidate mechanism / model change
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Proposed evidence split
+      description: Discovery, promotion, meta-holdout, and any baseline bank.
+  - type: textarea
+    id: failure
+    attributes:
+      label: Expected failure modes
+      description: What should failure biopsy capture?
