@@ -13,6 +13,7 @@ from .adaptive_sampling import (
 
 
 CERTIFIED_SOURCE_PATHS = (
+    "spec/ROOT_OF_TRUST.md",
     "src/market_microcosm/ecology.py",
     "src/market_microcosm/ecological_evaluation.py",
     "src/market_microcosm/sensitivity.py",

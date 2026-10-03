@@ -84,3 +84,14 @@ The allowed lifecycle is:
 promote → certify → use adaptively → invalidate or audit → revoke if needed → fall back to exhaustive → re-certify.
 
 A self-improvement system without explicit revocation is incomplete.
+
+
+## Evidence-age audit scheduler
+
+E017 makes verifier scheduling an explicit part of the meta-loop.
+
+The scheduler may save evaluation cost by using a certified adaptive evaluator between authoritative audits, but it cannot weaken the audit requirement itself.
+
+The current deterministic policy audits every three evidence epochs and hard-expires after six epochs without a successful audit. In the stable 12-epoch benchmark this cuts pair-surface queries by 51.2%. A generation drift at epoch 5 forces immediate exhaustive recertification and still retains 44.8% savings across the full schedule.
+
+Evidence age therefore acts on **authority**, not on truth: older evidence reduces permission to use the optimized evaluator until authoritative verification refreshes it.

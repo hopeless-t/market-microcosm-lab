@@ -46,10 +46,12 @@
 - [x] adaptive frontier sampling versus exhaustive E014 oracle
 - [x] boundary-search cost / recall / false-negative benchmark
 - [x] runtime generation guard + fail-closed exhaustive fallback
-- [ ] periodic exhaustive audit cadence for promoted adaptive sampler
+- [x] periodic exhaustive audit cadence for promoted adaptive sampler
 - [x] adversarial non-monotone surface benchmark
-- [ ] certificate lifecycle / expiry / renewal state machine
-- [ ] audit scheduling by evidence age and structural change
+- [x] certificate lifecycle / expiry / renewal state machine
+- [x] audit scheduling by evidence age and structural change
+- [ ] risk-weighted audit priority across multiple certified evaluators
+- [ ] durable certificate ledger / provenance chain
 - [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 
 ## v0.4 — Structural uncertainty

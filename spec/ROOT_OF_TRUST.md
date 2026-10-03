@@ -21,6 +21,9 @@ The candidate generator cannot directly mark itself promoted. Promotion is produ
 Promotion scenarios/seeds are not available to candidate optimization.
 
 ## R7 — Constitutional versioning
-Changing R1-R6 or the hard viability constraints creates a new evaluation generation. Incumbent and challengers are re-evaluated under the new generation.
+Changing any Root-of-Trust rule or the hard viability constraints creates a new evaluation generation. Incumbent and challengers are re-evaluated under the new generation.
+
+## R8 — Evidence-bounded optimization authority
+An optimized or approximate verifier may operate only under a certificate tied to the exact evaluation generation that earned it. Certificate age, generation mismatch, expiry, or failed authoritative audit must remove optimized authority and fail closed to the authoritative verifier.
 
 These rules are intentionally small. The meta-loop may improve almost everything else.

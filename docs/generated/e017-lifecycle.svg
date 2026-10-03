@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="400" viewBox="0 0 1040 400" role="img" aria-labelledby="title desc">
+<title id="title">E017 certificate lifecycle and audit cadence</title>
+<desc id="desc">Periodic exhaustive audits preserve fail-closed behavior while reducing total evaluator queries across evidence epochs.</desc>
+<style>
+  .title { font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }
+  .sub { font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }
+  .label { font: 650 17px Inter,Segoe UI,Arial,sans-serif; fill: #e5edf8; }
+  .value { font: 800 19px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }
+  .metric { font: 700 15px Inter,Segoe UI,Arial,sans-serif; fill: #c7f9d4; }
+  .track { fill: #26354d; }
+  .stable { fill: #22c55e; }
+  .drift { fill: #f59e0b; }
+  .base { fill: #64748b; }
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#12324a"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E017 · Certificate Lifecycle / Audit Cadence</text>
+<text x="30" y="68" class="sub">12 deterministic evidence epochs · audit every 3 · hard expiry 6</text>
+
+<text x="30" y="126" class="label">Always exhaustive</text>
+<rect x="270" y="103" width="700" height="34" rx="17" class="track"/>
+<rect x="270" y="103" width="700" height="34" rx="17" class="base"/>
+<text x="955" y="127" text-anchor="end" class="value">10584</text>
+
+<text x="30" y="190" class="label">Stable generation</text>
+<rect x="270" y="167" width="700" height="34" rx="17" class="track"/>
+<rect x="270" y="167" width="342" height="34" rx="17" class="stable"/>
+<text x="626" y="191" class="value">5168</text>
+
+<text x="30" y="254" class="label">Drift at epoch 5</text>
+<rect x="270" y="231" width="700" height="34" rx="17" class="track"/>
+<rect x="270" y="231" width="387" height="34" rx="17" class="drift"/>
+<text x="671" y="255" class="value">5845</text>
+
+<text x="30" y="306" class="metric">Stable savings 51.2% · 8 adaptive / 4 exhaustive epochs</text>
+<text x="30" y="334" class="metric">Drift savings 44.8% · generation change forces immediate exhaustive recertification</text>
+<text x="30" y="362" class="metric">Failed audit → REVOKED · skipped audit → EXPIRED</text>
+<text x="30" y="387" class="sub">Lifecycle contract: PASS</text>
+</svg>

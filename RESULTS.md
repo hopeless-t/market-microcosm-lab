@@ -173,9 +173,35 @@ Result:
 
 The first frontier happened to remain unchanged in this adversarial case, which is itself useful evidence: exact frontier recovery alone would not have detected the hidden classification error. Full-surface audit therefore remains necessary for certificate renewal.
 
+## E017 — certificate lifecycle and audit cadence
+
+E017 operationalizes E016's revocable authorization as a deterministic evidence-epoch state machine.
+
+Default policy:
+
+- periodic exhaustive audit every 3 evidence epochs;
+- hard expiry after 6 epochs without a successful audit;
+- adaptive use only while the certificate is ACTIVE.
+
+For a 12-epoch stable generation:
+
+| Schedule | Queries | Savings |
+| --- | ---: | ---: |
+| Always exhaustive | 10,584 | 0% |
+| E017 lifecycle | 5,168 | 51.2% |
+
+The stable lifecycle uses 8 adaptive epochs and 4 exhaustive epochs (initial issuance plus audits at epochs 3, 6, and 9).
+
+With a structural/evaluation generation drift at epoch 5, the old certificate is rejected and epoch 5 becomes exhaustive recertification. Total cost rises to 5,845 queries but still saves **44.8%** versus always exhaustive.
+
+Negative paths remain fail-closed:
+
+- failed exhaustive audit → **REVOKED / exhaustive** on the following epoch;
+- no successful audit through epoch 6 → **EXPIRED / exhaustive**.
+
 ## Theory update
 
-The working theory after E010–E016 is:
+The working theory after E010–E017 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -197,6 +223,9 @@ The working theory after E010–E016 is:
 18. an optimization certificate must be scoped to the exact structural/evaluation generation that earned it;
 19. frontier agreement alone is insufficient evidence of full-surface correctness;
 20. adaptive machinery needs an explicit revoke path, not only a promote path;
-21. sparse exploration cannot certify its own global structural assumption.
+21. sparse exploration cannot certify its own global structural assumption;
+22. verifier cost is itself a schedulable resource, but audit scheduling must be downstream of authority constraints;
+23. evidence age should reduce optimization authority before it reduces verifier strictness;
+24. structural drift and evidence expiry are distinct invalidation channels and both should force exhaustive mode.
 
-Next work should formalize certificate lifecycle and audit cadence, then return to the economic model with richer endogenous controllers while preserving these verifier boundaries.
+Next work should add evidence-age-aware audit prioritization and then return to richer endogenous recommendation, pricing, and bargaining controllers under the now-hardened verifier architecture.

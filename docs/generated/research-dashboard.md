@@ -1,6 +1,6 @@
 # Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -85,5 +85,20 @@ Each cell is `frontier level_a+level_b · interaction-only cell count`. ★ mean
 | Post-audit mode | **exhaustive** |
 
 Guard contract: **PASS**.
+
+## E017 — certificate lifecycle and audit cadence
+
+![E017 certificate lifecycle](e017-lifecycle.svg)
+
+| Schedule | Queries | Savings vs always exhaustive |
+| --- | ---: | ---: |
+| Always exhaustive | 10584 | 0% |
+| Stable generation | 5168 | 51.2% |
+| Drift at epoch 5 | 5845 | 44.8% |
+
+- Stable schedule: **8 adaptive / 4 exhaustive epochs**
+- Failed audit: **REVOKED → exhaustive**
+- Skipped audit through hard expiry: **EXPIRED → exhaustive**
+- Lifecycle contract: **PASS**
 
 These are model-relative synthetic results. They are not real-market recommendations.

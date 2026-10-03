@@ -116,3 +116,16 @@ A certificate is bound to the exact structural/evaluation generation. Changing o
 The adversarial surface inserts a hidden survival island at creator-heavy Price × Cost (6,6). The naive staircase does not query that cell and drops to 97.96% classification accuracy, while the first frontier remains unchanged. Exhaustive audit detects 23 monotonicity violations and revokes adaptive authorization.
 
 The lesson is explicit: frontier agreement alone is not enough, and sparse adaptive sampling cannot certify its own global monotonicity assumption.
+
+
+## E017 — certificate lifecycle and audit cadence
+
+E017 converts E016 revocation into an operational lifecycle over deterministic evidence epochs.
+
+The default certificate policy requires exhaustive audit every 3 epochs and hard-expires after 6 epochs without a successful audit.
+
+Across 12 stable epochs, always-exhaustive evaluation would cost 10,584 pair-surface queries. The lifecycle uses 5,168 queries, a 51.2% reduction, with exhaustive issuance/audits at epochs 0, 3, 6, and 9.
+
+When the generation changes at epoch 5, that epoch is exhaustive recertification. The drift schedule still saves 44.8%.
+
+A failed audit remains REVOKED/exhaustive; skipped audits eventually become EXPIRED/exhaustive. Evidence age therefore removes adaptive authority rather than relaxing verification.
