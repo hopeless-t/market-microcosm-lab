@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Public research docs
+    url: https://hopeless-t.github.io/market-microcosm-lab/
+    about: Read the architecture, validation model, and current experiments.
