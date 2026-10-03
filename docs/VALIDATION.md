@@ -91,3 +91,14 @@ The default lifecycle has two thresholds:
 At audit due, the required mode is exhaustive. At hard expiry, adaptive authority is absent. A failed audit sets REVOKED and remains exhaustive on later epochs.
 
 The generation fingerprint now includes the Root of Trust. A constitutional change therefore invalidates existing optimized-evaluator certificates and forces re-certification under the new evaluation generation.
+
+
+## Audit portfolio exact-oracle validation
+
+E018 introduces a budget scheduler for multiple authoritative audits.
+
+Before promotion, the candidate scheduler is compared to exhaustive subset enumeration on a deterministic finite suite. Exact agreement includes selected certificate set, total restoration value, total cost, and feasibility.
+
+A separate greedy counterexample is retained permanently so that locally attractive value-per-cost scheduling cannot regress into the authoritative path.
+
+Mandatory audits are hard constraints. If mandatory audit cost exceeds available budget, the only valid result is infeasible/fail-closed; partial satisfaction cannot be reported as a successful optimized schedule.

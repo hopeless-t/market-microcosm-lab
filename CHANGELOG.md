@@ -4,7 +4,7 @@
 
 ### Presentation and research UX
 
-- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017 JSON;
+- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018 JSON;
 - CI freshness check for visual result surfaces and Actions job summary;
 - dashboard page and social-preview artwork source;
 
@@ -34,7 +34,11 @@
 - stable 12-epoch verification cost reduced from 10,584 to 5,168 queries (51.2%);
 - drift-at-epoch-5 schedule retains 44.8% savings while forcing immediate exhaustive recertification;
 - Root of Trust R8 adds evidence-bounded optimization authority;
-- Root of Trust is now included in optimized-evaluator generation fingerprints.
+- Root of Trust is now included in optimized-evaluator generation fingerprints;
+- E018 exact audit-portfolio oracle and bounded-DP scheduler;
+- 48/48 generated portfolio exact recovery with 87.3% less scheduler search work;
+- explicit greedy audit-allocation counterexample (160 vs exact 220);
+- mandatory-audit over-budget portfolios fail closed.
 
 ## v0.2 — Ecological market dynamics
 

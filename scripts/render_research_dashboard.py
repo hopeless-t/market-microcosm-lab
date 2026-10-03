@@ -14,6 +14,7 @@ E014 = ROOT / "artifacts/e014/interaction-surface-report.json"
 E015 = ROOT / "artifacts/e015/adaptive-boundary-report.json"
 E016 = ROOT / "artifacts/e016/adaptive-guard-report.json"
 E017 = ROOT / "artifacts/e017/certificate-lifecycle-report.json"
+E018 = ROOT / "artifacts/e018/audit-portfolio-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -520,7 +521,73 @@ def render_e017(payload: dict) -> str:
 </svg>
 '''
 
-def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict) -> str:
+
+def render_e018(payload: dict) -> str:
+    aggregate = payload["aggregate"]
+    oracle_work = int(aggregate["oracle_work_units"])
+    dp_work = int(aggregate["dp_work_units"])
+    dp_match = float(aggregate["dp_exact_match_rate"])
+    greedy_match = float(aggregate["greedy_exact_match_rate"])
+    reduction = float(aggregate["dp_work_reduction_fraction"])
+    trap = payload["greedy_trap"]
+    oracle_trap = int(trap["oracle"]["total_restoration_value"])
+    greedy_trap = int(trap["greedy"]["total_restoration_value"])
+
+    width = 1040
+    height = 400
+    bar_x = 265
+    bar_width = 700
+    dp_width = int(round(bar_width * dp_work / oracle_work))
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E018 audit portfolio scheduler</title>
+<desc id="desc">Bounded dynamic programming exactly matches exhaustive audit-budget scheduling with much lower search work, while greedy scheduling has explicit counterexamples.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .label {{ font: 650 17px Inter,Segoe UI,Arial,sans-serif; fill: #e5edf8; }}
+  .value {{ font: 800 19px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .metric {{ font: 700 16px Inter,Segoe UI,Arial,sans-serif; fill: #c7f9d4; }}
+  .warn {{ font: 700 16px Inter,Segoe UI,Arial,sans-serif; fill: #fecaca; }}
+  .track {{ fill: #26354d; }}
+  .oracle {{ fill: #64748b; }}
+  .dp {{ fill: #22c55e; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#233019"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E018 · Audit Portfolio Scheduler</text>
+<text x="30" y="68" class="sub">48 generated 8-certificate portfolios · exact subset oracle vs bounded DP vs greedy heuristic</text>
+
+<text x="30" y="130" class="label">Exhaustive oracle work</text>
+<rect x="{bar_x}" y="107" width="{bar_width}" height="34" rx="17" class="track"/>
+<rect x="{bar_x}" y="107" width="{bar_width}" height="34" rx="17" class="oracle"/>
+<text x="{bar_x + bar_width - 15}" y="131" text-anchor="end" class="value">{oracle_work}</text>
+
+<text x="30" y="194" class="label">Bounded-DP work</text>
+<rect x="{bar_x}" y="171" width="{bar_width}" height="34" rx="17" class="track"/>
+<rect x="{bar_x}" y="171" width="{dp_width}" height="34" rx="17" class="dp"/>
+<text x="{bar_x + dp_width + 14}" y="195" class="value">{dp_work}</text>
+
+<text x="30" y="249" class="metric">Work reduction {reduction:.1%}</text>
+<text x="300" y="249" class="metric">DP exact match {dp_match:.0%}</text>
+<text x="555" y="249" class="warn">Greedy exact match {greedy_match:.1%}</text>
+
+<rect x="30" y="282" width="980" height="72" rx="18" fill="#311822" stroke="#f43f5e"/>
+<text x="52" y="312" class="warn">Greedy trap</text>
+<text x="205" y="312" class="value">greedy {greedy_trap}</text>
+<text x="400" y="312" class="value">exact / DP {oracle_trap}</text>
+<text x="670" y="312" class="metric">mandatory-over-budget → FAIL CLOSED</text>
+
+<text x="30" y="383" class="sub">Promoted scheduler: {payload["promoted_scheduler"] or "NONE"}</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -600,9 +667,11 @@ def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, 
     guard_probe = e016["adversarial_probe"]
     stable_lifecycle = e017["stable_summary"]
     drift_lifecycle = e017["drift_summary"]
+    audit_portfolio = e018["aggregate"]
+    greedy_trap = e018["greedy_trap"]
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -689,6 +758,21 @@ Guard contract: **{"PASS" if e016["guard_contract_passed"] else "FAIL"}**.
 - Skipped audit through hard expiry: **{e017["expiry_decision"]["state"]} → {e017["expiry_decision"]["required_mode"]}**
 - Lifecycle contract: **{"PASS" if e017["lifecycle_contract_passed"] else "FAIL"}**
 
+## E018 — audit portfolio scheduler
+
+![E018 audit portfolio scheduler](e018-audit-portfolio.svg)
+
+| Scheduler | Exact match | Search work |
+| --- | ---: | ---: |
+| Exhaustive oracle | 100% | {audit_portfolio["oracle_work_units"]} |
+| Bounded-DP | {audit_portfolio["dp_exact_match_rate"]:.0%} | {audit_portfolio["dp_work_units"]} |
+| Greedy value/cost | {audit_portfolio["greedy_exact_match_rate"]:.1%} | heuristic |
+
+- DP work reduction: **{audit_portfolio["dp_work_reduction_fraction"]:.1%}**
+- Fixed greedy trap: **{greedy_trap["greedy"]["total_restoration_value"]} vs exact {greedy_trap["oracle"]["total_restoration_value"]}**
+- Mandatory-over-budget: **FAIL CLOSED**
+- Promoted scheduler: **{e018["promoted_scheduler"] or "NONE"}**
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
@@ -701,6 +785,7 @@ def generated_files(
     e015: dict,
     e016: dict,
     e017: dict,
+    e018: dict,
 ) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
@@ -710,7 +795,8 @@ def generated_files(
         OUT / "e015-sampling.svg": render_e015(e015),
         OUT / "e016-guard.svg": render_e016(e016),
         OUT / "e017-lifecycle.svg": render_e017(e017),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017),
+        OUT / "e018-audit-portfolio.svg": render_e018(e018),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018),
     }
 
 
@@ -730,7 +816,8 @@ def main() -> None:
     e015 = _read(E015)
     e016 = _read(E016)
     e017 = _read(E017)
-    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017)
+    e018 = _read(E018)
+    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018)
 
     if args.check:
         stale: list[str] = []

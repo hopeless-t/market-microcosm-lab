@@ -76,6 +76,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Stable audit savings</h3>
     <p>Periodic exhaustive audits preserve fail-closed authority while cutting verifier query cost.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E018</div>
+    <div class="mm-metric">87.3%</div>
+    <h3>Audit scheduler work cut</h3>
+    <p>Bounded DP matches the exact portfolio oracle while avoiding greedy allocation traps.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -96,6 +102,8 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
 
 ![E017 certificate lifecycle](generated/e017-lifecycle.svg)
 
+![E018 audit portfolio scheduler](generated/e018-audit-portfolio.svg)
+
 These figures are generated from experiment JSON and checked by CI so the public display cannot silently drift away from the current evidence.
 
 ## North Star
@@ -112,7 +120,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E014** maps pairwise surfaces and directly identifies interaction-only collapse regions.  
 **E015** promotes a cheaper adaptive boundary sampler while keeping exhaustive mapping as the verifier.  
 **E016** makes that promotion revocable: structural generation changes or failed monotonicity audits force exhaustive fallback.  
-**E017** adds evidence-age lifecycle and periodic exhaustive audit scheduling.
+**E017** adds evidence-age lifecycle and periodic exhaustive audit scheduling.  
+**E018** allocates scarce audit budget across multiple certificates against an exact small-world oracle.
 
 This produces a repeating research pattern:
 
@@ -149,6 +158,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E015 ODD](ODD_E015.md)
 - [E016 ODD](ODD_E016.md)
 - [E017 ODD](ODD_E017.md)
+- [E018 ODD](ODD_E018.md)
 
 ## Run locally
 
@@ -164,6 +174,7 @@ python scripts/run_e014.py
 python scripts/run_e015.py
 python scripts/run_e016.py
 python scripts/run_e017.py
+python scripts/run_e018.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

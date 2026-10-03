@@ -293,4 +293,5 @@ jobs:
             docs/generated/e015-sampling.svg
             docs/generated/e016-guard.svg
             docs/generated/e017-lifecycle.svg
+            docs/generated/e018-audit-portfolio.svg
             docs/generated/research-dashboard.md

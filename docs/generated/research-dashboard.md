@@ -1,6 +1,6 @@
 # Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -100,5 +100,20 @@ Guard contract: **PASS**.
 - Failed audit: **REVOKED → exhaustive**
 - Skipped audit through hard expiry: **EXPIRED → exhaustive**
 - Lifecycle contract: **PASS**
+
+## E018 — audit portfolio scheduler
+
+![E018 audit portfolio scheduler](e018-audit-portfolio.svg)
+
+| Scheduler | Exact match | Search work |
+| --- | ---: | ---: |
+| Exhaustive oracle | 100% | 12288 |
+| Bounded-DP | 100% | 1558 |
+| Greedy value/cost | 79.2% | heuristic |
+
+- DP work reduction: **87.3%**
+- Fixed greedy trap: **160 vs exact 220**
+- Mandatory-over-budget: **FAIL CLOSED**
+- Promoted scheduler: **bounded-dp**
 
 These are model-relative synthetic results. They are not real-market recommendations.

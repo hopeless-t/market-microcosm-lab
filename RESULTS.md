@@ -199,9 +199,32 @@ Negative paths remain fail-closed:
 - failed exhaustive audit → **REVOKED / exhaustive** on the following epoch;
 - no successful audit through epoch 6 → **EXPIRED / exhaustive**.
 
+## E018 — exact audit portfolio scheduling
+
+E018 extends E017 from one certificate over time to multiple certificates competing for a bounded authoritative-audit budget.
+
+A deterministic suite of 48 generated portfolios contains eight certificates each, with integer audit costs, restoration values, and up to two mandatory audits.
+
+Aggregate scheduler result:
+
+| Scheduler | Exact match | Search work |
+| --- | ---: | ---: |
+| exhaustive subset oracle | 100% | 12,288 |
+| bounded-DP | 100% | 1,558 |
+| greedy value/cost | 79.2% | heuristic |
+
+The bounded dynamic program reduces search work by **87.3%** while reproducing the exhaustive optimum on every generated portfolio.
+
+The fixed greedy trap makes the failure mode concrete:
+
+- greedy selects A+B for restoration value **160**;
+- exact oracle and DP select B+C for **220**.
+
+A separate mandatory-over-budget case is infeasible by construction. Oracle, DP, and greedy all fail closed instead of silently dropping a mandatory authoritative audit.
+
 ## Theory update
 
-The working theory after E010–E017 is:
+The working theory after E010–E018 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -226,6 +249,9 @@ The working theory after E010–E017 is:
 21. sparse exploration cannot certify its own global structural assumption;
 22. verifier cost is itself a schedulable resource, but audit scheduling must be downstream of authority constraints;
 23. evidence age should reduce optimization authority before it reduces verifier strictness;
-24. structural drift and evidence expiry are distinct invalidation channels and both should force exhaustive mode.
+24. structural drift and evidence expiry are distinct invalidation channels and both should force exhaustive mode;
+25. scarce audit budget creates a separate combinatorial control problem;
+26. locally efficient value-per-cost ordering can be globally suboptimal even when every individual score is correct;
+27. exact small-world portfolio oracles can validate faster budget schedulers before deployment.
 
-Next work should add evidence-age-aware audit prioritization and then return to richer endogenous recommendation, pricing, and bargaining controllers under the now-hardened verifier architecture.
+Next work should persist certificate/audit provenance as a durable ledger, then return to richer endogenous recommendation, pricing, and bargaining controllers under the hardened verifier architecture.
