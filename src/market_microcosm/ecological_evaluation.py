@@ -19,6 +19,7 @@ class MarketEvaluation:
     mean_active_developers: float
     mean_active_publishers: float
     mean_platform_cash: float
+    mean_survival_months: float
     total_entries: int
     total_exits: int
 
@@ -54,6 +55,7 @@ def evaluate_mechanism(
     active_developers = 0.0
     active_publishers = 0.0
     platform_cash = 0.0
+    survival_months = 0.0
     total_entries = 0
     total_exits = 0
 
@@ -100,6 +102,7 @@ def evaluate_mechanism(
         active_developers += scenario_devs / divisor
         active_publishers += scenario_pubs / divisor
         platform_cash += scenario_platform / divisor
+        survival_months += months
         total_entries += state.cumulative_entries
         total_exits += state.cumulative_exits
 
@@ -115,6 +118,7 @@ def evaluate_mechanism(
         mean_active_developers=active_developers / n,
         mean_active_publishers=active_publishers / n,
         mean_platform_cash=platform_cash / n,
+        mean_survival_months=survival_months / n,
         total_entries=total_entries,
         total_exits=total_exits,
     )

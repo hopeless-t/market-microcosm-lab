@@ -29,6 +29,7 @@ class FailureBiopsy:
     seed: int
     failed: bool
     failure_month: int | None
+    failure_reasons: tuple[str, ...]
     trace: tuple[dict, ...]
 
 
@@ -137,6 +138,7 @@ def failure_biopsy(
                     seed=seed,
                     failed=True,
                     failure_month=state.month,
+                    failure_reasons=world.viability_failures(state),
                     trace=tuple(trace),
                 )
 
@@ -146,6 +148,7 @@ def failure_biopsy(
         seed=seeds[-1] if seeds else -1,
         failed=False,
         failure_month=None,
+        failure_reasons=(),
         trace=(),
     )
 
@@ -173,12 +176,22 @@ def pressure_report_payload(
         )
         biopsies.append(asdict(biopsy))
 
+    resilience_auc = {
+        mechanism.name: sum(
+            row.evaluation.survival_rate
+            for row in results
+            if row.mechanism_name == mechanism.name
+        ) / max(1, len(points))
+        for mechanism in mechanisms
+    }
+
     return {
         "experiment": "E011",
         "pressure_definition": [
             asdict(point) for point in points
         ],
         "knees": knees,
+        "resilience_auc": resilience_auc,
         "curves": [
             {
                 "mechanism_name": row.mechanism_name,
@@ -190,6 +203,7 @@ def pressure_report_payload(
                 "mean_diversity": row.evaluation.mean_diversity,
                 "mean_active_developers": row.evaluation.mean_active_developers,
                 "mean_platform_cash": row.evaluation.mean_platform_cash,
+                "mean_survival_months": row.evaluation.mean_survival_months,
                 "total_entries": row.evaluation.total_entries,
                 "total_exits": row.evaluation.total_exits,
             }

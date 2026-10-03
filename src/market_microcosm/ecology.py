@@ -282,15 +282,23 @@ class MarketWorld:
             health=health,
         )
 
-    def viable(self, state: MarketState) -> bool:
+    def viability_failures(self, state: MarketState) -> tuple[str, ...]:
         metrics = self.metrics(state)
-        return (
-            state.platform_cash >= 0
-            and metrics.active_developers >= self.minimum_active_developers
-            and metrics.active_publishers >= self.minimum_active_publishers
-            and metrics.total_users >= self.minimum_users
-            and metrics.user_utility >= self.minimum_service_quality
-        )
+        failures: list[str] = []
+        if state.platform_cash < 0:
+            failures.append("platform_insolvent")
+        if metrics.active_developers < self.minimum_active_developers:
+            failures.append("developer_population_below_floor")
+        if metrics.active_publishers < self.minimum_active_publishers:
+            failures.append("publisher_population_below_floor")
+        if metrics.total_users < self.minimum_users:
+            failures.append("user_population_below_floor")
+        if metrics.user_utility < self.minimum_service_quality:
+            failures.append("service_quality_below_floor")
+        return tuple(failures)
+
+    def viable(self, state: MarketState) -> bool:
+        return not self.viability_failures(state)
 
     def _developer_allocations(
         self,

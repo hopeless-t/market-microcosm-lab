@@ -37,6 +37,13 @@ def main() -> None:
         if x["failed"]
     }
     print("failure-months=" + json.dumps(failed, sort_keys=True))
+    print("resilience-auc=" + json.dumps(payload["resilience_auc"], sort_keys=True))
+    reasons = {
+        x["mechanism_name"]: x["failure_reasons"]
+        for x in payload["biopsies"]
+        if x["failed"]
+    }
+    print("failure-reasons=" + json.dumps(reasons, sort_keys=True))
 
 
 if __name__ == "__main__":
