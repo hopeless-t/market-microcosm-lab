@@ -26,4 +26,7 @@ Changing any Root-of-Trust rule or the hard viability constraints creates a new 
 ## R8 — Evidence-bounded optimization authority
 An optimized or approximate verifier may operate only under a certificate tied to the exact evaluation generation that earned it. Certificate age, generation mismatch, expiry, or failed authoritative audit must remove optimized authority and fail closed to the authoritative verifier.
 
+## R9 — Authority provenance
+Promotion, certification, renewal, revocation, expiry, and fail-closed authority decisions must carry replayable provenance linking the decision to its evaluation generation and evidence. Missing or invalid provenance cannot grant optimized authority.
+
 These rules are intentionally small. The meta-loop may improve almost everything else.
