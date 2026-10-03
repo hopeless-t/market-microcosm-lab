@@ -11,6 +11,13 @@ from market_microcosm.ecological_improvement import (
 from market_microcosm.ecology import MarketWorld, default_mechanisms
 
 
+def evaluation_payload(evaluation):
+    return asdict(evaluation) | {
+        "survival_rate": evaluation.survival_rate,
+        "survival_lcb95": evaluation.survival_lcb95,
+    }
+
+
 def main() -> None:
     world = MarketWorld()
     mechanisms = default_mechanisms()
@@ -38,7 +45,7 @@ def main() -> None:
     payload = {
         "experiment": "E010",
         "world": "stylized-ecological-market-v1",
-        "baseline": [asdict(x) | {"survival_lcb95": x.survival_lcb95} for x in baseline],
+        "baseline": [evaluation_payload(x) for x in baseline],
         "inner": {
             "initial": closed.initial.name,
             "final": closed.final.name,
@@ -49,8 +56,8 @@ def main() -> None:
                     "challenger": g.challenger.name,
                     "promoted": g.decision.promoted,
                     "reasons": list(g.decision.reasons),
-                    "incumbent_holdout": asdict(g.incumbent_holdout),
-                    "challenger_holdout": asdict(g.challenger_holdout),
+                    "incumbent_holdout": evaluation_payload(g.incumbent_holdout),
+                    "challenger_holdout": evaluation_payload(g.challenger_holdout),
                 }
                 for g in closed.generations
             ],
