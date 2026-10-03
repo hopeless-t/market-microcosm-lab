@@ -266,6 +266,39 @@ jobs:
           })
           PY
 
+      - name: Run certificate provenance ledger
+        run: python scripts/run_e019.py
+      - name: Validate E019 ledger contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e019/certificate-ledger-report.json").read_text())
+          lines = [
+              line for line in
+              Path("artifacts/e019/certificate-ledger.jsonl").read_text().splitlines()
+              if line.strip()
+          ]
+          assert x["experiment"] == "E019"
+          assert x["ledger_contract_passed"] is True
+          assert x["clean_verification"]["valid"] is True
+          assert len(x["tip_hash"]) == 64
+          assert len(lines) == x["entry_count"]
+          assert all(
+              probe["valid"] is False
+              for probe in x["tamper_probes"].values()
+          )
+          assert all(x["promotion_gate"].values())
+          print({
+              "entries": x["entry_count"],
+              "tip": x["tip_hash"],
+              "tamper_probes": {
+                  name: probe["reason"]
+                  for name, probe in x["tamper_probes"].items()
+              },
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -286,6 +319,8 @@ jobs:
             artifacts/e016/adaptive-guard-report.json
             artifacts/e017/certificate-lifecycle-report.json
             artifacts/e018/audit-portfolio-report.json
+            artifacts/e019/certificate-ledger-report.json
+            artifacts/e019/certificate-ledger.jsonl
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
