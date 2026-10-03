@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from .evaluation import Evaluation, evaluate_policy
+from .manifests import RunManifest
 from .policies import PolicySpec, candidate_family
 from .scenarios import generate_scenarios
 from .toy_world import ToyWorld
@@ -17,6 +18,7 @@ class ImprovementConfig:
     discovery_seeds: tuple[int, ...] = tuple(range(20))
     promotion_seeds: tuple[int, ...] = tuple(range(100, 140))
     horizon: int = 20
+    constitutional_generation: int = 1
 
     def __post_init__(self) -> None:
         if set(self.discovery_seeds) & set(self.promotion_seeds):
@@ -32,6 +34,16 @@ class ImprovementResult:
     challenger_holdout: Evaluation
     decision: PromotionDecision
     viability: ViabilityResult
+    discovery_manifest: RunManifest
+    promotion_manifest: RunManifest
+
+
+@dataclass(frozen=True)
+class ClosedImprovementRun:
+    initial_policy: PolicySpec
+    final_policy: PolicySpec
+    generations: tuple[ImprovementResult, ...]
+    converged: bool
 
 
 def _rank(e: Evaluation) -> tuple[float, float, float]:
@@ -44,6 +56,7 @@ def run_improvement_loop(
     incumbent: PolicySpec,
     config: ImprovementConfig,
     rule: PromotionRule | None = None,
+    code_revision: str = "working-tree",
 ) -> ImprovementResult:
     rule = rule or PromotionRule()
     viability = exact_robust_viability_kernel(world)
@@ -78,6 +91,25 @@ def run_improvement_loop(
     )
     decision = verify_promotion(incumbent_eval, challenger_eval, rule)
 
+    discovery_manifest = RunManifest(
+        generation=config.constitutional_generation,
+        world_version="toy-v1",
+        observer_version=f"{config.observation_mode}-v1",
+        policy_name="candidate-search",
+        verifier_version="promotion-v1",
+        scenario_ids=tuple(s.scenario_id for s in discovery),
+        code_revision=code_revision,
+    )
+    promotion_manifest = RunManifest(
+        generation=config.constitutional_generation,
+        world_version="toy-v1",
+        observer_version=f"{config.observation_mode}-v1",
+        policy_name=f"{incumbent.name}__vs__{challenger.name}",
+        verifier_version="promotion-v1",
+        scenario_ids=tuple(s.scenario_id for s in holdout),
+        code_revision=code_revision,
+    )
+
     return ImprovementResult(
         incumbent=incumbent,
         challenger=challenger,
@@ -86,4 +118,44 @@ def run_improvement_loop(
         challenger_holdout=challenger_eval,
         decision=decision,
         viability=viability,
+        discovery_manifest=discovery_manifest,
+        promotion_manifest=promotion_manifest,
+    )
+
+
+def run_closed_improvement_loop(
+    *,
+    world: ToyWorld,
+    incumbent: PolicySpec,
+    config: ImprovementConfig,
+    rule: PromotionRule | None = None,
+    max_generations: int = 8,
+    code_revision: str = "working-tree",
+) -> ClosedImprovementRun:
+    if max_generations < 1:
+        raise ValueError("max_generations must be positive")
+
+    initial = incumbent
+    history: list[ImprovementResult] = []
+    converged = False
+
+    for _ in range(max_generations):
+        result = run_improvement_loop(
+            world=world,
+            incumbent=incumbent,
+            config=config,
+            rule=rule,
+            code_revision=code_revision,
+        )
+        history.append(result)
+        if not result.decision.promoted:
+            converged = True
+            break
+        incumbent = result.challenger
+
+    return ClosedImprovementRun(
+        initial_policy=initial,
+        final_policy=incumbent,
+        generations=tuple(history),
+        converged=converged,
     )

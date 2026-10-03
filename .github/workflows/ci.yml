@@ -21,10 +21,22 @@ jobs:
           from pathlib import Path
           p = Path("artifacts/e000/meta-report.json")
           x = json.loads(p.read_text())
-          assert x["winner"]
-          assert len(x["scores"]) >= 1
-          assert all(i["kernel_size"] > 0 for i in x["inner"])
-          print({"winner": x["winner"], "kernel_sizes": [i["kernel_size"] for i in x["inner"]]})
+          assert x["final_winner"]
+          assert x["generation_count"] >= 1
+          assert all(
+              inner["kernel_size"] > 0
+              for generation in x["generations"]
+              for inner in generation["inner"]
+          )
+          assert all(
+              len(generation["meta_scenario_ids"]) > 0
+              for generation in x["generations"]
+          )
+          print({
+              "winner": x["final_winner"],
+              "generations": x["generation_count"],
+              "converged": x["converged"],
+          })
           PY
       - uses: actions/upload-artifact@v4
         with:

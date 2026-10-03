@@ -9,7 +9,7 @@ from .evaluation import Evaluation
 class PromotionRule:
     minimum_survival_rate: float = 0.95
     maximum_survival_drop: float = 0.0
-    minimum_welfare_gain: float = 0.0
+    minimum_welfare_gain: float = 0.01
     maximum_invariant_violations: int = 0
 
 
@@ -26,6 +26,8 @@ def verify_promotion(
 ) -> PromotionDecision:
     reasons: list[str] = []
 
+    if incumbent.policy_name == challenger.policy_name:
+        reasons.append("challenger is identical to incumbent")
     if challenger.invariant_violations > rule.maximum_invariant_violations:
         reasons.append("challenger violated hard invariants")
     if challenger.survival_rate < rule.minimum_survival_rate:
