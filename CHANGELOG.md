@@ -4,7 +4,7 @@
 
 ### Presentation and research UX
 
-- deterministic live research dashboard generated from E011/E012/E013/E014/E015 JSON;
+- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016 JSON;
 - CI freshness check for visual result surfaces and Actions job summary;
 - dashboard page and social-preview artwork source;
 
@@ -25,7 +25,11 @@
 - survival-loss super-additivity metrics for pairwise stress;
 - E015 monotone staircase boundary sampler promoted against exhaustive E014;
 - pair-surface query cost reduced from 882 to 205 (76.8%) with exact cell/frontier recovery;
-- adaptive-exploration / exhaustive-audit trust separation.
+- adaptive-exploration / exhaustive-audit trust separation;
+- E016 generation-scoped certificate fingerprint;
+- fail-closed fallback on generation mismatch;
+- adversarial hidden survival island demonstrating 97.96% naive accuracy despite unchanged frontier;
+- exhaustive audit detection of 23 monotonicity violations and adaptive revocation.
 
 ## v0.2 — Ecological market dynamics
 

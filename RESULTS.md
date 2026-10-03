@@ -152,9 +152,30 @@ The trust boundary remains asymmetric:
 - exhaustive E014 remains the periodic audit/reference path;
 - any future monotonicity violation must fail closed or trigger exhaustive fallback.
 
+## E016 — generation-scoped adaptive guard
+
+E016 tests whether the promoted E015 optimization safely loses authority when its premises no longer hold.
+
+The same-generation certificate fingerprint authorizes the adaptive path. Changing only the evaluation horizon from 60 to 61 changes the generation fingerprint and automatically forces **exhaustive** mode.
+
+The adversarial test then mutates creator-heavy / Price × Cost at cell (6,6) from failure to survival, creating a hidden non-monotone island that the staircase does not query directly.
+
+Result:
+
+| Check | Result |
+| --- | --- |
+| Same generation | adaptive allowed |
+| Horizon 60 → 61 | exhaustive fallback |
+| Naive adaptive accuracy on adversarial surface | 97.96% |
+| Monotonicity violations detected by exhaustive audit | 23 |
+| Post-audit mode | exhaustive |
+| Guard contract | PASS |
+
+The first frontier happened to remain unchanged in this adversarial case, which is itself useful evidence: exact frontier recovery alone would not have detected the hidden classification error. Full-surface audit therefore remains necessary for certificate renewal.
+
 ## Theory update
 
-The working theory after E010–E015 is:
+The working theory after E010–E016 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -172,6 +193,10 @@ The working theory after E010–E015 is:
 14. full-grid interaction mapping is informative but expensive enough to become a target for meta-improvement;
 15. the current E014 failure surfaces are monotone on all 18 tested mechanism/pair surfaces;
 16. monotone structure can be exploited without losing classification or frontier fidelity in the current model;
-17. adaptive exploration and exhaustive certification should remain separate planes.
+17. adaptive exploration and exhaustive certification should remain separate planes;
+18. an optimization certificate must be scoped to the exact structural/evaluation generation that earned it;
+19. frontier agreement alone is insufficient evidence of full-surface correctness;
+20. adaptive machinery needs an explicit revoke path, not only a promote path;
+21. sparse exploration cannot certify its own global structural assumption.
 
-Next work should harden the adaptive path with explicit monotonicity guards, periodic exhaustive audits, and stress-world changes designed to deliberately break the monotonicity assumption.
+Next work should formalize certificate lifecycle and audit cadence, then return to the economic model with richer endogenous controllers while preserving these verifier boundaries.

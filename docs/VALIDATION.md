@@ -63,3 +63,17 @@ A promoted adaptive sampler must be checked against an exhaustive reference gene
 The certificate is generation-scoped. Any change to the world transition function, pressure mapping, viability definition, stochastic evaluation contract, or relevant evaluator semantics invalidates the certificate.
 
 When certification is absent or a monotonicity violation is observed, the system fails closed to the exhaustive evaluator. Exhaustive evaluation therefore remains a permanent audit path rather than being removed after optimization.
+
+
+## Revocation and adversarial guard
+
+E016 validates the negative path of evaluator optimization.
+
+Two independent conditions force exhaustive mode:
+
+1. **generation mismatch** — the certificate fingerprint does not match the current world/evaluator/contract generation;
+2. **audit failure** — exhaustive verification observes a structural premise violation such as non-monotonicity.
+
+The adversarial E016 probe is intentionally chosen so that the naive adaptive sampler misclassifies a hidden cell while preserving the same first frontier. This prevents frontier agreement from being mistaken for proof of full-surface correctness.
+
+Certification must therefore be revocable, generation-scoped, and backed by an audit path that is strictly more informative than the optimized evaluator it certifies.

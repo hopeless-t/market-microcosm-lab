@@ -105,3 +105,14 @@ E015 uses exhaustive E014 as a verifier and asks whether the same 18 pairwise bo
 The promoted monotone staircase sampler reduced the query count from 882 to 205 (76.8% savings) while preserving 100% cell classification, 18/18 first-frontier recovery, and exact interaction-only counts. The current E014 surfaces had zero monotonicity violations.
 
 This does not replace exhaustive verification. The promoted architecture is two-plane: adaptive sampling for exploration and periodic exhaustive sampling for certification/audit. A world or evaluator generation change should invalidate the monotonicity certificate and force re-certification.
+
+
+## E016 — adaptive guard and certificate revocation
+
+E016 attacks the E015 optimization rather than assuming its premise stays true.
+
+A certificate is bound to the exact structural/evaluation generation. Changing only the horizon from 60 to 61 changes the fingerprint and automatically requires exhaustive mode.
+
+The adversarial surface inserts a hidden survival island at creator-heavy Price × Cost (6,6). The naive staircase does not query that cell and drops to 97.96% classification accuracy, while the first frontier remains unchanged. Exhaustive audit detects 23 monotonicity violations and revokes adaptive authorization.
+
+The lesson is explicit: frontier agreement alone is not enough, and sparse adaptive sampling cannot certify its own global monotonicity assumption.
