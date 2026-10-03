@@ -222,9 +222,42 @@ The fixed greedy trap makes the failure mode concrete:
 
 A separate mandatory-over-budget case is infeasible by construction. Oracle, DP, and greedy all fail closed instead of silently dropping a mandatory authoritative audit.
 
+## E019 — certificate provenance ledger
+
+E019 persists optimized-evaluator authority as a deterministic append-only JSONL hash chain.
+
+The reference lineage contains seven events:
+
+1. adaptive sampler promotion;
+2. certificate issue;
+3. exhaustive audit renewal;
+4. generation drift;
+5. exhaustive recertification;
+6. audit portfolio scheduler promotion;
+7. mandatory-audit fail-closed evidence.
+
+Each event binds the evaluation generation, source experiment digest, decision, structured details, previous hash, and event hash.
+
+Current verification:
+
+| Probe | Result |
+| --- | --- |
+| Clean chain | PASS |
+| Payload mutation | event hash mismatch detected |
+| Intermediate deletion | sequence discontinuity detected |
+| Entry reordering | sequence discontinuity detected |
+| Deterministic rebuild | identical ledger/tip |
+| Entry count | 7 |
+
+Current tip:
+
+`b38e2659f4efb77891787281278c8c1d270f200dfcfe1d541b43a0097532271c`
+
+The limitation is explicit: a local hash chain is tamper-evident only relative to a trusted tip. It does not establish authorship and cannot stop an attacker who can rewrite the entire chain and replace the trusted tip.
+
 ## Theory update
 
-The working theory after E010–E018 is:
+The working theory after E010–E019 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -252,6 +285,9 @@ The working theory after E010–E018 is:
 24. structural drift and evidence expiry are distinct invalidation channels and both should force exhaustive mode;
 25. scarce audit budget creates a separate combinatorial control problem;
 26. locally efficient value-per-cost ordering can be globally suboptimal even when every individual score is correct;
-27. exact small-world portfolio oracles can validate faster budget schedulers before deployment.
+27. exact small-world portfolio oracles can validate faster budget schedulers before deployment;
+28. optimized authority is incomplete without replayable provenance linking each decision to its generation and evidence;
+29. hash chaining detects local history corruption but does not replace independent authorship/signature;
+30. the trusted-tip problem becomes the next trust-layer boundary.
 
-Next work should persist certificate/audit provenance as a durable ledger, then return to richer endogenous recommendation, pricing, and bargaining controllers under the hardened verifier architecture.
+Next work should add an independently witnessed or signed ledger tip, then return to richer endogenous recommendation, pricing, and bargaining controllers under the hardened verifier architecture.

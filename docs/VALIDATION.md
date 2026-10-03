@@ -102,3 +102,20 @@ Before promotion, the candidate scheduler is compared to exhaustive subset enume
 A separate greedy counterexample is retained permanently so that locally attractive value-per-cost scheduling cannot regress into the authoritative path.
 
 Mandatory audits are hard constraints. If mandatory audit cost exceeds available budget, the only valid result is infeasible/fail-closed; partial satisfaction cannot be reported as a successful optimized schedule.
+
+
+## Authority provenance validation
+
+E019 persists certificate and scheduler authority decisions as a canonical JSONL hash chain.
+
+Verification checks ledger-version compatibility, exact sequence continuity, non-decreasing evidence epochs, allowed event types, generation/evidence SHA-256 formats, previous-hash linkage, and recomputed event hashes.
+
+Regression probes must invalidate verification after:
+
+- mutation of a middle event payload;
+- deletion of an intermediate event;
+- reordering of adjacent events.
+
+A deterministic rebuild from the same E015–E018 evidence must reproduce the same JSONL and chain tip.
+
+The validation claim stops at the trusted-tip boundary. A hash chain alone does not prove authorship or resist an attacker who can replace the entire ledger and the trusted tip. External signing or transparency anchoring is required for that stronger claim.

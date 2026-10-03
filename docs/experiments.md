@@ -194,8 +194,28 @@ A fixed counterexample produces **160** under greedy selection versus **220** un
 
 ---
 
+## E019 — Certificate provenance ledger
+
+**Purpose:** make optimized-evaluator authority history replayable and tamper-evident.
+
+The reference ledger contains seven hash-linked events from E015–E018: promotion, certificate issue, audit renewal, generation drift, recertification, audit-scheduler promotion, and mandatory-audit fail-closed evidence.
+
+The clean chain verifies. Three adversarial probes are all detected:
+
+- payload mutation → event hash mismatch;
+- intermediate deletion → sequence discontinuity;
+- entry reorder → sequence discontinuity.
+
+The ledger tip after Root of Trust R9 is:
+
+`b38e2659f4efb77891787281278c8c1d270f200dfcfe1d541b43a0097532271c`
+
+[Read the E019 ODD](ODD_E019.md)
+
+---
+
 ## What comes next
 
-Persist issuance, audit, renewal, revocation, and scheduler decisions in a durable certificate ledger so every optimized authority decision has a replayable provenance chain.
+Anchor trusted ledger tips outside the local chain—through signatures, transparency logs, release attestations, or independent witnesses—so full-history rewrite plus tip replacement is no longer in the same trust domain.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).

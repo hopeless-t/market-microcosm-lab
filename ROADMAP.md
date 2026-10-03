@@ -52,7 +52,8 @@
 - [x] audit scheduling by evidence age and structural change
 - [x] exact audit-budget scheduling across multiple certified evaluators
 - [x] greedy audit-priority counterexample + exact DP promotion
-- [ ] durable certificate ledger / provenance chain
+- [x] durable certificate ledger / provenance chain
+- [ ] independent signature / transparency anchor for trusted ledger tips
 - [ ] multi-epoch audit portfolio planning under uncertain future drift
 - [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 

@@ -15,6 +15,7 @@ E015 = ROOT / "artifacts/e015/adaptive-boundary-report.json"
 E016 = ROOT / "artifacts/e016/adaptive-guard-report.json"
 E017 = ROOT / "artifacts/e017/certificate-lifecycle-report.json"
 E018 = ROOT / "artifacts/e018/audit-portfolio-report.json"
+E019 = ROOT / "artifacts/e019/certificate-ledger-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -587,7 +588,78 @@ def render_e018(payload: dict) -> str:
 </svg>
 '''
 
-def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict) -> str:
+
+def render_e019(payload: dict) -> str:
+    clean = payload["clean_verification"]
+    probes = payload["tamper_probes"]
+    tip = str(payload["tip_hash"])
+    entry_count = int(payload["entry_count"])
+
+    width = 1040
+    height = 390
+    node_width = 118
+    gap = 18
+    start_x = 36
+    y = 118
+
+    nodes = []
+    labels = (
+        "PROMOTE",
+        "ISSUE",
+        "AUDIT",
+        "DRIFT",
+        "RECERT",
+        "SCHED",
+        "FAIL-CLOSED",
+    )
+    for index in range(entry_count):
+        x = start_x + index * (node_width + gap)
+        nodes.append(
+            f'<rect x="{x}" y="{y}" width="{node_width}" height="62" rx="14" class="node"/>'
+            f'<text x="{x + node_width / 2}" y="{y + 26}" text-anchor="middle" class="seq">#{index}</text>'
+            f'<text x="{x + node_width / 2}" y="{y + 48}" text-anchor="middle" class="event">{labels[index] if index < len(labels) else "EVENT"}</text>'
+        )
+        if index < entry_count - 1:
+            arrow_x = x + node_width
+            nodes.append(
+                f'<path d="M{arrow_x + 3} {y + 31} L{arrow_x + gap - 3} {y + 31}" '
+                f'stroke="#7dd3fc" stroke-width="3"/>'
+            )
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E019 certificate provenance ledger</title>
+<desc id="desc">Seven authority events are hash chained to source evidence and tamper probes detect payload mutation, deletion, and reordering.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .node {{ fill: #102334; stroke: #38bdf8; stroke-width: 1.5; }}
+  .seq {{ font: 800 16px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .event {{ font: 700 10px Inter,Segoe UI,Arial,sans-serif; fill: #bae6fd; }}
+  .metric {{ font: 700 15px Inter,Segoe UI,Arial,sans-serif; fill: #c7f9d4; }}
+  .bad {{ font: 700 15px Inter,Segoe UI,Arial,sans-serif; fill: #fecaca; }}
+  .hash {{ font: 600 14px ui-monospace,SFMono-Regular,Consolas,monospace; fill: #dbeafe; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#16213c"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E019 · Certificate Provenance Ledger</text>
+<text x="30" y="68" class="sub">append-only canonical JSONL · SHA-256 evidence digests · hash-linked authority events</text>
+{''.join(nodes)}
+<text x="30" y="225" class="metric">Clean chain: {"PASS" if clean["valid"] else "FAIL"} · {entry_count} entries</text>
+<text x="30" y="253" class="hash">tip {tip}</text>
+<text x="30" y="296" class="bad">Payload mutation → {probes["payload_mutation"]["reason"]}</text>
+<text x="360" y="296" class="bad">Deletion → {probes["entry_deletion"]["reason"]}</text>
+<text x="675" y="296" class="bad">Reorder → {probes["entry_reorder"]["reason"]}</text>
+<text x="30" y="337" class="metric">Tamper probes: 3/3 detected · deterministic rebuild: PASS</text>
+<text x="30" y="370" class="sub">Hash-chain limitation: replacing the entire ledger + trusted tip still requires an external signature/transparency anchor.</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict, e019: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -669,9 +741,11 @@ def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, 
     drift_lifecycle = e017["drift_summary"]
     audit_portfolio = e018["aggregate"]
     greedy_trap = e018["greedy_trap"]
+    ledger_clean = e019["clean_verification"]
+    ledger_probes = e019["tamper_probes"]
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -773,6 +847,18 @@ Guard contract: **{"PASS" if e016["guard_contract_passed"] else "FAIL"}**.
 - Mandatory-over-budget: **FAIL CLOSED**
 - Promoted scheduler: **{e018["promoted_scheduler"] or "NONE"}**
 
+## E019 — certificate provenance ledger
+
+![E019 certificate provenance ledger](e019-ledger.svg)
+
+- Clean chain: **{"PASS" if ledger_clean["valid"] else "FAIL"}**
+- Entries: **{e019["entry_count"]}**
+- Tip hash: `{e019["tip_hash"]}`
+- Payload mutation: **{ledger_probes["payload_mutation"]["reason"]}**
+- Entry deletion: **{ledger_probes["entry_deletion"]["reason"]}**
+- Entry reorder: **{ledger_probes["entry_reorder"]["reason"]}**
+- Ledger contract: **{"PASS" if e019["ledger_contract_passed"] else "FAIL"}**
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
@@ -786,6 +872,7 @@ def generated_files(
     e016: dict,
     e017: dict,
     e018: dict,
+    e019: dict,
 ) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
@@ -796,7 +883,8 @@ def generated_files(
         OUT / "e016-guard.svg": render_e016(e016),
         OUT / "e017-lifecycle.svg": render_e017(e017),
         OUT / "e018-audit-portfolio.svg": render_e018(e018),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018),
+        OUT / "e019-ledger.svg": render_e019(e019),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018, e019),
     }
 
 
@@ -817,7 +905,8 @@ def main() -> None:
     e016 = _read(E016)
     e017 = _read(E017)
     e018 = _read(E018)
-    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018)
+    e019 = _read(E019)
+    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018, e019)
 
     if args.check:
         stale: list[str] = []

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="390" viewBox="0 0 1040 390" role="img" aria-labelledby="title desc">
+<title id="title">E019 certificate provenance ledger</title>
+<desc id="desc">Seven authority events are hash chained to source evidence and tamper probes detect payload mutation, deletion, and reordering.</desc>
+<style>
+  .title { font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }
+  .sub { font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }
+  .node { fill: #102334; stroke: #38bdf8; stroke-width: 1.5; }
+  .seq { font: 800 16px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }
+  .event { font: 700 10px Inter,Segoe UI,Arial,sans-serif; fill: #bae6fd; }
+  .metric { font: 700 15px Inter,Segoe UI,Arial,sans-serif; fill: #c7f9d4; }
+  .bad { font: 700 15px Inter,Segoe UI,Arial,sans-serif; fill: #fecaca; }
+  .hash { font: 600 14px ui-monospace,SFMono-Regular,Consolas,monospace; fill: #dbeafe; }
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#16213c"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E019 · Certificate Provenance Ledger</text>
+<text x="30" y="68" class="sub">append-only canonical JSONL · SHA-256 evidence digests · hash-linked authority events</text>
+<rect x="36" y="118" width="118" height="62" rx="14" class="node"/><text x="95" y="144" text-anchor="middle" class="seq">#0</text><text x="95" y="166" text-anchor="middle" class="event">PROMOTE</text><path d="M157 149 L169 149" stroke="#7dd3fc" stroke-width="3"/><rect x="172" y="118" width="118" height="62" rx="14" class="node"/><text x="231" y="144" text-anchor="middle" class="seq">#1</text><text x="231" y="166" text-anchor="middle" class="event">ISSUE</text><path d="M293 149 L305 149" stroke="#7dd3fc" stroke-width="3"/><rect x="308" y="118" width="118" height="62" rx="14" class="node"/><text x="367" y="144" text-anchor="middle" class="seq">#2</text><text x="367" y="166" text-anchor="middle" class="event">AUDIT</text><path d="M429 149 L441 149" stroke="#7dd3fc" stroke-width="3"/><rect x="444" y="118" width="118" height="62" rx="14" class="node"/><text x="503" y="144" text-anchor="middle" class="seq">#3</text><text x="503" y="166" text-anchor="middle" class="event">DRIFT</text><path d="M565 149 L577 149" stroke="#7dd3fc" stroke-width="3"/><rect x="580" y="118" width="118" height="62" rx="14" class="node"/><text x="639" y="144" text-anchor="middle" class="seq">#4</text><text x="639" y="166" text-anchor="middle" class="event">RECERT</text><path d="M701 149 L713 149" stroke="#7dd3fc" stroke-width="3"/><rect x="716" y="118" width="118" height="62" rx="14" class="node"/><text x="775" y="144" text-anchor="middle" class="seq">#5</text><text x="775" y="166" text-anchor="middle" class="event">SCHED</text><path d="M837 149 L849 149" stroke="#7dd3fc" stroke-width="3"/><rect x="852" y="118" width="118" height="62" rx="14" class="node"/><text x="911" y="144" text-anchor="middle" class="seq">#6</text><text x="911" y="166" text-anchor="middle" class="event">FAIL-CLOSED</text>
+<text x="30" y="225" class="metric">Clean chain: PASS · 7 entries</text>
+<text x="30" y="253" class="hash">tip b38e2659f4efb77891787281278c8c1d270f200dfcfe1d541b43a0097532271c</text>
+<text x="30" y="296" class="bad">Payload mutation → event hash mismatch</text>
+<text x="360" y="296" class="bad">Deletion → sequence discontinuity</text>
+<text x="675" y="296" class="bad">Reorder → sequence discontinuity</text>
+<text x="30" y="337" class="metric">Tamper probes: 3/3 detected · deterministic rebuild: PASS</text>
+<text x="30" y="370" class="sub">Hash-chain limitation: replacing the entire ledger + trusted tip still requires an external signature/transparency anchor.</text>
+</svg>

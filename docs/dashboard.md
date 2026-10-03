@@ -7,7 +7,7 @@ title: Research Dashboard
 
 # Research Dashboard
 
-This page exposes the current **model-relative** E011–E018 result surfaces. The underlying assets are deterministically generated from experiment JSON and checked by CI.
+This page exposes the current **model-relative** E011–E019 result surfaces. The underlying assets are deterministically generated from experiment JSON and checked by CI.
 
 ![E011 pressure resilience](generated/e011-pressure.svg)
 
@@ -24,6 +24,8 @@ This page exposes the current **model-relative** E011–E018 result surfaces. Th
 ![E017 certificate lifecycle](generated/e017-lifecycle.svg)
 
 ![E018 audit portfolio scheduler](generated/e018-audit-portfolio.svg)
+
+![E019 certificate provenance ledger](generated/e019-ledger.svg)
 
 [View the generated table](generated/research-dashboard.md) · [Read the full results on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/RESULTS.md)
 

@@ -140,3 +140,14 @@ An exhaustive subset enumerator is the small-world oracle. The promoted bounded-
 A plausible value-per-cost greedy scheduler matches the oracle only 79.2% of the time. The fixed A/B/C trap yields value 160 for greedy and 220 for exact/DP.
 
 If mandatory audits alone exceed the budget, the scheduler marks the portfolio infeasible and fails closed rather than silently dropping an authority requirement.
+
+
+## E019 — certificate provenance ledger
+
+E019 turns E015–E018 authority changes into an append-only canonical JSONL SHA-256 chain.
+
+The seven reference events bind promotion, certificate issuance, audit renewal, generation drift, recertification, portfolio-scheduler promotion, and mandatory-audit fail-closed evidence to their generation fingerprints and source-report digests.
+
+The clean chain verifies with tip `b38e2659f4efb77891787281278c8c1d270f200dfcfe1d541b43a0097532271c`. Payload mutation produces an event-hash mismatch; intermediate deletion and event reordering produce sequence discontinuities.
+
+This is tamper evidence relative to a trusted tip, not a digital signature. Full-chain rewrite plus trusted-tip replacement remains a separate trust-layer problem.

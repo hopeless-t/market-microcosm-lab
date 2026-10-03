@@ -106,3 +106,14 @@ The laboratory does not allow a plausible local ranking rule to become authorita
 The promoted bounded-DP scheduler reproduces the exact audit portfolio optimum across the deterministic generated suite while reducing scheduler search work by 87.3%.
 
 Mandatory audits are constitutional constraints, not soft objective terms. If they cannot fit inside the declared audit budget, the portfolio fails closed instead of silently optimizing around them.
+
+
+## Authority provenance chain
+
+E019 makes meta-level authority changes auditable as evidence rather than narrative.
+
+Promotion, certificate issue, audit renewal, generation drift, recertification, scheduler promotion, and fail-closed decisions are serialized into canonical JSONL. Each event carries the evaluation-generation fingerprint and a SHA-256 digest of the source experiment report, then links to the previous event hash.
+
+The meta-loop may create new candidates and new evidence, but it cannot rewrite a prior authority event without invalidating the known chain tip.
+
+This is deliberately weaker than a signature: the local chain can prove consistency relative to a trusted tip, while independent authorship and external anchoring remain a higher trust layer.
