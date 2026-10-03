@@ -66,3 +66,16 @@ Once the experiment suite becomes more expensive, consider protecting main and r
 ## Discussions
 
 Optional. Discussions could be useful later for case-study proposals and mechanism hypotheses, but it is not required for the research loop.
+
+
+## Social preview
+
+A 1280×640 source artwork is version-controlled at:
+
+    docs/assets/social-preview.svg
+
+If you want the repository card on GitHub/social shares to use it, open:
+
+**Settings → General → Social preview → Edit**
+
+and upload a rasterized PNG/JPEG version of that artwork. This is optional; it does not affect the research system or Pages site.

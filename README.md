@@ -44,7 +44,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E000 · Exact World** | Can the laboratory verify itself against a fully enumerable universe? | Exact robust viability kernel + closed inner/meta loops |
 | **E010 · Ecological Market** | What happens when revenue, creators, publishers, content, utility, churn, entry, and exit circulate? | Neutral survival saturated at 1.0 across all six initial mechanisms |
 | **E011 · Pressure Knee** | Where does each mechanism actually break? | balanced/platform-heavy knee at 4; four other mechanisms at 3 |
-| **E012 · Evaluator Meta-Loop** | Can the lab improve how it chooses mechanisms? | mild-stress curriculum generalized best on isolated outer stress holdout |
+| **E012 · Evaluator Meta-Loop** | Can the lab improve how it chooses mechanisms? | mild-curriculum generalized best on isolated outer stress holdout |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -143,7 +143,7 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Pressure reveals ecology.** E011 exposed different knees and different collapse modes. Several creator-favoring or usage mechanisms eventually exhausted platform reserves; platform-heavy could instead preserve the platform while losing publishers and service quality.
 
-**The evaluator is part of the system.** E012 showed that neutral-only evaluation selected a different mechanism than stress-aware evaluation. A mild stress curriculum generalized better than the widest curriculum at lower search cost.
+**The evaluator is part of the system.** E012 showed that neutral-only evaluation selected a different mechanism than stress-aware evaluation. A mild-curriculum generalized better than the widest curriculum at lower search cost.
 
 That sequence matters:
 

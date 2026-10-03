@@ -63,12 +63,12 @@ Failure modes differ. Some mechanisms exhaust platform reserves; others preserve
 Three curricula compete:
 
 - neutral-only;
-- mild stress;
+- mild-curriculum (mild stress);
 - boundary stress.
 
 Each curriculum selects a mechanism, then the selected mechanisms compete on a shared unseen, longer-horizon stress holdout.
 
-Current result: the **mild-stress curriculum** generalized best and selected platform-heavy.
+Current result: the **mild-curriculum** design generalized best and selected platform-heavy.
 
 **Key role:** improve the self-improvement loop itself.
 
