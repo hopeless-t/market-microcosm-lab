@@ -13,6 +13,7 @@ E013 = ROOT / "artifacts/e013/pressure-decomposition-report.json"
 E014 = ROOT / "artifacts/e014/interaction-surface-report.json"
 E015 = ROOT / "artifacts/e015/adaptive-boundary-report.json"
 E016 = ROOT / "artifacts/e016/adaptive-guard-report.json"
+E017 = ROOT / "artifacts/e017/certificate-lifecycle-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -454,7 +455,72 @@ def render_e016(payload: dict) -> str:
 </svg>
 '''
 
-def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict) -> str:
+
+def render_e017(payload: dict) -> str:
+    stable = payload["stable_summary"]
+    drift = payload["drift_summary"]
+    stable_savings = float(stable["query_savings_fraction"])
+    drift_savings = float(drift["query_savings_fraction"])
+    stable_actual = int(stable["actual_queries"])
+    drift_actual = int(drift["actual_queries"])
+    baseline = int(stable["always_exhaustive_queries"])
+    audit_interval = int(payload["policy"]["audit_interval_epochs"])
+    expiry = int(payload["policy"]["expiry_epochs"])
+
+    width = 1040
+    height = 400
+    bar_x = 270
+    bar_width = 700
+    stable_width = int(round(bar_width * stable_actual / baseline))
+    drift_width = int(round(bar_width * drift_actual / baseline))
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E017 certificate lifecycle and audit cadence</title>
+<desc id="desc">Periodic exhaustive audits preserve fail-closed behavior while reducing total evaluator queries across evidence epochs.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .label {{ font: 650 17px Inter,Segoe UI,Arial,sans-serif; fill: #e5edf8; }}
+  .value {{ font: 800 19px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .metric {{ font: 700 15px Inter,Segoe UI,Arial,sans-serif; fill: #c7f9d4; }}
+  .track {{ fill: #26354d; }}
+  .stable {{ fill: #22c55e; }}
+  .drift {{ fill: #f59e0b; }}
+  .base {{ fill: #64748b; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#12324a"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E017 · Certificate Lifecycle / Audit Cadence</text>
+<text x="30" y="68" class="sub">12 deterministic evidence epochs · audit every {audit_interval} · hard expiry {expiry}</text>
+
+<text x="30" y="126" class="label">Always exhaustive</text>
+<rect x="{bar_x}" y="103" width="{bar_width}" height="34" rx="17" class="track"/>
+<rect x="{bar_x}" y="103" width="{bar_width}" height="34" rx="17" class="base"/>
+<text x="{bar_x + bar_width - 15}" y="127" text-anchor="end" class="value">{baseline}</text>
+
+<text x="30" y="190" class="label">Stable generation</text>
+<rect x="{bar_x}" y="167" width="{bar_width}" height="34" rx="17" class="track"/>
+<rect x="{bar_x}" y="167" width="{stable_width}" height="34" rx="17" class="stable"/>
+<text x="{bar_x + stable_width + 14}" y="191" class="value">{stable_actual}</text>
+
+<text x="30" y="254" class="label">Drift at epoch {payload["drift_epoch"]}</text>
+<rect x="{bar_x}" y="231" width="{bar_width}" height="34" rx="17" class="track"/>
+<rect x="{bar_x}" y="231" width="{drift_width}" height="34" rx="17" class="drift"/>
+<text x="{bar_x + drift_width + 14}" y="255" class="value">{drift_actual}</text>
+
+<text x="30" y="306" class="metric">Stable savings {stable_savings:.1%} · {stable["adaptive_epochs"]} adaptive / {stable["exhaustive_epochs"]} exhaustive epochs</text>
+<text x="30" y="334" class="metric">Drift savings {drift_savings:.1%} · generation change forces immediate exhaustive recertification</text>
+<text x="30" y="362" class="metric">Failed audit → {payload["failed_audit_decision"]["state"]} · skipped audit → {payload["expiry_decision"]["state"]}</text>
+<text x="30" y="387" class="sub">Lifecycle contract: {"PASS" if payload["lifecycle_contract_passed"] else "FAIL"}</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -532,9 +598,11 @@ def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, 
 
     aggregate = e015["aggregate"]
     guard_probe = e016["adversarial_probe"]
+    stable_lifecycle = e017["stable_summary"]
+    drift_lifecycle = e017["drift_summary"]
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -606,6 +674,21 @@ Each cell is `frontier level_a+level_b · interaction-only cell count`. ★ mean
 
 Guard contract: **{"PASS" if e016["guard_contract_passed"] else "FAIL"}**.
 
+## E017 — certificate lifecycle and audit cadence
+
+![E017 certificate lifecycle](e017-lifecycle.svg)
+
+| Schedule | Queries | Savings vs always exhaustive |
+| --- | ---: | ---: |
+| Always exhaustive | {stable_lifecycle["always_exhaustive_queries"]} | 0% |
+| Stable generation | {stable_lifecycle["actual_queries"]} | {stable_lifecycle["query_savings_fraction"]:.1%} |
+| Drift at epoch {e017["drift_epoch"]} | {drift_lifecycle["actual_queries"]} | {drift_lifecycle["query_savings_fraction"]:.1%} |
+
+- Stable schedule: **{stable_lifecycle["adaptive_epochs"]} adaptive / {stable_lifecycle["exhaustive_epochs"]} exhaustive epochs**
+- Failed audit: **{e017["failed_audit_decision"]["state"]} → {e017["failed_audit_decision"]["required_mode"]}**
+- Skipped audit through hard expiry: **{e017["expiry_decision"]["state"]} → {e017["expiry_decision"]["required_mode"]}**
+- Lifecycle contract: **{"PASS" if e017["lifecycle_contract_passed"] else "FAIL"}**
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
@@ -617,6 +700,7 @@ def generated_files(
     e014: dict,
     e015: dict,
     e016: dict,
+    e017: dict,
 ) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
@@ -625,7 +709,8 @@ def generated_files(
         OUT / "e014-interactions.svg": render_e014(e014),
         OUT / "e015-sampling.svg": render_e015(e015),
         OUT / "e016-guard.svg": render_e016(e016),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016),
+        OUT / "e017-lifecycle.svg": render_e017(e017),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017),
     }
 
 
@@ -644,7 +729,8 @@ def main() -> None:
     e014 = _read(E014)
     e015 = _read(E015)
     e016 = _read(E016)
-    outputs = generated_files(e011, e012, e013, e014, e015, e016)
+    e017 = _read(E017)
+    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017)
 
     if args.check:
         stale: list[str] = []

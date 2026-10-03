@@ -49,6 +49,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E014 · Interaction Surfaces** | Can two moderate stresses cross the boundary when either alone survives? | 155 interaction-only cells across the three pairwise surfaces |
 | **E015 · Adaptive Sampling** | Can the lab recover E014 with fewer expensive evaluations? | 882 → 205 queries (-76.8%) with exact recovery |
 | **E016 · Adaptive Guard** | What happens when the adaptive sampler's assumptions stop being true? | generation mismatch and non-monotone audit both fail closed to exhaustive |
+| **E017 · Certificate Lifecycle** | When should the expensive verifier run again? | 12-epoch stable schedule saves 51.2% while audits/expiry remain fail-closed |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -157,6 +158,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **The improvement machinery can also lose authority.** E016 bound adaptive authorization to a generation fingerprint. Horizon 60 → 61 invalidated the certificate before use. A hidden non-monotone survival island reduced naive adaptive classification to 97.96%; exhaustive audit detected 23 monotonicity violations and revoked the adaptive path back to exhaustive.
 
+**Verification has a lifecycle and a budget.** E017 turns certificate authority into deterministic evidence epochs. Auditing every 3 epochs with a hard expiry at 6 cuts a stable 12-epoch schedule from 10,584 to 5,168 queries (51.2% savings). A generation drift at epoch 5 still saves 44.8% because the changed epoch immediately recertifies exhaustively.
+
 That sequence matters:
 
 ```text
@@ -171,6 +174,7 @@ neutral saturation
   → adaptive boundary sampling
   → adversarial guard / certificate invalidation
   → fail-closed fallback
+  → certificate lifecycle / audit cadence
 ```
 
 ## Verification stack
@@ -210,6 +214,7 @@ python scripts/run_e013.py
 python scripts/run_e014.py
 python scripts/run_e015.py
 python scripts/run_e016.py
+python scripts/run_e017.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
@@ -220,7 +225,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site

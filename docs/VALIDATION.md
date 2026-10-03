@@ -77,3 +77,17 @@ Two independent conditions force exhaustive mode:
 The adversarial E016 probe is intentionally chosen so that the naive adaptive sampler misclassifies a hidden cell while preserving the same first frontier. This prevents frontier agreement from being mistaken for proof of full-surface correctness.
 
 Certification must therefore be revocable, generation-scoped, and backed by an audit path that is strictly more informative than the optimized evaluator it certifies.
+
+
+## Evidence-age lifecycle validation
+
+E017 adds time-like evidence aging without using wall-clock time. Integer evidence epochs keep replay deterministic.
+
+The default lifecycle has two thresholds:
+
+- audit due after 3 epochs since the last successful authoritative audit;
+- hard expiry after 6 epochs without a successful authoritative audit.
+
+At audit due, the required mode is exhaustive. At hard expiry, adaptive authority is absent. A failed audit sets REVOKED and remains exhaustive on later epochs.
+
+The generation fingerprint now includes the Root of Trust. A constitutional change therefore invalidates existing optimized-evaluator certificates and forces re-certification under the new evaluation generation.

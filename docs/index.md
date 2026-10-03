@@ -70,6 +70,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Guard violations caught</h3>
     <p>Hidden non-monotonicity revokes the fast path and falls back to exhaustive verification.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E017</div>
+    <div class="mm-metric">51.2%</div>
+    <h3>Stable audit savings</h3>
+    <p>Periodic exhaustive audits preserve fail-closed authority while cutting verifier query cost.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -88,6 +94,8 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
 
 ![E016 adaptive guard](generated/e016-guard.svg)
 
+![E017 certificate lifecycle](generated/e017-lifecycle.svg)
+
 These figures are generated from experiment JSON and checked by CI so the public display cannot silently drift away from the current evidence.
 
 ## North Star
@@ -103,7 +111,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E013** decomposes the composite stress axis and exposes interaction-driven early collapse.  
 **E014** maps pairwise surfaces and directly identifies interaction-only collapse regions.  
 **E015** promotes a cheaper adaptive boundary sampler while keeping exhaustive mapping as the verifier.  
-**E016** makes that promotion revocable: structural generation changes or failed monotonicity audits force exhaustive fallback.
+**E016** makes that promotion revocable: structural generation changes or failed monotonicity audits force exhaustive fallback.  
+**E017** adds evidence-age lifecycle and periodic exhaustive audit scheduling.
 
 This produces a repeating research pattern:
 
@@ -139,6 +148,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E014 ODD](ODD_E014.md)
 - [E015 ODD](ODD_E015.md)
 - [E016 ODD](ODD_E016.md)
+- [E017 ODD](ODD_E017.md)
 
 ## Run locally
 
@@ -153,6 +163,7 @@ python scripts/run_e013.py
 python scripts/run_e014.py
 python scripts/run_e015.py
 python scripts/run_e016.py
+python scripts/run_e017.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

@@ -4,7 +4,7 @@
 
 ### Presentation and research UX
 
-- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016 JSON;
+- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017 JSON;
 - CI freshness check for visual result surfaces and Actions job summary;
 - dashboard page and social-preview artwork source;
 
@@ -29,7 +29,12 @@
 - E016 generation-scoped certificate fingerprint;
 - fail-closed fallback on generation mismatch;
 - adversarial hidden survival island demonstrating 97.96% naive accuracy despite unchanged frontier;
-- exhaustive audit detection of 23 monotonicity violations and adaptive revocation.
+- exhaustive audit detection of 23 monotonicity violations and adaptive revocation;
+- E017 certificate lifecycle with periodic audit, hard expiry, renewal, and revocation;
+- stable 12-epoch verification cost reduced from 10,584 to 5,168 queries (51.2%);
+- drift-at-epoch-5 schedule retains 44.8% savings while forcing immediate exhaustive recertification;
+- Root of Trust R8 adds evidence-bounded optimization authority;
+- Root of Trust is now included in optimized-evaluator generation fingerprints.
 
 ## v0.2 — Ecological market dynamics
 

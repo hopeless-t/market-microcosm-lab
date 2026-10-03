@@ -263,4 +263,5 @@ jobs:
             docs/generated/e014-interactions.svg
             docs/generated/e015-sampling.svg
             docs/generated/e016-guard.svg
+            docs/generated/e017-lifecycle.svg
             docs/generated/research-dashboard.md

@@ -158,8 +158,26 @@ A second adversarial probe inserts a hidden survival island into an unqueried re
 
 ---
 
+## E017 — Certificate lifecycle and audit cadence
+
+**Purpose:** decide when expensive exhaustive verification is required without weakening E016's authority boundaries.
+
+The default deterministic policy audits every 3 evidence epochs and hard-expires at 6 epochs without a successful audit.
+
+Current 12-epoch result:
+
+- always exhaustive: **10,584 queries**;
+- stable lifecycle: **5,168 queries** (**51.2% savings**);
+- generation drift at epoch 5: **5,845 queries** (**44.8% savings**).
+
+Failed audits remain REVOKED/exhaustive, and skipped audits reach EXPIRED/exhaustive at the hard TTL.
+
+[Read the E017 ODD](ODD_E017.md)
+
+---
+
 ## What comes next
 
-Turn the guard into a full certificate lifecycle: issue, age, renew, revoke, expire, and schedule exhaustive audits based on structural change and evidence age.
+Extend the certificate scheduler to multiple optimized evaluators, where audit priority depends on evidence age, structural drift, expected failure cost, and verifier budget.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).
