@@ -78,8 +78,28 @@ Current result: the **mild-curriculum** design generalized best and selected pla
 
 ---
 
+## E013 — One-dimensional pressure decomposition
+
+**Purpose:** determine which component of E011's composite pressure is sufficient to trigger each collapse mode.
+
+Price, platform operating cost, and baseline churn are swept independently while the other two remain at baseline.
+
+Current knee matrix:
+
+| Axis | usage-only | light-floor | balanced | diversity-heavy | creator-heavy | platform-heavy |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Price ↓ | 8 | 8 | 7 | 6 | 7 | 7 |
+| Platform cost ↑ | 9 | 10 | 10 | 10 | 6 | 10+ |
+| Churn ↑ | 6 | 6 | 6 | 6 | 6 | 6 |
+
+The key comparison is that E011's joint pressure collapsed at levels 3–4, well before any single E013 axis. This makes stress interaction the next research target.
+
+[Read the E013 ODD](ODD_E013.md)
+
+---
+
 ## What comes next
 
-The current composite pressure axis should be decomposed into one-dimensional sweeps before richer recommendation, price, bargaining, and causal-attribution controllers are added.
+Map two-dimensional interaction surfaces around the E013 knees before introducing richer recommendation, pricing, bargaining, and causal-attribution controllers.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).

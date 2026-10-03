@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="355" viewBox="0 0 1040 355" role="img" aria-labelledby="title desc">
+<title id="title">E013 one-dimensional pressure decomposition</title>
+<desc id="desc">Preliminary survival knees for price, platform cost, and churn pressure by allocation mechanism.</desc>
+<style>
+  .title { font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }
+  .sub { font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }
+  .head { font: 600 12px Inter,Segoe UI,Arial,sans-serif; fill: #cbd9eb; }
+  .axis { font: 650 16px Inter,Segoe UI,Arial,sans-serif; fill: #e5edf8; }
+  .knee { font: 800 20px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#18284a"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="28" y="42" class="title">E013 · Pressure Decomposition</text>
+<text x="28" y="68" class="sub">First level below 90% observed survival · higher is more robust · 10+ = no knee in tested range</text>
+<text x="270.0" y="98" text-anchor="middle" class="head">usage-only</text><text x="400.0" y="98" text-anchor="middle" class="head">light-floor</text><text x="530.0" y="98" text-anchor="middle" class="head">balanced</text><text x="660.0" y="98" text-anchor="middle" class="head">diversity-heavy</text><text x="790.0" y="98" text-anchor="middle" class="head">creator-heavy</text><text x="920.0" y="98" text-anchor="middle" class="head">platform-heavy</text>
+<text x="28" y="154" class="axis">Price ↓</text><rect x="209" y="122" width="122" height="50" rx="12" fill="#a16207"/><text x="270.0" y="156" text-anchor="middle" class="knee">8</text><rect x="339" y="122" width="122" height="50" rx="12" fill="#a16207"/><text x="400.0" y="156" text-anchor="middle" class="knee">8</text><rect x="469" y="122" width="122" height="50" rx="12" fill="#9a3412"/><text x="530.0" y="156" text-anchor="middle" class="knee">7</text><rect x="599" y="122" width="122" height="50" rx="12" fill="#7f1d1d"/><text x="660.0" y="156" text-anchor="middle" class="knee">6</text><rect x="729" y="122" width="122" height="50" rx="12" fill="#9a3412"/><text x="790.0" y="156" text-anchor="middle" class="knee">7</text><rect x="859" y="122" width="122" height="50" rx="12" fill="#9a3412"/><text x="920.0" y="156" text-anchor="middle" class="knee">7</text><text x="28" y="212" class="axis">Platform cost ↑</text><rect x="209" y="180" width="122" height="50" rx="12" fill="#0e7490"/><text x="270.0" y="214" text-anchor="middle" class="knee">9</text><rect x="339" y="180" width="122" height="50" rx="12" fill="#166534"/><text x="400.0" y="214" text-anchor="middle" class="knee">10</text><rect x="469" y="180" width="122" height="50" rx="12" fill="#166534"/><text x="530.0" y="214" text-anchor="middle" class="knee">10</text><rect x="599" y="180" width="122" height="50" rx="12" fill="#166534"/><text x="660.0" y="214" text-anchor="middle" class="knee">10</text><rect x="729" y="180" width="122" height="50" rx="12" fill="#7f1d1d"/><text x="790.0" y="214" text-anchor="middle" class="knee">6</text><rect x="859" y="180" width="122" height="50" rx="12" fill="#166534"/><text x="920.0" y="214" text-anchor="middle" class="knee">10+</text><text x="28" y="270" class="axis">Churn ↑</text><rect x="209" y="238" width="122" height="50" rx="12" fill="#7f1d1d"/><text x="270.0" y="272" text-anchor="middle" class="knee">6</text><rect x="339" y="238" width="122" height="50" rx="12" fill="#7f1d1d"/><text x="400.0" y="272" text-anchor="middle" class="knee">6</text><rect x="469" y="238" width="122" height="50" rx="12" fill="#7f1d1d"/><text x="530.0" y="272" text-anchor="middle" class="knee">6</text><rect x="599" y="238" width="122" height="50" rx="12" fill="#7f1d1d"/><text x="660.0" y="272" text-anchor="middle" class="knee">6</text><rect x="729" y="238" width="122" height="50" rx="12" fill="#7f1d1d"/><text x="790.0" y="272" text-anchor="middle" class="knee">6</text><rect x="859" y="238" width="122" height="50" rx="12" fill="#7f1d1d"/><text x="920.0" y="272" text-anchor="middle" class="knee">6</text>
+<text x="28" y="325" class="sub">Composite E011 knees occurred much earlier (3–4), indicating interaction between moderate stresses.</text>
+</svg>

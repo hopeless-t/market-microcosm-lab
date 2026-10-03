@@ -46,6 +46,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Evaluator improvement</h3>
     <p>The laboratory improves how it tests mechanisms, not only the mechanisms themselves.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E013</div>
+    <div class="mm-metric">3 axes</div>
+    <h3>Pressure decomposition</h3>
+    <p>Price, platform cost, and churn are isolated to expose which pressure kills which layer.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -55,6 +61,8 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
 ![E011 pressure resilience](generated/e011-pressure.svg)
 
 ![E012 evaluator meta-improvement](generated/e012-evaluator.svg)
+
+![E013 pressure decomposition](generated/e013-decomposition.svg)
 
 These figures are generated from experiment JSON and checked by CI so the public display cannot silently drift away from the current evidence.
 
@@ -67,7 +75,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E000** builds an exact finite universe.  
 **E010** closes the economic circulation.  
 **E011** finds viability boundaries and captures collapse traces.  
-**E012** makes the evaluation curriculum itself an object of meta-improvement.
+**E012** makes the evaluation curriculum itself an object of meta-improvement.  
+**E013** decomposes the composite stress axis and exposes interaction-driven early collapse.
 
 This produces a repeating research pattern:
 
@@ -99,6 +108,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E010 ODD](ODD_E010.md)
 - [E011 ODD](ODD_E011.md)
 - [E012 ODD](ODD_E012.md)
+- [E013 ODD](ODD_E013.md)
 
 ## Run locally
 
@@ -109,6 +119,7 @@ python scripts/run_e000.py
 python scripts/run_e010.py
 python scripts/run_e011.py
 python scripts/run_e012.py
+python scripts/run_e013.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

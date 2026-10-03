@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 E011 = ROOT / "artifacts/e011/pressure-report.json"
 E012 = ROOT / "artifacts/e012/evaluation-design-report.json"
+E013 = ROOT / "artifacts/e013/pressure-decomposition-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -133,7 +134,93 @@ def render_e012(payload: dict) -> str:
 '''
 
 
-def render_markdown(e011: dict, e012: dict) -> str:
+
+def render_e013(payload: dict) -> str:
+    mechanisms = (
+        "usage-only",
+        "light-floor",
+        "balanced",
+        "diversity-heavy",
+        "creator-heavy",
+        "platform-heavy",
+    )
+    axes = (
+        ("subscription_price_multiplier", "Price ↓"),
+        ("platform_cost_multiplier", "Platform cost ↑"),
+        ("base_churn_rate", "Churn ↑"),
+    )
+
+    width = 1040
+    height = 355
+    left = 205
+    top = 118
+    cell_width = 130
+    cell_height = 58
+
+    def fill(knee):
+        if knee is None:
+            return "#166534"
+        if knee <= 6:
+            return "#7f1d1d"
+        if knee == 7:
+            return "#9a3412"
+        if knee == 8:
+            return "#a16207"
+        if knee == 9:
+            return "#0e7490"
+        return "#166534"
+
+    header = []
+    for index, mechanism in enumerate(mechanisms):
+        x = left + index * cell_width + cell_width / 2
+        header.append(
+            f'<text x="{x}" y="98" text-anchor="middle" class="head">'
+            f'{html.escape(mechanism)}</text>'
+        )
+
+    cells = []
+    for row_index, (axis, label) in enumerate(axes):
+        y = top + row_index * cell_height
+        cells.append(
+            f'<text x="28" y="{y + 36}" class="axis">{html.escape(label)}</text>'
+        )
+        for col_index, mechanism in enumerate(mechanisms):
+            knee = payload["knees"][axis][mechanism]
+            shown = "10+" if knee is None else str(knee)
+            x = left + col_index * cell_width
+            cells.append(
+                f'<rect x="{x + 4}" y="{y + 4}" width="{cell_width - 8}" '
+                f'height="{cell_height - 8}" rx="12" fill="{fill(knee)}"/>'
+                f'<text x="{x + cell_width / 2}" y="{y + 38}" '
+                f'text-anchor="middle" class="knee">{shown}</text>'
+            )
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E013 one-dimensional pressure decomposition</title>
+<desc id="desc">Preliminary survival knees for price, platform cost, and churn pressure by allocation mechanism.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .head {{ font: 600 12px Inter,Segoe UI,Arial,sans-serif; fill: #cbd9eb; }}
+  .axis {{ font: 650 16px Inter,Segoe UI,Arial,sans-serif; fill: #e5edf8; }}
+  .knee {{ font: 800 20px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#18284a"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="28" y="42" class="title">E013 · Pressure Decomposition</text>
+<text x="28" y="68" class="sub">First level below 90% observed survival · higher is more robust · 10+ = no knee in tested range</text>
+{''.join(header)}
+{''.join(cells)}
+<text x="28" y="325" class="sub">Composite E011 knees occurred much earlier (3–4), indicating interaction between moderate stresses.</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -145,9 +232,36 @@ def render_markdown(e011: dict, e012: dict) -> str:
         f"| {row['design_name']} | {row['selected_mechanism']} |"
         for row in e012["results"]
     )
+    mechanisms = (
+        "usage-only",
+        "light-floor",
+        "balanced",
+        "diversity-heavy",
+        "creator-heavy",
+        "platform-heavy",
+    )
+    axis_labels = (
+        ("subscription_price_multiplier", "Price ↓"),
+        ("platform_cost_multiplier", "Platform cost ↑"),
+        ("base_churn_rate", "Churn ↑"),
+    )
+    e013_rows = "\n".join(
+        "| "
+        + label
+        + " | "
+        + " | ".join(
+            "10+" if e013["knees"][axis][mechanism] is None
+            else str(e013["knees"][axis][mechanism])
+            for mechanism in mechanisms
+        )
+        + " |"
+        for axis, label in axis_labels
+    )
+    e013_header = "| Axis | " + " | ".join(mechanisms) + " |"
+    e013_rule = "| --- | " + " | ".join("---:" for _ in mechanisms) + " |"
     return f"""# Generated research dashboard
 
-> Generated from E011/E012 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -168,15 +282,26 @@ def render_markdown(e011: dict, e012: dict) -> str:
 
 **Outer winner:** {e012['winner_design']} → {e012['winner_mechanism']}
 
+## E013 — one-dimensional pressure decomposition
+
+![E013 pressure decomposition](e013-decomposition.svg)
+
+{e013_header}
+{e013_rule}
+{e013_rows}
+
+Composite E011 knees were 3–4, while the earliest E013 single-axis knee is 6. That gap is evidence of interaction inside the declared synthetic world.
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
 
-def generated_files(e011: dict, e012: dict) -> dict[Path, str]:
+def generated_files(e011: dict, e012: dict, e013: dict) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
         OUT / "e012-evaluator.svg": render_e012(e012),
-        OUT / "research-dashboard.md": render_markdown(e011, e012),
+        OUT / "e013-decomposition.svg": render_e013(e013),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013),
     }
 
 
@@ -191,7 +316,8 @@ def main() -> None:
 
     e011 = _read(E011)
     e012 = _read(E012)
-    outputs = generated_files(e011, e012)
+    e013 = _read(E013)
+    outputs = generated_files(e011, e012, e013)
 
     if args.check:
         stale: list[str] = []

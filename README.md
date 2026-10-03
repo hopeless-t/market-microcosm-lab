@@ -45,6 +45,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E010 · Ecological Market** | What happens when revenue, creators, publishers, content, utility, churn, entry, and exit circulate? | Neutral survival saturated at 1.0 across all six initial mechanisms |
 | **E011 · Pressure Knee** | Where does each mechanism actually break? | balanced/platform-heavy knee at 4; four other mechanisms at 3 |
 | **E012 · Evaluator Meta-Loop** | Can the lab improve how it chooses mechanisms? | mild-curriculum generalized best on isolated outer stress holdout |
+| **E013 · Pressure Decomposition** | Which E011 pressure component actually causes each collapse? | single-axis knees are 6–10+, much later than composite knees 3–4 |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -145,6 +146,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **The evaluator is part of the system.** E012 showed that neutral-only evaluation selected a different mechanism than stress-aware evaluation. A mild-curriculum generalized better than the widest curriculum at lower search cost.
 
+**Moderate stresses interact.** E013 separated price, platform cost, and churn. The earliest single-axis knee was 6, while E011's combined pressure broke mechanisms at 3–4. Inside this model, the joint shock reaches the viability boundary much earlier than any one component alone.
+
 That sequence matters:
 
 ```text
@@ -154,6 +157,8 @@ neutral saturation
   → failure biopsy
   → theory update
   → evaluator meta-improvement
+  → pressure decomposition
+  → interaction search
 ```
 
 ## Verification stack
@@ -189,6 +194,7 @@ python scripts/run_e000.py
 python scripts/run_e010.py
 python scripts/run_e011.py
 python scripts/run_e012.py
+python scripts/run_e013.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
@@ -199,7 +205,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site

@@ -66,3 +66,18 @@ Three evaluation curricula compete:
 Each curriculum selects a mechanism. The selected mechanisms are then evaluated on a separate, longer, unseen stress holdout.
 
 Current result: mild-curriculum evaluation wins the outer comparison and selects platform-heavy. The result demonstrates that the laboratory can improve how it tests policies, not only the policies themselves.
+
+
+## E013 — pressure decomposition
+
+E013 splits the E011 composite stress into three independent interventions: subscription-price pressure, platform-cost pressure, and churn pressure.
+
+Current preliminary knee matrix:
+
+- price: usage-only 8, light-floor 8, balanced 7, diversity-heavy 6, creator-heavy 7, platform-heavy 7;
+- platform cost: usage-only 9, light-floor 10, balanced 10, diversity-heavy 10, creator-heavy 6, platform-heavy no knee through level 10;
+- churn: all six mechanisms reach a knee at level 6.
+
+Failure modes also separate: churn primarily removes the user population, platform cost attacks platform solvency, and price pressure can propagate into publisher/catalog/service-quality failure.
+
+The most important comparison is E011 vs E013: joint pressure collapses at levels 3–4 while no single axis collapses before 6. The next experiment should therefore map interaction surfaces rather than continue one-dimensional escalation.
