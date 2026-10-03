@@ -54,3 +54,44 @@
   font-weight: 800;
   line-height: 1;
 }
+
+.mm-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin: 0 0 1.4rem;
+  padding: .75rem .85rem;
+  border: 1px solid #d7e0ed;
+  border-radius: 14px;
+  background: rgba(248, 251, 255, .92);
+  backdrop-filter: blur(8px);
+}
+
+.mm-nav a {
+  display: inline-block;
+  padding: .42rem .68rem;
+  border-radius: 10px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.mm-nav a:hover {
+  background: #edf4ff;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mm-card,
+  .mm-nav {
+    background: #101827;
+    border-color: #2a3c57;
+  }
+
+  .mm-nav a:hover {
+    background: #18253a;
+  }
+
+  .mm-warning {
+    background: #211a34;
+  }
+}

@@ -65,10 +65,10 @@ Design selections:
 | Evaluation curriculum | Mechanism selected |
 | --- | --- |
 | neutral-only | balanced |
-| mild-stress | platform-heavy |
-| boundary-stress | platform-heavy |
+| mild-curriculum | platform-heavy |
+| boundary-curriculum | platform-heavy |
 
-On the isolated outer stress holdout, mild-stress was the winning evaluation design and selected platform-heavy.
+On the isolated outer stress holdout, mild-curriculum was the winning evaluation design and selected platform-heavy.
 
 The wider boundary curriculum did not earn automatic preference. Search cost is an explicit tie-breaker, so extra evaluation pressure must buy additional generalization to justify itself.
 

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="330" viewBox="0 0 1040 330" role="img" aria-labelledby="title desc">
+<title id="title">E012 evaluator meta-improvement</title>
+<desc id="desc">Evaluation curricula and the allocation mechanism each selected. The winning curriculum is highlighted.</desc>
+<style>
+  .title { font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }
+  .sub { font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }
+  .card { fill: #111b2d; stroke: #34445f; stroke-width: 1.5; }
+  .winner { fill: #102722; stroke: #22c55e; stroke-width: 2; }
+  .kicker { font: 700 12px Inter,Segoe UI,Arial,sans-serif; fill: #8da3bf; letter-spacing: 1.1px; }
+  .design { font: 700 21px Inter,Segoe UI,Arial,sans-serif; fill: #edf5ff; }
+  .small { font: 13px Inter,Segoe UI,Arial,sans-serif; fill: #8da3bf; }
+  .mechanism { font: 650 18px Inter,Segoe UI,Arial,sans-serif; fill: #9ef0bd; }
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#172554"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="32" y="42" class="title">E012 · Evaluator Meta-Improvement</text>
+<text x="32" y="68" class="sub">Which test curriculum chooses a mechanism that generalizes to an unseen, longer stress holdout?</text>
+<rect x="32" y="112" width="300" height="150" rx="18" class="card"/><text x="54" y="145" class="kicker">EVALUATION DESIGN</text><text x="54" y="180" class="design">neutral-only</text><text x="54" y="212" class="small">selected</text><text x="54" y="242" class="mechanism">balanced</text><rect x="360" y="112" width="300" height="150" rx="18" class="winner"/><text x="382" y="145" class="kicker">META WINNER</text><text x="382" y="180" class="design">mild-curriculum</text><text x="382" y="212" class="small">selected</text><text x="382" y="242" class="mechanism">platform-heavy</text><rect x="688" y="112" width="300" height="150" rx="18" class="card"/><text x="710" y="145" class="kicker">EVALUATION DESIGN</text><text x="710" y="180" class="design">boundary-curriculum</text><text x="710" y="212" class="small">selected</text><text x="710" y="242" class="mechanism">platform-heavy</text>
+<text x="32" y="302" class="sub">Winner: mild-curriculum → platform-heavy</text>
+</svg>

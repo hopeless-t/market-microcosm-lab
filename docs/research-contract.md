@@ -3,6 +3,8 @@ layout: default
 title: Research Contract
 ---
 
+{% include nav.html %}
+
 # Research Contract
 
 Market Microcosm Lab is designed around one rule:

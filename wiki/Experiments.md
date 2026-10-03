@@ -60,9 +60,9 @@ Failure biopsy shows distinct collapse modes rather than one universal failure m
 Three evaluation curricula compete:
 
 - neutral-only;
-- mild stress;
-- boundary stress.
+- mild-curriculum (mild stress);
+- boundary-curriculum (boundary stress).
 
 Each curriculum selects a mechanism. The selected mechanisms are then evaluated on a separate, longer, unseen stress holdout.
 
-Current result: mild-stress evaluation wins the outer comparison and selects platform-heavy. The result demonstrates that the laboratory can improve how it tests policies, not only the policies themselves.
+Current result: mild-curriculum evaluation wins the outer comparison and selects platform-heavy. The result demonstrates that the laboratory can improve how it tests policies, not only the policies themselves.

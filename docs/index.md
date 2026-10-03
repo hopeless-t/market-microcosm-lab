@@ -3,6 +3,8 @@ layout: default
 title: Market Microcosm Lab
 ---
 
+{% include nav.html %}
+
 <div class="mm-hero">
   <img src="assets/hero.svg" alt="Market Microcosm Lab ecosystem diagram">
 </div>
@@ -46,6 +48,16 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
   </div>
 </div>
 
+## Live result surfaces
+
+[Open the full Research Dashboard](dashboard.md)
+
+![E011 pressure resilience](generated/e011-pressure.svg)
+
+![E012 evaluator meta-improvement](generated/e012-evaluator.svg)
+
+These figures are generated from experiment JSON and checked by CI so the public display cannot silently drift away from the current evidence.
+
 ## North Star
 
 > Discover allocation and governance rules that keep the whole ecosystem inside a robust viability region for as long as possible, under uncertainty, strategic adaptation, shocks, and imperfect observation.
@@ -74,7 +86,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 
 ## Explore the lab
 
-[Experiments](experiments.md) · [Research Contract](research-contract.md) · [Contribute](contribute.md) · [GitHub repository](https://github.com/hopeless-t/market-microcosm-lab)
+[Dashboard](dashboard.md) · [Experiments](experiments.md) · [Research Contract](research-contract.md) · [Contribute](contribute.md) · [GitHub repository](https://github.com/hopeless-t/market-microcosm-lab)
 
 ## Core documents
 

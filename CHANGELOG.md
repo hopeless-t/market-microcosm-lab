@@ -4,6 +4,10 @@
 
 ### Presentation and research UX
 
+- deterministic live research dashboard generated from E011/E012 JSON;
+- CI freshness check for visual result surfaces and Actions job summary;
+- dashboard page and social-preview artwork source;
+
 - product-style README hero and status badges;
 - GitHub Pages research dashboard;
 - contribution and governance guides;

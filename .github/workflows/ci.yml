@@ -109,6 +109,12 @@ jobs:
           })
           PY
 
+      - name: Verify generated research dashboard
+        run: python scripts/render_research_dashboard.py --check
+
+      - name: Publish research dashboard to job summary
+        run: cat docs/generated/research-dashboard.md >> "$GITHUB_STEP_SUMMARY"
+
       - uses: actions/upload-artifact@v4
         with:
           name: market-microcosm-reports
@@ -117,3 +123,6 @@ jobs:
             artifacts/e010/report.json
             artifacts/e011/pressure-report.json
             artifacts/e012/evaluation-design-report.json
+            docs/generated/e011-pressure.svg
+            docs/generated/e012-evaluator.svg
+            docs/generated/research-dashboard.md
