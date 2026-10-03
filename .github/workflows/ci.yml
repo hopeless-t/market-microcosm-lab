@@ -16,7 +16,8 @@ jobs:
       - run: pytest -q
       - run: python scripts/run_e000.py
       - name: Validate E000 report
-        run: python - <<'PY'
+        run: |
+          python - <<'PY'
           import json
           from pathlib import Path
           p = Path("artifacts/e000/meta-report.json")
