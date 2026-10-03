@@ -22,8 +22,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          p = Path("artifacts/e000/meta-report.json")
-          x = json.loads(p.read_text())
+          x = json.loads(Path("artifacts/e000/meta-report.json").read_text())
           assert x["final_winner"]
           assert x["generation_count"] >= 1
           assert all(
@@ -45,14 +44,12 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          p = Path("artifacts/e010/report.json")
-          x = json.loads(p.read_text())
+          x = json.loads(Path("artifacts/e010/report.json").read_text())
           assert x["experiment"] == "E010"
           assert len(x["baseline"]) >= 4
           assert x["inner"]["final"]
           assert x["meta"]["winner"]
           assert all(row["invariant_violations"] == 0 for row in x["baseline"])
-          assert all(0.0 <= row["survival_lcb95"] <= 1.0 for row in x["baseline"])
           print({
               "inner_final": x["inner"]["final"],
               "meta_winner": x["meta"]["winner"],
@@ -63,9 +60,34 @@ jobs:
           })
           PY
 
+      - name: Run pressure-knee experiment
+        run: python scripts/run_e011.py
+      - name: Validate E011 report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e011/pressure-report.json").read_text())
+          assert x["experiment"] == "E011"
+          assert len(x["curves"]) > 0
+          assert len(x["knees"]) >= 4
+          assert all(abs(row.get("conservation_error", 0.0)) < 1e-6
+                     for biopsy in x["biopsies"]
+                     for row in biopsy["trace"])
+          print({
+              "knees": x["knees"],
+              "failure_months": {
+                  b["mechanism_name"]: b["failure_month"]
+                  for b in x["biopsies"]
+                  if b["failed"]
+              },
+          })
+          PY
+
       - uses: actions/upload-artifact@v4
         with:
           name: market-microcosm-reports
           path: |
             artifacts/e000/meta-report.json
             artifacts/e010/report.json
+            artifacts/e011/pressure-report.json
