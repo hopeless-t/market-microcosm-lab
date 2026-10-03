@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -e ".[dev]"
+      - run: pytest -q
+      - run: python scripts/run_e000.py
+      - name: Validate E000 report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("artifacts/e000/meta-report.json")
+          x = json.loads(p.read_text())
+          assert x["final_winner"]
+          assert x["generation_count"] >= 1
+          assert all(
+              inner["kernel_size"] > 0
+              for generation in x["generations"]
+              for inner in generation["inner"]
+          )
+          assert all(
+              len(generation["meta_scenario_ids"]) > 0
+              for generation in x["generations"]
+          )
+          print({
+              "winner": x["final_winner"],
+              "generations": x["generation_count"],
+              "converged": x["converged"],
+          })
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e000-meta-report
+          path: artifacts/e000/meta-report.json
