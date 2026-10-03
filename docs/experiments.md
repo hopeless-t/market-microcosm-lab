@@ -124,8 +124,30 @@ The failure channel is not universal: price × cost usually reaches platform ins
 
 ---
 
+## E015 — Adaptive boundary sampling
+
+**Purpose:** improve the experiment machinery itself without weakening verification.
+
+E015 treats the exhaustive E014 surfaces as verifier truth and tests a monotone staircase boundary sampler.
+
+Current result:
+
+- exhaustive pair-cell queries: **882**;
+- adaptive queries: **205**;
+- query reduction: **76.8%**;
+- all-cell classification: **100%**;
+- first-frontier recovery: **18/18**;
+- interaction-only counts: **exact**;
+- monotonicity violations in the current E014 surfaces: **0**.
+
+The candidate passed every promotion gate. It is promoted for exploratory boundary search, while exhaustive E014 remains the periodic audit/reference path.
+
+[Read the E015 ODD](ODD_E015.md)
+
+---
+
 ## What comes next
 
-Use E014 as the exhaustive reference surface and test adaptive boundary samplers that attempt to recover the same frontier with far fewer simulator calls.
+Harden the adaptive path: invalidate its certificate when the world/evaluator generation changes, add explicit fail-closed exhaustive fallback, and construct adversarial non-monotone surfaces that force the fallback to activate.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).

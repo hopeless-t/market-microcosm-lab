@@ -11,6 +11,7 @@ E011 = ROOT / "artifacts/e011/pressure-report.json"
 E012 = ROOT / "artifacts/e012/evaluation-design-report.json"
 E013 = ROOT / "artifacts/e013/pressure-decomposition-report.json"
 E014 = ROOT / "artifacts/e014/interaction-surface-report.json"
+E015 = ROOT / "artifacts/e015/adaptive-boundary-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -329,7 +330,67 @@ def render_e014(payload: dict) -> str:
 '''
 
 
-def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict) -> str:
+
+def render_e015(payload: dict) -> str:
+    aggregate = payload["aggregate"]
+    exhaustive = int(aggregate["exhaustive_queries"])
+    adaptive = int(aggregate["adaptive_queries"])
+    savings = float(aggregate["query_savings_fraction"])
+    accuracy = float(aggregate["classification_accuracy"])
+    frontier_rate = float(aggregate["frontier_exact_rate"])
+    monotonicity = int(aggregate["monotonicity_violation_count"])
+
+    width = 1040
+    height = 330
+    bar_x = 245
+    bar_width = 690
+    exhaustive_width = bar_width
+    adaptive_width = int(round(bar_width * adaptive / exhaustive))
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E015 adaptive boundary sampling</title>
+<desc id="desc">Query cost reduction while exactly recovering the exhaustive E014 interaction surfaces.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .label {{ font: 650 17px Inter,Segoe UI,Arial,sans-serif; fill: #e5edf8; }}
+  .value {{ font: 800 20px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .metric {{ font: 700 16px Inter,Segoe UI,Arial,sans-serif; fill: #9ef0bd; }}
+  .track {{ fill: #26354d; }}
+  .full {{ fill: #475569; }}
+  .adaptive {{ fill: url(#g); }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#063b38"/>
+  </linearGradient>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#06b6d4"/>
+    <stop offset="1" stop-color="#22c55e"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E015 · Adaptive Boundary Sampling</text>
+<text x="30" y="68" class="sub">E014 exhaustive oracle → monotone staircase candidate → independent promotion gate</text>
+<text x="30" y="127" class="label">Exhaustive</text>
+<rect x="{bar_x}" y="104" width="{bar_width}" height="34" rx="17" class="track"/>
+<rect x="{bar_x}" y="104" width="{exhaustive_width}" height="34" rx="17" class="full"/>
+<text x="{bar_x + exhaustive_width - 16}" y="128" text-anchor="end" class="value">{exhaustive}</text>
+<text x="30" y="188" class="label">Adaptive</text>
+<rect x="{bar_x}" y="165" width="{bar_width}" height="34" rx="17" class="track"/>
+<rect x="{bar_x}" y="165" width="{adaptive_width}" height="34" rx="17" class="adaptive"/>
+<text x="{bar_x + adaptive_width + 14}" y="189" class="value">{adaptive}</text>
+<text x="30" y="239" class="metric">Query savings {savings:.1%}</text>
+<text x="286" y="239" class="metric">Cell classification {accuracy:.0%}</text>
+<text x="570" y="239" class="metric">Frontier recovery {frontier_rate:.0%}</text>
+<text x="836" y="239" class="metric">Monotonicity violations {monotonicity}</text>
+<rect x="30" y="270" width="980" height="36" rx="18" fill="#0d2c25" stroke="#22c55e"/>
+<text x="520" y="294" text-anchor="middle" class="metric">PROMOTED · adaptive exploration / exhaustive periodic audit</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -405,9 +466,10 @@ def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict) -> str:
         )
     e014_rows_text = "\n".join(e014_rows)
 
+    aggregate = e015["aggregate"]
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013/E014 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -450,6 +512,21 @@ Each cell is `frontier level_a+level_b · interaction-only cell count`. ★ mean
 
 **Total interaction-only cells:** {total_interaction_only}
 
+## E015 — adaptive boundary sampling
+
+![E015 adaptive boundary sampling](e015-sampling.svg)
+
+| Metric | Exhaustive | Adaptive |
+| --- | ---: | ---: |
+| Pair-surface queries | {aggregate["exhaustive_queries"]} | {aggregate["adaptive_queries"]} |
+| Mean queries / surface | 49.0 | {aggregate["mean_queries_per_surface"]:.2f} |
+
+- Query savings: **{aggregate["query_savings_fraction"]:.1%}**
+- Cell classification accuracy: **{aggregate["classification_accuracy"]:.0%}**
+- Exact frontier recovery: **{aggregate["frontier_exact_rate"]:.0%}**
+- Monotonicity violations: **{aggregate["monotonicity_violation_count"]}**
+- Promotion: **{"PASS" if e015["promoted"] else "FAIL"}**
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
@@ -459,13 +536,15 @@ def generated_files(
     e012: dict,
     e013: dict,
     e014: dict,
+    e015: dict,
 ) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
         OUT / "e012-evaluator.svg": render_e012(e012),
         OUT / "e013-decomposition.svg": render_e013(e013),
         OUT / "e014-interactions.svg": render_e014(e014),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014),
+        OUT / "e015-sampling.svg": render_e015(e015),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015),
     }
 
 
@@ -482,7 +561,8 @@ def main() -> None:
     e012 = _read(E012)
     e013 = _read(E013)
     e014 = _read(E014)
-    outputs = generated_files(e011, e012, e013, e014)
+    e015 = _read(E015)
+    outputs = generated_files(e011, e012, e013, e014, e015)
 
     if args.check:
         stale: list[str] = []

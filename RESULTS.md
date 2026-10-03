@@ -128,9 +128,33 @@ Frontier failure biopsy showed distinct channels:
 
 The strongest strict metric also reached its maximum: for many mechanism/pair surfaces, observed pair survival loss exceeded the sum of matched single-axis survival losses by as much as 1.0 in the tested grid.
 
+## E015 — adaptive boundary sampling
+
+E015 treats the exhaustive E014 surfaces as verifier truth and benchmarks a monotone staircase sampler as a candidate improvement to the experiment machinery.
+
+Aggregate result:
+
+| Metric | Exhaustive | Adaptive |
+| --- | ---: | ---: |
+| Pair-surface queries | 882 | 205 |
+| Mean queries per surface | 49.00 | 11.39 |
+| Cell classification accuracy | 100% | 100% |
+| Exact frontier recovery | 100% | 100% |
+| Monotonicity violations | — | 0 |
+
+The candidate reduced pair-surface query cost by **76.8%** while exactly recovering all 882 survival/failure classifications, all 18 first frontiers, and all interaction-only counts.
+
+All five promotion gates passed, so monotone-staircase-boundary-sampler-v1 is promoted for exploratory boundary search.
+
+The trust boundary remains asymmetric:
+
+- adaptive sampling is the cheaper exploratory path;
+- exhaustive E014 remains the periodic audit/reference path;
+- any future monotonicity violation must fail closed or trigger exhaustive fallback.
+
 ## Theory update
 
-The working theory after E010–E014 is:
+The working theory after E010–E015 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -145,6 +169,9 @@ The working theory after E010–E014 is:
 11. pairwise interaction-only regions are large rather than rare artifacts in the current synthetic world;
 12. the interaction topology depends on the allocation mechanism — creator-heavy is fragile across all three pair surfaces, while platform-heavy is much more resistant to cost × churn;
 13. the first failing frontier and the dominant failure mode are separate objects and both matter;
-14. full-grid interaction mapping is informative but expensive enough to become a target for meta-improvement.
+14. full-grid interaction mapping is informative but expensive enough to become a target for meta-improvement;
+15. the current E014 failure surfaces are monotone on all 18 tested mechanism/pair surfaces;
+16. monotone structure can be exploited without losing classification or frontier fidelity in the current model;
+17. adaptive exploration and exhaustive certification should remain separate planes.
 
-Next work should treat E014 as the exhaustive oracle and test whether adaptive boundary sampling can recover the same frontiers and interaction regions with substantially fewer simulator evaluations.
+Next work should harden the adaptive path with explicit monotonicity guards, periodic exhaustive audits, and stress-world changes designed to deliberately break the monotonicity assumption.

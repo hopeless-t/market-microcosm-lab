@@ -43,8 +43,11 @@
 - adaptive adversarial agents
 - [x] two-dimensional interaction surfaces around E013 knees
 - [x] quantify pairwise interaction-only regions and survival-loss super-additivity
-- [ ] adaptive frontier sampling versus exhaustive E014 oracle
-- [ ] boundary-search cost / recall / false-negative benchmark
+- [x] adaptive frontier sampling versus exhaustive E014 oracle
+- [x] boundary-search cost / recall / false-negative benchmark
+- [ ] runtime monotonicity guard + fail-closed exhaustive fallback
+- [ ] periodic exhaustive audit cadence for promoted adaptive sampler
+- [ ] adversarial non-monotone surface benchmark
 - [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 
 ## v0.4 — Structural uncertainty

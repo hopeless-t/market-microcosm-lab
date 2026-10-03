@@ -46,3 +46,20 @@ When real data is introduced, separate calibration targets from validation targe
 ## Model documentation
 
 Each model version should maintain an ODD-style description: purpose, entities/state/scales, scheduling, design concepts, initialization, input data, and submodels. This makes reimplementation and review part of the model lifecycle rather than an afterthought.
+
+
+## Adaptive evaluator certification
+
+E015 adds an optimized boundary-search path, but optimization does not weaken the verifier.
+
+A promoted adaptive sampler must be checked against an exhaustive reference generation for:
+
+- monotonicity of the declared fail/survive surface;
+- exact full-surface classification;
+- exact first-frontier recovery;
+- exact derived interaction-only counts;
+- declared minimum cost reduction.
+
+The certificate is generation-scoped. Any change to the world transition function, pressure mapping, viability definition, stochastic evaluation contract, or relevant evaluator semantics invalidates the certificate.
+
+When certification is absent or a monotonicity violation is observed, the system fails closed to the exhaustive evaluator. Exhaustive evaluation therefore remains a permanent audit path rather than being removed after optimization.

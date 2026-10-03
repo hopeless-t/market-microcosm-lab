@@ -165,6 +165,29 @@ jobs:
           })
           PY
 
+      - name: Run adaptive boundary sampling
+        run: python scripts/run_e015.py
+      - name: Validate E015 report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e015/adaptive-boundary-report.json").read_text())
+          assert x["experiment"] == "E015"
+          assert x["promoted"] is True
+          a = x["aggregate"]
+          assert a["surface_count"] == 18
+          assert a["classification_accuracy"] == 1.0
+          assert a["frontier_exact_rate"] == 1.0
+          assert a["monotonicity_violation_count"] == 0
+          assert a["query_savings_fraction"] >= 0.50
+          print({
+              "promoted": x["promoted"],
+              "aggregate": a,
+              "promotion_gate": x["promotion_gate"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -181,8 +204,10 @@ jobs:
             artifacts/e012/evaluation-design-report.json
             artifacts/e013/pressure-decomposition-report.json
             artifacts/e014/interaction-surface-report.json
+            artifacts/e015/adaptive-boundary-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
             docs/generated/e014-interactions.svg
+            docs/generated/e015-sampling.svg
             docs/generated/research-dashboard.md

@@ -58,6 +58,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Interaction-only cells</h3>
     <p>Pairwise stress surfaces show where two survivable single shocks become a joint collapse.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E015</div>
+    <div class="mm-metric">−76.8%</div>
+    <h3>Adaptive query cost</h3>
+    <p>Exact E014 boundary recovery with 205 queries instead of 882.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -72,6 +78,8 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
 
 ![E014 pairwise interaction frontiers](generated/e014-interactions.svg)
 
+![E015 adaptive boundary sampling](generated/e015-sampling.svg)
+
 These figures are generated from experiment JSON and checked by CI so the public display cannot silently drift away from the current evidence.
 
 ## North Star
@@ -85,7 +93,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E011** finds viability boundaries and captures collapse traces.  
 **E012** makes the evaluation curriculum itself an object of meta-improvement.  
 **E013** decomposes the composite stress axis and exposes interaction-driven early collapse.  
-**E014** maps pairwise surfaces and directly identifies interaction-only collapse regions.
+**E014** maps pairwise surfaces and directly identifies interaction-only collapse regions.  
+**E015** promotes a cheaper adaptive boundary sampler while keeping exhaustive mapping as the verifier.
 
 This produces a repeating research pattern:
 
@@ -119,6 +128,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E012 ODD](ODD_E012.md)
 - [E013 ODD](ODD_E013.md)
 - [E014 ODD](ODD_E014.md)
+- [E015 ODD](ODD_E015.md)
 
 ## Run locally
 
@@ -131,6 +141,7 @@ python scripts/run_e011.py
 python scripts/run_e012.py
 python scripts/run_e013.py
 python scripts/run_e014.py
+python scripts/run_e015.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

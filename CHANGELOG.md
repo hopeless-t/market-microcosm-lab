@@ -4,7 +4,7 @@
 
 ### Presentation and research UX
 
-- deterministic live research dashboard generated from E011/E012/E013/E014 JSON;
+- deterministic live research dashboard generated from E011/E012/E013/E014/E015 JSON;
 - CI freshness check for visual result surfaces and Actions job summary;
 - dashboard page and social-preview artwork source;
 
@@ -22,7 +22,10 @@
 - interaction hypothesis from the gap between E011 composite knees (3–4) and E013 single-axis knees (6+);
 - E014 exhaustive pairwise interaction surfaces;
 - 155 interaction-only cells and frontier failure biopsy;
-- survival-loss super-additivity metrics for pairwise stress.
+- survival-loss super-additivity metrics for pairwise stress;
+- E015 monotone staircase boundary sampler promoted against exhaustive E014;
+- pair-surface query cost reduced from 882 to 205 (76.8%) with exact cell/frontier recovery;
+- adaptive-exploration / exhaustive-audit trust separation.
 
 ## v0.2 — Ecological market dynamics
 
