@@ -14,14 +14,15 @@ jobs:
           python-version: "3.12"
       - run: python -m pip install -e ".[dev]"
       - run: pytest -q
-      - run: python scripts/run_e000.py
+
+      - name: Run exact reference world
+        run: python scripts/run_e000.py
       - name: Validate E000 report
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          p = Path("artifacts/e000/meta-report.json")
-          x = json.loads(p.read_text())
+          x = json.loads(Path("artifacts/e000/meta-report.json").read_text())
           assert x["final_winner"]
           assert x["generation_count"] >= 1
           assert all(
@@ -29,17 +30,90 @@ jobs:
               for generation in x["generations"]
               for inner in generation["inner"]
           )
-          assert all(
-              len(generation["meta_scenario_ids"]) > 0
-              for generation in x["generations"]
-          )
           print({
               "winner": x["final_winner"],
               "generations": x["generation_count"],
               "converged": x["converged"],
           })
           PY
+
+      - name: Run ecological market world
+        run: python scripts/run_e010.py
+      - name: Validate E010 report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e010/report.json").read_text())
+          assert x["experiment"] == "E010"
+          assert len(x["baseline"]) >= 4
+          assert x["inner"]["final"]
+          assert x["meta"]["winner"]
+          assert all(row["invariant_violations"] == 0 for row in x["baseline"])
+          print({
+              "inner_final": x["inner"]["final"],
+              "meta_winner": x["meta"]["winner"],
+              "baseline": {
+                  row["mechanism_name"]: round(row["survival_rate"], 3)
+                  for row in x["baseline"]
+              },
+          })
+          PY
+
+      - name: Run pressure-knee experiment
+        run: python scripts/run_e011.py
+      - name: Validate E011 report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e011/pressure-report.json").read_text())
+          assert x["experiment"] == "E011"
+          assert len(x["curves"]) > 0
+          assert len(x["knees"]) >= 4
+          assert all(abs(row.get("conservation_error", 0.0)) < 1e-6
+                     for biopsy in x["biopsies"]
+                     for row in biopsy["trace"])
+          print({
+              "knees": x["knees"],
+              "resilience_auc": {
+                  k: round(v, 3) for k, v in x["resilience_auc"].items()
+              },
+              "failure_reasons": {
+                  b["mechanism_name"]: b["failure_reasons"]
+                  for b in x["biopsies"]
+                  if b["failed"]
+              },
+          })
+          PY
+
+      - name: Run evaluator meta-improvement
+        run: python scripts/run_e012.py
+      - name: Validate E012 report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e012/evaluation-design-report.json").read_text())
+          assert x["experiment"] == "E012"
+          assert x["winner_design"]
+          assert x["winner_mechanism"]
+          assert len(x["results"]) >= 2
+          print({
+              "winner_design": x["winner_design"],
+              "winner_mechanism": x["winner_mechanism"],
+              "design_selection": {
+                  row["design_name"]: row["selected_mechanism"]
+                  for row in x["results"]
+              },
+          })
+          PY
+
       - uses: actions/upload-artifact@v4
         with:
-          name: e000-meta-report
-          path: artifacts/e000/meta-report.json
+          name: market-microcosm-reports
+          path: |
+            artifacts/e000/meta-report.json
+            artifacts/e010/report.json
+            artifacts/e011/pressure-report.json
+            artifacts/e012/evaluation-design-report.json

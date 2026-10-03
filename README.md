@@ -30,25 +30,16 @@ A minimal **Root of Trust** sits outside same-generation self-modification. If t
 
 Observe → generate challengers → shadow evaluate → held-out verify → promote/reject → repeat until no verified improvement remains.
 
-The executable reference implementation is in:
+There are now two executable worlds:
 
-- src/market_microcosm/improvement.py
-- src/market_microcosm/verifier.py
-- src/market_microcosm/policies.py
+- **E000 exact finite world** — the correctness oracle for the laboratory.
+- **E010 ecological market** — a stylized subscription economy with users, developers, publishers, content, entry/exit, survival floors, and ecosystem funds.
 
 ### L2: meta self-improvement
 
 Generate alternative improvement systems → run complete L1 instances → evaluate them on a **third, isolated meta-holdout** → select better machinery → mutate machinery → repeat.
 
-The implementation is in:
-
-- src/market_microcosm/meta_improvement.py
-
-The three scenario sets are deliberately distinct:
-
-- discovery scenarios;
-- inner promotion holdout;
-- outer meta holdout.
+Discovery, inner promotion, and outer meta-evaluation use disjoint scenario banks.
 
 ## Mathematical anchor: robust viability
 
@@ -58,7 +49,34 @@ For ecosystem state x, action a, uncertain model parameters theta, and disturban
 
 The main object is the robust viability kernel: states from which some policy can keep the ecosystem inside all hard survival/integrity constraints under every declared bounded disturbance.
 
-The tiny E000 world is finite, so its robust viability kernel is computed **exactly by fixed-point enumeration**. Approximate methods introduced later must reproduce this small-world truth before being trusted at scale.
+E000 is finite, so its robust viability kernel is computed **exactly by fixed-point enumeration**. Approximate methods introduced at larger scale must continue to reproduce this small-world truth.
+
+## E010: a circulating economic ecosystem
+
+E010 closes the first complete economic cycle:
+
+    users
+      -> subscription revenue
+      -> platform / creator pool
+      -> publishers + developers
+      -> content availability
+      -> user utility
+      -> churn / acquisition
+      -> next-period users
+
+Actor cash buffers, costs, exits, and a bounded entrant mechanism are explicit. Internal transfers conserve cash; subscription revenue and entrant capital are explicit external sources; operating and production costs are explicit sinks.
+
+Mechanisms currently include usage-only allocation, survival floors, ecosystem funds, and different platform/creator splits. These are synthetic research mechanisms, not policy recommendations for any named service.
+
+## Current synthetic findings
+
+- E010 neutral baseline: all six initial mechanisms survived all 40 neutral 60-month scenarios. Neutral survival alone was therefore not discriminative.
+- E011 pressure knees: balanced and platform-heavy first fell below 90% observed survival at pressure level 4; usage-only, light-floor, diversity-heavy, and creator-heavy did so at level 3.
+- E011 resilience area across the tested ladder was highest for platform-heavy, followed closely by balanced.
+- Collapse modes differed: several creator-favoring or usage mechanisms eventually exhausted platform reserves, while platform-heavy could preserve the platform but lose publishers and service quality.
+- E012 showed evaluator choice matters: neutral-only selected balanced, while stress-aware curricula selected platform-heavy. A mild stress curriculum generalized best on the isolated outer stress holdout while using less search than the wider boundary curriculum.
+
+These are model-relative findings from the declared synthetic world, not recommendations for real services.
 
 ## Verification stack
 
@@ -68,33 +86,25 @@ The laboratory does not allow the optimizer to certify itself.
 - exact finite-world viability oracle;
 - deterministic seeded scenarios;
 - replay identities;
-- discovery/holdout/meta-holdout isolation;
+- discovery / promotion / meta-holdout isolation;
 - independent promotion rules;
+- Wilson lower confidence bound for ecological survival;
 - reference implementations;
 - property/differential testing hooks;
 - CI-generated experiment artifacts.
 
-See docs/VALIDATION.md and spec/ROOT_OF_TRUST.md.
+See docs/VALIDATION.md, docs/THREATS_TO_VALIDITY.md, and spec/ROOT_OF_TRUST.md.
 
-## Run E000
+## Run
 
 Requires Python 3.11+.
 
     python -m pip install -e ".[dev]"
     pytest -q
     python scripts/run_e000.py
+    python scripts/run_e010.py
 
-The experiment writes:
-
-    artifacts/e000/meta-report.json
-
-GitHub Actions runs the same experiment and uploads the report as an artifact.
-
-## Current experiment
-
-E000 is intentionally a toy universe: one platform, two developer classes, finite integer reserves, payout actions, and bounded shocks.
-
-It is **not** claimed to model Netflix, Game Pass, SARTRAS, or any real market. Its job is to make the laboratory machinery falsifiable and exactly checkable before realism is introduced.
+GitHub Actions runs both experiments and uploads their JSON reports.
 
 ## Repository map
 
@@ -104,11 +114,22 @@ It is **not** claimed to model Netflix, Game Pass, SARTRAS, or any real market. 
 - docs/MATHEMATICAL_MODEL.md — model contracts
 - docs/VALIDATION.md — verification ladder
 - docs/META_LOOP.md — meta-improvement design
-- docs/ODD_E000.md — ODD description of the finite reference world
+- docs/ODD_E000.md — exact reference world
+- docs/ODD_E010.md — ecological market world
 - docs/RESEARCH_PROTOCOL.md — promotion/research protocol
 - docs/THREATS_TO_VALIDITY.md — known ways the lab can fool itself
-- experiments/E000_reference — reference experiment specification
-- ROADMAP.md — staged expansion from exact toy world to empirical case studies
+- experiments/E000_reference — exact reference experiment
+- experiments/E010_ecological_market — circulating market experiment
+- wiki — source-of-truth drafts for the optional GitHub Wiki
+- ROADMAP.md — staged expansion toward causal allocation and empirical case studies
+
+## Public documentation
+
+The docs directory is GitHub-Pages-ready. After Pages is enabled with **main /docs** as the source, the expected URL is:
+
+    https://hopeless-t.github.io/market-microcosm-lab/
+
+Exact repository settings to apply are documented in docs/GITHUB_SETUP.md.
 
 ## Research discipline
 
