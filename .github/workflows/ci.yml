@@ -14,3 +14,19 @@ jobs:
           python-version: "3.12"
       - run: python -m pip install -e ".[dev]"
       - run: pytest -q
+      - run: python scripts/run_e000.py
+      - name: Validate E000 report
+        run: python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("artifacts/e000/meta-report.json")
+          x = json.loads(p.read_text())
+          assert x["winner"]
+          assert len(x["scores"]) >= 1
+          assert all(i["kernel_size"] > 0 for i in x["inner"])
+          print({"winner": x["winner"], "kernel_sizes": [i["kernel_size"] for i in x["inner"]]})
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e000-meta-report
+          path: artifacts/e000/meta-report.json
