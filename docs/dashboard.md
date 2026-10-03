@@ -3,6 +3,8 @@ layout: default
 title: Research Dashboard
 ---
 
+{% include nav.html %}
+
 # Research Dashboard
 
 This page exposes the current **model-relative** E011/E012 result surfaces. The underlying assets are deterministically generated from experiment JSON and checked by CI.

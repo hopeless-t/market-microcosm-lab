@@ -3,6 +3,8 @@ layout: default
 title: Market Microcosm Lab
 ---
 
+{% include nav.html %}
+
 <div class="mm-hero">
   <img src="assets/hero.svg" alt="Market Microcosm Lab ecosystem diagram">
 </div>

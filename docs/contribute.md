@@ -3,6 +3,8 @@ layout: default
 title: Contribute
 ---
 
+{% include nav.html %}
+
 # Contribute
 
 The project welcomes contributions that make the ecosystem harder to fool or easier to falsify.

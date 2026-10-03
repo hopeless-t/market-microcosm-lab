@@ -3,6 +3,8 @@ layout: default
 title: Experiments
 ---
 
+{% include nav.html %}
+
 # Experiments
 
 The experiment series deliberately grows from exactly checkable toy worlds toward richer market ecology.
