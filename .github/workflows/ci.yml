@@ -76,10 +76,35 @@ jobs:
                      for row in biopsy["trace"])
           print({
               "knees": x["knees"],
-              "failure_months": {
-                  b["mechanism_name"]: b["failure_month"]
+              "resilience_auc": {
+                  k: round(v, 3) for k, v in x["resilience_auc"].items()
+              },
+              "failure_reasons": {
+                  b["mechanism_name"]: b["failure_reasons"]
                   for b in x["biopsies"]
                   if b["failed"]
+              },
+          })
+          PY
+
+      - name: Run evaluator meta-improvement
+        run: python scripts/run_e012.py
+      - name: Validate E012 report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e012/evaluation-design-report.json").read_text())
+          assert x["experiment"] == "E012"
+          assert x["winner_design"]
+          assert x["winner_mechanism"]
+          assert len(x["results"]) >= 2
+          print({
+              "winner_design": x["winner_design"],
+              "winner_mechanism": x["winner_mechanism"],
+              "design_selection": {
+                  row["design_name"]: row["selected_mechanism"]
+                  for row in x["results"]
               },
           })
           PY
@@ -91,3 +116,4 @@ jobs:
             artifacts/e000/meta-report.json
             artifacts/e010/report.json
             artifacts/e011/pressure-report.json
+            artifacts/e012/evaluation-design-report.json
