@@ -69,3 +69,18 @@ This creates two distinct planes:
 - **exhaustive certification plane** — periodic reference audit and re-certification.
 
 The adaptive sampler may not certify its own structural assumption. A world, transition, viability, or evaluator-generation change invalidates the previous certificate and requires an exhaustive audit before the cheaper path can be trusted again.
+
+
+## Revocable meta-improvement authority
+
+E016 adds the missing negative half of meta-improvement: a promoted optimization can lose authority.
+
+Adaptive authorization is scoped to a structural/evaluation generation fingerprint. A relevant code or contract change invalidates the certificate before the optimized path may be used.
+
+E016 also demonstrates that a hidden non-monotone island can evade sparse staircase queries while leaving the first frontier unchanged. The adaptive evaluator therefore cannot use frontier agreement as self-certification.
+
+The allowed lifecycle is:
+
+promote → certify → use adaptively → invalidate or audit → revoke if needed → fall back to exhaustive → re-certify.
+
+A self-improvement system without explicit revocation is incomplete.

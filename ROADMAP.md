@@ -45,9 +45,11 @@
 - [x] quantify pairwise interaction-only regions and survival-loss super-additivity
 - [x] adaptive frontier sampling versus exhaustive E014 oracle
 - [x] boundary-search cost / recall / false-negative benchmark
-- [ ] runtime monotonicity guard + fail-closed exhaustive fallback
+- [x] runtime generation guard + fail-closed exhaustive fallback
 - [ ] periodic exhaustive audit cadence for promoted adaptive sampler
-- [ ] adversarial non-monotone surface benchmark
+- [x] adversarial non-monotone surface benchmark
+- [ ] certificate lifecycle / expiry / renewal state machine
+- [ ] audit scheduling by evidence age and structural change
 - [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 
 ## v0.4 — Structural uncertainty

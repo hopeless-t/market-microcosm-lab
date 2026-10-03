@@ -188,6 +188,32 @@ jobs:
           })
           PY
 
+      - name: Run adaptive guard adversary
+        run: python scripts/run_e016.py
+      - name: Validate E016 guard contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e016/adaptive-guard-report.json").read_text())
+          assert x["experiment"] == "E016"
+          assert x["guard_contract_passed"] is True
+          assert x["same_generation"]["mode"] == "adaptive"
+          assert x["changed_generation"]["mode"] == "exhaustive"
+          p = x["adversarial_probe"]
+          assert p["monotonicity_violation_count"] > 0
+          assert p["naive_classification_accuracy"] < 1.0
+          assert x["post_audit_mode"] == "exhaustive"
+          assert all(x["promotion_gate"].values())
+          print({
+              "same_generation": x["same_generation"]["mode"],
+              "changed_generation": x["changed_generation"]["mode"],
+              "adversarial_accuracy": p["naive_classification_accuracy"],
+              "violations": p["monotonicity_violation_count"],
+              "post_audit_mode": x["post_audit_mode"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -205,9 +231,11 @@ jobs:
             artifacts/e013/pressure-decomposition-report.json
             artifacts/e014/interaction-surface-report.json
             artifacts/e015/adaptive-boundary-report.json
+            artifacts/e016/adaptive-guard-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
             docs/generated/e014-interactions.svg
             docs/generated/e015-sampling.svg
+            docs/generated/e016-guard.svg
             docs/generated/research-dashboard.md

@@ -12,6 +12,7 @@ E012 = ROOT / "artifacts/e012/evaluation-design-report.json"
 E013 = ROOT / "artifacts/e013/pressure-decomposition-report.json"
 E014 = ROOT / "artifacts/e014/interaction-surface-report.json"
 E015 = ROOT / "artifacts/e015/adaptive-boundary-report.json"
+E016 = ROOT / "artifacts/e016/adaptive-guard-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -390,7 +391,70 @@ def render_e015(payload: dict) -> str:
 </svg>
 '''
 
-def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict) -> str:
+
+def render_e016(payload: dict) -> str:
+    same_mode = str(payload["same_generation"]["mode"]).upper()
+    changed_mode = str(payload["changed_generation"]["mode"]).upper()
+    probe = payload["adversarial_probe"]
+    accuracy = float(probe["naive_classification_accuracy"])
+    violations = int(probe["monotonicity_violation_count"])
+    post_mode = str(payload["post_audit_mode"]).upper()
+
+    width = 1040
+    height = 390
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E016 generation-scoped adaptive guard</title>
+<desc id="desc">Adaptive authorization is generation-scoped and revoked by exhaustive audit when non-monotonicity is detected.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .head {{ font: 700 13px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; letter-spacing: 1px; }}
+  .mode {{ font: 800 24px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .body {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #d8e4f2; }}
+  .metric {{ font: 800 22px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .ok {{ fill: #0f3d32; stroke: #22c55e; stroke-width: 2; }}
+  .fallback {{ fill: #3b2a14; stroke: #f59e0b; stroke-width: 2; }}
+  .adversary {{ fill: #3c1721; stroke: #f43f5e; stroke-width: 2; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#231535"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E016 · Adaptive Guard / Fail-Closed Revocation</text>
+<text x="30" y="68" class="sub">Certificate scope → generation mismatch → adversarial non-monotonicity → exhaustive fallback</text>
+
+<rect x="30" y="100" width="300" height="105" rx="18" class="ok"/>
+<text x="52" y="128" class="head">SAME GENERATION</text>
+<text x="52" y="163" class="mode">{same_mode}</text>
+<text x="52" y="188" class="body">certificate fingerprint matches</text>
+
+<rect x="370" y="100" width="300" height="105" rx="18" class="fallback"/>
+<text x="392" y="128" class="head">HORIZON 60 → 61</text>
+<text x="392" y="163" class="mode">{changed_mode}</text>
+<text x="392" y="188" class="body">generation fingerprint mismatch</text>
+
+<rect x="710" y="100" width="300" height="105" rx="18" class="adversary"/>
+<text x="732" y="128" class="head">HIDDEN SURVIVAL ISLAND</text>
+<text x="732" y="163" class="metric">{accuracy:.2%} accuracy</text>
+<text x="732" y="188" class="body">{violations} monotonicity violations</text>
+
+<path d="M330 152 L365 152" stroke="#7dd3fc" stroke-width="3"/>
+<path d="M670 152 L705 152" stroke="#7dd3fc" stroke-width="3"/>
+
+<rect x="30" y="245" width="980" height="94" rx="20" fill="#101f2e" stroke="#7dd3fc" stroke-width="2"/>
+<text x="52" y="277" class="head">EXHAUSTIVE AUDIT DECISION</text>
+<text x="52" y="313" class="mode">REVOKE ADAPTIVE → {post_mode}</text>
+<text x="610" y="313" class="body">sparse adaptive queries cannot certify their own monotonicity premise</text>
+
+<text x="30" y="368" class="sub">Guard contract: {"PASS" if payload["guard_contract_passed"] else "FAIL"} · structural change invalidates before use; hidden assumption failure is caught by audit</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -467,9 +531,10 @@ def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict) 
     e014_rows_text = "\n".join(e014_rows)
 
     aggregate = e015["aggregate"]
+    guard_probe = e016["adversarial_probe"]
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -527,6 +592,20 @@ Each cell is `frontier level_a+level_b · interaction-only cell count`. ★ mean
 - Monotonicity violations: **{aggregate["monotonicity_violation_count"]}**
 - Promotion: **{"PASS" if e015["promoted"] else "FAIL"}**
 
+## E016 — generation-scoped adaptive guard
+
+![E016 adaptive guard](e016-guard.svg)
+
+| Guard case | Decision |
+| --- | --- |
+| Same generation fingerprint | **{e016["same_generation"]["mode"]}** |
+| Horizon 60 → 61 | **{e016["changed_generation"]["mode"]}** |
+| Hidden non-monotone island | naive accuracy **{guard_probe["naive_classification_accuracy"]:.2%}** |
+| Exhaustive audit | **{guard_probe["monotonicity_violation_count"]} violations detected** |
+| Post-audit mode | **{e016["post_audit_mode"]}** |
+
+Guard contract: **{"PASS" if e016["guard_contract_passed"] else "FAIL"}**.
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
@@ -537,6 +616,7 @@ def generated_files(
     e013: dict,
     e014: dict,
     e015: dict,
+    e016: dict,
 ) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
@@ -544,7 +624,8 @@ def generated_files(
         OUT / "e013-decomposition.svg": render_e013(e013),
         OUT / "e014-interactions.svg": render_e014(e014),
         OUT / "e015-sampling.svg": render_e015(e015),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015),
+        OUT / "e016-guard.svg": render_e016(e016),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016),
     }
 
 
@@ -562,7 +643,8 @@ def main() -> None:
     e013 = _read(E013)
     e014 = _read(E014)
     e015 = _read(E015)
-    outputs = generated_files(e011, e012, e013, e014, e015)
+    e016 = _read(E016)
+    outputs = generated_files(e011, e012, e013, e014, e015, e016)
 
     if args.check:
         stale: list[str] = []

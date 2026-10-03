@@ -146,8 +146,20 @@ The candidate passed every promotion gate. It is promoted for exploratory bounda
 
 ---
 
+## E016 — Generation-scoped adaptive guard
+
+**Purpose:** prove that E015's faster evaluator can lose authorization safely.
+
+E016 binds the adaptive certificate to a structural/evaluation generation fingerprint. Changing the horizon from 60 to 61 invalidates the certificate and requires exhaustive mode.
+
+A second adversarial probe inserts a hidden survival island into an unqueried region of creator-heavy Price × Cost. The naive staircase reaches only **97.96% classification accuracy** while still preserving the same first frontier. Exhaustive audit detects **23 monotonicity violations** and revokes adaptive authorization.
+
+[Read the E016 ODD](ODD_E016.md)
+
+---
+
 ## What comes next
 
-Harden the adaptive path: invalidate its certificate when the world/evaluator generation changes, add explicit fail-closed exhaustive fallback, and construct adversarial non-monotone surfaces that force the fallback to activate.
+Turn the guard into a full certificate lifecycle: issue, age, renew, revoke, expire, and schedule exhaustive audits based on structural change and evidence age.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).
