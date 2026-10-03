@@ -214,6 +214,30 @@ jobs:
           })
           PY
 
+      - name: Run certificate lifecycle
+        run: python scripts/run_e017.py
+      - name: Validate E017 lifecycle contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e017/certificate-lifecycle-report.json").read_text())
+          assert x["experiment"] == "E017"
+          assert x["lifecycle_contract_passed"] is True
+          assert x["stable_summary"]["query_savings_fraction"] >= 0.50
+          assert x["failed_audit_decision"]["state"] == "REVOKED"
+          assert x["failed_audit_decision"]["required_mode"] == "exhaustive"
+          assert x["expiry_decision"]["state"] == "EXPIRED"
+          assert x["expiry_decision"]["required_mode"] == "exhaustive"
+          assert all(x["promotion_gate"].values())
+          print({
+              "stable": x["stable_summary"],
+              "drift": x["drift_summary"],
+              "failed_audit": x["failed_audit_decision"]["state"],
+              "expiry": x["expiry_decision"]["state"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -232,6 +256,7 @@ jobs:
             artifacts/e014/interaction-surface-report.json
             artifacts/e015/adaptive-boundary-report.json
             artifacts/e016/adaptive-guard-report.json
+            artifacts/e017/certificate-lifecycle-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
