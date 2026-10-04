@@ -74,8 +74,10 @@
 - [x] empirical evidence registry / access-authority plane
 - [x] exact public-source portfolio oracle
 - [x] SARTRAS accounting + sampling anchor
-- [x] Netflix engagement + regional ARM anchors\n- [x] exact regional ARM complexity-knee oracle with temporal holdout
-- [x] Game Pass schema adapter held non-authoritative without partner values\n- [x] Game Pass public-headline metric-definition versioning guard
+- [x] Netflix engagement + regional ARM anchors
+- [x] exact regional ARM complexity-knee oracle with temporal holdout
+- [x] Game Pass schema adapter held non-authoritative without partner values
+- [x] Game Pass public-headline metric-definition versioning guard
 - [x] Japanese negative-evidence corpus / survivorship-bias guard
 - [x] strategic exit separated from forced insolvency
 - [x] churn layer/cause semantics guard
@@ -89,10 +91,11 @@
 - [x] real-company component longitudinal holdout
 - [x] rolling-KPI measurement-kernel lag guard
 - [x] rolling-KPI non-identifiability proof
-- [x] minimal boundary checkpoint for exact one-step reconstruction
+- [x] minimal boundary checkpoint for exact one-step reconstruction\n- [x] reporting-resolution / empirical claim-precision guard\n- [x] decision-predicate-scoped observability\n- [x] robust ABSTAIN output for unresolved predicates\n- [x] minimum-cost predicate-scoped active sensing
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
-- [x] sampling-design metadata gate / SRS assumption adversary\n- [ ] sampled-observation empirical calibration world
+- [x] sampling-design metadata gate / SRS assumption adversary
+- [ ] sampled-observation empirical calibration world
 - SARTRAS
 - game subscription
 - video subscription
