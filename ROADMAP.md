@@ -84,7 +84,7 @@
 - [x] funnel-stage proxy attenuation guard
 - [x] fully-loaded human-delivery cost guard
 - [x] exact negative-evidence early-warning tournament
-- [ ] Monte Carlo early-warning threshold search
+- [x] discovery-tuned multi-signal warning / generated holdout
 - [ ] untouched longitudinal early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary\n- [ ] sampled-observation empirical calibration world
