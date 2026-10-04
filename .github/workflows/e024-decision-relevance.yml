@@ -1,0 +1,78 @@
+name: E024 Decision Relevance Holdout
+
+on:
+  pull_request:
+    paths:
+      - "src/market_microcosm/decision_relevance_holdout.py"
+      - "tests/test_decision_relevance_holdout.py"
+      - "scripts/run_e024.py"
+      - "experiments/E024_decision_relevance_holdout/README.md"
+      - ".github/workflows/e024-decision-relevance.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  holdout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Adapter regression tests
+        run: pytest -q tests/test_decision_relevance_holdout.py
+      - name: Regenerate E014 exhaustive reference
+        run: python scripts/run_e014.py
+      - name: Regenerate E015 adaptive result
+        run: python scripts/run_e015.py
+      - name: Regenerate E016 guard adversary
+        run: python scripts/run_e016.py
+      - name: Regenerate E017 lifecycle
+        run: python scripts/run_e017.py
+      - name: Build E024 cross-loop certificate
+        env:
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          python scripts/run_e024.py             --e015 artifacts/e015/adaptive-boundary-report.json             --e016 artifacts/e016/adaptive-guard-report.json             --e017 artifacts/e017/certificate-lifecycle-report.json             --source-commit "$SOURCE_SHA"             --workflow-run-id "$RUN_ID"             --out artifacts/e024/decision-relevance-holdout.json
+      - name: Enforce proof-carrying holdout
+        run: |
+          python - <<'PY'
+          import json
+          r = json.load(open("artifacts/e024/decision-relevance-holdout.json"))
+          q = r["qualification"]
+          assert q["qualified"] is True, r
+          assert q["exact_decision_preservation"] is True, r
+          assert q["positive_work_reduction"] is True, r
+          assert q["relevant_counterfactual_changes_decision"] is True, r
+          assert q["proof_fail_closed"] is True, r
+          assert q["certificate_lifecycle_fail_closed"] is True, r
+          assert r["decision_irrelevance_proven"] is True, r
+          assert r["skip_preserves_admissible_decision"] is True, r
+          assert r["zero_false_pruning_on_holdout"] is True, r
+          assert r["e015"]["classification_accuracy"] == 1.0, r
+          assert r["e015"]["frontier_exact_rate"] == 1.0, r
+          assert r["e015"]["adaptive_queries"] < r["e015"]["exhaustive_queries"], r
+          assert r["e016"]["adversarial_accuracy"] < 1.0, r
+          assert r["e016"]["monotonicity_violation_count"] > 0, r
+          assert r["e016"]["post_audit_mode"] == "exhaustive", r
+          assert r["e017"]["failed_audit_state"] == "REVOKED", r
+          assert r["e017"]["expiry_state"] == "EXPIRED", r
+          assert r["authority_effect"] == "NONE", r
+          assert r["auto_apply_allowed"] is False, r
+          print("E024 independent proof-carrying holdout qualified")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: market-microcosm-e024-decision-relevance
+          path: |
+            artifacts/e015/adaptive-boundary-report.json
+            artifacts/e016/adaptive-guard-report.json
+            artifacts/e017/certificate-lifecycle-report.json
+            artifacts/e024/decision-relevance-holdout.json
+          if-no-files-found: error
