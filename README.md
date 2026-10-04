@@ -109,6 +109,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E074 · Dependence Ambiguity** | What if joint dependence is completely unknown at fixed marginals? | tight Fréchet minimax gives two GTM-first orders at worst-case cost 11.0; reference-efficiency tie-break recovers GTM → strategy → finance |
 | **E075 · Interval + Dependence Ambiguity** | What if marginals are intervals and dependence is arbitrary? | worst collection cost comes from lower failure bounds; two GTM-first orders tie at tight cost 12.0 and reference efficiency selects GTM → strategy → finance |
 | **E076 · Certificate Meta-Sensing** | What should be measured to tighten the robustness certificate itself? | exact calibration search selects GTM incidence only, cost 2, tightening worst-case acquisition 12.0 → 11.2 below target 11.3 |
+| **E077 · Calibration Pareto Frontier** | Must calibration be re-solved for every target? | no; exact frontier is (cost,bound)=(0,12.0),(1,11.85),(2,11.2); target 11.1 fails closed UNSAT |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -337,6 +338,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Active sensing can target the certificate itself.** E076 sets a desired robust bound ≤11.3 and searches calibration actions. GTM incidence calibration alone is the minimum-cost solution at cost 2, tightening the worst-case acquisition bound 12.0 → 11.2. Full prior recovery is unnecessary when a targeted uncertainty reduction discharges the proof obligation.
 
+**Calibration itself has an efficient frontier.** E077 removes E076's single target and retains only non-dominated cost/bound pairs: (0,12.0), (1,11.85), and (2,11.2). A target compiler chooses the cheapest sufficient point; asking for ≤11.1 returns UNSAT instead of fabricating confidence.
+
 That sequence matters:
 
 ```text
@@ -458,6 +461,7 @@ python scripts/run_e073.py
 python scripts/run_e074.py
 python scripts/run_e075.py
 python scripts/run_e076.py
+python scripts/run_e077.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
@@ -468,7 +472,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 / E066 / E067 / E068 / E069 / E070 / E071 / E072 / E073 / E074 / E075 / E076 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 / E066 / E067 / E068 / E069 / E070 / E071 / E072 / E073 / E074 / E075 / E076 / E077 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site

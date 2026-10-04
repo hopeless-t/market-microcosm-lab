@@ -302,3 +302,8 @@ Marginal uncertainty is added to arbitrary dependence. The tight worst collectio
 ## E076 — Certificate meta-sensing
 
 The verifier itself becomes an active-sensing target. A GTM incidence study is the minimum synthetic calibration action that tightens the interval/dependence robust acquisition bound from 12.0 to 11.2, crossing the declared 11.3 target.
+
+
+## E077 — Calibration Pareto frontier
+
+Certificate calibration compresses to three non-dominated cost/bound points: (0,12.0), (1,11.85), (2,11.2). Targets are compiled to the cheapest sufficient point, while a target of 11.1 fails closed.

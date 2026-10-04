@@ -1358,6 +1358,21 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run calibration Pareto frontier
+        run: python scripts/run_e077.py
+      - name: Validate E077 calibration-frontier contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e077/calibration-frontier-report.json").read_text())
+          assert len(x["frontier"])==3
+          assert x["compiled_targets"]["11.9"]["selected"]["calibration_ids"]==["strategy-incidence-study"]
+          assert x["compiled_targets"]["11.3"]["selected"]["calibration_ids"]==["gtm-incidence-study"]
+          assert x["compiled_targets"]["11.1"]["status"]=="UNSAT"
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

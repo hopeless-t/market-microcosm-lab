@@ -744,3 +744,12 @@ The adversarial direction is the lower failure bound because rarer WARN events p
 Exact search selects GTM incidence calibration only, cost 2, reducing the worst-case acquisition certificate from 12.0 to 11.2.
 
 [Read the E076 ODD](ODD_E076.md)
+
+
+## E077 — Calibration Pareto frontier
+
+**Question:** can certificate-calibration decisions be reused across changing robustness targets?
+
+Yes. The exact non-dominated frontier has only three points. Targets compile to the cheapest sufficient calibration; targets tighter than 11.2 are UNSAT in the current catalog.
+
+[Read the E077 ODD](ODD_E077.md)

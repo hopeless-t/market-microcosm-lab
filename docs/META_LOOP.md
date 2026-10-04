@@ -635,3 +635,8 @@ E075 expands E074 from exact marginals to intervals. The meta-loop records that 
 E076 recursively applies active sensing to the verifier. A robustness target is declared first; calibration evidence is then selected only for its ability to tighten the certificate enough to cross that target at minimum cost.
 
 This converts uncertainty reduction from an open-ended research goal into a proof-obligation-scoped acquisition problem.
+
+
+## Calibration Pareto frontier
+
+E077 turns one-shot certificate meta-sensing into a reusable compiler. The non-dominated calibration frontier is computed once, and robustness targets are mapped to the cheapest sufficient point. Targets beyond the frontier fail closed.

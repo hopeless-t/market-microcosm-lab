@@ -1351,9 +1351,19 @@ The exact minimum target-reaching action is `gtm-incidence-study` at calibration
 
 All gates promote `acquire-minimum-calibration-evidence-to-meet-certificate-target-v1`.
 
+## E077 — calibration Pareto frontier
+
+E077 removes E076's single target and extracts the non-dominated calibration frontier.
+
+The exact frontier is **(cost 0, bound 12.0)**, **(cost 1, bound 11.85)** via strategy calibration, and **(cost 2, bound 11.2)** via GTM calibration. All other current calibration portfolios are dominated.
+
+A target compiler chooses the cheapest sufficient frontier point: target 11.9 selects strategy; target 11.3 selects GTM; target 11.1 is **UNSAT** under the admitted calibration catalog.
+
+All gates promote `certificate-calibration-uses-pareto-frontier-and-fail-closed-target-compiler-v1`.
+
 ## Theory update
 
-The working theory after E010–E076 is:
+The working theory after E010–E077 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1488,6 +1498,8 @@ The working theory after E010–E076 is:
 131. when the objective is evidence-collection cost, lower failure probabilities can be adversarial because they delay positive warning termination;
 132. rectangular marginal uncertainty plus arbitrary dependence admits a tight worst-case certificate using lower marginal bounds and nested bad events;
 133. active sensing can target uncertainty in the certificate itself rather than only uncertainty in market state;
-134. certificate-calibration evidence should be acquired only until a declared robustness target is discharged, not until every uncertain parameter is maximally estimated.
+134. certificate-calibration evidence should be acquired only until a declared robustness target is discharged, not until every uncertain parameter is maximally estimated;
+135. calibration choices form a cost-vs-certification Pareto frontier, so dominated uncertainty-reduction plans should not receive authority;
+136. robustness targets can be compiled against that frontier, with unattainable targets returning UNSAT rather than fabricated precision.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
