@@ -66,10 +66,10 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E035 · Early Warning Tournament** | Which proxy detects the failure archetypes? | revenue/churn scalar rules have blind spots; five-axis negative-evidence warning matches the exact reference oracle |
 | **E036 · Warning Holdout Search** | Does the warning survive broad generated scenarios? | 324 threshold candidates tuned on 500 discovery states; >98% precision/recall/F1 on untouched 500-state holdout |
 | **E037 · Warning Structural Drift** | What happens when the failure law changes? | hidden interaction drops legacy recall below authority threshold; old certificate revoked and interaction-aware v2 restores >99% recall/precision |
-| **E038 · Real Longitudinal Holdout** | Does component identity help on a real quarterly series? | Informetis Standard ARR Q1–Q3 decay predicts Q4 within 0.34%; same law fails on other components |
+| **E038 · Real Longitudinal Holdout** | Does component identity help on a real quarterly series? | Informetis Standard point prediction lands within one displayed million-JPY unit of Q4; E042 later limits the precision claim to reporting-resolution consistency |
 | **E039 · Rolling KPI Lag** | Does the KPI itself delay observation? | a six-month trailing ARR retains 50% legacy signal three months after an abrupt end; latent state and metric kernel are separated |
 | **E040 · KPI Non-identifiability** | Does one rolling ARR identify current MRR? | 338 monotone six-month paths share ARR=60 while current MRR spans 0–5; inversion is not unique |
-| **E041 · Minimal Observability Checkpoint** | What one extra datum repairs the ambiguity? | consecutive rolling ARR plus the outgoing boundary MRR reconstructs newest MRR exactly; full path retention is unnecessary |
+| **E041 · Minimal Observability Checkpoint** | What one extra datum repairs the ambiguity? | exact rolling inputs + outgoing boundary MRR reconstruct newest MRR; later experiments scope this under reporting uncertainty |\n| **E042 · Reporting Resolution Guard** | Can rounded chart values support sub-1% accuracy claims? | no; E038 sub-1% precision authority is revoked and replaced by interval consistency |\n| **E043 · Decision-Sufficient Observability** | Must hidden state be exact to make a decision? | no; rounded state intervals can certify coarse predicates while finer thresholds remain ambiguous |\n| **E044 · Robust Abstention** | What should happen when the uncertainty set straddles a boundary? | midpoint forcing is unsound; ABSTAIN becomes an authorized control output |\n| **E045 · Predicate-Scoped Active Sensing** | What should be observed after ABSTAIN? | search chooses the cheapest observation that resolves the requested predicate instead of maximizing recovered state detail |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -212,13 +212,13 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **A new failure law revokes the warning.** E037 mutates the generator with an interaction-only `market_headroom × downstream_success` failure. The frozen E036 warning drops below its prior recall authority threshold and is explicitly revoked. Adding the interaction term restores >99% recall and precision, promoting warning generation v2.
 
-**The first real quarterly holdout is component-scoped.** E038 uses Informetis's published ARR series. A constant-retention model fit only on 2025-Q1→Q3 Smart Living Standard predicts Q4 at about 215.27 million JPY versus 216 observed (≈0.34% error). The same simple decay story fails badly on Smart Living Light, so the mechanism is kept component-scoped.
+**The first real quarterly holdout is component-scoped.** E038 uses Informetis's published ARR series. A constant-retention point model fit only on 2025-Q1→Q3 Smart Living Standard predicts Q4 at about 215.27 million JPY versus a displayed 216. The same simple decay story fails badly on Smart Living Light, so the mechanism is kept component-scoped. E042 later revokes interpreting the sub-1% point gap as source-supported empirical precision because the chart itself is only displayed to integer million JPY.
 
 **The KPI can lag the business state.** E039 models Informetis's published ARR definition — twelve times the trailing six-month average MRR. Three months after an abrupt component MRR end, a six-month window still contains 50% pre-end signal. Early-warning lead time must therefore include the metric measurement kernel, not just event and publication timestamps.
 
 **Rolling KPI inversion is non-identifiable.** E040 exactly enumerates monotone six-month integer MRR paths with average MRR=5. There are 338 compatible paths for the identical reported ARR=60, and current MRR can be any value from 0 to 5.
 
-**One indispensable boundary checkpoint repairs one-step observability.** E041 shows that consecutive rolling ARR values reveal only `newest - outgoing`. Retaining the one MRR value leaving the window makes `newest = current_sum - previous_sum + outgoing` exact. The full historical path is unnecessary for that task.
+**One indispensable boundary checkpoint repairs one-step observability.** E041 shows that consecutive exact rolling ARR values reveal only `newest - outgoing`. Retaining the one MRR value leaving the window makes `newest = current_sum - previous_sum + outgoing` exact. The full historical path is unnecessary for that exact-input task.\n\n**Reported precision can revoke a successful-looking result.** E042 propagates million-JPY display rounding through E038. The decay prediction interval overlaps the displayed Q4 interval, so consistency survives, but the apparent 0.34% accuracy authority is explicitly REVOKED.\n\n**Observability is decision-scoped.** E043 propagates rounding through the E041 reconstruction: the newest MRR becomes an interval rather than a point. `MRR > 0` is still certified, while `MRR >= 2` remains ambiguous.\n\n**Ambiguity is allowed to stop the controller.** E044 makes ABSTAIN a first-class output and proves that midpoint-forcing can disagree with a compatible latent state.\n\n**ABSTAIN triggers targeted sensing, not maximal sensing.** E045 searches candidate observations by declared information cost and selects the cheapest predicate-sufficient observation; full-state recovery loses priority when cheaper decision-native evidence is enough.
 
 That sequence matters:
 
@@ -298,7 +298,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site
