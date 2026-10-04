@@ -164,3 +164,12 @@ A cost-only active-sensing optimizer can prefer unauthorized raw evidence. The e
 ## E047 — Temporal evidence identity
 
 Authorization is still not sufficient. Evidence used for a current predicate must be fresh enough for the decision and belong to the required metric-definition generation before cost optimization.
+
+
+## E048 — Predicate evidence quorum
+
+A single signed predicate observation is no longer final authority. Matching 3-of-5 evidence across distinct declared failure domains is required; insufficient or conflicting evidence ABSTAINS.
+
+## E049 — Upstream source diversity
+
+Witness-domain diversity is not enough when multiple witnesses consume one common upstream feed. The predicate quorum now also requires independent evidence-source lineage.
