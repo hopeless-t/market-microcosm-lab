@@ -340,6 +340,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Shared audit bundles</h3>
     <p>Coupled evidence actions discharge multiple obligations and beat branch-separable allocation.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E062</div>
+    <div class="mm-metric">6 → 8</div>
+    <h3>Evidence failure domains</h3>
+    <p>Shared audit bundles save cost but enlarge proof common-mode blast; robust authority returns to independent evidence.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -432,7 +438,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E058** synthesizes the minimum-cost topology repair.  
 **E059** compiles the minimum sufficient recursive audit depth.  
 **E060** allocates depth per dependency proof obligation.  
-**E061** reuses shared audit evidence through exact bundle cover.
+**E061** reuses shared audit evidence through exact bundle cover.  
+**E062** then treats those shared artifacts as failure domains and revokes the cost-only optimum.
 
 This produces a repeating research pattern:
 
@@ -513,6 +520,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E059 ODD](ODD_E059.md)
 - [E060 ODD](ODD_E060.md)
 - [E061 ODD](ODD_E061.md)
+- [E062 ODD](ODD_E062.md)
 
 ## Run locally
 
@@ -572,6 +580,7 @@ python scripts/run_e058.py
 python scripts/run_e059.py
 python scripts/run_e060.py
 python scripts/run_e061.py
+python scripts/run_e062.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
