@@ -45,10 +45,10 @@ Every audit-action subset is enumerated again under this constraint.
 
 ## Exact robust cover
 
-The minimum-cost safe plan becomes the independent E060-like actions:
+The minimum-cost safe plan is not fully independent. Exact search finds a partially reused, corroborated plan:
 
 ```text
-network-targeted     cost 2
+control-plane-bundle cost 2
 identity-targeted    cost 1
 power-deep           cost 3
 operator-targeted    cost 2
@@ -60,14 +60,14 @@ Total:
 8
 ```
 
-Each artifact is the sole support for at most one obligation, so one artifact failure has blast radius 1.
+The control-plane bundle covers network + identity, while identity also has independent support. If the bundle fails, only network loses its sole support; proof blast is therefore 1. The optimizer keeps useful evidence reuse where corroboration makes it safe.
 
 ## Consequence
 
 ```text
-minimum audit cost
+minimum cost-only cover
 !=
-minimum failure-domain-safe audit cost
+minimum failure-domain-safe cover
 ```
 
 Evidence reuse is itself a topology decision.
@@ -78,7 +78,7 @@ E061's cost-6 plan loses evidence-failure-domain authority and is marked:
 
 `REVOKED`
 
-The E061 set-cover result remains mathematically correct for its original cost-only model.
+The E061 set-cover result remains mathematically correct for its original cost-only model. E062 does not ban evidence reuse; it requires enough overlapping support that one artifact failure stays within the declared proof-blast budget.
 
 ## Promotion rule
 
