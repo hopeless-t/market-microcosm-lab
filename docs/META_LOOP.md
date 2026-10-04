@@ -583,3 +583,10 @@ ABSTAIN
 E068 reuses decision-scoped observability at the multi-axis warning layer. A positive OR warning can terminate after one sufficient failing witness; a SAFE certificate cannot.
 
 The next meta target is no longer static portfolio size but **sequential observation order under uncertainty**.
+
+
+## Sequential evidence acquisition
+
+E069 converts static evidence portfolios into a stopping policy. The controller requests the action with minimum expected total decision cost, terminates on a certified warning, and continues only along safe observations.
+
+The next attack target is the prior itself: a strong policy under one failure distribution may be brittle under drift or correlation.

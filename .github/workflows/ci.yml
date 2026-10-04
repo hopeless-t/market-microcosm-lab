@@ -1225,6 +1225,21 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run sequential evidence acquisition
+        run: python scripts/run_e069.py
+      - name: Validate E069 sequential-acquisition contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e069/sequential-evidence-acquisition-report.json").read_text())
+          assert x["optimal_policy"]["initial_action"]=="gtm-pack"
+          assert round(x["optimal_policy"]["initial_expected_cost"],4)==9.0225
+          assert x["optimal_policy"]["safe_path"]==["gtm-pack","signed-strategy-gap-attestation","finance-pack"]
+          assert round(x["baselines"]["cost_only_bundle_order_expected_cost"],5)==9.32385
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

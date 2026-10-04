@@ -262,3 +262,8 @@ The public warning remains ABSTAIN until direct features are acquired. Cost-only
 ## E068 — Decision-sufficient evidence acquisition
 
 Full feature recovery is not decision-minimal for an OR warning. Single failing-axis worlds certify WARN at cost 2–5, while an all-safe world still requires all five direct axes and cost 14.
+
+
+## E069 — Sequential evidence acquisition
+
+Exact dynamic programming orders authorized evidence by expected decision cost. GTM is queried first, then strategy and finance only if earlier observations are safe. Expected cost falls to 9.0225 while the all-safe path still collects the full cost-14 contract.

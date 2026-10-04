@@ -1269,9 +1269,19 @@ This is an information lower bound rather than a deployable chooser; a real cont
 
 All gates promote `warning-evidence-acquisition-is-decision-sufficient-not-full-state-v1`.
 
+## E069 — sequential evidence acquisition
+
+E069 removes E068's oracle knowledge of the failing axis. With synthetic independent failure priors, evidence acquisition becomes a dynamic program over the set of axes already observed safe.
+
+The exact safe-path order is `gtm-pack → signed-strategy-gap-attestation → finance-pack`, with expected decision cost **9.0225**. A simple cost-only bundle order `gtm → finance → strategy` costs **9.32385** in expectation, while static E067 acquisition always costs 14.
+
+If every axis is safe, the exact sequential policy still spends 14 and observes the complete direct contract. Expected savings therefore come only from early WARN stopping.
+
+All gates promote `sequential-warning-acquisition-minimizes-expected-decision-cost-v1`.
+
 ## Theory update
 
-The working theory after E010–E068 is:
+The working theory after E010–E069 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1389,6 +1399,8 @@ The working theory after E010–E068 is:
 114. ABSTAIN can compile into a minimum authorized direct-evidence portfolio rather than a generic request for more data;
 115. authorization and privacy are hard feasibility constraints in acquisition, not soft penalties that cheaper raw evidence may buy through;
 116. evidence requirements are decision-asymmetric: one sufficient failing witness can certify an OR warning, while SAFE may require complete direct coverage;
-117. full-state acquisition is therefore not a universal optimum, and deployable systems should optimize sequential decision resolution rather than feature completeness alone.
+117. full-state acquisition is therefore not a universal optimum, and deployable systems should optimize sequential decision resolution rather than feature completeness alone;
+118. sequential evidence ordering should minimize expected decision cost under declared priors while preserving the complete all-safe certification path;
+119. collection-cost order and expected-decision-cost order can differ even when both use the same evidence bundles.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

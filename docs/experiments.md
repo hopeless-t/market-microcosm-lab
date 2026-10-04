@@ -672,3 +672,12 @@ Exact search rejects a cheaper plan using unauthorized raw board minutes and sel
 No. Any observed failing axis certifies WARN; single-bad-axis reference worlds require cost 2–5. SAFE still requires the full cost-14 direct portfolio.
 
 [Read the E068 ODD](ODD_E068.md)
+
+
+## E069 — Sequential evidence acquisition
+
+**Question:** without knowing the failing axis, what evidence order minimizes expected warning-decision cost?
+
+Exact DP selects GTM → strategy → finance along the all-safe path. Expected cost is 9.0225, below cost-only bundle ordering at 9.32385 and static full acquisition at 14.
+
+[Read the E069 ODD](ODD_E069.md)

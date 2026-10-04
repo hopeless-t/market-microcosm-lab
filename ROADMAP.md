@@ -119,6 +119,7 @@
 - [x] direct / partial / absent public evidence portfolio
 - [x] minimum authorized direct-evidence acquisition portfolio
 - [x] decision-sufficient asymmetric warning acquisition bound
+- [x] exact sequential warning-evidence acquisition policy
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary
