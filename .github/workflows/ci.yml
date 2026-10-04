@@ -1112,6 +1112,64 @@ jobs:
           print({"e061": e061, "selected": selected, "promoted": x["promoted_failure_domain_rule"]})
           PY
 
+      - name: Run real portfolio-transition sign experiment
+        run: python scripts/run_e063.py
+      - name: Validate E063 portfolio-transition contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e063/real-portfolio-transition-report.json").read_text())
+          assert x["experiment"] == "E063"
+          assert x["naive_churn_direction_predictor"]["correct_count"] == 1
+          assert x["naive_churn_direction_predictor"]["transition_count"] == 3
+          q4 = x["transitions"][-1]
+          assert q4["churn_direction"] == "down"
+          assert q4["arr_direction"] == "down"
+          assert q4["arpa_direction"] == "down"
+          assert x["promoted_transition_rule"] == "portfolio-transition-kpi-direction-requires-event-semantics-v1"
+          assert all(x["promotion_gate"].values())
+          print({"transitions": x["transitions"], "promoted": x["promoted_transition_rule"]})
+          PY
+
+      - name: Run prospective evidence-cutoff guard
+        run: python scripts/run_e064.py
+      - name: Validate E064 prospective-cutoff contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e064/prospective-evidence-cutoff-report.json").read_text())
+          assert x["experiment"] == "E064"
+          assert x["feature_sets"]["prospective_all_available"] is True
+          assert x["feature_sets"]["retrospective_contains_future_leakage"] is True
+          assert x["feature_sets"]["leaked_feature_ids"] == [
+              "q4_launch_delay_annotation",
+              "q4_withdrawal_prep_annotation",
+          ]
+          assert x["promoted_cutoff_rule"] == "prospective-warning-evidence-must-exist-before-decision-cutoff-v1"
+          assert all(x["promotion_gate"].values())
+          print({"availability": x["availability"], "promoted": x["promoted_cutoff_rule"]})
+          PY
+
+      - name: Run public warning feature-sufficiency guard
+        run: python scripts/run_e065.py
+      - name: Validate E065 public-warning sufficiency contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e065/public-warning-sufficiency-report.json").read_text())
+          assert x["experiment"] == "E065"
+          assert x["coverage"]["coverage_fraction"] == 0.0
+          assert len(x["coverage"]["missing_axes"]) == 5
+          assert x["prospective_warning"]["status"] == "ABSTAIN"
+          assert x["prospective_warning"]["imputation_permitted"] is False
+          assert x["promoted_sufficiency_rule"] == "structural-warning-must-abstain-when-public-feature-contract-is-incomplete-v1"
+          assert all(x["promotion_gate"].values())
+          print({"coverage": x["coverage"], "decision": x["prospective_warning"], "promoted": x["promoted_sufficiency_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
