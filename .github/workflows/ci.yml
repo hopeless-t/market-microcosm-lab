@@ -639,6 +639,26 @@ jobs:
           print({"scores": x["rule_scores"], "promoted": x["promoted_warning_rule"]})
           PY
 
+      - name: Run generated warning holdout
+        run: python scripts/run_e036.py
+      - name: Validate E036 warning holdout contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e036/warning-monte-carlo-report.json").read_text())
+          assert x["experiment"] == "E036"
+          assert x["promoted_warning_search_rule"] == "discovery-tuned-multi-signal-warning-with-holdout-v1"
+          multi = x["holdout_scores"]["multi_signal"]
+          assert multi["precision"] > 0.98
+          assert multi["recall"] > 0.98
+          assert multi["f1"] > 0.98
+          assert x["holdout_scores"]["revenue_only"]["recall"] < 0.25
+          assert x["holdout_scores"]["churn_only"]["recall"] < 0.30
+          assert all(x["promotion_gate"].values())
+          print({"selection": x["selection"], "holdout": x["holdout_scores"], "promoted": x["promoted_warning_search_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
