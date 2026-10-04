@@ -234,3 +234,16 @@ Shared control-plane and infrastructure audit bundles discharge multiple proof o
 ## E062 — Audit-evidence failure domains
 
 E061's shared bundles are cost-efficient but each is the sole support for two proof obligations. Treating one artifact failure as a common-mode event revokes the cost-6 plan. The minimum failure-domain-safe evidence cover costs 8.
+
+
+## E063 — Real portfolio transition
+
+BBD FY2025 provides a same-company sign counterexample: churn improvement accompanies ARR growth in one transition and ARR decline in another, while contract count falls throughout.
+
+## E064 — Prospective evidence cutoff
+
+Q4 launch-delay and withdrawal-preparation annotations can explain the realized transition but were not public at the Q3 decision cutoff. They are excluded from prospective warning features.
+
+## E065 — Public warning sufficiency
+
+The public Q3 KPI set does not directly observe any of the five structural warning axes. Public-data warning authority therefore ABSTAINS with 0/5 direct feature coverage rather than using proxy imputation.
