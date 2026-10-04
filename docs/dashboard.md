@@ -54,3 +54,10 @@ Current anchors include SARTRAS FY2022 accounting and sampling, Netflix Q2 2024 
 SARTRAS's published sample count supports a useful hypothetical SRS detection curve, but E026 immediately adversarially tests that convenience assumption. Without an identified institution-selection design, the same sample size admits a zero-detection construction.
 
 The promoted output is therefore a stricter evidence rule, not an optimistic prevalence estimate: sampling-frame, strata/weights, nonresponse, and time-window metadata are required before sample-derived prevalence calibration.
+
+
+## E027 — Metric definition drift guard
+
+Official Game Pass headlines are now typed empirical observations rather than naked scalars. The 2022 >25M subscriber lower bound and 2024 34M member headline straddle the Xbox Live Gold → Game Pass Core conversion.
+
+The naive 36% ratio remains visible as a counterexample, but the time-series estimator fails closed because value semantics and metric-definition generations are incompatible.
