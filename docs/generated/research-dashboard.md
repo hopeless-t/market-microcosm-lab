@@ -1,6 +1,6 @@
 # Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -152,5 +152,23 @@ Guard contract: **PASS**.
 - Latest-only weakness: **ok**
 - Pinned rotation result: **ledger prefix mismatch at 0**
 - Promoted rotation contract: **rotating-checkpoint-chain-with-pinned-anchor-v1**
+
+## E021 — multi-witness checkpoint quorum
+
+![E021 witness quorum](e021-witness-quorum.svg)
+
+| Geometry / attack | Result |
+| --- | --- |
+| 3-of-5 quorum pairs | **45 pairs / 0 disjoint** |
+| 3-of-5 minimum intersection | **1 witness** |
+| 2-of-5 disjoint quorum pairs | **15** |
+| 1 compromised witness | **forge rejected** |
+| 2 compromised witnesses | **forge rejected** |
+| 3 compromised witnesses | **forge threshold reached** |
+| conflicting 3-of-5 views | **both verify, equivocation exposed** |
+
+- Equivocation evidence: **witness-2@3**
+- Invalid signature rejected: **YES**
+- Promoted witness contract: **three-of-five-witness-quorum-with-equivocation-detection-v1**
 
 These are model-relative synthetic results. They are not real-market recommendations.

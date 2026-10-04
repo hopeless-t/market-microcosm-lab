@@ -222,8 +222,24 @@ A rewritten old prefix plus a forged latest-only checkpoint passes a weak latest
 
 ---
 
+## E021 — Multi-witness checkpoint quorum
+
+**Purpose:** reduce the single-anchor trust assumption with an exact threshold-witness small world.
+
+Five synthetic witnesses attest to checkpoint hashes. The promoted threshold is 3-of-5.
+
+Exact enumeration finds 10 possible 3-witness quorums and 45 quorum pairs. Every pair intersects in at least one witness and none is disjoint. By contrast, 2-of-5 has 15 disjoint quorum pairs.
+
+Forged checkpoint results are explicit: one or two compromised witnesses cannot reach quorum; three can.
+
+Two conflicting 3-of-5 views can both verify, but because the quorums intersect, retained attestations expose witness-2 signing both checkpoint hashes.
+
+[Read the E021 ODD](ODD_E021.md)
+
+---
+
 ## What comes next
 
-Test signed or independently witnessed checkpoint publication so a compromised anchor issuer cannot mint a replacement trust history alone.
+Move from in-process synthetic witness keys to stronger signed or transparency-published checkpoints and stress correlated witness failure domains.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).

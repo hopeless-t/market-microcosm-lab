@@ -321,6 +321,38 @@ jobs:
           })
           PY
 
+      - name: Run witness quorum experiment
+        run: python scripts/run_e021.py
+      - name: Validate E021 witness quorum
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e021/witness-quorum-report.json").read_text())
+          assert x["experiment"] == "E021"
+          assert x["promoted_witness_contract"] == "three-of-five-witness-quorum-with-equivocation-detection-v1"
+          assert x["honest_quorum"]["valid"] is True
+          assert x["compromise_boundary"]["1"]["valid"] is False
+          assert x["compromise_boundary"]["2"]["valid"] is False
+          assert x["compromise_boundary"]["3"]["valid"] is True
+          strong = x["quorum_geometry"]["three_of_five"]
+          weak = x["quorum_geometry"]["two_of_five"]
+          assert strong["disjoint_quorum_pairs"] == 0
+          assert strong["minimum_intersection"] >= 1
+          assert weak["disjoint_quorum_pairs"] > 0
+          assert x["split_view"]["view_a"]["valid"] is True
+          assert x["split_view"]["view_b"]["valid"] is True
+          assert x["split_view"]["equivocation_evidence"]
+          assert all(x["promotion_gate"].values())
+          print({
+              "contract": x["promoted_witness_contract"],
+              "strong": strong,
+              "weak": weak,
+              "compromise": x["compromise_boundary"],
+              "equivocation": x["split_view"]["equivocation_evidence"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -343,6 +375,7 @@ jobs:
             artifacts/e018/audit-portfolio-report.json
             artifacts/e019/provenance-ledger-report.json
             artifacts/e020/checkpoint-rotation-report.json
+            artifacts/e021/witness-quorum-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
@@ -353,4 +386,5 @@ jobs:
             docs/generated/e018-audit-portfolio.svg
             docs/generated/e019-provenance.svg
             docs/generated/e020-checkpoint-rotation.svg
+            docs/generated/e021-witness-quorum.svg
             docs/generated/research-dashboard.md

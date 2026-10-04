@@ -55,7 +55,8 @@
 - [x] durable certificate ledger / provenance chain
 - [x] external checkpoint rotation / independently anchored provenance
 - [ ] signed or transparency-log-backed checkpoint experiment
-- [ ] multi-witness checkpoint quorum / split-view detection
+- [x] multi-witness checkpoint quorum / split-view detection
+- [ ] independent witness failure-domain / correlated-compromise stress test
 - [ ] multi-epoch audit portfolio planning under uncertain future drift
 - [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 

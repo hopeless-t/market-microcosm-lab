@@ -32,4 +32,7 @@ A mutable certificate/audit history may not authenticate itself solely from inte
 ## R10 — Anchor continuity
 Rotating or replacing provenance anchors must preserve verifiable continuity to previously trusted checkpoints. A newer anchor may extend trust but may not silently erase older pinned trust. Missing links, rewritten anchored prefixes, or conflicting checkpoint forks fail closed.
 
+## R11 — Witness quorum integrity
+When provenance authority is distributed across witnesses, the acceptance threshold and compromise boundary must be explicit and independently testable. The chosen quorum geometry must preserve the declared intersection property, authenticated attestations must be retained, and conflicting accepted views must surface equivocation evidence or fail closed rather than silently choosing one history.
+
 These rules are intentionally small. The meta-loop may improve almost everything else.

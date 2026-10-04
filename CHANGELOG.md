@@ -4,7 +4,7 @@
 
 ### Presentation and research UX
 
-- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020 JSON;
+- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021 JSON;
 - CI freshness check for visual result surfaces and Actions job summary;
 - dashboard page and social-preview artwork source;
 
@@ -48,7 +48,13 @@
 - latest-only rewritten-history forgery shown to pass weak verification;
 - pinned checkpoint continuity rejects the same rewritten prefix;
 - checkpoint deletion, reorder, and fork detection;
-- Root of Trust R10 requires anchor continuity across rotation.
+- Root of Trust R10 requires anchor continuity across rotation;
+- E021 synthetic 3-of-5 checkpoint witness quorum;
+- exact enumeration of 10 quorum sets / 45 quorum pairs with zero disjoint 3-of-5 pairs;
+- 2-of-5 counterexample exposes 15 disjoint quorum pairs;
+- explicit forge boundary at three compromised witnesses;
+- conflicting accepted views retain witness equivocation evidence;
+- Root of Trust R11 requires explicit witness quorum integrity.
 
 ## v0.2 — Ecological market dynamics
 
