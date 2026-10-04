@@ -136,6 +136,24 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Metric definition drift</h3>
     <p>Public Game Pass headlines cannot authorize a growth rate across incompatible value semantics and a membership-definition event.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E028</div>
+    <div class="mm-metric">10 modes</div>
+    <h3>Japanese failure corpus</h3>
+    <p>Withdrawal, sunset, pivot, pruning, and bankruptcy evidence expands the failure state space beyond success-only calibration.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E029</div>
+    <div class="mm-metric">exit ≠ broke</div>
+    <h3>Strategic exit</h3>
+    <p>An operating actor can rationally exit before insolvency when continuation value is dominated by orderly redeployment.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E030</div>
+    <div class="mm-metric">+102.6%</div>
+    <h3>Churn semantics</h3>
+    <p>BBD churn more than doubles while ARR and ARPA rise, forcing churn to be typed by layer and cause.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -194,7 +212,10 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E024** adds an empirical evidence plane with exact source admission, public/restricted separation, and real accounting/engagement anchors.  
 **E025** uses admitted Netflix regional ARM data to locate a model-complexity knee and validate the selected three-group structure on a temporal holdout.  
 **E026** attacks the SARTRAS sample-size assumption: a hypothetical SRS curve is informative, but prevalence inference loses authority when the actual selection design is unknown.  
-**E027** versions Game Pass membership definitions and quarantines a tempting 36% headline ratio that crosses incompatible value semantics and the Gold → Core transition.
+**E027** versions Game Pass membership definitions and quarantines a tempting 36% headline ratio that crosses incompatible value semantics and the Gold → Core transition.  
+**E028** adds Japanese negative evidence and makes survivorship-bias coverage explicit.  
+**E029** separates strategic exit from forced insolvency.  
+**E030** uses BBD portfolio pruning to reject untyped churn as a universal health signal.
 
 This produces a repeating research pattern:
 
@@ -241,6 +262,9 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E025 ODD](ODD_E025.md)
 - [E026 ODD](ODD_E026.md)
 - [E027 ODD](ODD_E027.md)
+- [E028 ODD](ODD_E028.md)
+- [E029 ODD](ODD_E029.md)
+- [E030 ODD](ODD_E030.md)
 
 ## Run locally
 
@@ -266,6 +290,9 @@ python scripts/run_e024.py
 python scripts/run_e025.py
 python scripts/run_e026.py
 python scripts/run_e027.py
+python scripts/run_e028.py
+python scripts/run_e029.py
+python scripts/run_e030.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
