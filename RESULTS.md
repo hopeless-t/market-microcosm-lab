@@ -462,9 +462,23 @@ E030 does not invalidate E013's synthetic **end-user** churn pressure. It reject
 
 All gates promote `churn-must-be-layer-and-cause-typed-v1`.
 
+## E031 — short-run signal / PMF proxy guard
+
+E031 triangulates three Japanese SaaS/startup postmortems to test whether locally positive signals can certify PMF.
+
+- **Srush** reports paying/high-value/enthusiastic customers during a period that management later characterized as false PMF: customer attributes were inconsistent, human effort was high, and people sometimes solved the problem instead of the product. The founder describes an initial PLG SaaS as withdrawn soon after launch and roughly four years from founding to the later repeatable STP/PMF state.
+- **Leaner** reports that revenue eventually existed for the prior product, yet the company still withdrew it because expected customer success and company scalability were inadequate.
+- **SalesNow** reports deep customer pain and an operating prior business, but management estimated a roughly 2–3 billion JPY ARR ceiling and chose complete withdrawal/pivot.
+
+A finite reference witness then gives the higher-current-revenue candidate poor repeatability, customer-success, scalability, and market-headroom values, while a lower-current-revenue candidate is strong on all four. Ranking by revenue and ranking by viability select different candidates.
+
+E031 therefore promotes `short-run-positive-signals-cannot-certify-pmf-v1`.
+
+Revenue, ACV, engagement, and enthusiastic users remain observations. Promotion authority requires independent evidence for repeatability, customer success, product-vs-human delivery burden, scalability, and market headroom.
+
 ## Theory update
 
-The working theory after E010–E030 is:
+The working theory after E010–E031 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -514,6 +528,9 @@ The working theory after E010–E030 is:
 59. success-only empirical calibration is structurally incomplete when withdrawal, sunset, pivot, and bankruptcy evidence expose additional failure mechanisms;
 60. actor exit is not synonymous with insolvency: strategic exit can dominate continuation before cash crosses zero;
 61. churn direction is not globally monotone across metric layers because deliberate pruning can raise measured churn while ARR and ARPA improve;
-62. empirical state variables need layer identity, causal/operational mechanism identity, and exit semantics before entering the simulator.
+62. empirical state variables need layer identity, causal/operational mechanism identity, and exit semantics before entering the simulator;
+63. locally positive business signals such as revenue, high ACV, or enthusiastic users can coexist with non-repeatability, human-service burden, poor customer success, low scalability, or insufficient market headroom;
+64. PMF is therefore a multi-constraint certification problem rather than a scalar revenue threshold;
+65. the empirical meta-loop should attack success proxies with the same adversarial discipline used for failure assumptions.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
