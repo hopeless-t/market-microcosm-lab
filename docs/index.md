@@ -198,9 +198,9 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
   </div>
   <div class="mm-card">
     <div class="mm-kicker">E038</div>
-    <div class="mm-metric">0.34%</div>
+    <div class="mm-metric">interval-fit</div>
     <h3>Real longitudinal holdout</h3>
-    <p>Informetis Smart Living Standard Q1-Q3 decay predicts the published Q4 component ARR within roughly 0.34%.</p>
+    <p>Informetis Smart Living Standard Q1-Q3 decay is consistent with the rounded Q4 component holdout; E042 revokes sub-resolution precision claims.</p>
   </div>
   <div class="mm-card">
     <div class="mm-kicker">E039</div>
@@ -219,6 +219,30 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <div class="mm-metric">1 scalar</div>
     <h3>Minimal checkpoint</h3>
     <p>One outgoing boundary MRR plus consecutive rolling ARR values restores exact newest-MRR observability.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E042</div>
+    <div class="mm-metric">precision revoked</div>
+    <h3>Reporting resolution</h3>
+    <p>Sub-resolution fit claims lose authority; rounded empirical values are propagated as intervals.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E043</div>
+    <div class="mm-metric">predicate-scoped</div>
+    <h3>Decision observability</h3>
+    <p>An uncertain hidden-state interval can certify some decisions while leaving finer thresholds unresolved.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E044</div>
+    <div class="mm-metric">ABSTAIN</div>
+    <h3>Robust boundary control</h3>
+    <p>When compatible states straddle the threshold, midpoint forcing is rejected and abstention is authorized.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E045</div>
+    <div class="mm-metric">minimum evidence</div>
+    <h3>Active sensing</h3>
+    <p>After abstention, search for the cheapest predicate-sufficient observation instead of collecting full state.</p>
   </div>
 </div>
 
@@ -292,7 +316,11 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E038** moves to a real Informetis component-ARR holdout and keeps the successful decay law component-scoped.  
 **E039** models the six-month ARR measurement window itself as an observation-delay kernel.  
 **E040** proves that one rolling ARR still cannot identify current MRR.  
-**E041** finds the minimal one-scalar boundary checkpoint that restores exact one-step observability.
+**E041** finds the minimal one-scalar boundary checkpoint for exact-input one-step observability.  
+**E042** revokes E038's over-precise sub-resolution interpretation.  
+**E043** scopes observability authority to the requested decision predicate.  
+**E044** makes ABSTAIN an authorized result for boundary-straddling uncertainty.  
+**E045** adds minimum-cost predicate-scoped active sensing after abstention.
 
 This produces a repeating research pattern:
 
@@ -353,6 +381,10 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E039 ODD](ODD_E039.md)
 - [E040 ODD](ODD_E040.md)
 - [E041 ODD](ODD_E041.md)
+- [E042 ODD](ODD_E042.md)
+- [E043 ODD](ODD_E043.md)
+- [E044 ODD](ODD_E044.md)
+- [E045 ODD](ODD_E045.md)
 
 ## Run locally
 
@@ -392,6 +424,10 @@ python scripts/run_e038.py
 python scripts/run_e039.py
 python scripts/run_e040.py
 python scripts/run_e041.py
+python scripts/run_e042.py
+python scripts/run_e043.py
+python scripts/run_e044.py
+python scripts/run_e045.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
