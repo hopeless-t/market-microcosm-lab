@@ -1299,9 +1299,19 @@ The robust order is intentionally worse under the original reference prior: 11.3
 
 All gates promote `uncertain-prior-sequential-acquisition-uses-minimax-order-v1`.
 
+## E072 — joint-dependence attack
+
+E072 keeps all five E069 marginal failure probabilities exactly unchanged and alters only their joint structure.
+
+A finite joint world makes headroom and strategic-exit failures co-occur with probability 0.25 instead of the independent product 0.075. The frozen E069 order GTM → strategy → finance costs **9.20**, while joint-aware exact DP selects GTM → finance → strategy at **8.45**. Regret is **0.75** despite identical marginals.
+
+Marginal priors therefore do not identify conditional risk after safe observations.
+
+All gates promote `sequential-acquisition-requires-joint-failure-model-not-marginals-only-v1`.
+
 ## Theory update
 
-The working theory after E010–E071 is:
+The working theory after E010–E072 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1425,6 +1435,8 @@ The working theory after E010–E071 is:
 120. sequential evidence-policy authority is scoped to the failure-prior generation that earned it;
 121. prior drift can change the optimal first observation and should trigger regret-based revocation / recompilation rather than silent reuse;
 122. prior uncertainty can be compiled into a minimax evidence order that reduces worst-case cost/regret across an admitted scenario set;
-123. robust sequential sensing may intentionally sacrifice efficiency under the reference prior, so single-prior efficiency and uncertainty robustness must remain separate reported objectives.
+123. robust sequential sensing may intentionally sacrifice efficiency under the reference prior, so single-prior efficiency and uncertainty robustness must remain separate reported objectives;
+124. identical marginal failure probabilities do not identify a sequential observation policy when axis failures are dependent;
+125. joint dependence changes conditional risk after safe evidence and can reorder later acquisitions without any marginal drift.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

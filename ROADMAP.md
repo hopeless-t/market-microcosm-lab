@@ -122,6 +122,7 @@
 - [x] exact sequential warning-evidence acquisition policy
 - [x] prior-generation drift revocation for sequential acquisition
 - [x] minimax sequential acquisition across prior uncertainty set
+- [x] same-marginal joint-dependence adversary for acquisition policy
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary

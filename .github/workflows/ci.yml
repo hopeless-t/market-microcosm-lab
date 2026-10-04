@@ -1271,6 +1271,27 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run joint-dependence acquisition adversary
+        run: python scripts/run_e072.py
+      - name: Validate E072 joint-dependence contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e072/joint-dependence-acquisition-report.json").read_text())
+          assert x["marginals"]=={
+              "cash_collection_gap":0.05,
+              "fully_loaded_delivery_margin":0.10,
+              "market_headroom":0.30,
+              "downstream_funnel_success":0.18,
+              "strategic_exit_value_gap":0.25,
+          }
+          assert x["joint_aware_optimum"]["safe_path"]==["gtm-pack","finance-pack","signed-strategy-gap-attestation"]
+          assert round(x["joint_aware_optimum"]["expected_cost"],2)==8.45
+          assert round(x["regret"],2)==0.75
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

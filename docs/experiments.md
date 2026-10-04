@@ -699,3 +699,12 @@ No. Finance- and strategy-heavy shifts change the exact first observation and cr
 Yes. Exact search over all six bundle orders selects strategy → finance → GTM, improving worst-case cost and regret while sacrificing some reference-prior efficiency.
 
 [Read the E071 ODD](ODD_E071.md)
+
+
+## E072 — Joint-dependence attack
+
+**Question:** do identical marginal failure priors imply the same evidence order?
+
+No. A same-marginal correlated finite world changes the exact safe-path order from GTM → strategy → finance to GTM → finance → strategy and reduces expected cost by 0.75.
+
+[Read the E072 ODD](ODD_E072.md)

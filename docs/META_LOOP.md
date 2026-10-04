@@ -604,3 +604,8 @@ The next target is to reduce dependence on one estimated prior by compiling a po
 E071 converts prior drift from a revoke-only mechanism into a robust optimization problem. Instead of betting on one prior, every admitted prior scenario participates in the promotion gate.
 
 The robust order reduces worst-case regret but loses reference-prior efficiency. Both metrics stay visible.
+
+
+## Joint-dependence attack
+
+E072 attacks the independence assumption beneath E069–E071. Same marginals can hide different conditional structure, so policy certificates must declare the joint model or an ambiguity set rather than only per-axis probabilities.

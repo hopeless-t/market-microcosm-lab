@@ -277,3 +277,8 @@ The E069 order is valid only for its declared prior. Finance-heavy and strategy-
 ## E071 — Minimax prior-set acquisition
 
 Across the reference, finance-heavy, and strategy-heavy priors, exact order search selects strategy → finance → GTM. Worst-case expected cost falls to 11.315 and worst-case regret to 2.2925, at the price of worse reference-prior efficiency.
+
+
+## E072 — Joint-dependence attack
+
+All five marginal failure probabilities remain identical to E069, but headroom and strategic-exit dependence changes conditional risk. Joint-aware DP swaps finance ahead of strategy and reduces expected cost from 9.20 to 8.45.
