@@ -29,7 +29,7 @@
 </p>
 
 > [!IMPORTANT]
-> **Synthetic evidence only.** Current experiments are structural research worlds, not empirical estimates or policy recommendations for Netflix, Game Pass, SARTRAS, Spotify, or any named service.
+> **Evidence planes are separated.** E000–E023 are synthetic structural research worlds. E024 adds explicitly sourced empirical anchors, but calibration does not imply causal identification or policy recommendation for Netflix, Game Pass, SARTRAS, Spotify, or any named service.
 
 ## North Star
 
@@ -55,7 +55,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E020 · Checkpoint Rotation** | Can external trust be rotated without forgetting older anchors? | latest-only forgery passes weak verification; pinned continuity rejects rewritten history |
 | **E021 · Witness Quorum** | Can anchor authority survive one or two compromised witnesses? | 3-of-5 blocks 1–2 compromises and guarantees quorum intersection; 3 compromises reach the forge boundary |
 | **E022 · Failure Domains** | Are five witness identities actually five independent failure domains? | 3-1-1 collapses to a one-domain forge; 1-1-1-1-1 requires three domains and cuts modeled forge risk 91.4% |
-| **E023 · Hidden Common Mode** | Can nominally independent domains still share an undeclared dependency? | one hidden shared-KMS shock collapses the forge boundary 3→1 and inflates modeled forge probability 1016× |
+| **E023 · Hidden Common Mode** | Can nominally independent domains still share an undeclared dependency? | one hidden shared-KMS shock collapses the forge boundary 3→1 and inflates modeled forge probability 1016× |\n| **E024 · Empirical Evidence Plane** | Which real-world observations are allowed to constrain future calibration? | SARTRAS accounting closes to a 1-thousand-JPY rounding delta; public/restricted evidence is admission-controlled |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -176,7 +176,7 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Witness identities are not independent failure domains.** E022 groups the same five witnesses into correlated topologies. A 3-1-1 placement lets one domain compromise reach the three-witness threshold; 2-2-1 needs two domains; full 1-1-1-1-1 separation needs three. Under the declared independent 10% per-domain synthetic model, forge probability falls from 10.0% to 2.8% to 0.856%.
 
-**Declared independence can itself be wrong.** E023 keeps the nominal 1-1-1-1-1 witness labels but adds one undeclared shared-KMS dependency affecting witnesses 0, 1, and 2. The minimum forge shock count collapses from 3 to 1, and the exact synthetic forge probability at a 1% shock rate rises from 0.000985% to 1.000975% — a 1016× inflation.
+**Declared independence can itself be wrong.** E023 keeps the nominal 1-1-1-1-1 witness labels but adds one undeclared shared-KMS dependency affecting witnesses 0, 1, and 2. The minimum forge shock count collapses from 3 to 1, and the exact synthetic forge probability at a 1% shock rate rises from 0.000985% to 1.000975% — a 1016× inflation.\n\n**Empirical evidence needs its own admission plane.** E024 introduces a source registry and an exact public-source portfolio oracle. SARTRAS 2022 accounting reconciles to a 1-thousand-JPY rounding delta, Netflix regional ARM varies by more than 2× across reported Q2 2024 regions, and Game Pass Partner Center remains schema-only for public calibration because its report values require authorization.
 
 That sequence matters:
 
@@ -256,7 +256,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site
