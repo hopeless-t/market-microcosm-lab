@@ -428,3 +428,14 @@ authorized
 ```
 
 As in E023, discovered hidden common modes invalidate prior independence authority and require re-evaluation.
+
+
+## Evidence-lineage root audit
+
+E050 attacks the flat source-diversity model promoted by E049.
+
+Three distinct immediate source labels can still derive from one master warehouse or vendor dataset. A quorum that appears domain-diverse and source-diverse can therefore remain one-root fragile.
+
+The sensing plane now treats evidence independence as a dependency graph rather than a list of names. Accepted predicate authority must expose enough upstream lineage to estimate the minimum independent roots supporting the accepted view.
+
+Discovery of a hidden lineage root is an authority-changing event: prior source-diversity evidence is revoked and the quorum must be re-evaluated.
