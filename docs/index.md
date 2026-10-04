@@ -196,6 +196,18 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Warning structural drift</h3>
     <p>A hidden interaction invalidates the prior warning certificate; interaction-aware repair restores the shifted generation.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E038</div>
+    <div class="mm-metric">0.34%</div>
+    <h3>Real longitudinal holdout</h3>
+    <p>Informetis Smart Living Standard Q1-Q3 decay predicts the published Q4 component ARR within roughly 0.34%.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E039</div>
+    <div class="mm-metric">6-month memory</div>
+    <h3>Rolling KPI lag</h3>
+    <p>A trailing-six-month ARR can retain half of a pre-shock signal three months after the underlying component ends.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -264,7 +276,9 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E034** prices recurring human delivery into fully loaded margin.  
 **E035** compiles the resulting failure mechanisms into a first exact multi-signal early-warning benchmark.  
 **E036** tunes that vector on generated discovery states and verifies it on an untouched generated holdout.  
-**E037** changes the failure law itself, revokes the old warning, and promotes an interaction-aware replacement.
+**E037** changes the failure law itself, revokes the old warning, and promotes an interaction-aware replacement.  
+**E038** moves to a real Informetis component-ARR holdout and keeps the successful decay law component-scoped.  
+**E039** models the six-month ARR measurement window itself as an observation-delay kernel.
 
 This produces a repeating research pattern:
 
@@ -321,6 +335,8 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E035 ODD](ODD_E035.md)
 - [E036 ODD](ODD_E036.md)
 - [E037 ODD](ODD_E037.md)
+- [E038 ODD](ODD_E038.md)
+- [E039 ODD](ODD_E039.md)
 
 ## Run locally
 
@@ -356,6 +372,8 @@ python scripts/run_e034.py
 python scripts/run_e035.py
 python scripts/run_e036.py
 python scripts/run_e037.py
+python scripts/run_e038.py
+python scripts/run_e039.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
