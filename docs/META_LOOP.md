@@ -284,3 +284,14 @@ E034 separates software cost from recurring human-delivery cost. High ACV and so
 E035 compiles these failure mechanisms together with market-headroom and strategic-exit signals into a finite multi-signal warning tournament. Revenue-only and churn-only proxies have explicit blind spots; the multi-signal vector matches the exact reference oracle.
 
 The meta-loop is **not** allowed to treat that exact match as external predictive validation. The next authority step requires broad generated scenario families, threshold search on discovery sets, untouched holdouts, and eventually real longitudinal company data.
+
+
+## Generated warning holdout
+
+E036 attacks the possibility that E035 merely memorized its hand-built archetypes.
+
+A broad deterministic generator creates isolated discovery and holdout populations. The meta-loop searches 324 warning-threshold combinations only on discovery, freezes the winner, then evaluates an untouched seed bank.
+
+The selected multi-signal rule keeps greater than 98% precision, recall, and F1 on the generated holdout while revenue-only and churn-only rules retain severe recall blind spots.
+
+Authority remains limited: discovery and holdout still share one structural generator. The next falsification must change the generator itself rather than only the random seed.
