@@ -416,7 +416,7 @@ No. An interaction-only market-headroom × downstream-success failure drops the 
 
 **Question:** does a component-scoped mechanism survive a real-company quarterly holdout?
 
-Informetis's published Smart Living Standard ARR for 2025-Q1 through Q3 fits a simple retention decay whose frozen Q4 prediction is about 215.27 million JPY versus 216 observed. The same law fails on other components, so the promoted rule preserves component identity and event annotations rather than universalizing the decay.
+Informetis's published Smart Living Standard ARR for 2025-Q1 through Q3 yields a frozen Q4 point prediction near 215.27 million JPY versus a displayed 216. E042 later limits the authority of that point gap to reporting-resolution consistency. The same law fails on other components, so component identity and event annotations remain the durable result.
 
 [Read the E038 ODD](ODD_E038.md)
 
@@ -444,3 +444,36 @@ No. Exact enumeration finds 338 monotone integer MRR paths with the same ARR=60,
 One outgoing boundary MRR is sufficient. Without it, multiple incoming/outgoing pairs remain compatible; with it, the rolling-sum identity reconstructs newest MRR exactly.
 
 [Read the E041 ODD](ODD_E041.md)
+
+
+## E042 — Reporting-resolution self-attack
+
+**Question:** can integer-million-JPY chart values support E038's apparent sub-1% point-error claim?
+
+No. Propagating nearest-million display intervals through the same model produces an overlapping prediction/holdout interval. The component model remains consistent with the rounded holdout, but sub-1% precision authority is revoked.
+
+[Read the E042 ODD](ODD_E042.md)
+
+## E043 — Decision-sufficient observability
+
+**Question:** when rounded measurements only identify a hidden-state interval, can that still be enough for a specific decision?
+
+Yes. The reference interval certifies `MRR > 0` while leaving `MRR >= 2` ambiguous. Observability authority becomes predicate-scoped.
+
+[Read the E043 ODD](ODD_E043.md)
+
+## E044 — Robust abstention
+
+**Question:** should a controller force a midpoint decision when the compatible-state interval crosses a threshold?
+
+No. The midpoint has a compatible counterexample. The robust controller returns ABSTAIN until evidence makes every compatible state agree.
+
+[Read the E044 ODD](ODD_E044.md)
+
+## E045 — Predicate-scoped active sensing
+
+**Question:** after ABSTAIN, what extra evidence should be requested?
+
+Search candidate observations by declared collection cost and predicate resolution. The reference chooses cheaper predicate-native evidence over expensive full-state recovery.
+
+[Read the E045 ODD](ODD_E045.md)
