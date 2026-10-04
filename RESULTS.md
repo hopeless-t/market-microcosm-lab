@@ -1241,9 +1241,17 @@ and does not silently map ARR/churn/ARPA/contracts into the missing structural s
 
 All gates promote `structural-warning-must-abstain-when-public-feature-contract-is-incomplete-v1`.
 
+## E066 — direct / partial / absent public evidence
+
+E066 confirms E065's zero-direct-coverage result but refines public observability. FY2025 Q3 gross-margin/cost evidence partially informs fully-loaded delivery economics, while TAM/SAM/SOM context partially informs market headroom.
+
+Exact public-artifact search selects `q3-financial-summary + q3-market-environment` at cost **2**, yielding direct 0 / partial 2 / absent 3. Partial evidence may constrain hypotheses and prioritize acquisition but cannot satisfy the direct warning contract, so the prospective result remains **ABSTAIN**.
+
+All gates promote `public-warning-evidence-separates-direct-partial-absent-v1`.
+
 ## Theory update
 
-The working theory after E010–E065 is:
+The working theory after E010–E066 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1354,6 +1362,9 @@ The working theory after E010–E065 is:
 107. the cheapest evidence cover and the cheapest failure-domain-safe evidence cover can differ, and cost-only authority must be revoked when that distinction matters;
 108. KPI direction within one company and one metric generation can reverse its relationship to portfolio outcomes during product transition, so sign alone is not a health label;
 109. retrospective event explanations and prospective prediction features require separate evidence-time authority boundaries;
-110. a structurally rich warning model may be unevaluable from public company KPIs, and missing structural axes should produce ABSTAIN rather than proxy imputation.
+110. a structurally rich warning model may be unevaluable from public company KPIs, and missing structural axes should produce ABSTAIN rather than proxy imputation;
+111. zero direct feature coverage does not imply zero structural information, so public observability should distinguish direct, partial, and absent evidence;
+112. partial evidence may constrain hypotheses or prioritize acquisition but cannot silently satisfy a direct feature contract;
+113. evidence-acquisition portfolios should maximize admitted information quality before minimizing collection cost.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

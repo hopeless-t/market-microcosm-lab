@@ -98,6 +98,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E063 · Real Portfolio Transition** | Can churn direction certify ARR/portfolio direction inside one company-year? | no; BBD FY2025 shows churn-down with ARR-up and churn-down with ARR-down under one metric generation |
 | **E064 · Prospective Evidence Cutoff** | Can Q4 explanations be used in a Q3 warning? | no; future-only annotations are valid for retrospective explanation but rejected as prospective features |
 | **E065 · Public Warning Sufficiency** | Does public Q3 IR cover the five structural warning axes? | no; 0/5 direct coverage, so the public-data evaluator ABSTAINS instead of imputing hidden state |
+| **E066 · Partial Public Evidence** | Does 0/5 direct mean zero useful structural evidence? | no; public portfolio finds 2 partial axes / 3 absent axes; direct coverage remains 0 and warning authority still ABSTAINS |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -304,6 +305,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **The public dataset may be too weak for the structural model.** E065 compares public Q3 IR with the five-axis warning feature contract. None of the five structural axes is directly observed, so public-only warning authority is ABSTAIN rather than proxy imputation.
 
+**Zero direct coverage is not zero information.** E066 refines the same Q3 material into direct / partial / absent support. Gross-margin/cost evidence partially informs delivery economics and TAM/SAM/SOM context partially informs market headroom. Coverage becomes direct 0 / partial 2 / absent 3; partial evidence can guide acquisition but cannot satisfy the direct warning contract.
+
 That sequence matters:
 
 ```text
@@ -372,6 +375,49 @@ python scripts/run_e020.py
 python scripts/run_e021.py
 python scripts/run_e022.py
 python scripts/run_e023.py
+python scripts/run_e024.py
+python scripts/run_e025.py
+python scripts/run_e026.py
+python scripts/run_e027.py
+python scripts/run_e028.py
+python scripts/run_e029.py
+python scripts/run_e030.py
+python scripts/run_e031.py
+python scripts/run_e032.py
+python scripts/run_e033.py
+python scripts/run_e034.py
+python scripts/run_e035.py
+python scripts/run_e036.py
+python scripts/run_e037.py
+python scripts/run_e038.py
+python scripts/run_e039.py
+python scripts/run_e040.py
+python scripts/run_e041.py
+python scripts/run_e042.py
+python scripts/run_e043.py
+python scripts/run_e044.py
+python scripts/run_e045.py
+python scripts/run_e046.py
+python scripts/run_e047.py
+python scripts/run_e048.py
+python scripts/run_e049.py
+python scripts/run_e050.py
+python scripts/run_e051.py
+python scripts/run_e052.py
+python scripts/run_e053.py
+python scripts/run_e054.py
+python scripts/run_e055.py
+python scripts/run_e056.py
+python scripts/run_e057.py
+python scripts/run_e058.py
+python scripts/run_e059.py
+python scripts/run_e060.py
+python scripts/run_e061.py
+python scripts/run_e062.py
+python scripts/run_e063.py
+python scripts/run_e064.py
+python scripts/run_e065.py
+python scripts/run_e066.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
@@ -382,7 +428,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 / E066 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site

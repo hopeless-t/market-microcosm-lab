@@ -364,6 +364,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Public feature sufficiency</h3>
     <p>Public Q3 KPIs do not directly cover the structural warning axes, so prospective public-data authority abstains.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E066</div>
+    <div class="mm-metric">0 / 2 / 3</div>
+    <h3>Public evidence granularity</h3>
+    <p>Q3 evidence has zero direct warning features, two partial structural signals, and three absent axes; ABSTAIN remains authoritative.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -460,7 +466,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E062** then treats those shared artifacts as failure domains and revokes the cost-only optimum.  
 **E063** returns to real BBD longitudinal KPI transitions.  
 **E064** separates retrospective explanation from prospective feature availability.  
-**E065** measures the public-data feature gap and ABSTAINS rather than imputing hidden structural state.
+**E065** measures the public-data feature gap and ABSTAINS rather than imputing hidden structural state.  
+**E066** refines that gap into direct, partial, and absent public evidence without promoting partial signals into direct features.
 
 This produces a repeating research pattern:
 
@@ -545,6 +552,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E063 ODD](ODD_E063.md)
 - [E064 ODD](ODD_E064.md)
 - [E065 ODD](ODD_E065.md)
+- [E066 ODD](ODD_E066.md)
 
 ## Run locally
 
@@ -608,6 +616,7 @@ python scripts/run_e062.py
 python scripts/run_e063.py
 python scripts/run_e064.py
 python scripts/run_e065.py
+python scripts/run_e066.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

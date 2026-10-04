@@ -116,6 +116,7 @@
 - [x] real-company portfolio-transition sign reversal
 - [x] prospective evidence cutoff / future-leakage guard
 - [x] public warning feature-contract sufficiency / ABSTAIN
+- [x] direct / partial / absent public evidence portfolio
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary

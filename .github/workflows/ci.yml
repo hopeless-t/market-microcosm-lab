@@ -2,7 +2,13 @@ name: CI
 
 on:
   push:
+    branches:
+      - main
   pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   reference:
@@ -1168,6 +1174,23 @@ jobs:
           assert x["promoted_sufficiency_rule"] == "structural-warning-must-abstain-when-public-feature-contract-is-incomplete-v1"
           assert all(x["promotion_gate"].values())
           print({"coverage": x["coverage"], "decision": x["prospective_warning"], "promoted": x["promoted_sufficiency_rule"]})
+          PY
+
+      - name: Run partial public-evidence portfolio
+        run: python scripts/run_e066.py
+      - name: Validate E066 public-evidence granularity contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e066/partial-public-evidence-report.json").read_text())
+          s=x["portfolio"]["selected"]
+          assert x["experiment"]=="E066"
+          assert s["artifact_ids"]==["q3-financial-summary","q3-market-environment"]
+          assert s["total_cost"]==2
+          assert (s["coverage"]["direct_count"],s["coverage"]["partial_count"],s["coverage"]["absent_count"])==(0,2,3)
+          assert x["prospective_warning"]["status"]=="ABSTAIN"
+          assert all(x["promotion_gate"].values())
           PY
 
       - name: Verify generated research dashboard

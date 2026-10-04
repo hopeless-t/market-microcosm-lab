@@ -617,7 +617,7 @@ No. Shared audit actions cover multiple obligations; exact set-cover reduces the
 
 **Question:** can shared audit evidence become a common-mode failure even when it is the cheapest complete proof cover?
 
-Yes. Each E061 bundle uniquely supports two obligations, so one artifact failure has blast 2. Under a one-obligation blast budget, exact robust cover returns to the independent cost-8 plan.
+Yes. Each E061 bundle uniquely supports two obligations, so one artifact failure has blast 2. Under a one-obligation blast budget, exact robust cover costs 8 and keeps one shared control-plane bundle with independent identity corroboration.
 
 [Read the E062 ODD](ODD_E062.md)
 
@@ -645,3 +645,12 @@ No. Public evidence is timestamped; future-only annotations support retrospectiv
 No. Direct coverage is 0/5. The prospective public-data evaluator ABSTAINS instead of inventing hidden structural state.
 
 [Read the E065 ODD](ODD_E065.md)
+
+
+## E066 — Direct / partial / absent public evidence
+
+**Question:** does E065's 0/5 direct coverage mean no useful structural information?
+
+No. Public Q3 material has partial evidence for delivery economics and market headroom. Exact coverage is direct 0 / partial 2 / absent 3, and the warning still ABSTAINS.
+
+[Read the E066 ODD](ODD_E066.md)

@@ -247,3 +247,8 @@ Q4 launch-delay and withdrawal-preparation annotations can explain the realized 
 ## E065 — Public warning sufficiency
 
 The public Q3 KPI set does not directly observe any of the five structural warning axes. Public-data warning authority therefore ABSTAINS with 0/5 direct feature coverage rather than using proxy imputation.
+
+
+## E066 — Public evidence granularity
+
+E065's zero-direct result is retained but refined. Q3 public material contains partial evidence for delivery economics and market headroom: direct 0 / partial 2 / absent 3. Partial evidence can prioritize acquisition but does not lift ABSTAIN.

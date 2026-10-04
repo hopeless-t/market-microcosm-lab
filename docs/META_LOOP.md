@@ -558,3 +558,8 @@ develop structural mechanism
 ```
 
 A stronger model is not automatically a more deployable model.
+
+
+## Partial public evidence portfolios
+
+E066 replaces binary public feature coverage with direct / partial / absent evidence. Partial evidence can constrain hypotheses and prioritize collection, but direct authority remains fail-closed until the feature contract is actually observed.
