@@ -233,7 +233,7 @@ Shared control-plane and infrastructure audit bundles discharge multiple proof o
 
 ## E062 — Audit-evidence failure domains
 
-E061's shared bundles are cost-efficient but each is the sole support for two proof obligations. Treating one artifact failure as a common-mode event revokes the cost-6 plan. The minimum failure-domain-safe evidence cover costs 8.
+E061's shared bundles are cost-efficient but each is the sole support for two proof obligations. Treating one artifact failure as a common-mode event revokes the cost-6 plan. The minimum failure-domain-safe evidence cover costs 8 and still reuses the control-plane bundle, with identity independently corroborated so one artifact failure can strand at most one obligation.
 
 
 ## E063 — Real portfolio transition
