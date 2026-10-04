@@ -745,6 +745,72 @@ jobs:
           print({"reference": r, "promoted": x["promoted_checkpoint_rule"]})
           PY
 
+      - name: Run reporting-resolution self-attack
+        run: python scripts/run_e042.py
+      - name: Validate E042 reporting-resolution contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e042/reporting-resolution-report.json").read_text())
+          assert x["experiment"] == "E042"
+          assert x["legacy_e038_sub1pct_precision_authority"] == "REVOKED"
+          assert x["e038_reassessment"]["intervals_overlap"] is True
+          assert x["promoted_resolution_rule"] == "empirical-claim-precision-cannot-exceed-reporting-resolution-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reassessment": x["e038_reassessment"], "promoted": x["promoted_resolution_rule"]})
+          PY
+
+      - name: Run decision-sufficient observability
+        run: python scripts/run_e043.py
+      - name: Validate E043 decision-observability contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e043/decision-sufficient-observability-report.json").read_text())
+          assert x["experiment"] == "E043"
+          r = x["reference"]
+          assert r["newest_mrr_interval_with_exact_boundary"] == [1.5, 2.5]
+          assert r["predicates"]["active_gt_0"]["exact_boundary"] == "CERTIFIED_TRUE"
+          assert r["predicates"]["at_least_2"]["exact_boundary"] == "AMBIGUOUS"
+          assert x["promoted_observability_rule"] == "observability-authority-is-decision-predicate-scoped-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": r, "promoted": x["promoted_observability_rule"]})
+          PY
+
+      - name: Run robust abstention experiment
+        run: python scripts/run_e044.py
+      - name: Validate E044 abstention contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e044/robust-abstention-report.json").read_text())
+          assert x["experiment"] == "E044"
+          assert x["reference"]["ambiguous_robust_result"] == "ABSTAIN"
+          assert x["reference"]["midpoint_forced_decision_is_unsound"] is True
+          assert x["promoted_decision_rule"] == "boundary-straddling-uncertainty-must-abstain-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": x["reference"], "promoted": x["promoted_decision_rule"]})
+          PY
+
+      - name: Run predicate-scoped active sensing
+        run: python scripts/run_e045.py
+      - name: Validate E045 active-sensing contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e045/active-sensing-report.json").read_text())
+          assert x["experiment"] == "E045"
+          assert x["candidate_search"]["selected"]["name"] == "predicate_native_ledger_check"
+          assert x["candidate_search"]["selected"]["cost"] == 2
+          assert x["promoted_active_sensing_rule"] == "request-cheapest-predicate-sufficient-observation-v1"
+          assert all(x["promotion_gate"].values())
+          print({"search": x["candidate_search"], "promoted": x["promoted_active_sensing_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
