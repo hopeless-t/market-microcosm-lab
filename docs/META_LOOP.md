@@ -196,3 +196,16 @@ This creates three explicit planes:
 The planes may constrain each other, but they may not be conflated. In particular, empirical fit is not causal identification, and public schema visibility is not public observation visibility.
 
 E024 also turns model-assumption rejection into a useful meta-loop output: Netflix's reported regional ARM dispersion is already sufficient to reject one global empirical revenue-per-membership constant before expensive fitting begins. SARTRAS sampling similarly requires future empirical worlds to distinguish latent population state from sampled observation.
+
+
+## Empirical model-complexity selection
+
+E025 turns admitted empirical structure into a meta-level choice over model complexity.
+
+Rather than immediately fitting every published regional value, the laboratory enumerates every partition of the four Netflix reporting regions and asks for the smallest model family that keeps worst regional ARM error below a declared tolerance.
+
+Discovery and temporal validation are separated. Q2 2023 through Q1 2024 choose the structural partition. Q2 2024 is withheld. After selection, Q1 2024 group centroids are frozen for a one-quarter-forward check.
+
+At a 10% maximum-relative-error threshold, one and two groups fail, while three groups pass with the topology `{UCAN}`, `{EMEA}`, `{LATAM, APAC}`. The frozen one-quarter-forward prediction also remains inside tolerance.
+
+This adds another allowed meta-loop move: **change model complexity when admitted external evidence falsifies a cheaper family**. The loop still may not relabel ARM as subscription price or infer causal regional effects from descriptive aggregates.
