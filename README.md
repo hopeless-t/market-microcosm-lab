@@ -95,6 +95,9 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E060 · Heterogeneous Audit Allocation** | Must every dependency branch be audited equally deeply? | no; proof-obligation-specific depth halves cost from 16 to 8 |
 | **E061 · Coupled Audit Bundles** | Are branch audits really independent? | no; shared audit bundles reduce the exact safe cover from cost 8 to cost 6 |
 | **E062 · Audit Evidence Failure Domains** | Can shared audit evidence fail as one common-mode artifact? | yes; E061 cost-6 plan has proof blast 2, so failure-domain-safe optimum returns to cost 8 |
+| **E063 · Real Portfolio Transition** | Can churn direction certify ARR/portfolio direction inside one company-year? | no; BBD FY2025 shows churn-down with ARR-up and churn-down with ARR-down under one metric generation |
+| **E064 · Prospective Evidence Cutoff** | Can Q4 explanations be used in a Q3 warning? | no; future-only annotations are valid for retrospective explanation but rejected as prospective features |
+| **E065 · Public Warning Sufficiency** | Does public Q3 IR cover the five structural warning axes? | no; 0/5 direct coverage, so the public-data evaluator ABSTAINS instead of imputing hidden state |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -295,6 +298,12 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Shared evidence is also a failure domain.** E062 treats one audit artifact failure as a common-mode event. Each E061 bundle is the sole support for two obligations, so its proof blast is 2. Under a one-obligation blast budget, the cost-6 authority is revoked and the exact robust cover returns to independent cost 8.
 
+**Real portfolio transitions scramble KPI signs.** E063 uses BBD FY2025 Q1–Q4. Churn improvement coexists once with ARR growth and later with ARR decline, while contracts fall every quarter; the same KPI sign is not a health label.
+
+**Retrospective explanation is not prospective evidence.** E064 timestamps public evidence around the Q3 decision cutoff. Q4 launch-delay and withdrawal-preparation annotations remain useful explanations but are future leakage for a Q3 warning.
+
+**The public dataset may be too weak for the structural model.** E065 compares public Q3 IR with the five-axis warning feature contract. None of the five structural axes is directly observed, so public-only warning authority is ABSTAIN rather than proxy imputation.
+
 That sequence matters:
 
 ```text
@@ -373,7 +382,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site
