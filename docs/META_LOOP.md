@@ -469,3 +469,22 @@ declare lineage hypotheses
 ```
 
 Efficiency and robustness are separate objectives and must not inherit authority from one another.
+
+
+## Measurement failure-domain certificate
+
+E056 attacks E055's repeated-channel independence assumption.
+
+A distance-five code can correct two arbitrary bit substitutions, but one physical measurement-root failure may flip many bits simultaneously. The code certificate and the physical failure model must therefore be connected explicitly.
+
+The repaired reference caps each measurement root at two certified channels. With ten channels, at least five roots are required for one-root faults to remain inside the declared two-bit correction budget.
+
+Robust sensing authority now requires both:
+
+```text
+logical signature-distance certificate
++
+physical measurement failure-domain certificate
+```
+
+Neither certificate inherits the other automatically.
