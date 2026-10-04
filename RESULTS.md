@@ -373,9 +373,28 @@ This is a compression and model-family rejection result, not a causal geographic
 
 All E025 gates pass, promoting `regional-arm-complexity-knee-k3-v1`.
 
+## E026 — sampled-observation assumption audit
+
+E026 uses the admitted SARTRAS FY2022 sample counts to test how much observation confidence can be justified from sample size alone.
+
+The empirical anchor contains 35,130 applications and approximately 1,200 sampled institutions. In a **hypothetical simple-random-sampling reference world**, exact without-replacement detection gives:
+
+| Detection target | Minimum carrier institutions | Population fraction |
+| ---: | ---: | ---: |
+| 50% | 20 | ~0.057% |
+| 90% | 67 | ~0.191% |
+| 95% | 87 | ~0.248% |
+| 99% | 133 | ~0.379% |
+
+A one-per-thousand phenomenon (35 institutions after rounding) is detected only about 70.4% of the time in that SRS reference.
+
+The meta-loop then attacks its own assumption. If the selection mechanism is unconstrained, the same 1,200-institution sample can avoid all 87 carrier institutions, so the worst-case detection lower bound is **0%**. The published sample count therefore cannot, by itself, certify prevalence uncertainty or representativeness.
+
+E026 keeps the SRS calculation as a mathematical reference world but revokes its authority as an empirical calibration. All gates promote `sampling-design-metadata-required-before-prevalence-inference-v1`.
+
 ## Theory update
 
-The working theory after E010–E025 is:
+The working theory after E010–E026 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -421,6 +440,6 @@ The working theory after E010–E025 is:
 42. declared independence requires external evidence because topology labels do not prove causal independence;
 43. a hidden dependency hyperedge can dominate the nominal failure-domain topology;
 44. model misspecification can inflate estimated trust failure by orders of magnitude even when the quorum rule is unchanged;
-45. dependency discovery and failure-domain assignment must therefore be separate verification tasks;\n46. empirical observations need a separate admission plane from synthetic and certification evidence;\n47. public schema visibility does not imply public observation visibility;\n48. real regional revenue heterogeneity can invalidate a synthetic single-price assumption before any parameter fitting begins;\n49. period, unit, sampling design, and source authority are part of an empirical value's identity, not optional metadata;\n50. admitted empirical data can select simulator/model-family complexity before full calibration;\n51. for the five-quarter Netflix ARM window, a one-global-parameter or two-group regional family is too coarse at 10% tolerance, while a three-group family crosses the fidelity knee;\n52. structural compression should earn promotion on a temporal holdout rather than on the discovery quarters alone.
+45. dependency discovery and failure-domain assignment must therefore be separate verification tasks;\n46. empirical observations need a separate admission plane from synthetic and certification evidence;\n47. public schema visibility does not imply public observation visibility;\n48. real regional revenue heterogeneity can invalidate a synthetic single-price assumption before any parameter fitting begins;\n49. period, unit, sampling design, and source authority are part of an empirical value's identity, not optional metadata;\n50. admitted empirical data can select simulator/model-family complexity before full calibration;\n51. for the five-quarter Netflix ARM window, a one-global-parameter or two-group regional family is too coarse at 10% tolerance, while a three-group family crosses the fidelity knee;\n52. structural compression should earn promotion on a temporal holdout rather than on the discovery quarters alone;\n53. sample count alone does not identify an observation model or certify representativeness;\n54. optimistic sampling assumptions should be retained as reference worlds but lose empirical authority when an admissible selection adversary can overturn them;\n55. prevalence inference from sampled market observations requires sampling-frame and weighting metadata, not only n/N.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
