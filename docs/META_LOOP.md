@@ -379,3 +379,28 @@ observe
 ```
 
 This is minimal sufficient observability under uncertainty, not maximal state collection.
+
+
+## Authority and temporal admission for active sensing
+
+E046-E047 close two remaining loopholes in minimum-cost observation selection.
+
+E046 demonstrates that a cost-only optimizer can choose unauthorized evidence. Authorization is therefore a hard admissibility filter, not a soft penalty.
+
+E047 shows that authorization alone is still insufficient. Evidence must be fresh enough for the current hazard and aligned with the metric-definition generation required by the decision.
+
+The active-sensing sequence is now:
+
+```text
+enumerate observation candidates
+→ authority filter
+→ predicate-sufficiency filter
+→ freshness filter
+→ metric-generation filter
+→ cost optimization
+→ acquire
+→ propagate uncertainty
+→ re-evaluate predicate
+```
+
+This connects the empirical evidence plane directly to the uncertainty-aware control loop.
