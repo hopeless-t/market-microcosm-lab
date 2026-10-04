@@ -59,6 +59,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E028 · Japanese Failure Corpus** | What breaks when failed/withdrawn Japanese SaaS evidence is admitted? | ten new failure mechanisms appear beyond price/cost/user-churn stress; negative evidence becomes mandatory |
 | **E029 · Strategic Exit** | Is actor exit always an insolvency event? | empirical withdrawals plus a finite counterexample require strategic exit as a separate control action |
 | **E030 · Churn Semantics** | Does higher SaaS churn always mean a worse ecosystem? | BBD churn doubles while ARR/ARPA rise under pruning; churn must be layer- and cause-typed |
+| **E031 · PMF Proxy Guard** | Can revenue/high ACV/enthusiastic users certify PMF? | Srush/Leaner/SalesNow postmortems plus a finite ranking reversal reject short-run positive signals as sufficient certification |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -187,6 +188,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Churn has semantics.** E030 uses BBD's published portfolio pruning as a sign counterexample: FY2023 Q4→FY2024 Q3 churn rises 1.15%→2.33%, yet ARR rises 1,593→1,607 million JPY and ARPA rises 437,545→466,303 JPY while contracts fall. B2B MRR churn is not silently mapped into E010 end-user churn.
 
+**Revenue can be a PMF proxy trap.** E031 triangulates Srush, Leaner, and SalesNow postmortems: paying/high-value users, revenue, or deep customer pain can coexist with non-repeatable targeting, human-service burden, poor customer success, weak scalability, or a hard market ceiling. A finite witness reverses the winner when current revenue is replaced by multi-dimensional viability.
+
 That sequence matters:
 
 ```text
@@ -265,7 +268,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site
