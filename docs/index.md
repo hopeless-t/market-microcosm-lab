@@ -256,6 +256,18 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Temporal evidence identity</h3>
     <p>Authorized evidence must also be fresh and match the current metric-definition generation.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E048</div>
+    <div class="mm-metric">3 / 5</div>
+    <h3>Predicate evidence quorum</h3>
+    <p>One attestation is not final authority; three matching independent-domain witnesses are required.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E049</div>
+    <div class="mm-metric">3 sources</div>
+    <h3>Upstream source diversity</h3>
+    <p>Distinct witness domains still fail together when they consume one common feed; source lineage becomes part of quorum authority.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -334,7 +346,9 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E044** makes ABSTAIN an authorized result for boundary-straddling uncertainty.  
 **E045** adds minimum-cost predicate-scoped active sensing after abstention.  
 **E046** makes authorization a hard precondition before sensing-cost optimization.  
-**E047** further requires decision-time freshness and metric-generation alignment.
+**E047** further requires decision-time freshness and metric-generation alignment.  
+**E048** distributes predicate authority across an independent 3-of-5 evidence quorum.  
+**E049** attacks that quorum with a hidden shared upstream feed and adds evidence-source diversity.
 
 This produces a repeating research pattern:
 
@@ -401,6 +415,8 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E045 ODD](ODD_E045.md)
 - [E046 ODD](ODD_E046.md)
 - [E047 ODD](ODD_E047.md)
+- [E048 ODD](ODD_E048.md)
+- [E049 ODD](ODD_E049.md)
 
 ## Run locally
 
@@ -446,6 +462,8 @@ python scripts/run_e044.py
 python scripts/run_e045.py
 python scripts/run_e046.py
 python scripts/run_e047.py
+python scripts/run_e048.py
+python scripts/run_e049.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
