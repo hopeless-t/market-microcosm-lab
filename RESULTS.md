@@ -1145,16 +1145,16 @@ Each artifact is the sole support for two proof obligations. If one artifact fai
 
 Under a declared maximum proof-obligation blast of 1, the cost-6 E061 plan loses authority.
 
-Exact subset search returns the independent branch audits:
+Exact subset search returns a partially reused, corroborated plan:
 
 ```text
-network-targeted
+control-plane-bundle
 identity-targeted
 power-deep
 operator-targeted
 ```
 
-for total cost **8**, with one uniquely dependent obligation per artifact.
+for total cost **8**. Identity is covered both by the bundle and an independent artifact, so failure of the shared bundle leaves only network uniquely unsupported. The robust optimum therefore keeps evidence reuse where overlapping coverage constrains proof blast.
 
 E061's cost-only optimization remains mathematically correct for its original model, but its evidence-failure-domain authority is marked **REVOKED**.
 
@@ -1350,7 +1350,7 @@ The working theory after E010–E065 is:
 103. recursive dependency audit should stop at the minimum depth whose remaining unverified blast radius fits the downstream authority contract;
 104. audit depth is branch/proof-obligation specific rather than one global scalar;
 105. shared evidence couples branch obligations, so globally optimal audit allocation can require exact bundle/set-cover reasoning;
-106. shared audit evidence is itself a failure-domain choice, so cost savings from reuse require an explicit proof-obligation blast certificate;
+106. shared audit evidence is itself a failure-domain choice, so cost savings from reuse require an explicit proof-obligation blast certificate and may need overlapping independent corroboration;
 107. the cheapest evidence cover and the cheapest failure-domain-safe evidence cover can differ, and cost-only authority must be revoked when that distinction matters;
 108. KPI direction within one company and one metric generation can reverse its relationship to portfolio outcomes during product transition, so sign alone is not a health label;
 109. retrospective event explanations and prospective prediction features require separate evidence-time authority boundaries;
