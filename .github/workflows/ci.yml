@@ -1342,6 +1342,22 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run certificate meta-sensing
+        run: python scripts/run_e076.py
+      - name: Validate E076 certificate-meta-sensing contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e076/certificate-meta-sensing-report.json").read_text())
+          s=x["calibration_search"]["selected"]
+          assert s["calibration_ids"]==["gtm-incidence-study"]
+          assert s["calibration_cost"]==2
+          assert round(s["policy"]["worst_case_expected_cost"],3)==11.2
+          assert s["meets_target"] is True
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

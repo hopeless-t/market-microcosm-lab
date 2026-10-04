@@ -424,6 +424,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Interval ambiguity</h3>
     <p>With marginal intervals and arbitrary dependence, lower failure bounds maximize collection cost by prolonging the SAFE path.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E076</div>
+    <div class="mm-metric">12.0 → 11.2</div>
+    <h3>Certificate meta-sensing</h3>
+    <p>Targeted GTM calibration is the cheapest observation that tightens the robust bound below the declared 11.3 target.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -530,7 +536,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E072** shows that marginal priors are insufficient: joint dependence alone can reorder the policy.  
 **E073** adds that adversary to the robust set: the policy survives, but its old performance bound does not.  
 **E074** replaces sampled dependence with a tight all-joints-at-fixed-marginals ambiguity certificate.  
-**E075** also makes the marginals uncertain and shows that lower failure bounds drive worst collection cost.
+**E075** also makes the marginals uncertain and shows that lower failure bounds drive worst collection cost.  
+**E076** actively senses the certificate and buys only the calibration needed to cross a declared robust-bound target.
 
 This produces a repeating research pattern:
 
@@ -625,6 +632,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E073 ODD](ODD_E073.md)
 - [E074 ODD](ODD_E074.md)
 - [E075 ODD](ODD_E075.md)
+- [E076 ODD](ODD_E076.md)
 
 ## Run locally
 
@@ -698,6 +706,7 @@ python scripts/run_e072.py
 python scripts/run_e073.py
 python scripts/run_e074.py
 python scripts/run_e075.py
+python scripts/run_e076.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

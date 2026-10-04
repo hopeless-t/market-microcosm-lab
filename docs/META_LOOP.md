@@ -628,3 +628,10 @@ When the robust objective ties, a declared secondary objective — here referenc
 ## Marginal interval ambiguity
 
 E075 expands E074 from exact marginals to intervals. The meta-loop records that the adversarial parameter direction depends on the objective: for collection cost, low failure rates can be worse than high ones because they prolong SAFE-path sensing.
+
+
+## Certificate meta-sensing
+
+E076 recursively applies active sensing to the verifier. A robustness target is declared first; calibration evidence is then selected only for its ability to tighten the certificate enough to cross that target at minimum cost.
+
+This converts uncertainty reduction from an open-ended research goal into a proof-obligation-scoped acquisition problem.

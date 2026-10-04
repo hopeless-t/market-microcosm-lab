@@ -735,3 +735,12 @@ Tight Fréchet bounds leave two GTM-first orders tied at worst-case cost 11.0. R
 The adversarial direction is the lower failure bound because rarer WARN events prolong SAFE-path sensing. Two GTM-first orders tie at worst-case cost 12.0.
 
 [Read the E075 ODD](ODD_E075.md)
+
+
+## E076 — Certificate meta-sensing
+
+**Question:** what is the cheapest calibration observation that tightens the E075 robust bound below 11.3?
+
+Exact search selects GTM incidence calibration only, cost 2, reducing the worst-case acquisition certificate from 12.0 to 11.2.
+
+[Read the E076 ODD](ODD_E076.md)

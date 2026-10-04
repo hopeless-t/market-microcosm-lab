@@ -297,3 +297,8 @@ Arbitrary dependence at fixed E069 marginals is handled analytically. A nested-e
 ## E075 — Interval marginals × arbitrary dependence
 
 Marginal uncertainty is added to arbitrary dependence. The tight worst collection cost uses the lower failure bounds, not the upper ones, because fewer failures force longer SAFE-path evidence collection. GTM-first remains minimax at cost 12.0.
+
+
+## E076 — Certificate meta-sensing
+
+The verifier itself becomes an active-sensing target. A GTM incidence study is the minimum synthetic calibration action that tightens the interval/dependence robust acquisition bound from 12.0 to 11.2, crossing the declared 11.3 target.

@@ -126,6 +126,7 @@
 - [x] separate robust policy identity from performance-bound authority
 - [x] tight fixed-marginal dependence-ambiguity acquisition certificate
 - [x] interval-marginal plus arbitrary-dependence acquisition certificate
+- [x] minimum targeted calibration for robustness-certificate target
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary

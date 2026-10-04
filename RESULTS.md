@@ -1341,9 +1341,19 @@ Both GTM-first orders tie at tight worst-case expected cost **12.0**. Reference-
 
 All gates promote `interval-marginal-dependence-ambiguity-uses-lower-risk-frechet-bound-v1`.
 
+## E076 — certificate meta-sensing
+
+E076 applies active sensing to the robustness certificate itself.
+
+Starting from E075's tight worst-case acquisition cost **12.0**, the target is declared as **≤11.3**. Every subset of synthetic calibration actions is enumerated; after each candidate update, the interval/dependence robust policy is recompiled.
+
+The exact minimum target-reaching action is `gtm-incidence-study` at calibration cost **2**. It tightens the GTM failure lower bounds and reduces the robust acquisition certificate **12.0 → 11.2**. Finance-only and strategy-only calibration do not meet the target.
+
+All gates promote `acquire-minimum-calibration-evidence-to-meet-certificate-target-v1`.
+
 ## Theory update
 
-The working theory after E010–E075 is:
+The working theory after E010–E076 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1476,6 +1486,8 @@ The working theory after E010–E075 is:
 129. constructive nested bad events can witness the worst-case bound, separating a tight robustness certificate from arbitrary scenario sampling;
 130. dependence-robust minimax can leave multiple policies tied, requiring an explicit secondary objective such as reference-prior efficiency;
 131. when the objective is evidence-collection cost, lower failure probabilities can be adversarial because they delay positive warning termination;
-132. rectangular marginal uncertainty plus arbitrary dependence admits a tight worst-case certificate using lower marginal bounds and nested bad events.
+132. rectangular marginal uncertainty plus arbitrary dependence admits a tight worst-case certificate using lower marginal bounds and nested bad events;
+133. active sensing can target uncertainty in the certificate itself rather than only uncertainty in market state;
+134. certificate-calibration evidence should be acquired only until a declared robustness target is discharged, not until every uncertain parameter is maximally estimated.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
