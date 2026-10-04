@@ -47,3 +47,10 @@ E024 is deliberately not rendered as another synthetic response surface. It admi
 Current anchors include SARTRAS FY2022 accounting and sampling, Netflix Q2 2024 regional ARM, and Netflix H2 2025 engagement. Game Pass Partner Center remains an adapter/schema source unless authorized observations are actually available.\n\n## E025 — Regional complexity knee\n\nExact partition search over Netflix's four reported regions rejects one- and two-group ARM models at a 10% maximum-relative-error tolerance. The minimum admitted family has three groups: UCAN, EMEA, and LATAM+APAC. The selected structure remains inside tolerance on a one-quarter-forward Q2 2024 holdout.
 
 [Read the E024 ODD](ODD_E024.md)
+
+
+## E026 — Sampling assumption audit
+
+SARTRAS's published sample count supports a useful hypothetical SRS detection curve, but E026 immediately adversarially tests that convenience assumption. Without an identified institution-selection design, the same sample size admits a zero-detection construction.
+
+The promoted output is therefore a stricter evidence rule, not an optimistic prevalence estimate: sampling-frame, strata/weights, nonresponse, and time-window metadata are required before sample-derived prevalence calibration.
