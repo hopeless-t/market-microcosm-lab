@@ -304,6 +304,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Redundant sensing</h3>
     <p>Measurement-design expansion repairs two-error UNSAT with a distance-five, exhaustively verified code.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E056</div>
+    <div class="mm-metric">5 roots</div>
+    <h3>Measurement domains</h3>
+    <p>Distance-five redundancy is only operationally valid when one physical root cannot corrupt more than the certified bit budget.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -390,7 +396,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E052** minimizes the lineage-discovery probe portfolio.  
 **E053** separates noiseless identification from one-error-correcting robustness.  
 **E054** compiles probe authority from the declared error budget and can return UNSAT.  
-**E055** expands independent measurement channels to repair a stronger robustness requirement.
+**E055** expands independent measurement channels to repair a stronger robustness requirement.  
+**E056** proves that those channels also need physical failure-domain diversity; repetition alone is not redundancy.
 
 This produces a repeating research pattern:
 
@@ -465,6 +472,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E053 ODD](ODD_E053.md)
 - [E054 ODD](ODD_E054.md)
 - [E055 ODD](ODD_E055.md)
+- [E056 ODD](ODD_E056.md)
 
 ## Run locally
 
@@ -518,6 +526,7 @@ python scripts/run_e052.py
 python scripts/run_e053.py
 python scripts/run_e054.py
 python scripts/run_e055.py
+python scripts/run_e056.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
