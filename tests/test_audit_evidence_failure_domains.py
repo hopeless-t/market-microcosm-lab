@@ -14,14 +14,14 @@ def test_e061_shared_bundle_plan_has_common_mode_blast_two() -> None:
     ] == 2
 
 
-def test_failure_domain_safe_cover_returns_independent_plan() -> None:
+def test_failure_domain_safe_cover_uses_corroborated_bundle() -> None:
     row = exact_failure_domain_aware_audit_cover()
     selected = row["selected"]
 
     assert selected["total_cost"] == 8
     assert selected["action_ids"] == [
+        "control-plane-bundle",
         "identity-targeted",
-        "network-targeted",
         "operator-targeted",
         "power-deep",
     ]
