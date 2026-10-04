@@ -114,3 +114,16 @@ The multi-signal rule retains greater than 98% precision, recall, and F1. Revenu
 A new interaction-only failure law is enough to invalidate E036 despite its strong untouched-seed holdout. Legacy recall falls below the prior authority threshold, so the warning certificate is revoked.
 
 Adding the interaction term restores greater than 99% precision and recall on the shifted generation. Warning authority is now explicitly structural-generation scoped.
+
+
+## E038 — Real longitudinal component holdout
+
+Informetis supplies the first real-company quarterly holdout. Smart Living Standard ARR values 266→256→231 fit a frozen retention model that predicts Q4 at about 215.27 million JPY versus 216 observed.
+
+The neighboring Light component rejects the same decay story, so the promoted object is an event-annotated component model rather than a universal ARR law.
+
+## E039 — Rolling KPI observation lag
+
+Informetis defines ARR using the trailing six-month average MRR. The metric therefore has deterministic memory: three months after an abrupt component end, half of the pre-end signal remains in a six-month window.
+
+Early-warning lead-time claims must separate underlying state change from metric-window and publication delays.
