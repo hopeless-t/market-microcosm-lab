@@ -274,6 +274,36 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Evidence lineage</h3>
     <p>Three distinct source labels can still share one master root; quorum authority follows lineage dependencies, not names.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E051</div>
+    <div class="mm-metric">active probe</div>
+    <h3>Lineage discovery</h3>
+    <p>Bounded interventions expose a hidden common root across multiple sources and witness domains.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E052</div>
+    <div class="mm-metric">3 probes</div>
+    <h3>Minimum probe set</h3>
+    <p>Exact experiment design finds the lowest-cost noiseless portfolio that distinguishes every reference lineage hypothesis.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E053</div>
+    <div class="mm-metric">d=3</div>
+    <h3>Noisy probe code</h3>
+    <p>The noiseless minimum breaks on one bit error; all six probes are required for a one-error-correcting distance-three code.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E054</div>
+    <div class="mm-metric">SAT / UNSAT</div>
+    <h3>Robustness compiler</h3>
+    <p>Error budget becomes an explicit input that compiles to a minimum probe certificate or fails closed.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E055</div>
+    <div class="mm-metric">10 channels</div>
+    <h3>Redundant sensing</h3>
+    <p>Measurement-design expansion repairs two-error UNSAT with a distance-five, exhaustively verified code.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -355,7 +385,12 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E047** further requires decision-time freshness and metric-generation alignment.  
 **E048** distributes predicate authority across an independent 3-of-5 evidence quorum.  
 **E049** attacks that quorum with a hidden shared upstream feed and adds evidence-source diversity.  
-**E050** pushes the audit through the source labels to upstream lineage roots.
+**E050** pushes the audit through the source labels to upstream lineage roots.  
+**E051** actively probes for hidden roots.  
+**E052** minimizes the lineage-discovery probe portfolio.  
+**E053** separates noiseless identification from one-error-correcting robustness.  
+**E054** compiles probe authority from the declared error budget and can return UNSAT.  
+**E055** expands independent measurement channels to repair a stronger robustness requirement.
 
 This produces a repeating research pattern:
 
@@ -425,6 +460,11 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E048 ODD](ODD_E048.md)
 - [E049 ODD](ODD_E049.md)
 - [E050 ODD](ODD_E050.md)
+- [E051 ODD](ODD_E051.md)
+- [E052 ODD](ODD_E052.md)
+- [E053 ODD](ODD_E053.md)
+- [E054 ODD](ODD_E054.md)
+- [E055 ODD](ODD_E055.md)
 
 ## Run locally
 
@@ -473,6 +513,11 @@ python scripts/run_e047.py
 python scripts/run_e048.py
 python scripts/run_e049.py
 python scripts/run_e050.py
+python scripts/run_e051.py
+python scripts/run_e052.py
+python scripts/run_e053.py
+python scripts/run_e054.py
+python scripts/run_e055.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
