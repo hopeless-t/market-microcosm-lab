@@ -132,6 +132,64 @@ def empirical_source_registry() -> tuple[EmpiricalSource, ...]:
             url="https://www.kaggle.com/datasets/netflix-inc/netflix-prize-data",
         ),
         EmpiricalSource(
+            source_id="gamepass-2022-members-lower-bound",
+            name="Microsoft Game Pass 25M+ subscriber milestone",
+            provider="Microsoft",
+            access_class="public_official",
+            public_values=True,
+            authority_class="official",
+            observed_through="2022-01-18",
+            granularity="public membership headline",
+            observables=("membership_scale",),
+            limitations=(
+                "The published value is a lower bound: more than 25 million.",
+                "The later Game Pass Core conversion changes comparability risk.",
+            ),
+            url=(
+                "https://news.microsoft.com/source/2022/01/18/"
+                "microsoft-to-acquire-activision-blizzard-to-bring-the-joy-"
+                "and-community-of-gaming-to-everyone-across-every-device/"
+            ),
+        ),
+        EmpiricalSource(
+            source_id="gamepass-core-2023-definition-event",
+            name="Xbox Game Pass Core launch / Xbox Live Gold conversion",
+            provider="Microsoft / Xbox",
+            access_class="public_official",
+            public_values=True,
+            authority_class="official",
+            observed_through="2023-09-14",
+            granularity="membership-definition event",
+            observables=("metric_definition",),
+            limitations=(
+                "This is a scope/change event rather than a membership count.",
+            ),
+            url=(
+                "https://news.xbox.com/en-us/2023/07/17/"
+                "xbox-game-pass-core/"
+            ),
+        ),
+        EmpiricalSource(
+            source_id="gamepass-2024-members-rounded",
+            name="Xbox 34M Game Pass member headline",
+            provider="Microsoft / Xbox",
+            access_class="public_official",
+            public_values=True,
+            authority_class="official",
+            observed_through="2024-02-15",
+            granularity="public membership headline",
+            observables=("membership_scale",),
+            limitations=(
+                "The public statement is a rounded headline value.",
+                "Metric scope must be reconciled with the 2023 Core conversion.",
+            ),
+            url=(
+                "https://news.xbox.com/en-us/podcast/"
+                "phil-spencer-sarah-bond-and-matt-booty-share-updates-"
+                "on-the-xbox-business/"
+            ),
+        ),
+        EmpiricalSource(
             source_id="gamepass-partner-center-schema",
             name="Microsoft Partner Center Game Pass datasets",
             provider="Microsoft",
