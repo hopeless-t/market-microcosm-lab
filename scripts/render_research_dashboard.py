@@ -15,6 +15,7 @@ E015 = ROOT / "artifacts/e015/adaptive-boundary-report.json"
 E016 = ROOT / "artifacts/e016/adaptive-guard-report.json"
 E017 = ROOT / "artifacts/e017/certificate-lifecycle-report.json"
 E018 = ROOT / "artifacts/e018/audit-portfolio-report.json"
+E019 = ROOT / "artifacts/e019/provenance-ledger-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -587,7 +588,70 @@ def render_e018(payload: dict) -> str:
 </svg>
 '''
 
-def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict) -> str:
+
+def render_e019(payload: dict) -> str:
+    reference = payload["reference"]
+    attacks = payload["attacks"]
+    event_count = len(reference["events"])
+    replay = reference["replay_state"]
+    rehash = attacks["full_rehash_rewrite"]
+
+    width = 1040
+    height = 430
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E019 durable certificate provenance ledger</title>
+<desc id="desc">Hash-chain provenance catches local corruption, while an independent checkpoint catches a fully rehashed history rewrite.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .head {{ font: 700 13px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; letter-spacing: 1px; }}
+  .mode {{ font: 800 22px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .body {{ font: 14px Inter,Segoe UI,Arial,sans-serif; fill: #d8e4f2; }}
+  .ok {{ fill: #0f3d32; stroke: #22c55e; stroke-width: 2; }}
+  .bad {{ fill: #3c1721; stroke: #f43f5e; stroke-width: 2; }}
+  .warn {{ fill: #3b2a14; stroke: #f59e0b; stroke-width: 2; }}
+  .checkpoint {{ fill: #172554; stroke: #60a5fa; stroke-width: 2; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#281536"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E019 · Durable Certificate Provenance</text>
+<text x="30" y="68" class="sub">{event_count}-event reference ledger · append-only SHA-256 chain · out-of-ledger checkpoint</text>
+
+<rect x="30" y="100" width="300" height="108" rx="18" class="ok"/>
+<text x="52" y="128" class="head">REFERENCE LEDGER</text>
+<text x="52" y="162" class="mode">CHAIN + CHECKPOINT PASS</text>
+<text x="52" y="188" class="body">Replay: {replay["status"]} / {replay["required_mode"]}</text>
+
+<rect x="370" y="100" width="300" height="108" rx="18" class="bad"/>
+<text x="392" y="128" class="head">LOCAL CORRUPTION</text>
+<text x="392" y="162" class="mode">DETECTED INTERNALLY</text>
+<text x="392" y="188" class="body">payload · deletion · reorder → chain FAIL</text>
+
+<rect x="710" y="100" width="300" height="108" rx="18" class="warn"/>
+<text x="732" y="128" class="head">FULL REHASH REWRITE</text>
+<text x="732" y="162" class="mode">CHAIN STILL PASSES</text>
+<text x="732" y="188" class="body">forged replay → {rehash["replay_state"]["status"]}</text>
+
+<path d="M330 154 L365 154" stroke="#7dd3fc" stroke-width="3"/>
+<path d="M670 154 L705 154" stroke="#7dd3fc" stroke-width="3"/>
+
+<rect x="30" y="252" width="980" height="103" rx="20" class="checkpoint"/>
+<text x="52" y="282" class="head">INDEPENDENT CHECKPOINT</text>
+<text x="52" y="318" class="mode">REHASHED HISTORY → CHECKPOINT MISMATCH → REJECT</text>
+<text x="52" y="342" class="body">The ledger cannot certify its own rewritten history; the anchor lives outside the mutable chain.</text>
+
+<text x="30" y="393" class="sub">Append-only extension preserves prior hashes: {"YES" if payload["append_extension"]["prefix_hashes_preserved"] else "NO"}</text>
+<text x="30" y="416" class="sub">Promoted contract: {payload["promoted_ledger_contract"] or "NONE"}</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict, e019: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -669,9 +733,10 @@ def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, 
     drift_lifecycle = e017["drift_summary"]
     audit_portfolio = e018["aggregate"]
     greedy_trap = e018["greedy_trap"]
+    provenance_attacks = e019["attacks"]
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -773,6 +838,23 @@ Guard contract: **{"PASS" if e016["guard_contract_passed"] else "FAIL"}**.
 - Mandatory-over-budget: **FAIL CLOSED**
 - Promoted scheduler: **{e018["promoted_scheduler"] or "NONE"}**
 
+## E019 — durable certificate provenance ledger
+
+![E019 provenance ledger](e019-provenance.svg)
+
+| Integrity case | Internal chain | External checkpoint |
+| --- | --- | --- |
+| Reference history | **PASS** | **PASS** |
+| Payload tamper | **FAIL** | not needed |
+| Event deletion | **FAIL** | not needed |
+| Event reorder | **FAIL** | not needed |
+| Full rewrite + downstream rehash | **PASS** | **FAIL / detected** |
+
+- Reference replay: **{e019["reference"]["replay_state"]["status"]} / {e019["reference"]["replay_state"]["required_mode"]}**
+- Rehashed forged replay: **{provenance_attacks["full_rehash_rewrite"]["replay_state"]["status"]}**
+- Append-only extension preserves prefix hashes: **{"YES" if e019["append_extension"]["prefix_hashes_preserved"] else "NO"}**
+- Promoted ledger contract: **{e019["promoted_ledger_contract"] or "NONE"}**
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
@@ -786,6 +868,7 @@ def generated_files(
     e016: dict,
     e017: dict,
     e018: dict,
+    e019: dict,
 ) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
@@ -796,7 +879,8 @@ def generated_files(
         OUT / "e016-guard.svg": render_e016(e016),
         OUT / "e017-lifecycle.svg": render_e017(e017),
         OUT / "e018-audit-portfolio.svg": render_e018(e018),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018),
+        OUT / "e019-provenance.svg": render_e019(e019),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018, e019),
     }
 
 
@@ -817,7 +901,8 @@ def main() -> None:
     e016 = _read(E016)
     e017 = _read(E017)
     e018 = _read(E018)
-    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018)
+    e019 = _read(E019)
+    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018, e019)
 
     if args.check:
         stale: list[str] = []

@@ -266,6 +266,34 @@ jobs:
           })
           PY
 
+      - name: Run provenance ledger
+        run: python scripts/run_e019.py
+      - name: Validate E019 provenance contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e019/provenance-ledger-report.json").read_text())
+          assert x["experiment"] == "E019"
+          assert x["promoted_ledger_contract"] == "sha256-hash-chain-plus-external-checkpoint-v1"
+          assert x["reference"]["chain_valid"] is True
+          assert x["reference"]["checkpoint_valid"] is True
+          assert x["reference"]["replay_state"]["status"] == "ACTIVE"
+          attacks = x["attacks"]
+          assert attacks["payload_tamper_without_rehash"]["chain_valid"] is False
+          assert attacks["delete_event"]["chain_valid"] is False
+          assert attacks["reorder_events"]["chain_valid"] is False
+          assert attacks["full_rehash_rewrite"]["chain_valid"] is True
+          assert attacks["full_rehash_rewrite"]["checkpoint_valid"] is False
+          assert attacks["full_rehash_rewrite"]["replay_state"]["status"] == "REVOKED"
+          assert all(x["promotion_gate"].values())
+          print({
+              "ledger": x["promoted_ledger_contract"],
+              "reference_state": x["reference"]["replay_state"],
+              "rehash_attack": attacks["full_rehash_rewrite"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -286,6 +314,7 @@ jobs:
             artifacts/e016/adaptive-guard-report.json
             artifacts/e017/certificate-lifecycle-report.json
             artifacts/e018/audit-portfolio-report.json
+            artifacts/e019/provenance-ledger-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
@@ -294,4 +323,5 @@ jobs:
             docs/generated/e016-guard.svg
             docs/generated/e017-lifecycle.svg
             docs/generated/e018-audit-portfolio.svg
+            docs/generated/e019-provenance.svg
             docs/generated/research-dashboard.md

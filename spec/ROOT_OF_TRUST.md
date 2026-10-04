@@ -26,4 +26,7 @@ Changing any Root-of-Trust rule or the hard viability constraints creates a new 
 ## R8 — Evidence-bounded optimization authority
 An optimized or approximate verifier may operate only under a certificate tied to the exact evaluation generation that earned it. Certificate age, generation mismatch, expiry, or failed authoritative audit must remove optimized authority and fail closed to the authoritative verifier.
 
+## R9 — Externally anchored provenance
+A mutable certificate/audit history may not authenticate itself solely from internally recomputable hashes. Authoritative provenance must be bound to an independently trusted checkpoint, signature, transparency anchor, or equivalent evidence outside the mutable history being authenticated. A checkpoint mismatch fails closed.
+
 These rules are intentionally small. The meta-loop may improve almost everything else.

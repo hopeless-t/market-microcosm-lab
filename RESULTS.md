@@ -222,9 +222,30 @@ The fixed greedy trap makes the failure mode concrete:
 
 A separate mandatory-over-budget case is infeasible by construction. Oracle, DP, and greedy all fail closed instead of silently dropping a mandatory authoritative audit.
 
+## E019 — durable certificate provenance ledger
+
+E019 persists certificate authority transitions as an append-only SHA-256 hash chain and replays the resulting authority state.
+
+The reference ledger contains eight events spanning issuance, adaptive use, authoritative audit, generation mismatch, recertification, and renewed adaptive use. Internal chain verification and the external checkpoint both pass, and replay ends **ACTIVE / adaptive** on the recertified generation.
+
+Adversarial result:
+
+| Mutation | Internal chain | External checkpoint |
+| --- | --- | --- |
+| payload edit without rehash | FAIL | not needed |
+| event deletion | FAIL | not needed |
+| event reorder | FAIL | not needed |
+| full rewrite + downstream rehash | PASS | FAIL / detected |
+
+The strongest test rewrites the final adaptive-use event into a forged REVOKE and recomputes every downstream hash. Internal chain verification still reports a valid chain and replay ends **REVOKED / exhaustive**. The original out-of-ledger checkpoint rejects it through a head-hash mismatch.
+
+This is an important negative result: a hash chain is tamper-evident only relative to an independently trusted anchor. It is not self-authenticating history.
+
+Append-only extension also preserved every prior event hash.
+
 ## Theory update
 
-The working theory after E010–E018 is:
+The working theory after E010–E019 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -252,6 +273,9 @@ The working theory after E010–E018 is:
 24. structural drift and evidence expiry are distinct invalidation channels and both should force exhaustive mode;
 25. scarce audit budget creates a separate combinatorial control problem;
 26. locally efficient value-per-cost ordering can be globally suboptimal even when every individual score is correct;
-27. exact small-world portfolio oracles can validate faster budget schedulers before deployment.
+27. exact small-world portfolio oracles can validate faster budget schedulers before deployment;
+28. replayable certification history is a separate trust object from the current certificate state;
+29. hash-link integrity detects local mutation but cannot detect a fully recomputed rewrite without an independent anchor;
+30. provenance authority must therefore be external to the mutable history it authenticates.
 
-Next work should persist certificate/audit provenance as a durable ledger, then return to richer endogenous recommendation, pricing, and bargaining controllers under the hardened verifier architecture.
+Next work should harden external anchoring and checkpoint rotation, then return to richer endogenous recommendation, pricing, and bargaining controllers under the hardened verifier architecture.
