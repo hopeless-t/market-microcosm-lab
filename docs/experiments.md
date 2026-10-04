@@ -494,3 +494,20 @@ Yes. A cheap raw-ledger predicate query wins naive cost search but is inadmissib
 No. Stale evidence and old metric generations are rejected before cost optimization. The selected observation must be authorized, resolving, fresh, and generation-aligned.
 
 [Read the E047 ODD](ODD_E047.md)
+
+
+## E048 — Predicate-evidence witness quorum
+
+**Question:** can one fresh, authorized, generation-aligned predicate attestation be final authority?
+
+No. A 3-of-5 independent-domain quorum absorbs one bad witness; conflicts without quorum return ABSTAIN.
+
+[Read the E048 ODD](ODD_E048.md)
+
+## E049 — Upstream evidence-source diversity
+
+**Question:** are distinct witness failure domains sufficient evidence independence?
+
+No. Three witness domains can share one corrupted upstream feed and manufacture a false domain-diverse quorum. Requiring upstream source diversity revokes the false view.
+
+[Read the E049 ODD](ODD_E049.md)
