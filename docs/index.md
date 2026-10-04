@@ -160,6 +160,30 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>PMF signal guard</h3>
     <p>Revenue, high ACV, or enthusiastic users cannot certify repeatability, customer success, scalability, or market headroom by themselves.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E032</div>
+    <div class="mm-metric">cash ≠ revenue</div>
+    <h3>Collection lag</h3>
+    <p>Positive booked margin can fail before receivables arrive; liquidity timing becomes explicit state.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E033</div>
+    <div class="mm-metric">150→20</div>
+    <h3>Funnel attenuation</h3>
+    <p>Upstream target attainment cannot certify downstream orders or customer outcomes.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E034</div>
+    <div class="mm-metric">80%→10%</div>
+    <h3>Human delivery cost</h3>
+    <p>Software-only margin can collapse after recurring human delivery burden is included.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E035</div>
+    <div class="mm-metric">5 signals</div>
+    <h3>Early warning</h3>
+    <p>Negative-evidence mechanisms compile into a multi-signal warning vector that beats scalar proxies on the exact reference suite.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -222,7 +246,11 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E028** adds Japanese negative evidence and makes survivorship-bias coverage explicit.  
 **E029** separates strategic exit from forced insolvency.  
 **E030** uses BBD portfolio pruning to reject untyped churn as a universal health signal.  
-**E031** triangulates Japanese postmortems to reject revenue/high-ACV/enthusiastic-user signals as sufficient PMF certification.
+**E031** triangulates Japanese postmortems to reject revenue/high-ACV/enthusiastic-user signals as sufficient PMF certification.  
+**E032** separates booked revenue from delayed cash collection and liquidity runway.  
+**E033** separates upstream funnel KPIs from downstream customer value.  
+**E034** prices recurring human delivery into fully loaded margin.  
+**E035** compiles the resulting failure mechanisms into a first exact multi-signal early-warning benchmark.
 
 This produces a repeating research pattern:
 
@@ -273,6 +301,10 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E029 ODD](ODD_E029.md)
 - [E030 ODD](ODD_E030.md)
 - [E031 ODD](ODD_E031.md)
+- [E032 ODD](ODD_E032.md)
+- [E033 ODD](ODD_E033.md)
+- [E034 ODD](ODD_E034.md)
+- [E035 ODD](ODD_E035.md)
 
 ## Run locally
 
@@ -302,6 +334,10 @@ python scripts/run_e028.py
 python scripts/run_e029.py
 python scripts/run_e030.py
 python scripts/run_e031.py
+python scripts/run_e032.py
+python scripts/run_e033.py
+python scripts/run_e034.py
+python scripts/run_e035.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
