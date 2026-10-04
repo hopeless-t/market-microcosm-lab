@@ -76,3 +76,10 @@ Orderly withdrawal becomes a separate future control action from insolvency. The
 BBD's FY2023 Q4→FY2024 Q3 portfolio shows churn 1.15%→2.33% while ARR 1,593→1,607 million JPY and ARPA 437,545→466,303 JPY, with fewer contracts. The public explanation includes deliberate unprofitable-service exits and low-price-plan migration.
 
 Churn therefore requires layer and cause identity before it can enter an empirical market state.
+
+
+## E031 — PMF proxy guard
+
+Japanese postmortems now attack the success side as well as the failure side. Paying users, high ACV, revenue, or enthusiastic customers remain useful observations, but they do not certify a repeatable, scalable market.
+
+The promoted guard requires separate evidence for repeatability, customer success, product-delivered value rather than continuous human service, scalability, and market headroom.
