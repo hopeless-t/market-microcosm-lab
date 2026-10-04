@@ -71,6 +71,13 @@
 - sensitivity and identifiability reports
 
 ## v0.5 — Empirical case studies
+- [x] empirical evidence registry / access-authority plane
+- [x] exact public-source portfolio oracle
+- [x] SARTRAS accounting + sampling anchor
+- [x] Netflix engagement + regional ARM anchors
+- [x] Game Pass schema adapter held non-authoritative without partner values
+- [ ] regionalized empirical calibration world
+- [ ] sampled-observation empirical calibration world
 - SARTRAS
 - game subscription
 - video subscription
