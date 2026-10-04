@@ -982,6 +982,26 @@ jobs:
           print({"synthesis": x["synthesis"], "decode": x["exhaustive_decode"], "promoted": x["promoted_redundancy_rule"]})
           PY
 
+      - name: Run measurement failure-domain adversary
+        run: python scripts/run_e056.py
+      - name: Validate E056 measurement-domain contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e056/measurement-failure-domain-report.json").read_text())
+          assert x["experiment"] == "E056"
+          bad = x["bad_common_mode_counterexample"]
+          good = x["diversified_root_fault_check"]
+          assert bad["flipped_channel_count"] == 5
+          assert bad["misdecoded"] is True
+          assert good["root_count"] == 5
+          assert good["all_correct"] is True
+          assert x["promoted_domain_rule"] == "redundant-probe-channels-must-diversify-measurement-failure-roots-v1"
+          assert all(x["promotion_gate"].values())
+          print({"bad": bad, "good": good, "promoted": x["promoted_domain_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
