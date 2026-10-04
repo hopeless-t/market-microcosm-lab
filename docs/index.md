@@ -268,6 +268,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Upstream source diversity</h3>
     <p>Distinct witness domains still fail together when they consume one common feed; source lineage becomes part of quorum authority.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E050</div>
+    <div class="mm-metric">root graph</div>
+    <h3>Evidence lineage</h3>
+    <p>Three distinct source labels can still share one master root; quorum authority follows lineage dependencies, not names.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -348,7 +354,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E046** makes authorization a hard precondition before sensing-cost optimization.  
 **E047** further requires decision-time freshness and metric-generation alignment.  
 **E048** distributes predicate authority across an independent 3-of-5 evidence quorum.  
-**E049** attacks that quorum with a hidden shared upstream feed and adds evidence-source diversity.
+**E049** attacks that quorum with a hidden shared upstream feed and adds evidence-source diversity.  
+**E050** pushes the audit through the source labels to upstream lineage roots.
 
 This produces a repeating research pattern:
 
@@ -417,6 +424,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E047 ODD](ODD_E047.md)
 - [E048 ODD](ODD_E048.md)
 - [E049 ODD](ODD_E049.md)
+- [E050 ODD](ODD_E050.md)
 
 ## Run locally
 
@@ -464,6 +472,7 @@ python scripts/run_e046.py
 python scripts/run_e047.py
 python scripts/run_e048.py
 python scripts/run_e049.py
+python scripts/run_e050.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
