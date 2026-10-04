@@ -611,3 +611,12 @@ No. Branch-specific proof obligations cut the safe audit cost from 16 to 8.
 No. Shared audit actions cover multiple obligations; exact set-cover reduces the safe cost from 8 to 6.
 
 [Read the E061 ODD](ODD_E061.md)
+
+
+## E062 — Audit-evidence failure domains
+
+**Question:** can shared audit evidence become a common-mode failure even when it is the cheapest complete proof cover?
+
+Yes. Each E061 bundle uniquely supports two obligations, so one artifact failure has blast 2. Under a one-obligation blast budget, exact robust cover returns to the independent cost-8 plan.
+
+[Read the E062 ODD](ODD_E062.md)
