@@ -94,7 +94,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E059 · Dependency-Depth Stopping** | How deep should recursive dependency audit continue? | stop at the minimum depth whose maximum unverified blast fits the downstream correction budget; depth 2 / cost 5 |
 | **E060 · Heterogeneous Audit Allocation** | Must every dependency branch be audited equally deeply? | no; proof-obligation-specific depth halves cost from 16 to 8 |
 | **E061 · Coupled Audit Bundles** | Are branch audits really independent? | no; shared audit bundles reduce the exact safe cover from cost 8 to cost 6 |
-| **E062 · Audit Evidence Failure Domains** | Can shared audit evidence fail as one common-mode artifact? | yes; E061 cost-6 plan has proof blast 2, so failure-domain-safe optimum returns to cost 8 |
+| **E062 · Audit Evidence Failure Domains** | Can shared audit evidence fail as one common-mode artifact? | yes; E061 cost-6 plan has proof blast 2; exact safe optimum is cost 8 with one shared bundle plus independent corroboration |
 | **E063 · Real Portfolio Transition** | Can churn direction certify ARR/portfolio direction inside one company-year? | no; BBD FY2025 shows churn-down with ARR-up and churn-down with ARR-down under one metric generation |
 | **E064 · Prospective Evidence Cutoff** | Can Q4 explanations be used in a Q3 warning? | no; future-only annotations are valid for retrospective explanation but rejected as prospective features |
 | **E065 · Public Warning Sufficiency** | Does public Q3 IR cover the five structural warning axes? | no; 0/5 direct coverage, so the public-data evaluator ABSTAINS instead of imputing hidden state |
@@ -296,7 +296,7 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Shared evidence couples audit allocation.** E061 adds audit bundles that cover multiple proof obligations. Exact set-cover chooses two shared bundles for cost 6, beating the E060 branch-separable optimum.
 
-**Shared evidence is also a failure domain.** E062 treats one audit artifact failure as a common-mode event. Each E061 bundle is the sole support for two obligations, so its proof blast is 2. Under a one-obligation blast budget, the cost-6 authority is revoked and the exact robust cover returns to independent cost 8.
+**Shared evidence is also a failure domain.** E062 treats one audit artifact failure as a common-mode event. Each E061 bundle is the sole support for two obligations, so its proof blast is 2. Under a one-obligation blast budget, the cost-6 authority is revoked. The exact cost-8 repair still reuses the control-plane bundle, but independently corroborates identity so one artifact failure can strand at most one obligation.
 
 **Real portfolio transitions scramble KPI signs.** E063 uses BBD FY2025 Q1–Q4. Churn improvement coexists once with ARR growth and later with ARR decline, while contracts fall every quarter; the same KPI sign is not a health label.
 
