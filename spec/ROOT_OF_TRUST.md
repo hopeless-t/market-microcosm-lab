@@ -35,4 +35,7 @@ Rotating or replacing provenance anchors must preserve verifiable continuity to 
 ## R11 — Witness quorum integrity
 When provenance authority is distributed across witnesses, the acceptance threshold and compromise boundary must be explicit and independently testable. The chosen quorum geometry must preserve the declared intersection property, authenticated attestations must be retained, and conflicting accepted views must surface equivocation evidence or fail closed rather than silently choosing one history.
 
+## R12 — Failure-domain independence
+Witness identity count must not be treated as independent resilience by default. The failure-domain mapping, minimum independent domains required to forge or deny quorum, and material common-mode dependencies must be explicit and testable. A topology that collapses the declared quorum under fewer domains than the accepted trust contract may not be promoted.
+
 These rules are intentionally small. The meta-loop may improve almost everything else.

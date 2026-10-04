@@ -238,8 +238,26 @@ Two conflicting 3-of-5 views can both verify, but because the quorums intersect,
 
 ---
 
+## E022 — Failure-domain diversity
+
+**Purpose:** test whether five witness identities actually represent five independent failure domains.
+
+The same 3-of-5 threshold is evaluated under three placements:
+
+- concentrated 3-1-1;
+- balanced 2-2-1;
+- independent 1-1-1-1-1.
+
+Exact domain-subset enumeration shows minimum domains to forge of **1, 2, and 3** respectively.
+
+At the experiment's illustrative 10% independent per-domain event probability, modeled forge probability is **10.0%, 2.8%, and 0.856%**. Full separation reduces the modeled forge probability by **91.44%** versus the concentrated topology.
+
+[Read the E022 ODD](ODD_E022.md)
+
+---
+
 ## What comes next
 
-Move from in-process synthetic witness keys to stronger signed or transparency-published checkpoints and stress correlated witness failure domains.
+Attack the domain labels themselves: introduce hidden common-mode dependencies and heterogeneous risk so nominally distinct providers/regions can still fail together.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).

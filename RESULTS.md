@@ -297,9 +297,27 @@ Both verify, but witness 2 appears in the intersection and has signed both check
 
 The result does not claim 3-of-5 prevents all split views. It shows that quorum intersection converts a successful conflicting-view attack into an attributable witness contradiction unless enough evidence is suppressed.
 
+## E022 — correlated witness failure domains
+
+E022 tests the E021 3-of-5 quorum under correlated witness placement.
+
+All domain subsets are exhaustively enumerated.
+
+| Witness placement | Min domains to forge | Min domains to break availability | Forge probability at p=10% |
+| --- | ---: | ---: | ---: |
+| concentrated 3-1-1 | 1 | 1 | 10.000% |
+| balanced 2-2-1 | 2 | 2 | 2.800% |
+| independent 1-1-1-1-1 | 3 | 3 | 0.856% |
+
+The nominal quorum threshold is identical in all three cases. The effective security boundary is not.
+
+Under the declared homogeneous independent-domain model, the fully separated topology reduces modeled forge probability by **91.44%** relative to 3-1-1 concentration. The availability-loss boundary follows the same 1 → 2 → 3 domain geometry.
+
+The result is not evidence that real providers or regions are independent. It shows why independence must be modeled and evidenced separately from witness identity count.
+
 ## Theory update
 
-The working theory after E010–E021 is:
+The working theory after E010–E022 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -338,6 +356,10 @@ The working theory after E010–E021 is:
 35. distributing anchor authority requires a threshold whose quorum geometry is itself verified;
 36. strict-majority quorum intersection does not prevent threshold compromise, but it makes conflicting accepted views overlap;
 37. retained authenticated attestations can turn that overlap into equivocation evidence;
-38. the compromise threshold and availability threshold are explicit parameters, not hidden security assumptions.
+38. the compromise threshold and availability threshold are explicit parameters, not hidden security assumptions;
+39. witness-count diversity and failure-domain diversity are separate quantities;
+40. correlated placement can collapse nominal 3-of-5 security to a single-domain failure;
+41. minimum domains to forge is a more informative resilience metric than witness count alone;
+42. declared independence requires external evidence because topology labels do not prove causal independence.
 
-Next work should move from in-process synthetic witness keys to a stronger signed/transparency-log model or multiple independent publication channels, then return to richer endogenous recommendation, pricing, and bargaining controllers.
+Next work should stress hidden common-mode dependencies and stronger signed/transparency publication, then return to richer endogenous recommendation, pricing, and bargaining controllers.

@@ -152,3 +152,14 @@ That intersection does not make compromise impossible. Three compromised witness
 - two conflicting accepted 3-of-5 views must share at least one witness, so retained authenticated attestations can expose equivocation.
 
 The threshold is therefore part of the trust model, not merely a performance parameter.
+
+
+## Failure-domain-aware witness topology
+
+E022 makes witness placement another meta-level design variable.
+
+Five identities do not imply five independent failures. Under the same 3-of-5 quorum, a 3-1-1 placement lets one domain compromise satisfy quorum, a 2-2-1 placement needs two domains, and one witness per domain needs three.
+
+The meta-loop may therefore optimize witness placement only against explicit domain-level objectives such as minimum domains to forge, minimum domains to break availability, and declared common-mode risk. It may not use nominal witness count as a proxy for independence.
+
+Domain labels remain hypotheses. Provider, region, operator, network, key-store, or jurisdiction separation must be evidenced rather than inferred from naming alone.

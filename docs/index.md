@@ -100,6 +100,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Witness quorum</h3>
     <p>Strict-majority witness geometry blocks 1–2 forged signers and exposes split-view equivocation.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E022</div>
+    <div class="mm-metric">1 → 3</div>
+    <h3>Failure domains</h3>
+    <p>Effective compromise resistance rises from one to three domains as correlated witness placement is removed.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -128,6 +134,8 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
 
 ![E021 witness quorum](generated/e021-witness-quorum.svg)
 
+![E022 failure-domain diversity](generated/e022-failure-domains.svg)
+
 These figures are generated from experiment JSON and checked by CI so the public display cannot silently drift away from the current evidence.
 
 ## North Star
@@ -148,7 +156,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E018** allocates scarce audit budget across multiple certificates against an exact small-world oracle.  
 **E019** makes certificate history replayable and externally anchored so a fully rehashed rewrite cannot self-certify.  
 **E020** rotates those anchors without forgetting previously trusted history and detects checkpoint forks.  
-**E021** distributes checkpoint authority across a 3-of-5 witness quorum and retains equivocation evidence for conflicting accepted views.
+**E021** distributes checkpoint authority across a 3-of-5 witness quorum and retains equivocation evidence for conflicting accepted views.  
+**E022** measures correlated witness placement and distinguishes nominal witness count from independent failure-domain resilience.
 
 This produces a repeating research pattern:
 
@@ -189,6 +198,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E019 ODD](ODD_E019.md)
 - [E020 ODD](ODD_E020.md)
 - [E021 ODD](ODD_E021.md)
+- [E022 ODD](ODD_E022.md)
 
 ## Run locally
 
@@ -208,6 +218,7 @@ python scripts/run_e018.py
 python scripts/run_e019.py
 python scripts/run_e020.py
 python scripts/run_e021.py
+python scripts/run_e022.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

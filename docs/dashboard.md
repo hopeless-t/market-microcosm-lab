@@ -7,7 +7,7 @@ title: Research Dashboard
 
 # Research Dashboard
 
-This page exposes the current **model-relative** E011–E021 result surfaces. The underlying assets are deterministically generated from experiment JSON and checked by CI.
+This page exposes the current **model-relative** E011–E022 result surfaces. The underlying assets are deterministically generated from experiment JSON and checked by CI.
 
 ![E011 pressure resilience](generated/e011-pressure.svg)
 
@@ -30,6 +30,8 @@ This page exposes the current **model-relative** E011–E021 result surfaces. Th
 ![E020 checkpoint rotation](generated/e020-checkpoint-rotation.svg)
 
 ![E021 witness quorum](generated/e021-witness-quorum.svg)
+
+![E022 failure-domain diversity](generated/e022-failure-domains.svg)
 
 [View the generated table](generated/research-dashboard.md) · [Read the full results on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/RESULTS.md)
 

@@ -1,6 +1,6 @@
 # Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021/E022 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -170,5 +170,19 @@ Guard contract: **PASS**.
 - Equivocation evidence: **witness-2@3**
 - Invalid signature rejected: **YES**
 - Promoted witness contract: **three-of-five-witness-quorum-with-equivocation-detection-v1**
+
+## E022 — correlated witness failure domains
+
+![E022 failure-domain diversity](e022-failure-domains.svg)
+
+| Topology | Min domains to forge | Forge probability @ 10% domain event |
+| --- | ---: | ---: |
+| concentrated 3-1-1 | **1** | **10.000%** |
+| balanced 2-2-1 | **2** | **2.800%** |
+| independent 1-1-1-1-1 | **3** | **0.856%** |
+
+- Modeled forge-risk reduction, independent vs concentrated: **91.4%**
+- Availability-loss domain boundary: **1 → 2 → 3**
+- Promoted failure-domain rule: **quorum-witnesses-must-span-at-least-three-independent-domains-v1**
 
 These are model-relative synthetic results. They are not real-market recommendations.
