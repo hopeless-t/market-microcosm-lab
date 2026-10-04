@@ -488,3 +488,30 @@ physical measurement failure-domain certificate
 ```
 
 Neither certificate inherits the other automatically.
+
+
+## Recursive lineage repair and bounded audit depth
+
+E057 recursively attacks the measurement roots promoted by E056 and discovers a hidden super-root whose single failure exceeds the certified bit budget.
+
+E058 restores the original contract by exact minimum-cost topology repair rather than by silently weakening the threat model.
+
+E059 then gives recursive dependency discovery a stopping certificate: continue only until the maximum remaining unverified common-mode blast radius is inside the downstream correction budget.
+
+E060 makes that depth branch-specific, and E061 further recognizes that one shared audit action can discharge multiple branch proof obligations.
+
+The resulting loop is:
+
+```text
+certify failure domains
+→ recursively probe roots
+→ hidden super-root discovered
+→ revoke
+→ synthesize minimum-cost topology repair
+→ compile required audit depth from downstream blast budget
+→ allocate depth per proof obligation
+→ reuse shared evidence through coupled audit bundles
+→ reverify
+```
+
+"More auditing" is not a monotone objective. The target is minimum sufficient, reusable evidence for the declared authority claim.
