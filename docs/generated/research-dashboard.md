@@ -1,6 +1,6 @@
 # Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -132,5 +132,25 @@ Guard contract: **PASS**.
 - Rehashed forged replay: **REVOKED**
 - Append-only extension preserves prefix hashes: **YES**
 - Promoted ledger contract: **sha256-hash-chain-plus-external-checkpoint-v1**
+
+## E020 — checkpoint rotation and anchor continuity
+
+![E020 checkpoint rotation](e020-checkpoint-rotation.svg)
+
+| Case | Result |
+| --- | --- |
+| Honest rotation | **PASS** |
+| Pinned checkpoint continuity | **PASS** |
+| Delete checkpoint | **REJECTED** |
+| Reorder checkpoints | **REJECTED** |
+| Latest-only forged checkpoint | **ACCEPTED by weak verifier** |
+| Same rewrite with pinned history | **REJECTED** |
+| Checkpoint fork | **DETECTED** |
+
+- Anchored ledger prefix: **8/10 events**
+- Unanchored tail: **2 events**
+- Latest-only weakness: **ok**
+- Pinned rotation result: **ledger prefix mismatch at 0**
+- Promoted rotation contract: **rotating-checkpoint-chain-with-pinned-anchor-v1**
 
 These are model-relative synthetic results. They are not real-market recommendations.

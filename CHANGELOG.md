@@ -4,7 +4,7 @@
 
 ### Presentation and research UX
 
-- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018/E019 JSON;
+- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020 JSON;
 - CI freshness check for visual result surfaces and Actions job summary;
 - dashboard page and social-preview artwork source;
 
@@ -43,7 +43,12 @@
 - direct payload mutation, deletion, and reorder attacks detected internally;
 - full history rewrite + downstream rehash shown to defeat internal-only chain validation;
 - independent checkpoint detects fully rehashed rewrite through head-hash mismatch;
-- Root of Trust R9 requires externally anchored provenance.
+- Root of Trust R9 requires externally anchored provenance;
+- E020 rotating checkpoint chain over a 10-event ledger with 8-event anchored prefix;
+- latest-only rewritten-history forgery shown to pass weak verification;
+- pinned checkpoint continuity rejects the same rewritten prefix;
+- checkpoint deletion, reorder, and fork detection;
+- Root of Trust R10 requires anchor continuity across rotation.
 
 ## v0.2 — Ecological market dynamics
 

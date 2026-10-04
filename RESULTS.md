@@ -243,9 +243,35 @@ This is an important negative result: a hash chain is tamper-evident only relati
 
 Append-only extension also preserved every prior event hash.
 
+## E020 — checkpoint rotation and anchor continuity
+
+E020 extends E019 from one external checkpoint to a rotating checkpoint chain.
+
+The reference ledger has 10 events. Checkpoints anchor prefixes after event counts 2, 4, 6, and 8, deliberately leaving a two-event unanchored tail.
+
+Reference result:
+
+- honest checkpoint rotation: **PASS**;
+- independently pinned checkpoint continuity: **PASS**;
+- replay remains **ACTIVE / adaptive**;
+- anchored prefix: **8/10 events**;
+- unanchored tail: **2 events**.
+
+Adversarial result:
+
+| Attack | Result |
+| --- | --- |
+| checkpoint deletion | rejected |
+| checkpoint reorder | rejected |
+| checkpoint fork | detected |
+| rewrite old prefix + forge latest-only checkpoint | weak latest-only verifier accepts |
+| same rewritten history with pinned rotation | rejected |
+
+The latest-only attack is the important negative result. If the verifier forgets older trusted anchors, a rewritten ledger plus a newly self-consistent checkpoint can look valid. Keeping continuity to a previously pinned checkpoint rejects the same history through a ledger-prefix mismatch.
+
 ## Theory update
 
-The working theory after E010–E019 is:
+The working theory after E010–E020 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -276,6 +302,10 @@ The working theory after E010–E019 is:
 27. exact small-world portfolio oracles can validate faster budget schedulers before deployment;
 28. replayable certification history is a separate trust object from the current certificate state;
 29. hash-link integrity detects local mutation but cannot detect a fully recomputed rewrite without an independent anchor;
-30. provenance authority must therefore be external to the mutable history it authenticates.
+30. provenance authority must therefore be external to the mutable history it authenticates;
+31. replacing an anchor is not equivalent to extending trust — rotation must preserve continuity to previously trusted anchors;
+32. latest-only verification can forget historical trust and accept a self-consistent rewritten past;
+33. anchored and unanchored ledger regions should be explicitly distinguished;
+34. checkpoint forks are a first-class provenance conflict rather than a normal alternate history.
 
-Next work should harden external anchoring and checkpoint rotation, then return to richer endogenous recommendation, pricing, and bargaining controllers under the hardened verifier architecture.
+Next work should test signed or independently witnessed checkpoint publication, then return to richer endogenous recommendation, pricing, and bargaining controllers under the hardened verifier architecture.

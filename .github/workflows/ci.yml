@@ -294,6 +294,33 @@ jobs:
           })
           PY
 
+      - name: Run checkpoint rotation
+        run: python scripts/run_e020.py
+      - name: Validate E020 checkpoint rotation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e020/checkpoint-rotation-report.json").read_text())
+          assert x["experiment"] == "E020"
+          assert x["promoted_rotation_contract"] == "rotating-checkpoint-chain-with-pinned-anchor-v1"
+          assert x["reference"]["rotation_valid"] is True
+          assert x["reference"]["pinned_rotation_valid"] is True
+          attacks = x["attacks"]
+          assert attacks["delete_checkpoint"]["rotation_valid"] is False
+          assert attacks["reorder_checkpoints"]["rotation_valid"] is False
+          assert attacks["latest_only_forgery"]["latest_only_valid"] is True
+          assert attacks["latest_only_forgery"]["pinned_rotation_valid"] is False
+          assert attacks["checkpoint_fork"]["detected"] is True
+          assert all(x["promotion_gate"].values())
+          print({
+              "rotation": x["promoted_rotation_contract"],
+              "anchored": x["reference"]["anchored_event_count"],
+              "tail": x["reference"]["unanchored_tail_events"],
+              "attacks": attacks,
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -315,6 +342,7 @@ jobs:
             artifacts/e017/certificate-lifecycle-report.json
             artifacts/e018/audit-portfolio-report.json
             artifacts/e019/provenance-ledger-report.json
+            artifacts/e020/checkpoint-rotation-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
@@ -324,4 +352,5 @@ jobs:
             docs/generated/e017-lifecycle.svg
             docs/generated/e018-audit-portfolio.svg
             docs/generated/e019-provenance.svg
+            docs/generated/e020-checkpoint-rotation.svg
             docs/generated/research-dashboard.md

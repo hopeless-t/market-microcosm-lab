@@ -194,8 +194,36 @@ A fixed counterexample produces **160** under greedy selection versus **220** un
 
 ---
 
+## E019 — Durable certificate provenance ledger
+
+**Purpose:** make certificate authority history replayable and detect history rewriting.
+
+The reference eight-event ledger verifies internally, matches its out-of-ledger checkpoint, and replays to ACTIVE/adaptive on the recertified generation.
+
+Local payload edits, deletion, and event reordering are rejected by the hash chain.
+
+The stronger adversarial result rewrites history and recomputes every downstream hash. The forged chain remains internally valid and replays to REVOKED/exhaustive, but the previously anchored checkpoint rejects the new head hash.
+
+[Read the E019 ODD](ODD_E019.md)
+
+---
+
+## E020 — Checkpoint rotation and anchor continuity
+
+**Purpose:** rotate external provenance checkpoints without allowing a new checkpoint to erase older trust.
+
+The 10-event reference ledger emits checkpoints at event counts 2, 4, 6, and 8. The final two events remain explicitly unanchored.
+
+Honest rotation and a pinned historical checkpoint verify. Checkpoint deletion, reorder, and fork attacks are detected.
+
+A rewritten old prefix plus a forged latest-only checkpoint passes a weak latest-only verifier. The same rewritten history fails when verification must stay continuous with the previously pinned checkpoint.
+
+[Read the E020 ODD](ODD_E020.md)
+
+---
+
 ## What comes next
 
-Persist issuance, audit, renewal, revocation, and scheduler decisions in a durable certificate ledger so every optimized authority decision has a replayable provenance chain.
+Test signed or independently witnessed checkpoint publication so a compromised anchor issuer cannot mint a replacement trust history alone.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).

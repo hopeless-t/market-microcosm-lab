@@ -115,3 +115,16 @@ A stronger adversarial rewrite changes historical meaning and then recomputes ev
 The independent checkpoint fixes the accepted event count, head hash, final certificate state, and evaluation generation. The E019 full-rehash attack changes the replayed state while preserving internal chain validity, but fails the checkpoint through a head-hash mismatch.
 
 Root of Trust R9 therefore requires provenance to be anchored outside the mutable history it authenticates. Checkpoint mismatch is a fail-closed condition.
+
+
+## Checkpoint rotation validation
+
+E020 validates long-lived external provenance anchors.
+
+A rotation is valid only when checkpoint sequence is contiguous, each checkpoint links to the previous checkpoint hash, anchored event counts increase, each checkpoint matches the exact ledger prefix it claims, and any required pinned historical checkpoint remains present at the expected sequence.
+
+The test suite retains a deliberate latest-only weakness: rewriting an old ledger prefix, recomputing all ledger hashes, and minting a new checkpoint over the rewritten head can pass verification if only that latest checkpoint is considered.
+
+Pinned historical continuity rejects the same rewritten ledger because an older anchored prefix no longer matches. Checkpoint deletion, reorder, and multiple children of the same parent are also rejected or surfaced as forks.
+
+Root of Trust R10 therefore makes anchor rotation an extension of prior trust rather than replacement of prior trust.
