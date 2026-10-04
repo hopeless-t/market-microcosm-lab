@@ -410,3 +410,20 @@ This is within-generator generalization, not real-world predictive certification
 No. An interaction-only market-headroom × downstream-success failure drops the frozen E036 warning below its prior recall authority threshold. The old certificate is revoked, and an interaction-aware v2 candidate restores greater than 99% precision and recall on the shifted generation.
 
 [Read the E037 ODD](ODD_E037.md)
+
+
+## E038 — Real longitudinal component holdout
+
+**Question:** does a component-scoped mechanism survive a real-company quarterly holdout?
+
+Informetis's published Smart Living Standard ARR for 2025-Q1 through Q3 fits a simple retention decay whose frozen Q4 prediction is about 215.27 million JPY versus 216 observed. The same law fails on other components, so the promoted rule preserves component identity and event annotations rather than universalizing the decay.
+
+[Read the E038 ODD](ODD_E038.md)
+
+## E039 — Rolling KPI observation lag
+
+**Question:** can the KPI definition itself delay observation of an abrupt business-state change?
+
+Yes. Informetis ARR uses a trailing six-month average MRR. An abrupt MRR end can leave 50% legacy signal in the reported ARR three months later. Warning lead-time accounting must include the metric measurement window.
+
+[Read the E039 ODD](ODD_E039.md)
