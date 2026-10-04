@@ -346,6 +346,24 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Evidence failure domains</h3>
     <p>Shared audit bundles save cost but enlarge proof common-mode blast; robust authority returns to independent evidence.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E063</div>
+    <div class="mm-metric">sign reversal</div>
+    <h3>Real portfolio transition</h3>
+    <p>BBD FY2025 shows churn improvement with both ARR growth and ARR decline under one metric generation.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E064</div>
+    <div class="mm-metric">no future leak</div>
+    <h3>Prospective cutoff</h3>
+    <p>Q4 event explanations remain retrospective evidence and cannot become Q3 warning features.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E065</div>
+    <div class="mm-metric">0 / 5</div>
+    <h3>Public feature sufficiency</h3>
+    <p>Public Q3 KPIs do not directly cover the structural warning axes, so prospective public-data authority abstains.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -439,7 +457,10 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E059** compiles the minimum sufficient recursive audit depth.  
 **E060** allocates depth per dependency proof obligation.  
 **E061** reuses shared audit evidence through exact bundle cover.  
-**E062** then treats those shared artifacts as failure domains and revokes the cost-only optimum.
+**E062** then treats those shared artifacts as failure domains and revokes the cost-only optimum.  
+**E063** returns to real BBD longitudinal KPI transitions.  
+**E064** separates retrospective explanation from prospective feature availability.  
+**E065** measures the public-data feature gap and ABSTAINS rather than imputing hidden structural state.
 
 This produces a repeating research pattern:
 
@@ -521,6 +542,9 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E060 ODD](ODD_E060.md)
 - [E061 ODD](ODD_E061.md)
 - [E062 ODD](ODD_E062.md)
+- [E063 ODD](ODD_E063.md)
+- [E064 ODD](ODD_E064.md)
+- [E065 ODD](ODD_E065.md)
 
 ## Run locally
 
@@ -581,6 +605,9 @@ python scripts/run_e059.py
 python scripts/run_e060.py
 python scripts/run_e061.py
 python scripts/run_e062.py
+python scripts/run_e063.py
+python scripts/run_e064.py
+python scripts/run_e065.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
