@@ -427,3 +427,20 @@ Informetis's published Smart Living Standard ARR for 2025-Q1 through Q3 fits a s
 Yes. Informetis ARR uses a trailing six-month average MRR. An abrupt MRR end can leave 50% legacy signal in the reported ARR three months later. Warning lead-time accounting must include the metric measurement window.
 
 [Read the E039 ODD](ODD_E039.md)
+
+
+## E040 — Rolling KPI current-state non-identifiability
+
+**Question:** does one six-month rolling ARR uniquely determine current MRR?
+
+No. Exact enumeration finds 338 monotone integer MRR paths with the same ARR=60, while current MRR spans 0–5.
+
+[Read the E040 ODD](ODD_E040.md)
+
+## E041 — Minimal observability checkpoint
+
+**Question:** what is the smallest extra state needed to reconstruct the newest MRR from consecutive rolling ARR values?
+
+One outgoing boundary MRR is sufficient. Without it, multiple incoming/outgoing pairs remain compatible; with it, the rolling-sum identity reconstructs newest MRR exactly.
+
+[Read the E041 ODD](ODD_E041.md)
