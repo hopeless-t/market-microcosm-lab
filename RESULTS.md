@@ -575,9 +575,37 @@ This upgrades E035 from hand-built compilation fidelity to within-generator gene
 
 All gates promote `discovery-tuned-multi-signal-warning-with-holdout-v1`.
 
+## E037 — structural-drift revocation of early warning
+
+E037 attacks the fact that E036 discovery and holdout still share one structural generator.
+
+The shifted generation adds an interaction-only failure:
+
+```text
+market_headroom * downstream_success_ratio < 0.15
+```
+
+The frozen E036 warning is evaluated without retuning. Its recall falls below the prior 98% authority threshold, so its certificate is marked **REVOKED**.
+
+An interaction-aware candidate keeps the E036 warning vector and adds the new joint term. On the 1,000-state shifted generation, recall and precision both rise above **99%**, and F1 improves over the legacy rule.
+
+The warning lifecycle now mirrors the earlier adaptive-sampler lifecycle:
+
+```text
+discover → holdout → promote
+→ structural generation changes
+→ revoke
+→ diagnose interaction
+→ repair
+→ re-evaluate
+→ promote v2
+```
+
+All gates promote `interaction-aware-warning-generation-v2`.
+
 ## Theory update
 
-The working theory after E010–E036 is:
+The working theory after E010–E037 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -637,6 +665,9 @@ The working theory after E010–E036 is:
 69. early warning should be a vector over empirically distinct failure mechanisms rather than one revenue or churn scalar;
 70. exact success on a hand-constructed warning suite is only a compilation check — thresholds still require Monte Carlo stress, holdouts, and real longitudinal validation;
 71. hand-built warning success can be strengthened by isolating threshold discovery from generated holdout evaluation;
-72. high within-generator holdout performance still does not authorize external prediction because shared structural assumptions can hide common-mode model error.
+72. high within-generator holdout performance still does not authorize external prediction because shared structural assumptions can hide common-mode model error;
+73. warning authority is structural-generation scoped, not merely seed-scoped;
+74. interaction-only failure modes can invalidate a previously strong marginal-threshold warning without changing any original single-axis threshold;
+75. empirical warning systems need explicit revoke-and-repair lifecycle semantics analogous to evaluator certificates.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
