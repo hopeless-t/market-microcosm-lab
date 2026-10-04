@@ -477,3 +477,20 @@ No. The midpoint has a compatible counterexample. The robust controller returns 
 Search candidate observations by declared collection cost and predicate resolution. The reference chooses cheaper predicate-native evidence over expensive full-state recovery.
 
 [Read the E045 ODD](ODD_E045.md)
+
+
+## E046 — Authority-constrained active sensing
+
+**Question:** can minimum-cost sensing choose evidence that is not authorized?
+
+Yes. A cheap raw-ledger predicate query wins naive cost search but is inadmissible. Authorization becomes a hard filter before predicate-resolution and cost optimization.
+
+[Read the E046 ODD](ODD_E046.md)
+
+## E047 — Freshness and metric-generation alignment
+
+**Question:** is authorized predicate-resolving evidence enough for a current decision?
+
+No. Stale evidence and old metric generations are rejected before cost optimization. The selected observation must be authorized, resolving, fresh, and generation-aligned.
+
+[Read the E047 ODD](ODD_E047.md)
