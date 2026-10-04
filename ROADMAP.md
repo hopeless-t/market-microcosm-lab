@@ -91,7 +91,22 @@
 - [x] real-company component longitudinal holdout
 - [x] rolling-KPI measurement-kernel lag guard
 - [x] rolling-KPI non-identifiability proof
-- [x] minimal boundary checkpoint for exact one-step reconstruction\n- [x] reporting-resolution / empirical claim-precision guard\n- [x] decision-predicate-scoped observability\n- [x] robust ABSTAIN output for unresolved predicates\n- [x] minimum-cost predicate-scoped active sensing\n- [x] authority-constrained active sensing\n- [x] freshness + metric-generation aligned evidence admission\n- [x] predicate-evidence witness quorum\n- [x] upstream evidence-source diversity / hidden common-mode guard\n- [x] upstream evidence-lineage root audit\n- [x] active lineage-root intervention discovery\n- [x] exact minimum lineage-probe portfolio\n- [x] one-error-correcting lineage-probe certificate\n- [x] robustness compiler from declared probe-error budget\n- [x] redundant measurement synthesis after probe-compiler UNSAT\n- [x] measurement-channel failure-domain certificate
+- [x] minimal boundary checkpoint for exact one-step reconstruction
+- [x] reporting-resolution / empirical claim-precision guard
+- [x] decision-predicate-scoped observability
+- [x] robust ABSTAIN output for unresolved predicates
+- [x] minimum-cost predicate-scoped active sensing
+- [x] authority-constrained active sensing
+- [x] freshness + metric-generation aligned evidence admission
+- [x] predicate-evidence witness quorum
+- [x] upstream evidence-source diversity / hidden common-mode guard
+- [x] upstream evidence-lineage root audit
+- [x] active lineage-root intervention discovery
+- [x] exact minimum lineage-probe portfolio
+- [x] one-error-correcting lineage-probe certificate
+- [x] robustness compiler from declared probe-error budget
+- [x] redundant measurement synthesis after probe-compiler UNSAT
+- [x] measurement-channel failure-domain certificate
 - [x] recursive measurement-root lineage discovery
 - [x] minimum-cost recursive-lineage topology repair
 - [x] dependency-depth stopping certificate
