@@ -154,6 +154,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Churn semantics</h3>
     <p>BBD churn more than doubles while ARR and ARPA rise, forcing churn to be typed by layer and cause.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E031</div>
+    <div class="mm-metric">proxy trap</div>
+    <h3>PMF signal guard</h3>
+    <p>Revenue, high ACV, or enthusiastic users cannot certify repeatability, customer success, scalability, or market headroom by themselves.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -215,7 +221,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E027** versions Game Pass membership definitions and quarantines a tempting 36% headline ratio that crosses incompatible value semantics and the Gold → Core transition.  
 **E028** adds Japanese negative evidence and makes survivorship-bias coverage explicit.  
 **E029** separates strategic exit from forced insolvency.  
-**E030** uses BBD portfolio pruning to reject untyped churn as a universal health signal.
+**E030** uses BBD portfolio pruning to reject untyped churn as a universal health signal.  
+**E031** triangulates Japanese postmortems to reject revenue/high-ACV/enthusiastic-user signals as sufficient PMF certification.
 
 This produces a repeating research pattern:
 
@@ -265,6 +272,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E028 ODD](ODD_E028.md)
 - [E029 ODD](ODD_E029.md)
 - [E030 ODD](ODD_E030.md)
+- [E031 ODD](ODD_E031.md)
 
 ## Run locally
 
@@ -293,6 +301,7 @@ python scripts/run_e027.py
 python scripts/run_e028.py
 python scripts/run_e029.py
 python scripts/run_e030.py
+python scripts/run_e031.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
