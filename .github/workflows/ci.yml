@@ -1092,6 +1092,26 @@ jobs:
           print({"cover": x["bundle_cover"], "promoted": x["promoted_bundle_rule"]})
           PY
 
+      - name: Run audit-evidence failure-domain adversary
+        run: python scripts/run_e062.py
+      - name: Validate E062 audit-evidence failure-domain contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e062/audit-evidence-failure-domain-report.json").read_text())
+          assert x["experiment"] == "E062"
+          assert x["e061_cost_authority_after_evidence_failure_model"] == "REVOKED"
+          e061 = x["robust_cover"]["e061_bundle_plan"]
+          selected = x["robust_cover"]["selected"]
+          assert e061["evidence_failure_blast"]["maximum_obligation_blast"] == 2
+          assert selected["total_cost"] == 8
+          assert selected["evidence_failure_blast"]["maximum_obligation_blast"] == 1
+          assert x["promoted_failure_domain_rule"] == "audit-evidence-reuse-must-model-proof-obligation-failure-blast-v1"
+          assert all(x["promotion_gate"].values())
+          print({"e061": e061, "selected": selected, "promoted": x["promoted_failure_domain_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
