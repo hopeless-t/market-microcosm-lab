@@ -401,6 +401,29 @@ jobs:
           })
           PY
 
+      - name: Run empirical evidence plane
+        run: python scripts/run_e024.py
+      - name: Validate E024 empirical evidence contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e024/empirical-evidence-report.json").read_text())
+          assert x["experiment"] == "E024"
+          assert x["promoted_evidence_rule"] == "empirical-evidence-plane-v1"
+          assert x["anchors"]["sartras_2022"]["absolute_rounding_delta"] <= 1
+          assert x["anchors"]["netflix_q2_2024_regions"]["arm_max_min_ratio"] > 2.0
+          assert not x["public_portfolio"]["missing_observables"]
+          assert "gamepass-partner-center-schema" not in x["public_portfolio"]["selected_source_ids"]
+          assert all(x["promotion_gate"].values())
+          print({
+              "portfolio": x["public_portfolio"],
+              "sartras_delta": x["anchors"]["sartras_2022"]["rounding_delta"],
+              "netflix_arm_ratio": x["anchors"]["netflix_q2_2024_regions"]["arm_max_min_ratio"],
+              "promoted": x["promoted_evidence_rule"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
