@@ -1211,6 +1211,20 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run decision-sufficient acquisition bound
+        run: python scripts/run_e068.py
+      - name: Validate E068 decision-sufficient acquisition contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e068/decision-sufficient-acquisition-report.json").read_text())
+          assert x["world_results"]["downstream_funnel_success-only-bad"]["selected"]["total_cost"]==2
+          assert x["world_results"]["all-safe"]["selected"]["total_cost"]==14
+          assert x["world_results"]["all-safe"]["selected"]["decision"]=="CERTIFIED_SAFE"
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

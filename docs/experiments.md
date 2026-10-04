@@ -663,3 +663,12 @@ No. Public Q3 material has partial evidence for delivery economics and market he
 Exact search rejects a cheaper plan using unauthorized raw board minutes and selects finance-pack + gtm-pack + signed strategy attestation for cost 14.
 
 [Read the E067 ODD](ODD_E067.md)
+
+
+## E068 — Decision-sufficient evidence acquisition
+
+**Question:** must a five-axis OR warning recover all five direct features before it can decide?
+
+No. Any observed failing axis certifies WARN; single-bad-axis reference worlds require cost 2–5. SAFE still requires the full cost-14 direct portfolio.
+
+[Read the E068 ODD](ODD_E068.md)

@@ -1259,9 +1259,19 @@ The order is direct feature sufficiency → authority/privacy admission → mini
 
 All gates promote `acquire-minimum-authorized-direct-feature-portfolio-v1`.
 
+## E068 — decision-sufficient evidence acquisition
+
+E068 attacks E067's full-feature objective. Under OR warning semantics, any directly observed failing axis certifies WARN, while SAFE requires all five axes to be directly observed safe.
+
+Exact finite-world search finds single-bad-axis warning certificates costing **2–5**, all below the E067 full-contract cost 14. A downstream-funnel failure needs only `crm-funnel-export` at cost 2. The all-safe world still requires `finance-pack + gtm-pack + signed-strategy-gap-attestation` at cost 14.
+
+This is an information lower bound rather than a deployable chooser; a real controller does not know the failing axis in advance.
+
+All gates promote `warning-evidence-acquisition-is-decision-sufficient-not-full-state-v1`.
+
 ## Theory update
 
-The working theory after E010–E067 is:
+The working theory after E010–E068 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1377,6 +1387,8 @@ The working theory after E010–E067 is:
 112. partial evidence may constrain hypotheses or prioritize acquisition but cannot silently satisfy a direct feature contract;
 113. evidence-acquisition portfolios should maximize admitted information quality before minimizing collection cost;
 114. ABSTAIN can compile into a minimum authorized direct-evidence portfolio rather than a generic request for more data;
-115. authorization and privacy are hard feasibility constraints in acquisition, not soft penalties that cheaper raw evidence may buy through.
+115. authorization and privacy are hard feasibility constraints in acquisition, not soft penalties that cheaper raw evidence may buy through;
+116. evidence requirements are decision-asymmetric: one sufficient failing witness can certify an OR warning, while SAFE may require complete direct coverage;
+117. full-state acquisition is therefore not a universal optimum, and deployable systems should optimize sequential decision resolution rather than feature completeness alone.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

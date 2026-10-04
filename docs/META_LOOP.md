@@ -576,3 +576,10 @@ ABSTAIN
 → exact bundle search
 → request minimum admitted portfolio
 ```
+
+
+## Decision-sufficient acquisition
+
+E068 reuses decision-scoped observability at the multi-axis warning layer. A positive OR warning can terminate after one sufficient failing witness; a SAFE certificate cannot.
+
+The next meta target is no longer static portfolio size but **sequential observation order under uncertainty**.

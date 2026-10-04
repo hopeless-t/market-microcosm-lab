@@ -257,3 +257,8 @@ E065's zero-direct result is retained but refined. Q3 public material contains p
 ## E067 — Direct evidence acquisition
 
 The public warning remains ABSTAIN until direct features are acquired. Cost-only search would use unauthorized raw board minutes; authority-constrained exact search selects finance-pack, gtm-pack, and signed strategy-gap attestation for cost 14.
+
+
+## E068 — Decision-sufficient evidence acquisition
+
+Full feature recovery is not decision-minimal for an OR warning. Single failing-axis worlds certify WARN at cost 2–5, while an all-safe world still requires all five direct axes and cost 14.

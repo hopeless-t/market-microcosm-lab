@@ -376,6 +376,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Evidence acquisition</h3>
     <p>ABSTAIN compiles into the minimum authorized direct-feature bundle instead of a broad request for internal state.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E068</div>
+    <div class="mm-metric">2–5 vs 14</div>
+    <h3>Decision-sufficient evidence</h3>
+    <p>WARN can terminate on one failing-axis witness; SAFE still needs complete direct coverage.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -474,7 +480,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E064** separates retrospective explanation from prospective feature availability.  
 **E065** measures the public-data feature gap and ABSTAINS rather than imputing hidden structural state.  
 **E066** refines that gap into direct, partial, and absent public evidence without promoting partial signals into direct features.  
-**E067** compiles the remaining ABSTAIN into a minimum authorized direct-evidence acquisition portfolio.
+**E067** compiles the remaining ABSTAIN into a minimum authorized direct-evidence acquisition portfolio.  
+**E068** proves that warning evidence is decision-asymmetric: positive WARN certificates can be much cheaper than SAFE certificates.
 
 This produces a repeating research pattern:
 
@@ -561,6 +568,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E065 ODD](ODD_E065.md)
 - [E066 ODD](ODD_E066.md)
 - [E067 ODD](ODD_E067.md)
+- [E068 ODD](ODD_E068.md)
 
 ## Run locally
 
@@ -626,6 +634,7 @@ python scripts/run_e064.py
 python scripts/run_e065.py
 python scripts/run_e066.py
 python scripts/run_e067.py
+python scripts/run_e068.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
