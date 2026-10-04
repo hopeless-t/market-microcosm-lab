@@ -878,6 +878,24 @@ jobs:
           print({"hidden": hidden, "repair": x["diversified_repair_reference"], "promoted": x["promoted_source_rule"]})
           PY
 
+      - name: Run upstream evidence-lineage root adversary
+        run: python scripts/run_e050.py
+      - name: Validate E050 lineage-root contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e050/evidence-lineage-report.json").read_text())
+          assert x["experiment"] == "E050"
+          hidden = x["hidden_root_reference"]
+          assert hidden["source_aware_quorum"]["accepted_value"] is False
+          assert hidden["root_aware_quorum"]["accepted"] is False
+          assert x["lineage_diversified_repair"]["accepted_value"] is True
+          assert x["promoted_lineage_rule"] == "predicate-quorum-must-audit-upstream-lineage-roots-v1"
+          assert all(x["promotion_gate"].values())
+          print({"hidden": hidden, "repair": x["lineage_diversified_repair"], "promoted": x["promoted_lineage_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
