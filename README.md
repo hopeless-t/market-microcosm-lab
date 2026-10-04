@@ -65,6 +65,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E034 · Human Delivery Cost** | Can high ACV / software margin hide service burden? | apparent 80% margin collapses to 10% fully loaded; candidate ranking reverses |
 | **E035 · Early Warning Tournament** | Which proxy detects the failure archetypes? | revenue/churn scalar rules have blind spots; five-axis negative-evidence warning matches the exact reference oracle |
 | **E036 · Warning Holdout Search** | Does the warning survive broad generated scenarios? | 324 threshold candidates tuned on 500 discovery states; >98% precision/recall/F1 on untouched 500-state holdout |
+| **E037 · Warning Structural Drift** | What happens when the failure law changes? | hidden interaction drops legacy recall below authority threshold; old certificate revoked and interaction-aware v2 restores >99% recall/precision |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -205,6 +206,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **The warning survives a generated holdout.** E036 searches 324 threshold combinations on 500 discovery states and freezes the winner before evaluating 500 states from an untouched seed. Multi-signal precision, recall, and F1 remain above 98%, while revenue-only recall stays below 25% and churn-only below 30%. This is within-generator generalization, not real-company predictive validation.
 
+**A new failure law revokes the warning.** E037 mutates the generator with an interaction-only `market_headroom × downstream_success` failure. The frozen E036 warning drops below its prior recall authority threshold and is explicitly revoked. Adding the interaction term restores >99% recall and precision, promoting warning generation v2.
+
 That sequence matters:
 
 ```text
@@ -283,7 +286,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site
