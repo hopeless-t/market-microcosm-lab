@@ -61,3 +61,18 @@ The promoted output is therefore a stricter evidence rule, not an optimistic pre
 Official Game Pass headlines are now typed empirical observations rather than naked scalars. The 2022 >25M subscriber lower bound and 2024 34M member headline straddle the Xbox Live Gold → Game Pass Core conversion.
 
 The naive 36% ratio remains visible as a counterexample, but the time-series estimator fails closed because value semantics and metric-definition generations are incompatible.
+
+
+## E028 — Japanese negative evidence
+
+The empirical plane now includes failed and withdrawn systems, not only survivors. The initial Japanese corpus covers deliberate pruning, strategic pivots, a managed-cloud sunset, restructuring, and broader software-bankruptcy pressure.
+
+## E029 — Strategic exit
+
+Orderly withdrawal becomes a separate future control action from insolvency. The finite reference world contains positive-cash states where exit/redeployment has higher continuation value.
+
+## E030 — Churn semantics
+
+BBD's FY2023 Q4→FY2024 Q3 portfolio shows churn 1.15%→2.33% while ARR 1,593→1,607 million JPY and ARPA 437,545→466,303 JPY, with fewer contracts. The public explanation includes deliberate unprofitable-service exits and low-price-plan migration.
+
+Churn therefore requires layer and cause identity before it can enter an empirical market state.
