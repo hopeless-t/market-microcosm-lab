@@ -561,3 +561,12 @@ Yes. The compiler requires distance 2e+1 and exactly searches the minimum satisf
 Yes. Independent repeated measurement channels yield a minimum-cost ten-channel distance-five design, and all 280 zero/one/two-error decode cases pass.
 
 [Read the E055 ODD](ODD_E055.md)
+
+
+## E056 — Measurement-channel failure domains
+
+**Question:** does repeated measurement automatically create independent error-correcting redundancy?
+
+No. One shared collector can flip five E055 channels at once and create an exact wrong hypothesis codeword. Capping each root at two channels requires at least five roots for the ten-channel design; every single-root fault then remains inside the certified two-bit budget.
+
+[Read the E056 ODD](ODD_E056.md)
