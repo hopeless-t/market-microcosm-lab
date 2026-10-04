@@ -112,6 +112,7 @@
 - [x] dependency-depth stopping certificate
 - [x] heterogeneous branch-specific audit allocation
 - [x] coupled shared-evidence audit bundle optimization
+- [x] audit-evidence failure-domain guard
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary
