@@ -511,3 +511,12 @@ No. A 3-of-5 independent-domain quorum absorbs one bad witness; conflicts withou
 No. Three witness domains can share one corrupted upstream feed and manufacture a false domain-diverse quorum. Requiring upstream source diversity revokes the false view.
 
 [Read the E049 ODD](ODD_E049.md)
+
+
+## E050 — Upstream evidence-lineage roots
+
+**Question:** can three distinct immediate source labels still form one hidden common-mode failure?
+
+Yes. Three sources can all derive from one master warehouse. A source-diverse quorum may therefore be one-root fragile. Root-aware verification revokes that false quorum and requires diversified upstream lineage.
+
+[Read the E050 ODD](ODD_E050.md)
