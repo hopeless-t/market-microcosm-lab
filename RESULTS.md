@@ -1045,9 +1045,91 @@ The repaired reference places at most two channels per root. Five hypotheses × 
 
 All gates promote `redundant-probe-channels-must-diversify-measurement-failure-roots-v1`.
 
+## E057 — recursive measurement-lineage discovery
+
+E057 attacks E056's repaired five-root topology.
+
+Three of the five declared measurement roots secretly share one deeper `shared-observability-plane`. A bounded recursive probe perturbs all three roots, corresponding to six certified channels — well beyond the two-bit operating budget.
+
+E056 measurement-domain authority is therefore marked **REVOKED**.
+
+All gates promote `measurement-root-independence-requires-recursive-lineage-discovery-v1`.
+
+## E058 — minimum-cost recursive-lineage repair
+
+E058 repairs the E057 super-root without weakening the original two-bit contract.
+
+Exact enumeration of migration subsets moves:
+
+```text
+root-1
+root-2
+```
+
+onto fresh independent providers, with total declared cost **5**.
+
+The repaired topology has five providers, one two-channel measurement root per provider. Every single-provider fault is again inside the two-bit code budget.
+
+All gates promote `recursive-lineage-common-mode-repair-by-minimum-cost-repartition-v1`.
+
+## E059 — dependency-depth stopping rule
+
+E059 prevents recursive dependency discovery from becoming unbounded.
+
+The downstream authority budget tolerates at most two correlated certified-channel failures. Declared audit depth gives these maximum unresolved blast bounds:
+
+| Depth | Cost | Max unresolved blast |
+| ---: | ---: | ---: |
+| 0 | 0 | 10 |
+| 1 | 2 | 4 |
+| 2 | 5 | 2 |
+| 3 | 9 | 2 |
+
+The exact stopping compiler selects **depth 2 / cost 5**. Depth 3 adds evidence detail but no stronger cross-provider blast authority.
+
+All gates promote `recursive-lineage-audit-stops-at-minimum-depth-meeting-blast-budget-v1`.
+
+## E060 — heterogeneous dependency-audit allocation
+
+E060 attacks the assumption that every dependency branch should be audited to one global depth.
+
+Exact branch allocation selects:
+
+| Branch | Audit | Cost | Residual blast |
+| --- | --- | ---: | ---: |
+| network | targeted | 2 | 2 |
+| identity | targeted | 1 | 2 |
+| power | deep | 3 | 2 |
+| vendor | none | 0 | 2 |
+| operator | targeted | 2 | 2 |
+
+Total cost is **8**, versus **16** for uniform deep audit.
+
+All gates promote `recursive-lineage-audit-depth-is-allocated-per-proof-obligation-v1`.
+
+## E061 — coupled dependency-audit bundles
+
+E061 attacks E060's branch-separable cost model.
+
+The exact set-cover optimizer can reuse shared evidence:
+
+```text
+control-plane-bundle
+  covers network + identity
+  cost 2
+
+infra-resilience-bundle
+  covers power + operator
+  cost 4
+```
+
+Together they cover every unsafe proof obligation for total cost **6**, beating E060's cost-8 branch-specific optimum and the cost-7 monolithic full-platform audit.
+
+All gates promote `dependency-audit-allocation-must-model-shared-evidence-bundles-v1`.
+
 ## Theory update
 
-The working theory after E010–E056 is:
+The working theory after E010–E061 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1116,6 +1198,11 @@ The working theory after E010–E056 is:
 78. rolling-window KPI definitions create deterministic observation memory, so warning lead time must model the measurement kernel as well as the latent business state;
 79. a rolling aggregate can be non-identifying even under monotone latent dynamics, so current-state inference must preserve ambiguity rather than invent one hidden path;
 80. one-step observability can sometimes be restored with a single indispensable boundary checkpoint instead of retaining the entire historical path;
-81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction;\n82. empirical claim precision cannot exceed the reporting resolution of the admitted evidence, and apparently excellent sub-resolution fits must lose precision authority;\n83. observability is decision-predicate scoped: an uncertainty set may be sufficient for a coarse action while remaining insufficient for a finer threshold;\n84. boundary-straddling uncertainty should produce an authorized ABSTAIN rather than a forced point-proxy decision;\n85. after ABSTAIN, additional evidence should be acquired by minimum-cost predicate resolution rather than by default full-state recovery;\n86. active-sensing cost optimization is subordinate to evidence authorization and cannot trade policy violations against downstream utility;\n87. authorized evidence can still be inadmissible when stale or defined under the wrong metric generation;\n88. evidence admission for action must bind authority, predicate sufficiency, freshness, and metric identity before optimization begins;\n89. one fresh authorized attestation is still a single failure point, so predicate authority may require an independent witness quorum;\n90. witness/failure-domain diversity does not imply observational independence when multiple witnesses consume one upstream data source;\n91. predicate quorum authority must expose and diversify upstream evidence lineage, with hidden common-mode discoveries triggering revocation and re-audit;\n92. immediate source labels are not independence proof because multiple sources can collapse onto one upstream lineage root;\n93. evidence independence is graph-structured and authority depends on the minimum independent upstream roots capable of supporting or corrupting quorum;\n94. hidden lineage roots should be actively falsified with bounded intervention fingerprints rather than assumed absent when the declared graph looks diverse;\n95. lineage discovery is an experiment-design problem whose probe set can be optimized for identifiability and intervention cost;\n96. minimum-cost noiseless identification does not imply noise robustness, which requires an explicit hypothesis-code distance certificate;\n97. probe robustness authority should be compiled from a declared observation-error budget and fail closed when the requested distance is unsatisfiable;\n98. an UNSAT result may justify expanding the authorized measurement design, after which the stronger certificate must be recompiled and exhaustively verified;\n99. error-correcting code distance does not imply physical measurement independence, because one failure root can corrupt multiple certified bits at once;\n100. robust repeated sensing requires a failure-domain certificate that bounds the number of code bits any admitted root fault can corrupt.
+81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction;\n82. empirical claim precision cannot exceed the reporting resolution of the admitted evidence, and apparently excellent sub-resolution fits must lose precision authority;\n83. observability is decision-predicate scoped: an uncertainty set may be sufficient for a coarse action while remaining insufficient for a finer threshold;\n84. boundary-straddling uncertainty should produce an authorized ABSTAIN rather than a forced point-proxy decision;\n85. after ABSTAIN, additional evidence should be acquired by minimum-cost predicate resolution rather than by default full-state recovery;\n86. active-sensing cost optimization is subordinate to evidence authorization and cannot trade policy violations against downstream utility;\n87. authorized evidence can still be inadmissible when stale or defined under the wrong metric generation;\n88. evidence admission for action must bind authority, predicate sufficiency, freshness, and metric identity before optimization begins;\n89. one fresh authorized attestation is still a single failure point, so predicate authority may require an independent witness quorum;\n90. witness/failure-domain diversity does not imply observational independence when multiple witnesses consume one upstream data source;\n91. predicate quorum authority must expose and diversify upstream evidence lineage, with hidden common-mode discoveries triggering revocation and re-audit;\n92. immediate source labels are not independence proof because multiple sources can collapse onto one upstream lineage root;\n93. evidence independence is graph-structured and authority depends on the minimum independent upstream roots capable of supporting or corrupting quorum;\n94. hidden lineage roots should be actively falsified with bounded intervention fingerprints rather than assumed absent when the declared graph looks diverse;\n95. lineage discovery is an experiment-design problem whose probe set can be optimized for identifiability and intervention cost;\n96. minimum-cost noiseless identification does not imply noise robustness, which requires an explicit hypothesis-code distance certificate;\n97. probe robustness authority should be compiled from a declared observation-error budget and fail closed when the requested distance is unsatisfiable;\n98. an UNSAT result may justify expanding the authorized measurement design, after which the stronger certificate must be recompiled and exhaustively verified;\n99. error-correcting code distance does not imply physical measurement independence, because one failure root can corrupt multiple certified bits at once;\n100. robust repeated sensing requires a failure-domain certificate that bounds the number of code bits any admitted root fault can corrupt;
+101. failure-domain independence is recursive, so admitted roots themselves require bounded hidden-super-root discovery;
+102. a discovered recursive common mode should trigger topology repair before increasing the tolerated error budget;
+103. recursive dependency audit should stop at the minimum depth whose remaining unverified blast radius fits the downstream authority contract;
+104. audit depth is branch/proof-obligation specific rather than one global scalar;
+105. shared evidence couples branch obligations, so globally optimal audit allocation can require exact bundle/set-cover reasoning.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
