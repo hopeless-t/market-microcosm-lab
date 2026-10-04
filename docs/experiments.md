@@ -299,3 +299,16 @@ A stronger one-quarter-forward test freezes the Q1 2024 centroids and remains be
 The result is structural compression, not a causal segmentation or a claim that ARM equals posted subscription price.
 
 [Read the E025 ODD](ODD_E025.md)
+
+
+## E026 — Sampled-observation assumption audit
+
+**Question:** what can the published SARTRAS sample count establish about detection and prevalence when the institution-selection mechanism is not yet identified?
+
+A hypothetical simple-random-sampling reference gives an exact rarity curve: with 35,130 applications and a 1,200-institution sample, 87 carrier institutions cross 95% one-or-more detection.
+
+The meta-loop then removes the unverified random-selection assumption. The same nominal sample size can avoid all 87 carriers under an unconstrained selection mechanism, so sample count alone has a 0% worst-case detection lower bound.
+
+The SRS curve remains a mathematical reference, but the promoted empirical rule requires sampling-design metadata before prevalence or observation-noise inference.
+
+[Read the E026 ODD](ODD_E026.md)
