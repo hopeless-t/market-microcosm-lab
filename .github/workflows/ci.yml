@@ -711,6 +711,40 @@ jobs:
           print({"month3": m3, "promoted": x["promoted_observation_rule"]})
           PY
 
+      - name: Run rolling KPI non-identifiability experiment
+        run: python scripts/run_e040.py
+      - name: Validate E040 identifiability contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e040/rolling-metric-nonidentifiability-report.json").read_text())
+          assert x["experiment"] == "E040"
+          a = x["exact_ambiguity"]
+          assert a["path_count"] == 338
+          assert a["possible_current_mrr_values"] == [0, 1, 2, 3, 4, 5]
+          assert x["promoted_identifiability_rule"] == "rolling-kpi-current-state-nonidentifiable-without-path-state-v1"
+          assert all(x["promotion_gate"].values())
+          print({"ambiguity": a, "promoted": x["promoted_identifiability_rule"]})
+          PY
+
+      - name: Run minimal observability checkpoint
+        run: python scripts/run_e041.py
+      - name: Validate E041 checkpoint contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e041/minimal-observability-checkpoint-report.json").read_text())
+          assert x["experiment"] == "E041"
+          r = x["reference"]
+          assert r["unresolved_pairs_without_boundary"] == [[8, 0], [9, 1], [10, 2]]
+          assert r["reconstructed_newest_mrr_with_boundary"] == 2
+          assert x["promoted_checkpoint_rule"] == "rolling-window-boundary-checkpoint-restores-observability-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": r, "promoted": x["promoted_checkpoint_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
