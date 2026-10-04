@@ -141,11 +141,11 @@ def audit_evidence_failure_domain_report_payload() -> dict:
         "robust_selected_cost_is_eight": (
             selected["total_cost"] == 8
         ),
-        "robust_selected_actions_are_independent_branch_audits": (
+        "robust_selected_plan_uses_bundle_with_independent_corroboration": (
             selected["action_ids"]
             == [
+                "control-plane-bundle",
                 "identity-targeted",
-                "network-targeted",
                 "operator-targeted",
                 "power-deep",
             ]
@@ -176,14 +176,15 @@ def audit_evidence_failure_domain_report_payload() -> dict:
         ),
         "model_update": (
             "Shared audit evidence is now treated as a failure-domain choice. "
-            "Cost savings from reuse are authoritative only when the maximum "
-            "number of obligations uniquely dependent on one evidence artifact "
-            "fits the declared proof-failure budget."
+            "Cost savings from reuse are authoritative only when overlapping "
+            "coverage keeps the number of obligations uniquely dependent on "
+            "one evidence artifact inside the declared proof-failure budget."
         ),
         "limitations": (
             "The reference treats an evidence artifact as either valid or "
             "failed and requires at most one uniquely dependent obligation. "
-            "Partial evidence corruption and correlated audit-tool failures "
-            "need richer evidence-quorum models."
+            "The exact optimum still reuses one bundle, but corroborates one "
+            "covered obligation independently. Partial corruption and correlated "
+            "audit-tool failures need richer evidence-quorum models."
         ),
     }
