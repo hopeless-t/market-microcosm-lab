@@ -310,6 +310,36 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Measurement domains</h3>
     <p>Distance-five redundancy is only operationally valid when one physical root cannot corrupt more than the certified bit budget.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E057</div>
+    <div class="mm-metric">6-bit blast</div>
+    <h3>Recursive lineage</h3>
+    <p>Three admitted measurement roots still share one hidden super-root, revoking the lower-level certificate.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E058</div>
+    <div class="mm-metric">cost 5</div>
+    <h3>Topology repair</h3>
+    <p>Exact migration synthesis restores the original two-bit fault contract without inflating the threat budget.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E059</div>
+    <div class="mm-metric">depth 2</div>
+    <h3>Audit stopping rule</h3>
+    <p>Recursive discovery stops at the shallowest depth whose unresolved blast radius fits downstream authority.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E060</div>
+    <div class="mm-metric">16 → 8</div>
+    <h3>Heterogeneous audit</h3>
+    <p>Each dependency branch is audited only as deeply as its own proof obligation requires.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E061</div>
+    <div class="mm-metric">8 → 6</div>
+    <h3>Shared audit bundles</h3>
+    <p>Coupled evidence actions discharge multiple obligations and beat branch-separable allocation.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -397,7 +427,12 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E053** separates noiseless identification from one-error-correcting robustness.  
 **E054** compiles probe authority from the declared error budget and can return UNSAT.  
 **E055** expands independent measurement channels to repair a stronger robustness requirement.  
-**E056** proves that those channels also need physical failure-domain diversity; repetition alone is not redundancy.
+**E056** proves that those channels also need physical failure-domain diversity; repetition alone is not redundancy.  
+**E057** recursively probes those roots and discovers a hidden super-root.  
+**E058** synthesizes the minimum-cost topology repair.  
+**E059** compiles the minimum sufficient recursive audit depth.  
+**E060** allocates depth per dependency proof obligation.  
+**E061** reuses shared audit evidence through exact bundle cover.
 
 This produces a repeating research pattern:
 
@@ -473,6 +508,11 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E054 ODD](ODD_E054.md)
 - [E055 ODD](ODD_E055.md)
 - [E056 ODD](ODD_E056.md)
+- [E057 ODD](ODD_E057.md)
+- [E058 ODD](ODD_E058.md)
+- [E059 ODD](ODD_E059.md)
+- [E060 ODD](ODD_E060.md)
+- [E061 ODD](ODD_E061.md)
 
 ## Run locally
 
@@ -527,6 +567,11 @@ python scripts/run_e053.py
 python scripts/run_e054.py
 python scripts/run_e055.py
 python scripts/run_e056.py
+python scripts/run_e057.py
+python scripts/run_e058.py
+python scripts/run_e059.py
+python scripts/run_e060.py
+python scripts/run_e061.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
