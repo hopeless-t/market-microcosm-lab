@@ -16,6 +16,7 @@ E016 = ROOT / "artifacts/e016/adaptive-guard-report.json"
 E017 = ROOT / "artifacts/e017/certificate-lifecycle-report.json"
 E018 = ROOT / "artifacts/e018/audit-portfolio-report.json"
 E019 = ROOT / "artifacts/e019/provenance-ledger-report.json"
+E020 = ROOT / "artifacts/e020/checkpoint-rotation-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -651,7 +652,71 @@ def render_e019(payload: dict) -> str:
 </svg>
 '''
 
-def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict, e019: dict) -> str:
+
+def render_e020(payload: dict) -> str:
+    reference = payload["reference"]
+    attacks = payload["attacks"]
+    checkpoint_count = len(reference["checkpoints"])
+    anchored = int(reference["anchored_event_count"])
+    total = int(reference["ledger_event_count"])
+    tail = int(reference["unanchored_tail_events"])
+
+    width = 1040
+    height = 430
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E020 checkpoint rotation and anchor continuity</title>
+<desc id="desc">Rotating checkpoints preserve continuity to a pinned anchor and reject rewritten ledger prefixes that a latest-only verifier accepts.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .head {{ font: 700 13px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; letter-spacing: 1px; }}
+  .mode {{ font: 800 22px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .body {{ font: 14px Inter,Segoe UI,Arial,sans-serif; fill: #d8e4f2; }}
+  .ok {{ fill: #0f3d32; stroke: #22c55e; stroke-width: 2; }}
+  .warn {{ fill: #3b2a14; stroke: #f59e0b; stroke-width: 2; }}
+  .bad {{ fill: #3c1721; stroke: #f43f5e; stroke-width: 2; }}
+  .pin {{ fill: #172554; stroke: #60a5fa; stroke-width: 2; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#153147"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E020 · Checkpoint Rotation / Anchor Continuity</text>
+<text x="30" y="68" class="sub">{total} ledger events · {checkpoint_count} rotating checkpoints · {anchored} anchored · {tail} unanchored tail</text>
+
+<rect x="30" y="100" width="300" height="108" rx="18" class="ok"/>
+<text x="52" y="128" class="head">HONEST ROTATION</text>
+<text x="52" y="162" class="mode">CHAIN + PIN PASS</text>
+<text x="52" y="188" class="body">2 → 4 → 6 → 8 event anchors</text>
+
+<rect x="370" y="100" width="300" height="108" rx="18" class="warn"/>
+<text x="392" y="128" class="head">LATEST-ONLY FORGERY</text>
+<text x="392" y="162" class="mode">LATEST CHECK PASSES</text>
+<text x="392" y="188" class="body">rewritten old prefix looks self-consistent</text>
+
+<rect x="710" y="100" width="300" height="108" rx="18" class="bad"/>
+<text x="732" y="128" class="head">PINNED HISTORY</text>
+<text x="732" y="162" class="mode">REWRITE REJECTED</text>
+<text x="732" y="188" class="body">{attacks["latest_only_forgery"]["pinned_rotation_reason"]}</text>
+
+<path d="M330 154 L365 154" stroke="#7dd3fc" stroke-width="3"/>
+<path d="M670 154 L705 154" stroke="#7dd3fc" stroke-width="3"/>
+
+<rect x="30" y="252" width="980" height="103" rx="20" class="pin"/>
+<text x="52" y="282" class="head">ROTATION INTEGRITY</text>
+<text x="52" y="318" class="mode">DELETE ✕ · REORDER ✕ · FORK ✕</text>
+<text x="52" y="342" class="body">Old trust is not discarded when a newer checkpoint appears.</text>
+
+<text x="30" y="393" class="sub">Fork detected: {"YES" if attacks["checkpoint_fork"]["detected"] else "NO"} · unanchored tail: {tail} events</text>
+<text x="30" y="416" class="sub">Promoted contract: {payload["promoted_rotation_contract"] or "NONE"}</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict, e019: dict, e020: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -734,9 +799,10 @@ def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, 
     audit_portfolio = e018["aggregate"]
     greedy_trap = e018["greedy_trap"]
     provenance_attacks = e019["attacks"]
+    rotation_attacks = e020["attacks"]
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -855,6 +921,26 @@ Guard contract: **{"PASS" if e016["guard_contract_passed"] else "FAIL"}**.
 - Append-only extension preserves prefix hashes: **{"YES" if e019["append_extension"]["prefix_hashes_preserved"] else "NO"}**
 - Promoted ledger contract: **{e019["promoted_ledger_contract"] or "NONE"}**
 
+## E020 — checkpoint rotation and anchor continuity
+
+![E020 checkpoint rotation](e020-checkpoint-rotation.svg)
+
+| Case | Result |
+| --- | --- |
+| Honest rotation | **PASS** |
+| Pinned checkpoint continuity | **PASS** |
+| Delete checkpoint | **REJECTED** |
+| Reorder checkpoints | **REJECTED** |
+| Latest-only forged checkpoint | **ACCEPTED by weak verifier** |
+| Same rewrite with pinned history | **REJECTED** |
+| Checkpoint fork | **DETECTED** |
+
+- Anchored ledger prefix: **{e020["reference"]["anchored_event_count"]}/{e020["reference"]["ledger_event_count"]} events**
+- Unanchored tail: **{e020["reference"]["unanchored_tail_events"]} events**
+- Latest-only weakness: **{rotation_attacks["latest_only_forgery"]["latest_only_reason"]}**
+- Pinned rotation result: **{rotation_attacks["latest_only_forgery"]["pinned_rotation_reason"]}**
+- Promoted rotation contract: **{e020["promoted_rotation_contract"] or "NONE"}**
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
@@ -869,6 +955,7 @@ def generated_files(
     e017: dict,
     e018: dict,
     e019: dict,
+    e020: dict,
 ) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
@@ -880,7 +967,8 @@ def generated_files(
         OUT / "e017-lifecycle.svg": render_e017(e017),
         OUT / "e018-audit-portfolio.svg": render_e018(e018),
         OUT / "e019-provenance.svg": render_e019(e019),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018, e019),
+        OUT / "e020-checkpoint-rotation.svg": render_e020(e020),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020),
     }
 
 
@@ -902,7 +990,8 @@ def main() -> None:
     e017 = _read(E017)
     e018 = _read(E018)
     e019 = _read(E019)
-    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018, e019)
+    e020 = _read(E020)
+    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020)
 
     if args.check:
         stale: list[str] = []

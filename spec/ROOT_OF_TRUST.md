@@ -29,4 +29,7 @@ An optimized or approximate verifier may operate only under a certificate tied t
 ## R9 — Externally anchored provenance
 A mutable certificate/audit history may not authenticate itself solely from internally recomputable hashes. Authoritative provenance must be bound to an independently trusted checkpoint, signature, transparency anchor, or equivalent evidence outside the mutable history being authenticated. A checkpoint mismatch fails closed.
 
+## R10 — Anchor continuity
+Rotating or replacing provenance anchors must preserve verifiable continuity to previously trusted checkpoints. A newer anchor may extend trust but may not silently erase older pinned trust. Missing links, rewritten anchored prefixes, or conflicting checkpoint forks fail closed.
+
 These rules are intentionally small. The meta-loop may improve almost everything else.

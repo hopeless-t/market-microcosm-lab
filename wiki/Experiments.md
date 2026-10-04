@@ -151,3 +151,14 @@ The clean eight-event chain and its independent checkpoint both pass, ending ACT
 Payload mutation, deletion, and reorder attacks break internal chain verification. A stronger full-history rewrite can recompute every downstream hash and still pass internal verification; in the fixed attack the forged final state becomes REVOKED/exhaustive.
 
 The previously anchored checkpoint detects the forged head hash. Therefore the mutable ledger cannot be its own final source of provenance authority.
+
+
+## E020 — checkpoint rotation and anchor continuity
+
+E020 rotates external provenance checkpoints across a 10-event ledger at event counts 2, 4, 6, and 8.
+
+Honest rotation and the independently pinned sequence-1 checkpoint verify. Checkpoint deletion, reorder, and fork attacks are detected.
+
+A rewritten old ledger prefix plus a forged latest-only checkpoint is self-consistent and passes weak latest-only verification. The same rewritten ledger fails verification when continuity to the older pinned checkpoint is required.
+
+The final two ledger events remain explicitly unanchored, making the boundary between externally fixed history and recent mutable history visible rather than implicit.

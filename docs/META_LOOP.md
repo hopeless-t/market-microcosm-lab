@@ -122,3 +122,19 @@ This creates another two-plane separation:
 - **anchor plane** — independently trusted evidence that decides which history head is authoritative.
 
 The history can explain authority. It cannot grant itself authority.
+
+
+## Anchor continuity under rotation
+
+E020 extends E019's anchor plane from a single checkpoint into a rotating chain.
+
+A new checkpoint is not allowed to replace historical trust by fiat. Each rotation links to the previous checkpoint hash and anchors a strictly larger ledger prefix. At least one previously trusted checkpoint can remain pinned outside the mutable bundle.
+
+The adversarial comparison is explicit: a rewritten ledger plus a freshly forged latest-only checkpoint can pass a verifier that has forgotten the past. The same rewrite fails when the verification path must remain continuous with the pinned historical checkpoint.
+
+The meta-loop therefore distinguishes:
+
+- **latest state** — what the newest checkpoint claims;
+- **trust continuity** — whether that claim extends previously accepted history without rewriting it.
+
+Optimization may advance the head. It may not reset the root of trust.

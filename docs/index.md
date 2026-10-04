@@ -88,6 +88,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Durable provenance</h3>
     <p>Hash-linked history is replayable, while an external checkpoint catches fully rehashed rewrites.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E020</div>
+    <div class="mm-metric">4 anchors</div>
+    <h3>Checkpoint continuity</h3>
+    <p>Rotating anchors preserve older trust and reject latest-only rewritten-history forgery.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -112,6 +118,8 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
 
 ![E019 provenance ledger](generated/e019-provenance.svg)
 
+![E020 checkpoint rotation](generated/e020-checkpoint-rotation.svg)
+
 These figures are generated from experiment JSON and checked by CI so the public display cannot silently drift away from the current evidence.
 
 ## North Star
@@ -130,7 +138,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E016** makes that promotion revocable: structural generation changes or failed monotonicity audits force exhaustive fallback.  
 **E017** adds evidence-age lifecycle and periodic exhaustive audit scheduling.  
 **E018** allocates scarce audit budget across multiple certificates against an exact small-world oracle.  
-**E019** makes certificate history replayable and externally anchored so a fully rehashed rewrite cannot self-certify.
+**E019** makes certificate history replayable and externally anchored so a fully rehashed rewrite cannot self-certify.  
+**E020** rotates those anchors without forgetting previously trusted history and detects checkpoint forks.
 
 This produces a repeating research pattern:
 
@@ -169,6 +178,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E017 ODD](ODD_E017.md)
 - [E018 ODD](ODD_E018.md)
 - [E019 ODD](ODD_E019.md)
+- [E020 ODD](ODD_E020.md)
 
 ## Run locally
 
@@ -186,6 +196,7 @@ python scripts/run_e016.py
 python scripts/run_e017.py
 python scripts/run_e018.py
 python scripts/run_e019.py
+python scripts/run_e020.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

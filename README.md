@@ -52,6 +52,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E017 · Certificate Lifecycle** | When should the expensive verifier run again? | 12-epoch stable schedule saves 51.2% while audits/expiry remain fail-closed |
 | **E018 · Audit Portfolio** | Which certificates should receive scarce authoritative audit budget first? | bounded-DP matches exact oracle on 48/48 portfolios with 87.3% less search work |
 | **E019 · Provenance Ledger** | Can certificate history be replayed and tampering detected? | local corruption is caught by the chain; fully rehashed history requires an external checkpoint |
+| **E020 · Checkpoint Rotation** | Can external trust be rotated without forgetting older anchors? | latest-only forgery passes weak verification; pinned continuity rejects rewritten history |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -166,6 +167,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Provenance cannot self-anchor.** E019 adds an append-only SHA-256 certificate ledger. Direct payload tampering, deletion, and reordering are detected internally. But a full history rewrite with all downstream hashes recomputed remains internally consistent; only an out-of-ledger checkpoint detects the forged head and rejects the rewritten final state.
 
+**Trust must retain continuity when anchors rotate.** E020 rotates checkpoints across a 10-event ledger at event counts 2, 4, 6, and 8. A forged latest-only checkpoint over rewritten history passes weak verification, while the same rewrite is rejected when an older independently pinned checkpoint remains part of the verification path. Deletion, reordering, and checkpoint forks are also detected.
+
 That sequence matters:
 
 ```text
@@ -184,6 +187,7 @@ neutral saturation
   → exact audit-portfolio allocation
   → durable provenance ledger
   → external checkpoint anchoring
+  → checkpoint rotation / anchor continuity
 ```
 
 ## Verification stack
@@ -226,6 +230,7 @@ python scripts/run_e016.py
 python scripts/run_e017.py
 python scripts/run_e018.py
 python scripts/run_e019.py
+python scripts/run_e020.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
@@ -236,7 +241,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site

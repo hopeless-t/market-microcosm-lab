@@ -53,8 +53,9 @@
 - [x] exact audit-budget scheduling across multiple certified evaluators
 - [x] greedy audit-priority counterexample + exact DP promotion
 - [x] durable certificate ledger / provenance chain
-- [ ] external checkpoint rotation / independently anchored provenance
+- [x] external checkpoint rotation / independently anchored provenance
 - [ ] signed or transparency-log-backed checkpoint experiment
+- [ ] multi-witness checkpoint quorum / split-view detection
 - [ ] multi-epoch audit portfolio planning under uncertain future drift
 - [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 
