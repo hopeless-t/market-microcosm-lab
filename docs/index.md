@@ -436,6 +436,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Calibration compiler</h3>
     <p>Cost/bound Pareto points compile robustness targets directly; an unattainable 11.1 target returns UNSAT.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E078</div>
+    <div class="mm-metric">+70 ARR / +1.5pp churn</div>
+    <h3>Cross-company replication</h3>
+    <p>Allied Architects independently reproduces churn deterioration with ARR growth and an exact product-level portfolio decomposition.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -544,7 +550,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E074** replaces sampled dependence with a tight all-joints-at-fixed-marginals ambiguity certificate.  
 **E075** also makes the marginals uncertain and shows that lower failure bounds drive worst collection cost.  
 **E076** actively senses the certificate and buys only the calibration needed to cross a declared robust-bound target.  
-**E077** extracts the complete non-dominated calibration frontier and compiles arbitrary targets against it.
+**E077** extracts the complete non-dominated calibration frontier and compiles arbitrary targets against it.  
+**E078** re-anchors in public data and reproduces the churn-up / ARR-up counterexample at Allied Architects.
 
 This produces a repeating research pattern:
 
@@ -641,6 +648,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E075 ODD](ODD_E075.md)
 - [E076 ODD](ODD_E076.md)
 - [E077 ODD](ODD_E077.md)
+- [E078 ODD](ODD_E078.md)
 
 ## Run locally
 
@@ -716,6 +724,7 @@ python scripts/run_e074.py
 python scripts/run_e075.py
 python scripts/run_e076.py
 python scripts/run_e077.py
+python scripts/run_e078.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

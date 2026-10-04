@@ -753,3 +753,12 @@ Exact search selects GTM incidence calibration only, cost 2, reducing the worst-
 Yes. The exact non-dominated frontier has only three points. Targets compile to the cheapest sufficient calibration; targets tighter than 11.2 are UNSAT in the current catalog.
 
 [Read the E077 ODD](ODD_E077.md)
+
+
+## E078 — Cross-company churn / ARR sign replication
+
+**Question:** does the BBD churn-up / ARR-up counterexample replicate in an independent public SaaS company?
+
+Yes. Allied Architects 2023-Q3→Q4 ARR rises by 70m JPY while churn worsens by 1.5pp. Product-level ARR changes reconcile exactly, including strategic legacy-product decline.
+
+[Read the E078 ODD](ODD_E078.md)

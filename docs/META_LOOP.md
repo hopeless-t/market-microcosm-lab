@@ -640,3 +640,10 @@ This converts uncertainty reduction from an open-ended research goal into a proo
 ## Calibration Pareto frontier
 
 E077 turns one-shot certificate meta-sensing into a reusable compiler. The non-dominated calibration frontier is computed once, and robustness targets are mapped to the cheapest sufficient point. Targets beyond the frontier fail closed.
+
+
+## Cross-company empirical re-anchor
+
+E078 deliberately returns the loop from synthetic ambiguity certificates to independent public SaaS evidence. The BBD sign counterexample is challenged on Allied Architects and survives: churn deterioration and ARR growth coexist, with product-level decomposition and downgrade semantics.
+
+The loop should continue alternating between structural abstraction and fresh empirical counterexamples rather than letting either plane become self-referential.

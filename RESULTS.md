@@ -1361,9 +1361,21 @@ A target compiler chooses the cheapest sufficient frontier point: target 11.9 se
 
 All gates promote `certificate-calibration-uses-pareto-frontier-and-fail-closed-target-compiler-v1`.
 
+## E078 — cross-company churn / ARR sign replication
+
+E078 re-anchors the ambiguity/calibration loop in an independent real-company public dataset.
+
+Allied Architects domestic SaaS moves from 2023-Q3 ARR 1,010m JPY / churn 3.0% to Q4 ARR 1,080m / churn 4.5%. ARR therefore rises **+70m** while churn worsens **+1.5pp**.
+
+The Q4 ARR delta exactly decomposes to Letro **+65**, LetroStudio **+16**, and strategically declining Monipla Fan Blog **−11**, reconciling to +70. The company separately states account cancellations remained controlled while increased downgrades temporarily worsened MRR-based gross revenue churn.
+
+BBD and Allied Architects now independently contain churn-up / ARR-up transitions.
+
+All gates promote `churn-arr-sign-counterexample-replicates-cross-company-v1`.
+
 ## Theory update
 
-The working theory after E010–E077 is:
+The working theory after E010–E078 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1500,6 +1512,9 @@ The working theory after E010–E077 is:
 133. active sensing can target uncertainty in the certificate itself rather than only uncertainty in market state;
 134. certificate-calibration evidence should be acquired only until a declared robustness target is discharged, not until every uncertain parameter is maximally estimated;
 135. calibration choices form a cost-vs-certification Pareto frontier, so dominated uncertainty-reduction plans should not receive authority;
-136. robustness targets can be compiled against that frontier, with unattainable targets returning UNSAT rather than fabricated precision.
+136. robustness targets can be compiled against that frontier, with unattainable targets returning UNSAT rather than fabricated precision;
+137. churn deterioration can coexist with ARR growth across independent public SaaS companies, so the sign contradiction is not confined to the original BBD case;
+138. product-level portfolio decomposition can reconcile aggregate ARR growth while a legacy product deliberately contracts;
+139. downgrade-driven revenue churn, account cancellation, product pruning, and aggregate ARR growth require separate empirical state semantics.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

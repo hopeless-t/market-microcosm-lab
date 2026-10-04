@@ -1373,6 +1373,24 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run cross-company sign replication
+        run: python scripts/run_e078.py
+      - name: Validate E078 cross-company replication contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e078/cross-company-sign-replication-report.json").read_text())
+          q4=x["allied_transitions"][-1]
+          d=x["q3_q4_product_decomposition"]
+          assert q4["arr_delta_jpy_millions"]==70
+          assert round(q4["churn_delta_percentage_points"],1)==1.5
+          assert q4["arr_direction"]=="up" and q4["churn_direction"]=="up"
+          assert d["components_jpy_millions"]=={"letro":65,"letro_studio":16,"monipla_fan_blog":-11}
+          assert d["reconciles"] is True
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

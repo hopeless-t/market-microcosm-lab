@@ -128,6 +128,7 @@
 - [x] interval-marginal plus arbitrary-dependence acquisition certificate
 - [x] minimum targeted calibration for robustness-certificate target
 - [x] calibration cost / robust-bound Pareto frontier + UNSAT compiler
+- [x] cross-company public churn/ARR sign counterexample replication
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary

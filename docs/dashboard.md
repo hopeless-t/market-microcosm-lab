@@ -307,3 +307,8 @@ The verifier itself becomes an active-sensing target. A GTM incidence study is t
 ## E077 — Calibration Pareto frontier
 
 Certificate calibration compresses to three non-dominated cost/bound points: (0,12.0), (1,11.85), (2,11.2). Targets are compiled to the cheapest sufficient point, while a target of 11.1 fails closed.
+
+
+## E078 — Cross-company churn / ARR sign replication
+
+Allied Architects independently reproduces churn deterioration with ARR growth: 2023-Q3→Q4 ARR +70m JPY while MRR-based churn worsens +1.5pp. Letro +65, LetroStudio +16, and strategically declining Monipla −11 reconcile exactly to the +70 total.
