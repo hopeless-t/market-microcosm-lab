@@ -173,3 +173,8 @@ A single signed predicate observation is no longer final authority. Matching 3-o
 ## E049 — Upstream source diversity
 
 Witness-domain diversity is not enough when multiple witnesses consume one common upstream feed. The predicate quorum now also requires independent evidence-source lineage.
+
+
+## E050 — Evidence lineage roots
+
+Distinct source labels do not guarantee independent observations. A false three-source quorum can still collapse onto one master warehouse. Predicate authority now follows the upstream evidence-lineage graph and requires independent roots.
