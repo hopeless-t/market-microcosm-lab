@@ -401,3 +401,12 @@ E036 searches 324 threshold candidates over 500 discovery states, freezes the wi
 This is within-generator generalization, not real-world predictive certification.
 
 [Read the E036 ODD](ODD_E036.md)
+
+
+## E037 — Structural-drift revocation
+
+**Question:** does E036 remain authoritative when the failure law itself changes rather than only the random seed?
+
+No. An interaction-only market-headroom × downstream-success failure drops the frozen E036 warning below its prior recall authority threshold. The old certificate is revoked, and an interaction-aware v2 candidate restores greater than 99% precision and recall on the shifted generation.
+
+[Read the E037 ODD](ODD_E037.md)
