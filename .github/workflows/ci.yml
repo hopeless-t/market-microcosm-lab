@@ -1256,6 +1256,21 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run minimax prior-set acquisition
+        run: python scripts/run_e071.py
+      - name: Validate E071 minimax prior-set contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e071/robust-prior-acquisition-report.json").read_text())
+          s=x["minimax_search"]["selected"]
+          assert s["order"]==["signed-strategy-gap-attestation","finance-pack","gtm-pack"]
+          assert round(s["worst_case_expected_cost"],3)==11.315
+          assert round(s["worst_case_regret"],4)==2.2925
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

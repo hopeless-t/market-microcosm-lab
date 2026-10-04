@@ -394,6 +394,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Prior drift</h3>
     <p>Finance- and strategy-heavy shifts reorder the optimal first observation and revoke the frozen E069 policy.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E071</div>
+    <div class="mm-metric">minimax 11.315</div>
+    <h3>Prior-set robustness</h3>
+    <p>Strategy → finance → GTM reduces worst-case acquisition cost and regret across three admitted prior generations.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -495,7 +501,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E067** compiles the remaining ABSTAIN into a minimum authorized direct-evidence acquisition portfolio.  
 **E068** proves that warning evidence is decision-asymmetric: positive WARN certificates can be much cheaper than SAFE certificates.  
 **E069** removes oracle knowledge and computes the exact sequential evidence policy under declared failure priors.  
-**E070** freezes that policy, shifts the prior generation, and revokes it when expected-cost regret crosses threshold.
+**E070** freezes that policy, shifts the prior generation, and revokes it when expected-cost regret crosses threshold.  
+**E071** compiles the admitted prior set into a minimax evidence order and exposes the efficiency/robustness trade-off.
 
 This produces a repeating research pattern:
 
@@ -585,6 +592,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E068 ODD](ODD_E068.md)
 - [E069 ODD](ODD_E069.md)
 - [E070 ODD](ODD_E070.md)
+- [E071 ODD](ODD_E071.md)
 
 ## Run locally
 
@@ -653,6 +661,7 @@ python scripts/run_e067.py
 python scripts/run_e068.py
 python scripts/run_e069.py
 python scripts/run_e070.py
+python scripts/run_e071.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

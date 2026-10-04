@@ -121,6 +121,7 @@
 - [x] decision-sufficient asymmetric warning acquisition bound
 - [x] exact sequential warning-evidence acquisition policy
 - [x] prior-generation drift revocation for sequential acquisition
+- [x] minimax sequential acquisition across prior uncertainty set
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary

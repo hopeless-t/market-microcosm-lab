@@ -690,3 +690,12 @@ Exact DP selects GTM → strategy → finance along the all-safe path. Expected 
 No. Finance- and strategy-heavy shifts change the exact first observation and create regret above the declared revocation threshold.
 
 [Read the E070 ODD](ODD_E070.md)
+
+
+## E071 — Minimax prior-set acquisition
+
+**Question:** can one fixed observation order reduce worst-case acquisition cost across the E070 prior uncertainty set?
+
+Yes. Exact search over all six bundle orders selects strategy → finance → GTM, improving worst-case cost and regret while sacrificing some reference-prior efficiency.
+
+[Read the E071 ODD](ODD_E071.md)

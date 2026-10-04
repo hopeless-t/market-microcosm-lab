@@ -272,3 +272,8 @@ Exact dynamic programming orders authorized evidence by expected decision cost. 
 ## E070 — Prior-drift revocation
 
 The E069 order is valid only for its declared prior. Finance-heavy and strategy-heavy generations change the optimal first action and push frozen-policy regret above the revocation threshold, forcing recompilation.
+
+
+## E071 — Minimax prior-set acquisition
+
+Across the reference, finance-heavy, and strategy-heavy priors, exact order search selects strategy → finance → GTM. Worst-case expected cost falls to 11.315 and worst-case regret to 2.2925, at the price of worse reference-prior efficiency.

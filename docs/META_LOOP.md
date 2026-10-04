@@ -597,3 +597,10 @@ The next attack target is the prior itself: a strong policy under one failure di
 E070 attacks the prior used by E069. The frozen observation order is evaluated on shifted failure distributions and loses authority when regret exceeds a declared threshold.
 
 The next target is to reduce dependence on one estimated prior by compiling a policy across a prior uncertainty set.
+
+
+## Minimax prior-set acquisition
+
+E071 converts prior drift from a revoke-only mechanism into a robust optimization problem. Instead of betting on one prior, every admitted prior scenario participates in the promotion gate.
+
+The robust order reduces worst-case regret but loses reference-prior efficiency. Both metrics stay visible.

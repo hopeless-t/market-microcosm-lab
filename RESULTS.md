@@ -1289,9 +1289,19 @@ Both shifted generations exceed the declared regret revocation threshold of 1.0.
 
 All gates promote `sequential-acquisition-policy-authority-is-prior-generation-scoped-v1`.
 
+## E071 — minimax prior-set acquisition
+
+E071 treats E070's three prior generations as an admitted uncertainty set rather than selecting one as truth.
+
+All six orders of the three E067 bundles are evaluated. The minimax order is `signed strategy attestation → finance-pack → gtm-pack`, with worst-case expected cost **11.315** and worst-case regret **2.2925**. This improves the frozen E069 order's worst-case cost 12.57375 and regret 3.7005625.
+
+The robust order is intentionally worse under the original reference prior: 11.315 versus 9.0225. Robustness and single-prior efficiency are separate objectives.
+
+All gates promote `uncertain-prior-sequential-acquisition-uses-minimax-order-v1`.
+
 ## Theory update
 
-The working theory after E010–E070 is:
+The working theory after E010–E071 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1413,6 +1423,8 @@ The working theory after E010–E070 is:
 118. sequential evidence ordering should minimize expected decision cost under declared priors while preserving the complete all-safe certification path;
 119. collection-cost order and expected-decision-cost order can differ even when both use the same evidence bundles;
 120. sequential evidence-policy authority is scoped to the failure-prior generation that earned it;
-121. prior drift can change the optimal first observation and should trigger regret-based revocation / recompilation rather than silent reuse.
+121. prior drift can change the optimal first observation and should trigger regret-based revocation / recompilation rather than silent reuse;
+122. prior uncertainty can be compiled into a minimax evidence order that reduces worst-case cost/regret across an admitted scenario set;
+123. robust sequential sensing may intentionally sacrifice efficiency under the reference prior, so single-prior efficiency and uncertainty robustness must remain separate reported objectives.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
