@@ -390,3 +390,14 @@ Yes. The fixed witness reverses product ranking after implementation/CS/service 
 No. They miss or false-alarm reference archetypes. A five-axis multi-signal rule exactly matches the declared finite oracle, earning promotion only as a reference warning representation.
 
 [Read the E035 ODD](ODD_E035.md)
+
+
+## E036 — Discovery-tuned warning with generated holdout
+
+**Question:** does E035's multi-signal warning survive broad generated scenarios when thresholds are chosen on discovery only?
+
+E036 searches 324 threshold candidates over 500 discovery states, freezes the winner, and evaluates 500 states from an untouched seed. Holdout precision, recall, and F1 remain above 98%; scalar revenue/churn baselines retain severe blind spots.
+
+This is within-generator generalization, not real-world predictive certification.
+
+[Read the E036 ODD](ODD_E036.md)
