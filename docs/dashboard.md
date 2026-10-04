@@ -204,3 +204,24 @@ A two-error UNSAT under the original probe alphabet is repaired by expanding to 
 ## E056 — Measurement failure domains
 
 Repeated channels are not independent merely because the code contains more bits. A shared collector can flip five certified bits at once and manufacture an exact wrong codeword. The repaired ten-channel reference uses at least five measurement roots so any one root fault remains within the two-bit correction certificate.
+
+
+## E057 — Recursive measurement lineage
+
+Three E056 measurement roots still share one hidden observability super-root. One fault can corrupt six certified channels, so the prior topology authority is revoked.
+
+## E058 — Recursive-lineage repair
+
+Exact migration synthesis moves root-1 and root-2 for cost 5, restoring one two-channel measurement root per provider and the original two-bit fault contract.
+
+## E059 — Dependency-depth stopping
+
+Recursive audit stops at depth 2 / cost 5 because that is the first depth whose maximum remaining unverified blast is two channels. Deeper audit adds cost without stronger cross-provider authority in the reference.
+
+## E060 — Heterogeneous audit allocation
+
+Dependency branches receive different audit depths according to their own proof obligations. Exact allocation costs 8 rather than 16 for uniform deep audit.
+
+## E061 — Coupled audit bundles
+
+Shared control-plane and infrastructure audit bundles discharge multiple proof obligations. Exact cover costs 6, improving on the branch-separable cost-8 plan.
