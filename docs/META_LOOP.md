@@ -295,3 +295,14 @@ A broad deterministic generator creates isolated discovery and holdout populatio
 The selected multi-signal rule keeps greater than 98% precision, recall, and F1 on the generated holdout while revenue-only and churn-only rules retain severe recall blind spots.
 
 Authority remains limited: discovery and holdout still share one structural generator. The next falsification must change the generator itself rather than only the random seed.
+
+
+## Warning structural-drift revocation
+
+E037 attacks E036's shared-generator assumption.
+
+The frozen E036 warning is moved to a new structural generation with an interaction-only market-headroom × downstream-success failure. Its recall falls below the prior authority threshold and the warning is revoked.
+
+A repaired candidate adds the interaction term and restores greater than 99% precision and recall on the shifted generation.
+
+The empirical warning plane now has the same authority lifecycle as the adaptive experimenter: strong prior evidence is generation-scoped and can be explicitly revoked when the failure topology changes.
