@@ -88,6 +88,8 @@
 - [x] structural-drift revocation / interaction-aware warning v2
 - [x] real-company component longitudinal holdout
 - [x] rolling-KPI measurement-kernel lag guard
+- [x] rolling-KPI non-identifiability proof
+- [x] minimal boundary checkpoint for exact one-step reconstruction
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary\n- [ ] sampled-observation empirical calibration world
