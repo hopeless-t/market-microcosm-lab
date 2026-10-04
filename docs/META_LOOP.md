@@ -209,3 +209,16 @@ Discovery and temporal validation are separated. Q2 2023 through Q1 2024 choose 
 At a 10% maximum-relative-error threshold, one and two groups fail, while three groups pass with the topology `{UCAN}`, `{EMEA}`, `{LATAM, APAC}`. The frozen one-quarter-forward prediction also remains inside tolerance.
 
 This adds another allowed meta-loop move: **change model complexity when admitted external evidence falsifies a cheaper family**. The loop still may not relabel ARM as subscription price or infer causal regional effects from descriptive aggregates.
+
+
+## Sampling-assumption self-attack
+
+E026 demonstrates a meta-loop that improves itself by attacking an assumption introduced only moments earlier.
+
+The published SARTRAS counts make a simple-random-sampling reference mathematically convenient. Under that reference, exact hypergeometric detection has a clear rarity knee. But the laboratory does not promote convenience into empirical authority.
+
+A second-stage adversary removes the unverified random-selection assumption while keeping the same population and sample counts. It can place all carriers outside the selected institutions, collapsing the sample-size-only detection lower bound to zero.
+
+The promoted result is therefore not the optimistic SRS prevalence curve. It is the stricter evidence rule: **sampling-design metadata is required before prevalence inference**.
+
+This is the empirical analogue of E016/E023: when a hidden structural premise can dominate the result, the optimized or convenient path loses authority and the system falls back to a less committal model.
