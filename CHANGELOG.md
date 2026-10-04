@@ -4,7 +4,7 @@
 
 ### Presentation and research UX
 
-- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018 JSON;
+- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018/E019 JSON;
 - CI freshness check for visual result surfaces and Actions job summary;
 - dashboard page and social-preview artwork source;
 
@@ -38,7 +38,12 @@
 - E018 exact audit-portfolio oracle and bounded-DP scheduler;
 - 48/48 generated portfolio exact recovery with 87.3% less scheduler search work;
 - explicit greedy audit-allocation counterexample (160 vs exact 220);
-- mandatory-audit over-budget portfolios fail closed.
+- mandatory-audit over-budget portfolios fail closed;
+- E019 append-only certificate provenance ledger with deterministic replay;
+- direct payload mutation, deletion, and reorder attacks detected internally;
+- full history rewrite + downstream rehash shown to defeat internal-only chain validation;
+- independent checkpoint detects fully rehashed rewrite through head-hash mismatch;
+- Root of Trust R9 requires externally anchored provenance.
 
 ## v0.2 — Ecological market dynamics
 

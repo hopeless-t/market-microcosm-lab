@@ -140,3 +140,14 @@ An exhaustive subset enumerator is the small-world oracle. The promoted bounded-
 A plausible value-per-cost greedy scheduler matches the oracle only 79.2% of the time. The fixed A/B/C trap yields value 160 for greedy and 220 for exact/DP.
 
 If mandatory audits alone exceed the budget, the scheduler marks the portfolio infeasible and fails closed rather than silently dropping an authority requirement.
+
+
+## E019 — durable certificate provenance ledger
+
+E019 stores certificate events in an append-only SHA-256 hash chain and replays certificate authority from history.
+
+The clean eight-event chain and its independent checkpoint both pass, ending ACTIVE/adaptive on the recertified generation.
+
+Payload mutation, deletion, and reorder attacks break internal chain verification. A stronger full-history rewrite can recompute every downstream hash and still pass internal verification; in the fixed attack the forged final state becomes REVOKED/exhaustive.
+
+The previously anchored checkpoint detects the forged head hash. Therefore the mutable ledger cannot be its own final source of provenance authority.

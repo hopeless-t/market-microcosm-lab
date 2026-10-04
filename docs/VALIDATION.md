@@ -102,3 +102,16 @@ Before promotion, the candidate scheduler is compared to exhaustive subset enume
 A separate greedy counterexample is retained permanently so that locally attractive value-per-cost scheduling cannot regress into the authoritative path.
 
 Mandatory audits are hard constraints. If mandatory audit cost exceeds available budget, the only valid result is infeasible/fail-closed; partial satisfaction cannot be reported as a successful optimized schedule.
+
+
+## Provenance-chain and anchor validation
+
+E019 validates certificate/audit provenance at two separate layers.
+
+Internal hash-chain validation checks contiguous indexes, previous-hash linkage, and recomputed event hashes. This detects direct payload mutation, deletion, and event reordering.
+
+A stronger adversarial rewrite changes historical meaning and then recomputes every downstream hash. Such a chain can remain internally valid. Internal consistency is therefore not sufficient evidence that history is authentic.
+
+The independent checkpoint fixes the accepted event count, head hash, final certificate state, and evaluation generation. The E019 full-rehash attack changes the replayed state while preserving internal chain validity, but fails the checkpoint through a head-hash mismatch.
+
+Root of Trust R9 therefore requires provenance to be anchored outside the mutable history it authenticates. Checkpoint mismatch is a fail-closed condition.

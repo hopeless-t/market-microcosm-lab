@@ -106,3 +106,19 @@ The laboratory does not allow a plausible local ranking rule to become authorita
 The promoted bounded-DP scheduler reproduces the exact audit portfolio optimum across the deterministic generated suite while reducing scheduler search work by 87.3%.
 
 Mandatory audits are constitutional constraints, not soft objective terms. If they cannot fit inside the declared audit budget, the portfolio fails closed instead of silently optimizing around them.
+
+
+## Externally anchored provenance
+
+E019 makes the meta-loop's own certification history an explicit trust object.
+
+Certificate events are append-only and hash-linked so local corruption, deletion, and reordering are detectable. But the experiment also demonstrates the stronger failure mode: a rewritten history can recompute every downstream hash and remain internally self-consistent.
+
+Therefore the meta-loop may maintain and replay its ledger, but it may not be the sole authority that authenticates that ledger. A trusted checkpoint outside the mutable history fixes the accepted head hash, event count, final certificate state, and generation fingerprint.
+
+This creates another two-plane separation:
+
+- **mutable provenance plane** — append-only event history and deterministic replay;
+- **anchor plane** — independently trusted evidence that decides which history head is authoritative.
+
+The history can explain authority. It cannot grant itself authority.

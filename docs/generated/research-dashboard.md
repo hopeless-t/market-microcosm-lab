@@ -1,6 +1,6 @@
 # Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -115,5 +115,22 @@ Guard contract: **PASS**.
 - Fixed greedy trap: **160 vs exact 220**
 - Mandatory-over-budget: **FAIL CLOSED**
 - Promoted scheduler: **bounded-dp**
+
+## E019 — durable certificate provenance ledger
+
+![E019 provenance ledger](e019-provenance.svg)
+
+| Integrity case | Internal chain | External checkpoint |
+| --- | --- | --- |
+| Reference history | **PASS** | **PASS** |
+| Payload tamper | **FAIL** | not needed |
+| Event deletion | **FAIL** | not needed |
+| Event reorder | **FAIL** | not needed |
+| Full rewrite + downstream rehash | **PASS** | **FAIL / detected** |
+
+- Reference replay: **ACTIVE / adaptive**
+- Rehashed forged replay: **REVOKED**
+- Append-only extension preserves prefix hashes: **YES**
+- Promoted ledger contract: **sha256-hash-chain-plus-external-checkpoint-v1**
 
 These are model-relative synthetic results. They are not real-market recommendations.
