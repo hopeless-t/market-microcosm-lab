@@ -229,3 +229,8 @@ Dependency branches receive different audit depths according to their own proof 
 ## E061 — Coupled audit bundles
 
 Shared control-plane and infrastructure audit bundles discharge multiple proof obligations. Exact cover costs 6, improving on the branch-separable cost-8 plan.
+
+
+## E062 — Audit-evidence failure domains
+
+E061's shared bundles are cost-efficient but each is the sole support for two proof obligations. Treating one artifact failure as a common-mode event revokes the cost-6 plan. The minimum failure-domain-safe evidence cover costs 8.
