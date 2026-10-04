@@ -312,3 +312,14 @@ The meta-loop then removes the unverified random-selection assumption. The same 
 The SRS curve remains a mathematical reference, but the promoted empirical rule requires sampling-design metadata before prevalence or observation-noise inference.
 
 [Read the E026 ODD](ODD_E026.md)
+
+
+## E027 — Game Pass metric-definition drift guard
+
+**Question:** can official Game Pass membership headlines from 2022 and 2024 authorize a precise growth calculation across the Xbox Live Gold → Game Pass Core transition?
+
+No. The 2022 figure is a lower bound (>25M subscribers), the 2024 figure is a rounded 34M member headline, and a membership-definition event lies between them.
+
+E027 deliberately computes the tempting 36% ratio but marks it illustrative-only. The promoted estimator rule requires compatible metric-definition generations and value semantics before time-series growth gains authority.
+
+[Read the E027 ODD](ODD_E027.md)
