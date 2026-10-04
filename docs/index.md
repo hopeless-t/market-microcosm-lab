@@ -184,6 +184,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Early warning</h3>
     <p>Negative-evidence mechanisms compile into a multi-signal warning vector that beats scalar proxies on the exact reference suite.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E036</div>
+    <div class="mm-metric">&gt;98%</div>
+    <h3>Warning holdout</h3>
+    <p>Thresholds tuned on one generated population retain high precision and recall on an untouched seed bank.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -250,7 +256,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E032** separates booked revenue from delayed cash collection and liquidity runway.  
 **E033** separates upstream funnel KPIs from downstream customer value.  
 **E034** prices recurring human delivery into fully loaded margin.  
-**E035** compiles the resulting failure mechanisms into a first exact multi-signal early-warning benchmark.
+**E035** compiles the resulting failure mechanisms into a first exact multi-signal early-warning benchmark.  
+**E036** tunes that vector on generated discovery states and verifies it on an untouched generated holdout.
 
 This produces a repeating research pattern:
 
@@ -305,6 +312,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E033 ODD](ODD_E033.md)
 - [E034 ODD](ODD_E034.md)
 - [E035 ODD](ODD_E035.md)
+- [E036 ODD](ODD_E036.md)
 
 ## Run locally
 
@@ -338,6 +346,7 @@ python scripts/run_e032.py
 python scripts/run_e033.py
 python scripts/run_e034.py
 python scripts/run_e035.py
+python scripts/run_e036.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
