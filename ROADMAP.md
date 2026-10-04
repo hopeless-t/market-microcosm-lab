@@ -76,6 +76,9 @@
 - [x] SARTRAS accounting + sampling anchor
 - [x] Netflix engagement + regional ARM anchors\n- [x] exact regional ARM complexity-knee oracle with temporal holdout
 - [x] Game Pass schema adapter held non-authoritative without partner values\n- [x] Game Pass public-headline metric-definition versioning guard
+- [x] Japanese negative-evidence corpus / survivorship-bias guard
+- [x] strategic exit separated from forced insolvency
+- [x] churn layer/cause semantics guard
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary\n- [ ] sampled-observation empirical calibration world
 - SARTRAS
