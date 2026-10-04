@@ -138,3 +138,17 @@ The meta-loop therefore distinguishes:
 - **trust continuity** — whether that claim extends previously accepted history without rewriting it.
 
 Optimization may advance the head. It may not reset the root of trust.
+
+
+## Multi-witness anchor authority
+
+E021 distributes checkpoint acceptance across a synthetic 3-of-5 witness quorum.
+
+The meta-loop may choose or tune witness topology only if the threshold's failure geometry is explicit. In the current five-witness small world, exhaustive enumeration proves that all three-witness quorums intersect while two-witness quorums can be disjoint.
+
+That intersection does not make compromise impossible. Three compromised witnesses can still forge a quorum. Instead, it provides two properties:
+
+- one or two compromised witnesses cannot independently mint an accepted forged checkpoint;
+- two conflicting accepted 3-of-5 views must share at least one witness, so retained authenticated attestations can expose equivocation.
+
+The threshold is therefore part of the trust model, not merely a performance parameter.

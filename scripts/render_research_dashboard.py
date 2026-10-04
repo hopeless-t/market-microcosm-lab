@@ -17,6 +17,7 @@ E017 = ROOT / "artifacts/e017/certificate-lifecycle-report.json"
 E018 = ROOT / "artifacts/e018/audit-portfolio-report.json"
 E019 = ROOT / "artifacts/e019/provenance-ledger-report.json"
 E020 = ROOT / "artifacts/e020/checkpoint-rotation-report.json"
+E021 = ROOT / "artifacts/e021/witness-quorum-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -716,7 +717,66 @@ def render_e020(payload: dict) -> str:
 </svg>
 '''
 
-def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict, e019: dict, e020: dict) -> str:
+
+def render_e021(payload: dict) -> str:
+    strong = payload["quorum_geometry"]["three_of_five"]
+    weak = payload["quorum_geometry"]["two_of_five"]
+    compromise = payload["compromise_boundary"]
+    equivocation = payload["split_view"]["equivocation_evidence"]
+
+    width = 1040
+    height = 430
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E021 multi-witness checkpoint quorum</title>
+<desc id="desc">Three-of-five checkpoint witnesses create quorum intersection, explicit compromise threshold, and detectable split-view equivocation.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .head {{ font: 700 13px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; letter-spacing: 1px; }}
+  .mode {{ font: 800 22px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .body {{ font: 14px Inter,Segoe UI,Arial,sans-serif; fill: #d8e4f2; }}
+  .ok {{ fill: #0f3d32; stroke: #22c55e; stroke-width: 2; }}
+  .warn {{ fill: #3b2a14; stroke: #f59e0b; stroke-width: 2; }}
+  .bad {{ fill: #3c1721; stroke: #f43f5e; stroke-width: 2; }}
+  .blue {{ fill: #172554; stroke: #60a5fa; stroke-width: 2; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#173327"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E021 · Multi-Witness Checkpoint Quorum</text>
+<text x="30" y="68" class="sub">5 witnesses · 3-of-5 acceptance · exact quorum geometry · retained equivocation evidence</text>
+
+<rect x="30" y="100" width="300" height="108" rx="18" class="ok"/>
+<text x="52" y="128" class="head">3-OF-5 GEOMETRY</text>
+<text x="52" y="162" class="mode">{strong["disjoint_quorum_pairs"]} DISJOINT PAIRS</text>
+<text x="52" y="188" class="body">minimum intersection {strong["minimum_intersection"]} across {strong["quorum_pair_count"]} pairs</text>
+
+<rect x="370" y="100" width="300" height="108" rx="18" class="warn"/>
+<text x="392" y="128" class="head">2-OF-5 COUNTEREXAMPLE</text>
+<text x="392" y="162" class="mode">{weak["disjoint_quorum_pairs"]} DISJOINT PAIRS</text>
+<text x="392" y="188" class="body">weak threshold can split without overlap</text>
+
+<rect x="710" y="100" width="300" height="108" rx="18" class="bad"/>
+<text x="732" y="128" class="head">FORGE BOUNDARY</text>
+<text x="732" y="162" class="mode">1 ✕ · 2 ✕ · 3 ✓</text>
+<text x="732" y="188" class="body">3 compromised witnesses satisfy quorum</text>
+
+<rect x="30" y="252" width="980" height="103" rx="20" class="blue"/>
+<text x="52" y="282" class="head">SPLIT VIEW</text>
+<text x="52" y="318" class="mode">BOTH QUORUMS VERIFY → SHARED WITNESS EQUIVOCATES</text>
+<text x="52" y="342" class="body">evidence keys: {", ".join(sorted(equivocation))}</text>
+
+<text x="30" y="393" class="sub">Honest quorum: {"PASS" if payload["honest_quorum"]["valid"] else "FAIL"} · invalid signature rejected: {"YES" if payload["invalid_signature_rejected"] else "NO"}</text>
+<text x="30" y="416" class="sub">Promoted contract: {payload["promoted_witness_contract"] or "NONE"}</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict, e019: dict, e020: dict, e021: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -800,9 +860,11 @@ def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, 
     greedy_trap = e018["greedy_trap"]
     provenance_attacks = e019["attacks"]
     rotation_attacks = e020["attacks"]
+    quorum_strong = e021["quorum_geometry"]["three_of_five"]
+    quorum_weak = e021["quorum_geometry"]["two_of_five"]
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -941,6 +1003,24 @@ Guard contract: **{"PASS" if e016["guard_contract_passed"] else "FAIL"}**.
 - Pinned rotation result: **{rotation_attacks["latest_only_forgery"]["pinned_rotation_reason"]}**
 - Promoted rotation contract: **{e020["promoted_rotation_contract"] or "NONE"}**
 
+## E021 — multi-witness checkpoint quorum
+
+![E021 witness quorum](e021-witness-quorum.svg)
+
+| Geometry / attack | Result |
+| --- | --- |
+| 3-of-5 quorum pairs | **{quorum_strong["quorum_pair_count"]} pairs / {quorum_strong["disjoint_quorum_pairs"]} disjoint** |
+| 3-of-5 minimum intersection | **{quorum_strong["minimum_intersection"]} witness** |
+| 2-of-5 disjoint quorum pairs | **{quorum_weak["disjoint_quorum_pairs"]}** |
+| 1 compromised witness | **forge rejected** |
+| 2 compromised witnesses | **forge rejected** |
+| 3 compromised witnesses | **forge threshold reached** |
+| conflicting 3-of-5 views | **both verify, equivocation exposed** |
+
+- Equivocation evidence: **{", ".join(sorted(e021["split_view"]["equivocation_evidence"]))}**
+- Invalid signature rejected: **{"YES" if e021["invalid_signature_rejected"] else "NO"}**
+- Promoted witness contract: **{e021["promoted_witness_contract"] or "NONE"}**
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
@@ -956,6 +1036,7 @@ def generated_files(
     e018: dict,
     e019: dict,
     e020: dict,
+    e021: dict,
 ) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
@@ -968,7 +1049,8 @@ def generated_files(
         OUT / "e018-audit-portfolio.svg": render_e018(e018),
         OUT / "e019-provenance.svg": render_e019(e019),
         OUT / "e020-checkpoint-rotation.svg": render_e020(e020),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020),
+        OUT / "e021-witness-quorum.svg": render_e021(e021),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020, e021),
     }
 
 
@@ -991,7 +1073,8 @@ def main() -> None:
     e018 = _read(E018)
     e019 = _read(E019)
     e020 = _read(E020)
-    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020)
+    e021 = _read(E021)
+    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020, e021)
 
     if args.check:
         stale: list[str] = []

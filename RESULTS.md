@@ -269,9 +269,37 @@ Adversarial result:
 
 The latest-only attack is the important negative result. If the verifier forgets older trusted anchors, a rewritten ledger plus a newly self-consistent checkpoint can look valid. Keeping continuity to a previously pinned checkpoint rejects the same history through a ledger-prefix mismatch.
 
+## E021 — multi-witness checkpoint quorum
+
+E021 distributes checkpoint authority across five synthetic witnesses with a 3-of-5 acceptance threshold.
+
+Exact quorum geometry:
+
+| Threshold | Quorum sets | Quorum pairs | Minimum intersection | Disjoint pairs |
+| --- | ---: | ---: | ---: | ---: |
+| 3-of-5 | 10 | 45 | 1 | 0 |
+| 2-of-5 | 10 | 45 | 0 | 15 |
+
+The 3-of-5 threshold is therefore the smallest strict-majority threshold in this five-witness world that guarantees any two quorums intersect.
+
+Compromise boundary:
+
+- 1 compromised witness → forged checkpoint rejected;
+- 2 compromised witnesses → forged checkpoint rejected;
+- 3 compromised witnesses → forged checkpoint reaches quorum.
+
+The fixed split-view test produces two individually valid 3-of-5 quorums over conflicting checkpoint hashes:
+
+- view A: witnesses 0, 1, 2;
+- view B: witnesses 2, 3, 4.
+
+Both verify, but witness 2 appears in the intersection and has signed both checkpoint hashes. Retained attestations therefore expose explicit equivocation evidence.
+
+The result does not claim 3-of-5 prevents all split views. It shows that quorum intersection converts a successful conflicting-view attack into an attributable witness contradiction unless enough evidence is suppressed.
+
 ## Theory update
 
-The working theory after E010–E020 is:
+The working theory after E010–E021 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -306,6 +334,10 @@ The working theory after E010–E020 is:
 31. replacing an anchor is not equivalent to extending trust — rotation must preserve continuity to previously trusted anchors;
 32. latest-only verification can forget historical trust and accept a self-consistent rewritten past;
 33. anchored and unanchored ledger regions should be explicitly distinguished;
-34. checkpoint forks are a first-class provenance conflict rather than a normal alternate history.
+34. checkpoint forks are a first-class provenance conflict rather than a normal alternate history;
+35. distributing anchor authority requires a threshold whose quorum geometry is itself verified;
+36. strict-majority quorum intersection does not prevent threshold compromise, but it makes conflicting accepted views overlap;
+37. retained authenticated attestations can turn that overlap into equivocation evidence;
+38. the compromise threshold and availability threshold are explicit parameters, not hidden security assumptions.
 
-Next work should test signed or independently witnessed checkpoint publication, then return to richer endogenous recommendation, pricing, and bargaining controllers under the hardened verifier architecture.
+Next work should move from in-process synthetic witness keys to a stronger signed/transparency-log model or multiple independent publication channels, then return to richer endogenous recommendation, pricing, and bargaining controllers.

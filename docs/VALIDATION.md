@@ -128,3 +128,16 @@ The test suite retains a deliberate latest-only weakness: rewriting an old ledge
 Pinned historical continuity rejects the same rewritten ledger because an older anchored prefix no longer matches. Checkpoint deletion, reorder, and multiple children of the same parent are also rejected or surfaced as forks.
 
 Root of Trust R10 therefore makes anchor rotation an extension of prior trust rather than replacement of prior trust.
+
+
+## Witness quorum validation
+
+E021 validates a synthetic 3-of-5 checkpoint witness threshold.
+
+All exact-size quorum subsets are enumerated. For five witnesses, every pair of 3-of-5 quorums intersects in at least one witness, while 2-of-5 admits disjoint quorum pairs. This makes quorum intersection an experimentally checked property rather than an assumed slogan.
+
+The compromise boundary is also explicit: one or two compromised witness keys cannot satisfy the threshold for a forged checkpoint; three can.
+
+A fixed split-view attack gives two conflicting checkpoint hashes valid 3-of-5 attestations. Both views verify independently, but the quorum intersection witness signs both hashes. Retained attestations therefore expose a concrete equivocation record.
+
+The current HMAC witnesses are a deterministic research model. Real use requires independent failure domains, protected keys, authenticated publication, and durable attestation retention.

@@ -162,3 +162,14 @@ Honest rotation and the independently pinned sequence-1 checkpoint verify. Check
 A rewritten old ledger prefix plus a forged latest-only checkpoint is self-consistent and passes weak latest-only verification. The same rewritten ledger fails verification when continuity to the older pinned checkpoint is required.
 
 The final two ledger events remain explicitly unanchored, making the boundary between externally fixed history and recent mutable history visible rather than implicit.
+
+
+## E021 — multi-witness checkpoint quorum
+
+E021 distributes checkpoint authority across five synthetic witnesses with a 3-of-5 acceptance threshold.
+
+Exact enumeration shows all 10 three-witness quorums intersect pairwise: across 45 quorum pairs the minimum intersection is one and there are zero disjoint pairs. The weaker 2-of-5 threshold has 15 disjoint quorum pairs.
+
+One or two compromised witnesses cannot forge a checkpoint quorum; three define the compromise boundary.
+
+The fixed split-view experiment gives valid conflicting quorums to witness sets {0,1,2} and {2,3,4}. Both verify, but witness 2 signed both hashes, leaving explicit equivocation evidence when attestations are retained.

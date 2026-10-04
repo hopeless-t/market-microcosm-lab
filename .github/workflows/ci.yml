@@ -386,4 +386,5 @@ jobs:
             docs/generated/e018-audit-portfolio.svg
             docs/generated/e019-provenance.svg
             docs/generated/e020-checkpoint-rotation.svg
+            docs/generated/e021-witness-quorum.svg
             docs/generated/research-dashboard.md
