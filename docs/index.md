@@ -412,6 +412,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Certificate split</h3>
     <p>The robust order survives the joint adversary, but its regret certificate expands from 2.2925 to 2.70.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E074</div>
+    <div class="mm-metric">tight WC = 11.0</div>
+    <h3>Dependence ambiguity</h3>
+    <p>Fréchet bounds cover arbitrary joint dependence at fixed marginals; two GTM-first orders tie and reference efficiency breaks the tie.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -516,7 +522,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E070** freezes that policy, shifts the prior generation, and revokes it when expected-cost regret crosses threshold.  
 **E071** compiles the admitted prior set into a minimax evidence order and exposes the efficiency/robustness trade-off.  
 **E072** shows that marginal priors are insufficient: joint dependence alone can reorder the policy.  
-**E073** adds that adversary to the robust set: the policy survives, but its old performance bound does not.
+**E073** adds that adversary to the robust set: the policy survives, but its old performance bound does not.  
+**E074** replaces sampled dependence with a tight all-joints-at-fixed-marginals ambiguity certificate.
 
 This produces a repeating research pattern:
 
@@ -609,6 +616,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E071 ODD](ODD_E071.md)
 - [E072 ODD](ODD_E072.md)
 - [E073 ODD](ODD_E073.md)
+- [E074 ODD](ODD_E074.md)
 
 ## Run locally
 
@@ -680,6 +688,7 @@ python scripts/run_e070.py
 python scripts/run_e071.py
 python scripts/run_e072.py
 python scripts/run_e073.py
+python scripts/run_e074.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

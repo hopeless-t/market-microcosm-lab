@@ -1309,6 +1309,23 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run dependence-ambiguity minimax
+        run: python scripts/run_e074.py
+      - name: Validate E074 dependence-ambiguity contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e074/dependence-ambiguity-acquisition-report.json").read_text())
+          s=x["search"]["selected"]
+          assert x["search"]["minimax_tie_count"]==2
+          assert s["order"]==["gtm-pack","signed-strategy-gap-attestation","finance-pack"]
+          assert round(s["worst_case_expected_cost"],3)==11.0
+          assert round(s["reference_independent_expected_cost"],4)==9.0225
+          assert all(row["bound_is_tight"] for row in x["search"]["rows"])
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

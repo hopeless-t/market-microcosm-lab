@@ -616,3 +616,10 @@ E072 attacks the independence assumption beneath E069–E071. Same marginals can
 E073 records a non-binary certification outcome. A new adversary can fail to dethrone the policy while still widening its certified regret bound.
 
 The meta-loop now renews policy identity and performance metrics independently.
+
+
+## Tight dependence ambiguity
+
+E074 moves from sampled joint adversaries to an analytic ambiguity set. Tight Fréchet bounds plus a constructive nested-event witness certify the worst case for every bundle order.
+
+When the robust objective ties, a declared secondary objective — here reference-prior efficiency — selects among equally robust policies.

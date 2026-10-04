@@ -1321,9 +1321,19 @@ Policy identity authority is **RETAINED** while regret-bound authority is **REIS
 
 All gates promote `robust-policy-order-and-performance-bound-have-separate-authority-v1`.
 
+## E074 — tight dependence ambiguity
+
+E074 replaces E072's single joint counterexample with the full ambiguity set of all joint distributions sharing the E069 marginals.
+
+For any observed-axis prefix, the maximum all-safe probability is the tight Fréchet upper bound (1 - max p_i). A nested bad-event construction preserves every marginal and simultaneously attains those bounds.
+
+Across all six complete bundle orders, both GTM-first orders have tight worst-case expected cost **11.0**. Reference-prior efficiency breaks the tie in favor of `GTM → strategy → finance`, with independent-reference expected cost 9.0225 versus 9.32385 for `GTM → finance → strategy`.
+
+All gates promote `fixed-marginal-dependence-ambiguity-uses-frechet-minimax-order-v1`.
+
 ## Theory update
 
-The working theory after E010–E073 is:
+The working theory after E010–E074 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1451,6 +1461,9 @@ The working theory after E010–E073 is:
 124. identical marginal failure probabilities do not identify a sequential observation policy when axis failures are dependent;
 125. joint dependence changes conditional risk after safe evidence and can reorder later acquisitions without any marginal drift;
 126. adding an adversarial scenario can leave the selected robust policy unchanged while invalidating its previous regret or performance bound;
-127. policy identity and certificate metrics therefore need separate revoke / renew lifecycles.
+127. policy identity and certificate metrics therefore need separate revoke / renew lifecycles;
+128. fixed marginals admit a full dependence ambiguity set whose sequential worst case can be bounded tightly with Fréchet prefix probabilities;
+129. constructive nested bad events can witness the worst-case bound, separating a tight robustness certificate from arbitrary scenario sampling;
+130. dependence-robust minimax can leave multiple policies tied, requiring an explicit secondary objective such as reference-prior efficiency.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

@@ -287,3 +287,8 @@ All five marginal failure probabilities remain identical to E069, but headroom a
 ## E073 — Robustness certificate split
 
 Adding the E072 joint scenario leaves the E071 minimax order unchanged and worst-case cost at 11.315. However worst-case regret expands from 2.2925 to 2.70, so policy identity is retained while the bound is reissued.
+
+
+## E074 — Tight dependence ambiguity
+
+Arbitrary dependence at fixed E069 marginals is handled analytically. A nested-event witness makes the Fréchet prefix bound tight. Both GTM-first orders achieve worst-case expected cost 11.0; reference efficiency selects GTM → strategy → finance.

@@ -106,6 +106,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E071 · Minimax Prior-Set Policy** | Can one order remain useful across all admitted priors? | exact 6-order search selects strategy → finance → GTM; worst-case cost 11.315 and regret 2.2925, beating frozen E069 at the price of reference efficiency |
 | **E072 · Joint Dependence Attack** | Do identical marginal failure priors identify the same policy? | no; same marginals but headroom/exit dependence reorders GTM → strategy → finance into GTM → finance → strategy and saves 0.75 expected cost |
 | **E073 · Robustness Certificate Split** | Does E071 survive when E072 is added to the uncertainty set? | order survives at strategy → finance → GTM and worst-case cost 11.315, but worst-case regret expands 2.2925 → 2.70 so the bound is reissued |
+| **E074 · Dependence Ambiguity** | What if joint dependence is completely unknown at fixed marginals? | tight Fréchet minimax gives two GTM-first orders at worst-case cost 11.0; reference-efficiency tie-break recovers GTM → strategy → finance |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -328,6 +329,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Policy identity and performance bounds have separate authority.** E073 adds the E072 adversary to E071's uncertainty set and reruns all six bundle orders. Strategy → finance → GTM still wins and worst-case cost stays 11.315, but worst-case regret widens from 2.2925 to 2.70. The order is retained while its old regret certificate is reissued.
 
+**Dependence uncertainty can be certified without guessing one joint model.** E074 ranges over every joint distribution consistent with the E069 marginals. Tight Fréchet prefix bounds are witnessed by nested bad events. Both GTM-first orders have worst-case cost 11.0; reference-prior efficiency breaks the tie and recovers GTM → strategy → finance.
+
 That sequence matters:
 
 ```text
@@ -446,6 +449,7 @@ python scripts/run_e070.py
 python scripts/run_e071.py
 python scripts/run_e072.py
 python scripts/run_e073.py
+python scripts/run_e074.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
@@ -456,7 +460,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 / E066 / E067 / E068 / E069 / E070 / E071 / E072 / E073 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 / E066 / E067 / E068 / E069 / E070 / E071 / E072 / E073 / E074 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site

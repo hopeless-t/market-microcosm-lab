@@ -717,3 +717,12 @@ No. A same-marginal correlated finite world changes the exact safe-path order fr
 The order survives, but the performance bound changes. Strategy → finance → GTM remains minimax at worst-case cost 11.315, while worst-case regret widens to 2.70.
 
 [Read the E073 ODD](ODD_E073.md)
+
+
+## E074 — Tight dependence ambiguity
+
+**Question:** which observation order minimizes worst-case expected cost over every joint distribution with the E069 marginals?
+
+Tight Fréchet bounds leave two GTM-first orders tied at worst-case cost 11.0. Reference-prior efficiency selects GTM → strategy → finance.
+
+[Read the E074 ODD](ODD_E074.md)
