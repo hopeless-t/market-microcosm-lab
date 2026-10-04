@@ -350,9 +350,32 @@ The Q2 2024 Netflix ARM max/min ratio is greater than 2.3. ARM is not relabelled
 
 All E024 promotion gates pass, promoting `empirical-evidence-plane-v1` as an evidence-admission rule, not as a calibrated causal market model.
 
+## E025 — regional empirical complexity knee
+
+E025 uses the admitted Netflix regional ARM source to decide how much regional structure an empirical model needs before building a larger calibrated world.
+
+Every set partition of UCAN, EMEA, LATAM, and APAC is enumerated exactly. Discovery uses Q2 2023 through Q1 2024; Q2 2024 is held out.
+
+At a declared 10% maximum-relative-error tolerance:
+
+| ARM groups | Best discovery worst max-relative error | Status |
+| ---: | ---: | --- |
+| 1 | >50% | reject |
+| 2 | >20% | reject |
+| 3 | <9% | admit |
+| 4 | 0% | exact but unnecessary |
+
+The minimum admissible complexity is therefore **3 groups**. The exact selected topology is `{UCAN}`, `{EMEA}`, `{LATAM, APAC}`.
+
+For a stronger temporal check, the selected topology is calibrated on Q1 2024 and those centroids are frozen for Q2 2024. The one-quarter-forward holdout remains below the 10% maximum-relative-error threshold.
+
+This is a compression and model-family rejection result, not a causal geographic segmentation claim. ARM remains average revenue per membership rather than posted subscription price.
+
+All E025 gates pass, promoting `regional-arm-complexity-knee-k3-v1`.
+
 ## Theory update
 
-The working theory after E010–E024 is:
+The working theory after E010–E025 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -398,6 +421,6 @@ The working theory after E010–E024 is:
 42. declared independence requires external evidence because topology labels do not prove causal independence;
 43. a hidden dependency hyperedge can dominate the nominal failure-domain topology;
 44. model misspecification can inflate estimated trust failure by orders of magnitude even when the quorum rule is unchanged;
-45. dependency discovery and failure-domain assignment must therefore be separate verification tasks;\n46. empirical observations need a separate admission plane from synthetic and certification evidence;\n47. public schema visibility does not imply public observation visibility;\n48. real regional revenue heterogeneity can invalidate a synthetic single-price assumption before any parameter fitting begins;\n49. period, unit, sampling design, and source authority are part of an empirical value's identity, not optional metadata.
+45. dependency discovery and failure-domain assignment must therefore be separate verification tasks;\n46. empirical observations need a separate admission plane from synthetic and certification evidence;\n47. public schema visibility does not imply public observation visibility;\n48. real regional revenue heterogeneity can invalidate a synthetic single-price assumption before any parameter fitting begins;\n49. period, unit, sampling design, and source authority are part of an empirical value's identity, not optional metadata;\n50. admitted empirical data can select simulator/model-family complexity before full calibration;\n51. for the five-quarter Netflix ARM window, a one-global-parameter or two-group regional family is too coarse at 10% tolerance, while a three-group family crosses the fidelity knee;\n52. structural compression should earn promotion on a temporal holdout rather than on the discovery quarters alone.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
