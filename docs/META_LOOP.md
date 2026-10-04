@@ -163,3 +163,17 @@ Five identities do not imply five independent failures. Under the same 3-of-5 qu
 The meta-loop may therefore optimize witness placement only against explicit domain-level objectives such as minimum domains to forge, minimum domains to break availability, and declared common-mode risk. It may not use nominal witness count as a proxy for independence.
 
 Domain labels remain hypotheses. Provider, region, operator, network, key-store, or jurisdiction separation must be evidenced rather than inferred from naming alone.
+
+
+## Falsifying declared independence
+
+E023 attacks E022's strongest nominal topology without changing any witness-domain labels.
+
+The only change is a latent dependency hyperedge: one shared KMS shock affects witnesses 0, 1, and 2 simultaneously. This collapses the minimum forge shock count from three to one and increases modeled forge probability by more than three orders of magnitude under the declared synthetic rates.
+
+The meta-loop must therefore distinguish:
+
+- **declared topology** — where components are said to live;
+- **causal dependency graph** — which shocks can actually affect them together.
+
+A topology optimizer may not promote independence solely from labels. Hidden-dependency discovery, inventory evidence, fault injection, and dependency-graph revision can invalidate previous trust generations.

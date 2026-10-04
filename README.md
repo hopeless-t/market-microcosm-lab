@@ -55,6 +55,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E020 · Checkpoint Rotation** | Can external trust be rotated without forgetting older anchors? | latest-only forgery passes weak verification; pinned continuity rejects rewritten history |
 | **E021 · Witness Quorum** | Can anchor authority survive one or two compromised witnesses? | 3-of-5 blocks 1–2 compromises and guarantees quorum intersection; 3 compromises reach the forge boundary |
 | **E022 · Failure Domains** | Are five witness identities actually five independent failure domains? | 3-1-1 collapses to a one-domain forge; 1-1-1-1-1 requires three domains and cuts modeled forge risk 91.4% |
+| **E023 · Hidden Common Mode** | Can nominally independent domains still share an undeclared dependency? | one hidden shared-KMS shock collapses the forge boundary 3→1 and inflates modeled forge probability 1016× |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -175,6 +176,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Witness identities are not independent failure domains.** E022 groups the same five witnesses into correlated topologies. A 3-1-1 placement lets one domain compromise reach the three-witness threshold; 2-2-1 needs two domains; full 1-1-1-1-1 separation needs three. Under the declared independent 10% per-domain synthetic model, forge probability falls from 10.0% to 2.8% to 0.856%.
 
+**Declared independence can itself be wrong.** E023 keeps the nominal 1-1-1-1-1 witness labels but adds one undeclared shared-KMS dependency affecting witnesses 0, 1, and 2. The minimum forge shock count collapses from 3 to 1, and the exact synthetic forge probability at a 1% shock rate rises from 0.000985% to 1.000975% — a 1016× inflation.
+
 That sequence matters:
 
 ```text
@@ -196,6 +199,7 @@ neutral saturation
   → checkpoint rotation / anchor continuity
   → multi-witness quorum / split-view evidence
   → correlated failure-domain analysis
+  → hidden common-mode dependency audit
 ```
 
 ## Verification stack
@@ -241,6 +245,7 @@ python scripts/run_e019.py
 python scripts/run_e020.py
 python scripts/run_e021.py
 python scripts/run_e022.py
+python scripts/run_e023.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.

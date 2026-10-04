@@ -256,8 +256,22 @@ At the experiment's illustrative 10% independent per-domain event probability, m
 
 ---
 
+## E023 — Hidden common-mode dependency adversary
+
+**Purpose:** attack the declared independence of the strongest E022 topology.
+
+The nominal model keeps five separate witness domains and five independent 1% shocks. A hidden shared-KMS shock is then added across witnesses 0, 1, and 2 without changing the nominal labels.
+
+Exact subset enumeration changes the minimum forge shock count from **3 to 1** and exact synthetic forge probability from **0.000985% to 1.000975%**, a **1016.16×** inflation.
+
+The conclusion is structural: domain labels are not evidence of causal independence.
+
+[Read the E023 ODD](ODD_E023.md)
+
+---
+
 ## What comes next
 
-Attack the domain labels themselves: introduce hidden common-mode dependencies and heterogeneous risk so nominally distinct providers/regions can still fail together.
+Model heterogeneous and overlapping dependency graphs, then add active dependency discovery and common-mode fault injection instead of relying only on declared topology.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).
