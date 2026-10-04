@@ -286,3 +286,16 @@ The experiment registers SARTRAS, Netflix, MovieLens, Game Pass Partner Center, 
 The promotion rule is an evidence-admission rule. It does not promote an empirical causal model.
 
 [Read the E024 ODD](ODD_E024.md)
+
+
+## E025 — Regional empirical complexity knee
+
+**Question:** what is the smallest regional ARM model family that preserves the admitted Netflix aggregate structure to a 10% maximum-relative-error tolerance?
+
+E025 enumerates every partition of UCAN, EMEA, LATAM, and APAC. Four discovery quarters select model complexity and topology; Q2 2024 is held out. One and two groups remain too coarse, while three groups cross the fidelity knee with `{UCAN}`, `{EMEA}`, and `{LATAM, APAC}`.
+
+A stronger one-quarter-forward test freezes the Q1 2024 centroids and remains below 10% maximum relative error on Q2 2024.
+
+The result is structural compression, not a causal segmentation or a claim that ARM equals posted subscription price.
+
+[Read the E025 ODD](ODD_E025.md)
