@@ -620,3 +620,28 @@ No. Shared audit actions cover multiple obligations; exact set-cover reduces the
 Yes. Each E061 bundle uniquely supports two obligations, so one artifact failure has blast 2. Under a one-obligation blast budget, exact robust cover returns to the independent cost-8 plan.
 
 [Read the E062 ODD](ODD_E062.md)
+
+
+## E063 — Real portfolio-transition sign reversal
+
+**Question:** can churn direction certify ARR or portfolio direction inside one company-year?
+
+No. BBD FY2025 contains both churn-down/ARR-up and churn-down/ARR-down transitions under the same KPI definitions.
+
+[Read the E063 ODD](ODD_E063.md)
+
+## E064 — Prospective evidence cutoff
+
+**Question:** can Q4 event explanations be used as features in a Q3 warning evaluation?
+
+No. Public evidence is timestamped; future-only annotations support retrospective explanation but are rejected from prospective feature sets.
+
+[Read the E064 ODD](ODD_E064.md)
+
+## E065 — Public warning feature sufficiency
+
+**Question:** does the public Q3 evidence satisfy the five-axis structural warning contract?
+
+No. Direct coverage is 0/5. The prospective public-data evaluator ABSTAINS instead of inventing hidden structural state.
+
+[Read the E065 ODD](ODD_E065.md)
