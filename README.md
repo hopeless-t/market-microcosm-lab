@@ -102,6 +102,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E067 · Direct Evidence Acquisition** | What should ABSTAIN request next? | exact authority-constrained portfolio rejects cheap raw board minutes and selects finance-pack + gtm-pack + signed strategy attestation, cost 14 |
 | **E068 · Decision-Sufficient Acquisition** | Must every warning decision recover all five axes? | no; one failing-axis witness can certify WARN at cost 2–5, while SAFE still requires full cost-14 coverage |
 | **E069 · Sequential Acquisition Policy** | Which evidence should be requested first without knowing the bad axis? | exact DP chooses GTM → strategy → finance on the safe path; expected cost 9.0225 vs 9.32385 cost-order and 14 static |
+| **E070 · Prior-Drift Revocation** | Does the E069 order survive failure-distribution shift? | no; finance/strategy shifts change the optimal first action and produce frozen-policy regret >3.7 / >1.5, revoking prior-scoped authority |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -316,6 +317,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **The deployable problem is sequential.** E069 removes E068's oracle advantage. Under synthetic axis-failure priors, exact DP orders GTM → strategy → finance on the all-safe path. Expected cost is 9.0225 versus 9.32385 for cost-only bundle ordering and 14 for static full acquisition; the all-safe path still costs 14, preserving SAFE authority.
 
+**Sequential-policy authority is prior-scoped.** E070 freezes E069 and shifts the failure distribution. A finance-heavy generation changes the optimum to finance-first and creates >3.7 expected-cost regret; a strategy-heavy generation changes the optimum to strategy-first with >1.5 regret. Both exceed the declared revocation threshold, so the frozen policy must be recompiled.
+
 That sequence matters:
 
 ```text
@@ -430,6 +433,7 @@ python scripts/run_e066.py
 python scripts/run_e067.py
 python scripts/run_e068.py
 python scripts/run_e069.py
+python scripts/run_e070.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
@@ -440,7 +444,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 / E066 / E067 / E068 / E069 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 / E066 / E067 / E068 / E069 / E070 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site

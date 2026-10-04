@@ -388,6 +388,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Sequential sensing</h3>
     <p>Exact DP orders evidence by expected decision value and stops early on WARN while preserving the full SAFE path.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E070</div>
+    <div class="mm-metric">REVOKED</div>
+    <h3>Prior drift</h3>
+    <p>Finance- and strategy-heavy shifts reorder the optimal first observation and revoke the frozen E069 policy.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -488,7 +494,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E066** refines that gap into direct, partial, and absent public evidence without promoting partial signals into direct features.  
 **E067** compiles the remaining ABSTAIN into a minimum authorized direct-evidence acquisition portfolio.  
 **E068** proves that warning evidence is decision-asymmetric: positive WARN certificates can be much cheaper than SAFE certificates.  
-**E069** removes oracle knowledge and computes the exact sequential evidence policy under declared failure priors.
+**E069** removes oracle knowledge and computes the exact sequential evidence policy under declared failure priors.  
+**E070** freezes that policy, shifts the prior generation, and revokes it when expected-cost regret crosses threshold.
 
 This produces a repeating research pattern:
 
@@ -577,6 +584,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E067 ODD](ODD_E067.md)
 - [E068 ODD](ODD_E068.md)
 - [E069 ODD](ODD_E069.md)
+- [E070 ODD](ODD_E070.md)
 
 ## Run locally
 
@@ -644,6 +652,7 @@ python scripts/run_e066.py
 python scripts/run_e067.py
 python scripts/run_e068.py
 python scripts/run_e069.py
+python scripts/run_e070.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

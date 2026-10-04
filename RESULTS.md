@@ -1279,9 +1279,19 @@ If every axis is safe, the exact sequential policy still spends 14 and observes 
 
 All gates promote `sequential-warning-acquisition-minimizes-expected-decision-cost-v1`.
 
+## E070 — prior-drift revocation
+
+E070 freezes the E069 policy and changes the declared failure distribution.
+
+The reference prior keeps E069 optimal. A finance-heavy shift changes the exact first action to `finance-pack`; the frozen policy costs 12.57375 versus reoptimized 8.8731875, regret >3.70. A strategy-heavy shift changes the first action to the signed strategy attestation; frozen-policy regret exceeds 1.5.
+
+Both shifted generations exceed the declared regret revocation threshold of 1.0. E069's mathematics remains valid for its reference prior, but its deployment authority is revoked outside that generation.
+
+All gates promote `sequential-acquisition-policy-authority-is-prior-generation-scoped-v1`.
+
 ## Theory update
 
-The working theory after E010–E069 is:
+The working theory after E010–E070 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1401,6 +1411,8 @@ The working theory after E010–E069 is:
 116. evidence requirements are decision-asymmetric: one sufficient failing witness can certify an OR warning, while SAFE may require complete direct coverage;
 117. full-state acquisition is therefore not a universal optimum, and deployable systems should optimize sequential decision resolution rather than feature completeness alone;
 118. sequential evidence ordering should minimize expected decision cost under declared priors while preserving the complete all-safe certification path;
-119. collection-cost order and expected-decision-cost order can differ even when both use the same evidence bundles.
+119. collection-cost order and expected-decision-cost order can differ even when both use the same evidence bundles;
+120. sequential evidence-policy authority is scoped to the failure-prior generation that earned it;
+121. prior drift can change the optimal first observation and should trigger regret-based revocation / recompilation rather than silent reuse.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

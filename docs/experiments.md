@@ -681,3 +681,12 @@ No. Any observed failing axis certifies WARN; single-bad-axis reference worlds r
 Exact DP selects GTM → strategy → finance along the all-safe path. Expected cost is 9.0225, below cost-only bundle ordering at 9.32385 and static full acquisition at 14.
 
 [Read the E069 ODD](ODD_E069.md)
+
+
+## E070 — Prior-drift revocation
+
+**Question:** does the E069 sequential policy remain optimal after the axis-failure distribution changes?
+
+No. Finance- and strategy-heavy shifts change the exact first observation and create regret above the declared revocation threshold.
+
+[Read the E070 ODD](ODD_E070.md)

@@ -590,3 +590,10 @@ The next meta target is no longer static portfolio size but **sequential observa
 E069 converts static evidence portfolios into a stopping policy. The controller requests the action with minimum expected total decision cost, terminates on a certified warning, and continues only along safe observations.
 
 The next attack target is the prior itself: a strong policy under one failure distribution may be brittle under drift or correlation.
+
+
+## Prior-drift revocation
+
+E070 attacks the prior used by E069. The frozen observation order is evaluated on shifted failure distributions and loses authority when regret exceeds a declared threshold.
+
+The next target is to reduce dependence on one estimated prior by compiling a policy across a prior uncertainty set.

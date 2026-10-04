@@ -1240,6 +1240,22 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run prior-drift acquisition adversary
+        run: python scripts/run_e070.py
+      - name: Validate E070 prior-drift revocation contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e070/prior-drift-acquisition-report.json").read_text())
+          assert x["e069_policy_authority_under_shift"]=="REVOKED"
+          assert x["scenarios"]["finance-shift"]["reoptimized"]["initial_action"]=="finance-pack"
+          assert x["scenarios"]["finance-shift"]["regret"]>3.7
+          assert x["scenarios"]["strategy-shift"]["reoptimized"]["initial_action"]=="signed-strategy-gap-attestation"
+          assert x["scenarios"]["strategy-shift"]["regret"]>1.5
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

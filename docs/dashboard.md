@@ -267,3 +267,8 @@ Full feature recovery is not decision-minimal for an OR warning. Single failing-
 ## E069 — Sequential evidence acquisition
 
 Exact dynamic programming orders authorized evidence by expected decision cost. GTM is queried first, then strategy and finance only if earlier observations are safe. Expected cost falls to 9.0225 while the all-safe path still collects the full cost-14 contract.
+
+
+## E070 — Prior-drift revocation
+
+The E069 order is valid only for its declared prior. Finance-heavy and strategy-heavy generations change the optimal first action and push frozen-policy regret above the revocation threshold, forcing recompilation.
