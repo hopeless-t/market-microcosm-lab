@@ -113,6 +113,9 @@
 - [x] heterogeneous branch-specific audit allocation
 - [x] coupled shared-evidence audit bundle optimization
 - [x] audit-evidence failure-domain guard
+- [x] real-company portfolio-transition sign reversal
+- [x] prospective evidence cutoff / future-leakage guard
+- [x] public warning feature-contract sufficiency / ABSTAIN
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary
