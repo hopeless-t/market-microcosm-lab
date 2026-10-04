@@ -1160,9 +1160,90 @@ E061's cost-only optimization remains mathematically correct for its original mo
 
 All gates promote `audit-evidence-reuse-must-model-proof-obligation-failure-blast-v1`.
 
+## E063 — real portfolio-transition KPI sign reversal
+
+E063 re-anchors the extended trust/lineage loop in real longitudinal evidence.
+
+BBD Initiative's FY2025 public SaaS KPI series is:
+
+| Quarter | ARR (JPY m) | Churn | Contracts | ARPA (JPY) |
+| --- | ---: | ---: | ---: | ---: |
+| Q1 | 1,605 | 1.93% | 3,390 | 473,682 |
+| Q2 | 1,640 | 1.76% | 3,358 | 488,431 |
+| Q3 | 1,688 | 2.16% | 3,304 | 511,090 |
+| Q4 | 1,662 | 1.67% | 3,265 | 509,166 |
+
+The observed sign transitions are:
+
+```text
+Q1→Q2: churn down, ARR up, ARPA up, contracts down
+Q2→Q3: churn up,   ARR up, ARPA up, contracts down
+Q3→Q4: churn down, ARR down, ARPA down, contracts down
+```
+
+Therefore the same churn-improvement sign coexists with both ARR growth and ARR decline inside one company-year and one KPI-definition generation.
+
+A naive sign rule "churn down => ARR up; churn up => ARR down" is correct in only one of the three transitions.
+
+The Q4 material separately annotates launch delay, continuing low-price-plan cancellations, and service-withdrawal preparation. Those are retained as transition-event annotations rather than treated as independently identified causal estimates.
+
+All gates promote `portfolio-transition-kpi-direction-requires-event-semantics-v1`.
+
+## E064 — prospective evidence cutoff
+
+E064 attacks a subtle leakage path in E063.
+
+The prospective decision cutoff is the FY2025 Q3 disclosure date:
+
+```text
+2025-08-14
+```
+
+At that time, Q3 KPIs and Q3 management commentary are public.
+
+The Q4 outcome, the later Knowledge Suite+ launch-delay explanation, and the service-withdrawal-preparation annotation are not yet public. They may explain the realized Q4 transition retrospectively, but they cannot be input features to a Q3 prospective warning.
+
+The evidence plane therefore separates:
+
+```text
+retrospective explanation authority
+!=
+prospective prediction authority
+```
+
+All gates promote `prospective-warning-evidence-must-exist-before-decision-cutoff-v1`.
+
+## E065 — public warning feature sufficiency
+
+E065 asks whether the admitted public Q3 dataset can actually evaluate the five-axis structural warning promoted earlier.
+
+The warning requires:
+
+- cash collection gap;
+- fully-loaded delivery margin;
+- market headroom;
+- downstream funnel success;
+- strategic-exit value gap.
+
+The public Q3 BBD material provides ARR, churn, contract count, and ARPA, but none is a direct observation of those five structural axes.
+
+Direct public feature coverage is therefore:
+
+```text
+0 / 5
+```
+
+The prospective evaluator returns:
+
+`ABSTAIN — INSUFFICIENT_PUBLIC_EVIDENCE`
+
+and does not silently map ARR/churn/ARPA/contracts into the missing structural state.
+
+All gates promote `structural-warning-must-abstain-when-public-feature-contract-is-incomplete-v1`.
+
 ## Theory update
 
-The working theory after E010–E062 is:
+The working theory after E010–E065 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1270,6 +1351,9 @@ The working theory after E010–E062 is:
 104. audit depth is branch/proof-obligation specific rather than one global scalar;
 105. shared evidence couples branch obligations, so globally optimal audit allocation can require exact bundle/set-cover reasoning;
 106. shared audit evidence is itself a failure-domain choice, so cost savings from reuse require an explicit proof-obligation blast certificate;
-107. the cheapest evidence cover and the cheapest failure-domain-safe evidence cover can differ, and cost-only authority must be revoked when that distinction matters.
+107. the cheapest evidence cover and the cheapest failure-domain-safe evidence cover can differ, and cost-only authority must be revoked when that distinction matters;
+108. KPI direction within one company and one metric generation can reverse its relationship to portfolio outcomes during product transition, so sign alone is not a health label;
+109. retrospective event explanations and prospective prediction features require separate evidence-time authority boundaries;
+110. a structurally rich warning model may be unevaluable from public company KPIs, and missing structural axes should produce ABSTAIN rather than proxy imputation.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
