@@ -418,6 +418,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Dependence ambiguity</h3>
     <p>Fréchet bounds cover arbitrary joint dependence at fixed marginals; two GTM-first orders tie and reference efficiency breaks the tie.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E075</div>
+    <div class="mm-metric">tight WC = 12.0</div>
+    <h3>Interval ambiguity</h3>
+    <p>With marginal intervals and arbitrary dependence, lower failure bounds maximize collection cost by prolonging the SAFE path.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -523,7 +529,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E071** compiles the admitted prior set into a minimax evidence order and exposes the efficiency/robustness trade-off.  
 **E072** shows that marginal priors are insufficient: joint dependence alone can reorder the policy.  
 **E073** adds that adversary to the robust set: the policy survives, but its old performance bound does not.  
-**E074** replaces sampled dependence with a tight all-joints-at-fixed-marginals ambiguity certificate.
+**E074** replaces sampled dependence with a tight all-joints-at-fixed-marginals ambiguity certificate.  
+**E075** also makes the marginals uncertain and shows that lower failure bounds drive worst collection cost.
 
 This produces a repeating research pattern:
 
@@ -617,6 +624,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E072 ODD](ODD_E072.md)
 - [E073 ODD](ODD_E073.md)
 - [E074 ODD](ODD_E074.md)
+- [E075 ODD](ODD_E075.md)
 
 ## Run locally
 
@@ -689,6 +697,7 @@ python scripts/run_e071.py
 python scripts/run_e072.py
 python scripts/run_e073.py
 python scripts/run_e074.py
+python scripts/run_e075.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

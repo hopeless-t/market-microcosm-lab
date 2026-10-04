@@ -292,3 +292,8 @@ Adding the E072 joint scenario leaves the E071 minimax order unchanged and worst
 ## E074 — Tight dependence ambiguity
 
 Arbitrary dependence at fixed E069 marginals is handled analytically. A nested-event witness makes the Fréchet prefix bound tight. Both GTM-first orders achieve worst-case expected cost 11.0; reference efficiency selects GTM → strategy → finance.
+
+
+## E075 — Interval marginals × arbitrary dependence
+
+Marginal uncertainty is added to arbitrary dependence. The tight worst collection cost uses the lower failure bounds, not the upper ones, because fewer failures force longer SAFE-path evidence collection. GTM-first remains minimax at cost 12.0.

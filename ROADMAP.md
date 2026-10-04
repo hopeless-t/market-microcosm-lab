@@ -125,6 +125,7 @@
 - [x] same-marginal joint-dependence adversary for acquisition policy
 - [x] separate robust policy identity from performance-bound authority
 - [x] tight fixed-marginal dependence-ambiguity acquisition certificate
+- [x] interval-marginal plus arbitrary-dependence acquisition certificate
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary

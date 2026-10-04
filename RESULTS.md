@@ -1331,9 +1331,19 @@ Across all six complete bundle orders, both GTM-first orders have tight worst-ca
 
 All gates promote `fixed-marginal-dependence-ambiguity-uses-frechet-minimax-order-v1`.
 
+## E075 — interval marginals × arbitrary dependence
+
+E075 widens each E069 failure marginal into a synthetic interval while retaining arbitrary dependence.
+
+For collection-cost robustness, the adversarial marginal direction is the lower failure bound: rarer failures delay WARN and force more SAFE-path evidence. Tight Fréchet prefix bounds therefore use (1 - max ell_i), where (ell_i) is the lower failure bound. A nested-event construction at those lower marginals attains the bound.
+
+Both GTM-first orders tie at tight worst-case expected cost **12.0**. Reference-prior efficiency again selects `GTM → strategy → finance`.
+
+All gates promote `interval-marginal-dependence-ambiguity-uses-lower-risk-frechet-bound-v1`.
+
 ## Theory update
 
-The working theory after E010–E074 is:
+The working theory after E010–E075 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1464,6 +1474,8 @@ The working theory after E010–E074 is:
 127. policy identity and certificate metrics therefore need separate revoke / renew lifecycles;
 128. fixed marginals admit a full dependence ambiguity set whose sequential worst case can be bounded tightly with Fréchet prefix probabilities;
 129. constructive nested bad events can witness the worst-case bound, separating a tight robustness certificate from arbitrary scenario sampling;
-130. dependence-robust minimax can leave multiple policies tied, requiring an explicit secondary objective such as reference-prior efficiency.
+130. dependence-robust minimax can leave multiple policies tied, requiring an explicit secondary objective such as reference-prior efficiency;
+131. when the objective is evidence-collection cost, lower failure probabilities can be adversarial because they delay positive warning termination;
+132. rectangular marginal uncertainty plus arbitrary dependence admits a tight worst-case certificate using lower marginal bounds and nested bad events.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

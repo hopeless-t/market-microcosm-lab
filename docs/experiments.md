@@ -726,3 +726,12 @@ The order survives, but the performance bound changes. Strategy → finance → 
 Tight Fréchet bounds leave two GTM-first orders tied at worst-case cost 11.0. Reference-prior efficiency selects GTM → strategy → finance.
 
 [Read the E074 ODD](ODD_E074.md)
+
+
+## E075 — Interval marginals × arbitrary dependence
+
+**Question:** what is the tight worst acquisition cost when failure marginals are intervals and dependence is arbitrary?
+
+The adversarial direction is the lower failure bound because rarer WARN events prolong SAFE-path sensing. Two GTM-first orders tie at worst-case cost 12.0.
+
+[Read the E075 ODD](ODD_E075.md)

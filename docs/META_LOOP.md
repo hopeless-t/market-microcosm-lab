@@ -623,3 +623,8 @@ The meta-loop now renews policy identity and performance metrics independently.
 E074 moves from sampled joint adversaries to an analytic ambiguity set. Tight Fréchet bounds plus a constructive nested-event witness certify the worst case for every bundle order.
 
 When the robust objective ties, a declared secondary objective — here reference-prior efficiency — selects among equally robust policies.
+
+
+## Marginal interval ambiguity
+
+E075 expands E074 from exact marginals to intervals. The meta-loop records that the adversarial parameter direction depends on the objective: for collection cost, low failure rates can be worse than high ones because they prolong SAFE-path sensing.
