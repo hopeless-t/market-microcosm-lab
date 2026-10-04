@@ -252,3 +252,8 @@ The public Q3 KPI set does not directly observe any of the five structural warni
 ## E066 — Public evidence granularity
 
 E065's zero-direct result is retained but refined. Q3 public material contains partial evidence for delivery economics and market headroom: direct 0 / partial 2 / absent 3. Partial evidence can prioritize acquisition but does not lift ABSTAIN.
+
+
+## E067 — Direct evidence acquisition
+
+The public warning remains ABSTAIN until direct features are acquired. Cost-only search would use unauthorized raw board minutes; authority-constrained exact search selects finance-pack, gtm-pack, and signed strategy-gap attestation for cost 14.

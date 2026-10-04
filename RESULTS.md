@@ -1249,9 +1249,19 @@ Exact public-artifact search selects `q3-financial-summary + q3-market-environme
 
 All gates promote `public-warning-evidence-separates-direct-partial-absent-v1`.
 
+## E067 — minimum authorized direct-evidence acquisition
+
+E067 turns E066's prospective ABSTAIN into an active evidence request.
+
+A naive minimum-cost complete portfolio costs **10** only because it consumes unauthorized raw board minutes for the strategic-exit axis. After authorization is treated as a hard constraint, exact search selects `finance-pack + gtm-pack + signed-strategy-gap-attestation` for total declared cost **14**, directly covering all five structural warning axes. A broad full dataroom costs 18 and loses.
+
+The order is direct feature sufficiency → authority/privacy admission → minimum collection cost.
+
+All gates promote `acquire-minimum-authorized-direct-feature-portfolio-v1`.
+
 ## Theory update
 
-The working theory after E010–E066 is:
+The working theory after E010–E067 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1365,6 +1375,8 @@ The working theory after E010–E066 is:
 110. a structurally rich warning model may be unevaluable from public company KPIs, and missing structural axes should produce ABSTAIN rather than proxy imputation;
 111. zero direct feature coverage does not imply zero structural information, so public observability should distinguish direct, partial, and absent evidence;
 112. partial evidence may constrain hypotheses or prioritize acquisition but cannot silently satisfy a direct feature contract;
-113. evidence-acquisition portfolios should maximize admitted information quality before minimizing collection cost.
+113. evidence-acquisition portfolios should maximize admitted information quality before minimizing collection cost;
+114. ABSTAIN can compile into a minimum authorized direct-evidence portfolio rather than a generic request for more data;
+115. authorization and privacy are hard feasibility constraints in acquisition, not soft penalties that cheaper raw evidence may buy through.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

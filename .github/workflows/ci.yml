@@ -1193,6 +1193,24 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run direct-evidence acquisition portfolio
+        run: python scripts/run_e067.py
+      - name: Validate E067 direct-evidence acquisition contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e067/direct-evidence-acquisition-report.json").read_text())
+          n=x["naive_cost_only"]["selected"]
+          a=x["authorized_search"]["selected"]
+          assert "raw-board-minutes" in n["acquisition_ids"]
+          assert n["total_cost"]==10
+          assert a["acquisition_ids"]==["finance-pack","gtm-pack","signed-strategy-gap-attestation"]
+          assert a["total_cost"]==14
+          assert len(a["covered_axes"])==5
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

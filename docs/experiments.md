@@ -654,3 +654,12 @@ No. Direct coverage is 0/5. The prospective public-data evaluator ABSTAINS inste
 No. Public Q3 material has partial evidence for delivery economics and market headroom. Exact coverage is direct 0 / partial 2 / absent 3, and the warning still ABSTAINS.
 
 [Read the E066 ODD](ODD_E066.md)
+
+
+## E067 — Minimum authorized direct-evidence acquisition
+
+**Question:** after E066 ABSTAIN, what is the cheapest admissible observation bundle that directly covers all five warning axes?
+
+Exact search rejects a cheaper plan using unauthorized raw board minutes and selects finance-pack + gtm-pack + signed strategy attestation for cost 14.
+
+[Read the E067 ODD](ODD_E067.md)

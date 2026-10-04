@@ -99,6 +99,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E064 · Prospective Evidence Cutoff** | Can Q4 explanations be used in a Q3 warning? | no; future-only annotations are valid for retrospective explanation but rejected as prospective features |
 | **E065 · Public Warning Sufficiency** | Does public Q3 IR cover the five structural warning axes? | no; 0/5 direct coverage, so the public-data evaluator ABSTAINS instead of imputing hidden state |
 | **E066 · Partial Public Evidence** | Does 0/5 direct mean zero useful structural evidence? | no; public portfolio finds 2 partial axes / 3 absent axes; direct coverage remains 0 and warning authority still ABSTAINS |
+| **E067 · Direct Evidence Acquisition** | What should ABSTAIN request next? | exact authority-constrained portfolio rejects cheap raw board minutes and selects finance-pack + gtm-pack + signed strategy attestation, cost 14 |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -307,6 +308,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Zero direct coverage is not zero information.** E066 refines the same Q3 material into direct / partial / absent support. Gross-margin/cost evidence partially informs delivery economics and TAM/SAM/SOM context partially informs market headroom. Coverage becomes direct 0 / partial 2 / absent 3; partial evidence can guide acquisition but cannot satisfy the direct warning contract.
 
+**ABSTAIN now compiles into an evidence request.** E067 searches direct-evidence bundles. A naive cost-only plan uses unauthorized raw board minutes and is rejected. The minimum authorized complete plan is finance-pack + gtm-pack + signed strategy-gap attestation at declared cost 14, cheaper than a broad dataroom query.
+
 That sequence matters:
 
 ```text
@@ -418,6 +421,7 @@ python scripts/run_e063.py
 python scripts/run_e064.py
 python scripts/run_e065.py
 python scripts/run_e066.py
+python scripts/run_e067.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
@@ -428,7 +432,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 / E066 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 / E042 / E043 / E044 / E045 / E046 / E047 / E048 / E049 / E050 / E051 / E052 / E053 / E054 / E055 / E056 / E057 / E058 / E059 / E060 / E061 / E062 / E063 / E064 / E065 / E066 / E067 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site

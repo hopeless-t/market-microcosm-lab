@@ -563,3 +563,16 @@ A stronger model is not automatically a more deployable model.
 ## Partial public evidence portfolios
 
 E066 replaces binary public feature coverage with direct / partial / absent evidence. Partial evidence can constrain hypotheses and prioritize collection, but direct authority remains fail-closed until the feature contract is actually observed.
+
+
+## Direct evidence acquisition after ABSTAIN
+
+E067 connects E066 back to E045/E046. Once the real-company feature contract is incomplete, the controller searches evidence bundles rather than forcing an estimate.
+
+```text
+ABSTAIN
+→ require direct feature coverage
+→ filter authorization/privacy
+→ exact bundle search
+→ request minimum admitted portfolio
+```
