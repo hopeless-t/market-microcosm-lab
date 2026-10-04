@@ -843,6 +843,41 @@ jobs:
           print({"search": x["candidate_search"], "promoted": x["promoted_temporal_rule"]})
           PY
 
+      - name: Run predicate evidence quorum
+        run: python scripts/run_e048.py
+      - name: Validate E048 evidence-quorum contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e048/evidence-quorum-report.json").read_text())
+          assert x["experiment"] == "E048"
+          assert x["single_witness_reference"]["single_witness_disagrees_with_quorum"] is True
+          assert x["single_witness_reference"]["quorum_result"]["accepted_value"] is True
+          assert x["conflict_reference"]["accepted"] is False
+          assert x["promoted_quorum_rule"] == "predicate-attestation-requires-independent-witness-quorum-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": x["single_witness_reference"], "conflict": x["conflict_reference"], "promoted": x["promoted_quorum_rule"]})
+          PY
+
+      - name: Run upstream evidence-source diversity adversary
+        run: python scripts/run_e049.py
+      - name: Validate E049 source-diversity contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e049/upstream-source-diversity-report.json").read_text())
+          assert x["experiment"] == "E049"
+          hidden = x["hidden_common_source_reference"]
+          assert hidden["domain_only_quorum"]["accepted_value"] is False
+          assert hidden["source_aware_quorum"]["accepted"] is False
+          assert x["diversified_repair_reference"]["accepted_value"] is True
+          assert x["promoted_source_rule"] == "predicate-quorum-must-diversify-upstream-evidence-sources-v1"
+          assert all(x["promotion_gate"].values())
+          print({"hidden": hidden, "repair": x["diversified_repair_reference"], "promoted": x["promoted_source_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
