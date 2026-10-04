@@ -282,3 +282,8 @@ Across the reference, finance-heavy, and strategy-heavy priors, exact order sear
 ## E072 — Joint-dependence attack
 
 All five marginal failure probabilities remain identical to E069, but headroom and strategic-exit dependence changes conditional risk. Joint-aware DP swaps finance ahead of strategy and reduces expected cost from 9.20 to 8.45.
+
+
+## E073 — Robustness certificate split
+
+Adding the E072 joint scenario leaves the E071 minimax order unchanged and worst-case cost at 11.315. However worst-case regret expands from 2.2925 to 2.70, so policy identity is retained while the bound is reissued.

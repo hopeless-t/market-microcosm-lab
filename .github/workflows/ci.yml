@@ -1292,6 +1292,23 @@ jobs:
           assert all(x["promotion_gate"].values())
           PY
 
+      - name: Run joint-extended robustness search
+        run: python scripts/run_e073.py
+      - name: Validate E073 robustness-certificate split
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e073/joint-extended-robustness-report.json").read_text())
+          s=x["extended_search"]["selected"]
+          assert s["order"]==["signed-strategy-gap-attestation","finance-pack","gtm-pack"]
+          assert round(s["worst_case_expected_cost"],3)==11.315
+          assert round(s["worst_case_regret"],2)==2.70
+          assert x["e071_order_authority"]=="RETAINED"
+          assert x["e071_regret_bound_authority"]=="REISSUED"
+          assert all(x["promotion_gate"].values())
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 

@@ -708,3 +708,12 @@ Yes. Exact search over all six bundle orders selects strategy → finance → GT
 No. A same-marginal correlated finite world changes the exact safe-path order from GTM → strategy → finance to GTM → finance → strategy and reduces expected cost by 0.75.
 
 [Read the E072 ODD](ODD_E072.md)
+
+
+## E073 — Robustness certificate split
+
+**Question:** does E071 remain authoritative after adding the E072 joint-dependence adversary?
+
+The order survives, but the performance bound changes. Strategy → finance → GTM remains minimax at worst-case cost 11.315, while worst-case regret widens to 2.70.
+
+[Read the E073 ODD](ODD_E073.md)

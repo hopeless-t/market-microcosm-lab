@@ -1309,9 +1309,21 @@ Marginal priors therefore do not identify conditional risk after safe observatio
 
 All gates promote `sequential-acquisition-requires-joint-failure-model-not-marginals-only-v1`.
 
+## E073 — robustness certificate split
+
+E073 adds the E072 joint-dependence adversary to E071's prior uncertainty set and reruns all six complete-coverage bundle orders.
+
+The minimax order remains `strategy → finance → GTM`, and worst-case expected cost remains **11.315**. E071's policy identity therefore survives.
+
+The performance certificate does not remain unchanged: worst-case regret increases from **2.2925** to **2.70** because the new joint scenario has cost 11.15 under the robust order versus a joint-aware oracle at 8.45.
+
+Policy identity authority is **RETAINED** while regret-bound authority is **REISSUED**.
+
+All gates promote `robust-policy-order-and-performance-bound-have-separate-authority-v1`.
+
 ## Theory update
 
-The working theory after E010–E072 is:
+The working theory after E010–E073 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1437,6 +1449,8 @@ The working theory after E010–E072 is:
 122. prior uncertainty can be compiled into a minimax evidence order that reduces worst-case cost/regret across an admitted scenario set;
 123. robust sequential sensing may intentionally sacrifice efficiency under the reference prior, so single-prior efficiency and uncertainty robustness must remain separate reported objectives;
 124. identical marginal failure probabilities do not identify a sequential observation policy when axis failures are dependent;
-125. joint dependence changes conditional risk after safe evidence and can reorder later acquisitions without any marginal drift.
+125. joint dependence changes conditional risk after safe evidence and can reorder later acquisitions without any marginal drift;
+126. adding an adversarial scenario can leave the selected robust policy unchanged while invalidating its previous regret or performance bound;
+127. policy identity and certificate metrics therefore need separate revoke / renew lifecycles.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

@@ -406,6 +406,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Joint dependence</h3>
     <p>Headroom/exit dependence reorders the evidence policy even though every axis-level failure probability is unchanged.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E073</div>
+    <div class="mm-metric">order kept / bound widened</div>
+    <h3>Certificate split</h3>
+    <p>The robust order survives the joint adversary, but its regret certificate expands from 2.2925 to 2.70.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -509,7 +515,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E069** removes oracle knowledge and computes the exact sequential evidence policy under declared failure priors.  
 **E070** freezes that policy, shifts the prior generation, and revokes it when expected-cost regret crosses threshold.  
 **E071** compiles the admitted prior set into a minimax evidence order and exposes the efficiency/robustness trade-off.  
-**E072** shows that marginal priors are insufficient: joint dependence alone can reorder the policy.
+**E072** shows that marginal priors are insufficient: joint dependence alone can reorder the policy.  
+**E073** adds that adversary to the robust set: the policy survives, but its old performance bound does not.
 
 This produces a repeating research pattern:
 
@@ -601,6 +608,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E070 ODD](ODD_E070.md)
 - [E071 ODD](ODD_E071.md)
 - [E072 ODD](ODD_E072.md)
+- [E073 ODD](ODD_E073.md)
 
 ## Run locally
 
@@ -671,6 +679,7 @@ python scripts/run_e069.py
 python scripts/run_e070.py
 python scripts/run_e071.py
 python scripts/run_e072.py
+python scripts/run_e073.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**

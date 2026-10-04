@@ -609,3 +609,10 @@ The robust order reduces worst-case regret but loses reference-prior efficiency.
 ## Joint-dependence attack
 
 E072 attacks the independence assumption beneath E069–E071. Same marginals can hide different conditional structure, so policy certificates must declare the joint model or an ambiguity set rather than only per-axis probabilities.
+
+
+## Policy identity vs performance-bound authority
+
+E073 records a non-binary certification outcome. A new adversary can fail to dethrone the policy while still widening its certified regret bound.
+
+The meta-loop now renews policy identity and performance metrics independently.
