@@ -476,9 +476,82 @@ E031 therefore promotes `short-run-positive-signals-cannot-certify-pmf-v1`.
 
 Revenue, ACV, engagement, and enthusiastic users remain observations. Promotion authority requires independent evidence for repeatability, customer success, product-vs-human delivery burden, scalability, and market headroom.
 
+## E032 — booked revenue / cash-conversion lag
+
+TDB's software-industry reports identify a useful failure mechanism: demand can remain strong while package-software firms face a delay between earning revenue and turning it into cash, during which labor and fixed costs continue.
+
+E032 creates a finite witness:
+
+```text
+initial cash = 100
+booked revenue/month = 100
+cash cost/month = 80
+collection lag = 2 months
+```
+
+Booked margin is +20 per month, yet cash is +20 after month 1 and -60 after month 2. Cumulative booked profit at failure is already +40.
+
+Exact integer search finds the minimum initial cash required to survive the six-month reference horizon is **160**.
+
+A booked-margin warning stays silent at time zero; a lag-aware liquidity guard warns immediately.
+
+All gates promote `separate-booked-revenue-from-cash-arrival-v1`.
+
+## E033 — upstream KPI / downstream value attenuation
+
+Leaner provides two empirical proxy-gap observations:
+
+- historical appointment KPI attainment 150% versus order KGI attainment 20%;
+- later lead-acquisition attainment 300% versus order attainment 80%.
+
+The downstream/upstream attainment ratios are roughly 0.133 and 0.267 respectively.
+
+A finite funnel witness then gives the higher-volume policy weak qualification, close, and customer-success rates. The lower-volume policy produces more successful customers, reversing the upstream ranking.
+
+All gates promote `upstream-kpi-cannot-certify-downstream-value-v1`.
+
+## E034 — hidden human-delivery cost
+
+Srush's false-PMF postmortem explicitly identifies high unit price plus substantial human work as a misleading success signal.
+
+E034 constructs:
+
+| Candidate | Apparent software-only GM | Fully-loaded GM |
+| --- | ---: | ---: |
+| human-heavy high ACV | 80% | 10% |
+| product-led lower ACV | 75% | 62.5% |
+
+The software-only winner loses once recurring human delivery cost is included.
+
+All gates promote `fully-loaded-human-delivery-cost-required-v1`.
+
+## E035 — negative-evidence early-warning tournament
+
+E035 compiles E028-E034 into seven exact reference scenarios: healthy scalable, liquidity lag, human-delivery burden, market ceiling, funnel-quality failure, strategic exit, and healthy intentional pruning with elevated churn.
+
+Three warning rules compete:
+
+| Rule | Key failure |
+| --- | --- |
+| revenue-only | misses positive-growth failure archetypes |
+| churn-only | misses non-churn failures and false-alarms on healthy pruning |
+| multi-signal | exact match on the declared reference suite |
+
+The promoted warning vector contains:
+
+- cash collection gap;
+- fully-loaded delivery margin;
+- market headroom;
+- downstream funnel success;
+- strategic-exit value gap.
+
+The multi-signal rule reaches 100% precision/recall on this **hand-constructed exact reference suite**. This is not production predictive validation; it proves that the empirically motivated failure mechanisms can be compiled into a machine-checkable warning representation.
+
+All gates promote `negative-evidence-multi-signal-early-warning-v1`.
+
 ## Theory update
 
-The working theory after E010–E031 is:
+The working theory after E010–E035 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -531,6 +604,11 @@ The working theory after E010–E031 is:
 62. empirical state variables need layer identity, causal/operational mechanism identity, and exit semantics before entering the simulator;
 63. locally positive business signals such as revenue, high ACV, or enthusiastic users can coexist with non-repeatability, human-service burden, poor customer success, low scalability, or insufficient market headroom;
 64. PMF is therefore a multi-constraint certification problem rather than a scalar revenue threshold;
-65. the empirical meta-loop should attack success proxies with the same adversarial discipline used for failure assumptions.
+65. the empirical meta-loop should attack success proxies with the same adversarial discipline used for failure assumptions;
+66. booked revenue and cash arrival are separate state variables, and collection lag can kill a positive-margin actor before receivables arrive;
+67. upstream funnel attainment cannot certify downstream orders or customer success;
+68. software-only gross margin can materially overstate scalability when recurring human delivery is excluded;
+69. early warning should be a vector over empirically distinct failure mechanisms rather than one revenue or churn scalar;
+70. exact success on a hand-constructed warning suite is only a compilation check — thresholds still require Monte Carlo stress, holdouts, and real longitudinal validation.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
