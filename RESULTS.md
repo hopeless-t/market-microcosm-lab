@@ -664,9 +664,69 @@ Therefore early-warning timing must distinguish latent state, measurement window
 
 All gates promote `rolling-window-metric-lag-must-be-modeled-v1`.
 
+## E040 — rolling KPI current-state non-identifiability
+
+E040 asks whether one trailing-six-month ARR value uniquely determines current MRR.
+
+A finite proof lattice restricts six monthly MRR values to integers 0–10, requires monotone non-increasing paths, and fixes average MRR at 5:
+
+```text
+six-month sum = 30
+reported ARR = 60
+```
+
+Exact enumeration finds **338 distinct monotone latent paths** with the same ARR.
+
+The current sixth-month MRR spans every integer from **0 through 5**.
+
+Therefore identical reported ARR can represent both a component that is already at zero and one that still has MRR 5.
+
+All gates promote `rolling-kpi-current-state-nonidentifiable-without-path-state-v1`.
+
+## E041 — minimal observability checkpoint
+
+E041 asks how little extra state is needed to repair the ambiguity.
+
+For a fixed-width rolling sum:
+
+```text
+S_t = S_(t-1) - outgoing_oldest + newest
+```
+
+Two consecutive rolling metrics identify only the difference between the incoming and outgoing boundary values.
+
+In the reference:
+
+```text
+previous window = [10, 8, 6, 4, 2, 0]
+current window  = [ 8, 6, 4, 2, 0, 2]
+previous ARR = 60
+current ARR = 44
+```
+
+Without the outgoing boundary MRR, three bounded pairs remain compatible:
+
+```text
+(8,0), (9,1), (10,2)
+```
+
+Retaining the single outgoing value 10 yields:
+
+```text
+newest = current_sum - previous_sum + outgoing
+       = 22 - 30 + 10
+       = 2
+```
+
+exactly.
+
+The result operationalizes a minimal-checkpoint principle: retain the smallest boundary state whose absence makes the transition non-identifiable.
+
+All gates promote `rolling-window-boundary-checkpoint-restores-observability-v1`.
+
 ## Theory update
 
-The working theory after E010–E039 is:
+The working theory after E010–E041 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -732,6 +792,9 @@ The working theory after E010–E039 is:
 75. empirical warning systems need explicit revoke-and-repair lifecycle semantics analogous to evaluator certificates;
 76. real longitudinal validation should preserve component identity and event annotations because different ARR components can follow different mechanisms;
 77. a strong component-level holdout fit does not license the same dynamic law for aggregate or neighboring components;
-78. rolling-window KPI definitions create deterministic observation memory, so warning lead time must model the measurement kernel as well as the latent business state.
+78. rolling-window KPI definitions create deterministic observation memory, so warning lead time must model the measurement kernel as well as the latent business state;
+79. a rolling aggregate can be non-identifying even under monotone latent dynamics, so current-state inference must preserve ambiguity rather than invent one hidden path;
+80. one-step observability can sometimes be restored with a single indispensable boundary checkpoint instead of retaining the entire historical path;
+81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
