@@ -60,6 +60,10 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E029 · Strategic Exit** | Is actor exit always an insolvency event? | empirical withdrawals plus a finite counterexample require strategic exit as a separate control action |
 | **E030 · Churn Semantics** | Does higher SaaS churn always mean a worse ecosystem? | BBD churn doubles while ARR/ARPA rise under pruning; churn must be layer- and cause-typed |
 | **E031 · PMF Proxy Guard** | Can revenue/high ACV/enthusiastic users certify PMF? | Srush/Leaner/SalesNow postmortems plus a finite ranking reversal reject short-run positive signals as sufficient certification |
+| **E032 · Cash Conversion Lag** | Can positive booked margin still fail on liquidity timing? | fixed witness fails in month 2 before delayed cash arrives; exact survival buffer = 160 |
+| **E033 · Funnel Proxy Attenuation** | Can upstream KPI attainment certify downstream value? | Leaner examples show 150%→20% and 300%→80% target attenuation; funnel stages stay separate |
+| **E034 · Human Delivery Cost** | Can high ACV / software margin hide service burden? | apparent 80% margin collapses to 10% fully loaded; candidate ranking reverses |
+| **E035 · Early Warning Tournament** | Which proxy detects the failure archetypes? | revenue/churn scalar rules have blind spots; five-axis negative-evidence warning matches the exact reference oracle |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -190,6 +194,14 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Revenue can be a PMF proxy trap.** E031 triangulates Srush, Leaner, and SalesNow postmortems: paying/high-value users, revenue, or deep customer pain can coexist with non-repeatable targeting, human-service burden, poor customer success, weak scalability, or a hard market ceiling. A finite witness reverses the winner when current revenue is replaced by multi-dimensional viability.
 
+**Booked revenue is not cash.** E032 turns TDB's cash-conversion warning into a finite liquidity witness: monthly booked revenue 100 and cash cost 80 still fail in month 2 when collection lags by two months and initial cash is 100. Exact minimum starting cash is 160.
+
+**Funnels attenuate.** E033 uses Leaner examples where upstream target attainment massively exceeds downstream attainment, then constructs a ranking reversal where the higher-volume funnel produces fewer successful customers.
+
+**Human delivery is a hidden cost plane.** E034 converts Srush's high-unit-price/high-human-effort false-PMF signal into fully loaded delivery accounting. Software-only margin and true delivery margin can select opposite products.
+
+**Negative evidence can compile into an early-warning vector.** E035 pits revenue-only, churn-only, and a five-axis multi-signal warning rule against a finite failure-archetype oracle. The scalar proxies miss or misclassify cases; the multi-signal rule exactly matches the reference suite.
+
 That sequence matters:
 
 ```text
@@ -268,7 +280,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site
