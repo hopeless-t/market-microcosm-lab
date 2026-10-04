@@ -130,6 +130,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Sampling assumption audit</h3>
     <p>Sample count gets an SRS reference curve, then loses prevalence authority when selection design is unknown.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E027</div>
+    <div class="mm-metric">versioned</div>
+    <h3>Metric definition drift</h3>
+    <p>Public Game Pass headlines cannot authorize a growth rate across incompatible value semantics and a membership-definition event.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -187,7 +193,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E023** attacks declared independence with a hidden shared-dependency hyperedge and measures model-error amplification.  
 **E024** adds an empirical evidence plane with exact source admission, public/restricted separation, and real accounting/engagement anchors.  
 **E025** uses admitted Netflix regional ARM data to locate a model-complexity knee and validate the selected three-group structure on a temporal holdout.  
-**E026** attacks the SARTRAS sample-size assumption: a hypothetical SRS curve is informative, but prevalence inference loses authority when the actual selection design is unknown.
+**E026** attacks the SARTRAS sample-size assumption: a hypothetical SRS curve is informative, but prevalence inference loses authority when the actual selection design is unknown.  
+**E027** versions Game Pass membership definitions and quarantines a tempting 36% headline ratio that crosses incompatible value semantics and the Gold → Core transition.
 
 This produces a repeating research pattern:
 
@@ -233,6 +240,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E024 ODD](ODD_E024.md)
 - [E025 ODD](ODD_E025.md)
 - [E026 ODD](ODD_E026.md)
+- [E027 ODD](ODD_E027.md)
 
 ## Run locally
 
@@ -257,6 +265,7 @@ python scripts/run_e023.py
 python scripts/run_e024.py
 python scripts/run_e025.py
 python scripts/run_e026.py
+python scripts/run_e027.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
