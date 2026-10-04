@@ -269,3 +269,18 @@ E031 attacks success-side proxy Goodharting.
 Srush, Leaner, and SalesNow each provide a different counterexample to the idea that revenue or enthusiastic users certify long-run fit. Positive local signals can coexist with non-repeatable targeting, high human delivery burden, poor customer success, weak scalability, or a market ceiling.
 
 The meta-loop must therefore keep **observation** and **certification** separate on the success side too. Revenue, ACV, engagement, and usage can propose a hypothesis; they cannot promote PMF without separate evidence for repeatability, customer success, product-delivered value, scalability, and market headroom.
+
+
+## Cash timing and early-warning compilation
+
+E032-E035 turn the Japanese negative-evidence corpus into a first warning architecture.
+
+E032 separates booked revenue from cash arrival. A positive booked margin can coexist with imminent liquidity failure when collection lags behind payroll and fixed costs.
+
+E033 separates upstream funnel activity from downstream value. Large lead or appointment attainment cannot self-certify orders, activation, or customer success.
+
+E034 separates software cost from recurring human-delivery cost. High ACV and software-only margin can hide a service burden that reverses product rankings after fully loaded accounting.
+
+E035 compiles these failure mechanisms together with market-headroom and strategic-exit signals into a finite multi-signal warning tournament. Revenue-only and churn-only proxies have explicit blind spots; the multi-signal vector matches the exact reference oracle.
+
+The meta-loop is **not** allowed to treat that exact match as external predictive validation. The next authority step requires broad generated scenario families, threshold search on discovery sets, untouched holdouts, and eventually real longitudinal company data.
