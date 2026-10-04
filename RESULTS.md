@@ -895,9 +895,137 @@ witness
 
 All gates promote `predicate-quorum-must-audit-upstream-lineage-roots-v1`.
 
+## E051 — active lineage discovery
+
+E051 removes E050's assumption that the upstream lineage graph is already known.
+
+The reference topology hides one `master-warehouse` behind source-a, source-b, and source-c, even though those sources appear in three separate witness domains.
+
+A bounded candidate-dependency probe targeting the hidden root simultaneously affects all three sources across all three domains. Local and unrelated probes do not produce the same cross-domain fingerprint.
+
+The discovery criterion therefore promotes an intervention-based common-root hypothesis and reopens prior independence authority.
+
+All gates promote `hidden-lineage-roots-require-active-intervention-discovery-v1`.
+
+## E052 — exact minimum lineage-probe portfolio
+
+E052 turns lineage discovery into experiment design.
+
+The reference family contains five hypotheses over sources a,b,c,d:
+
+- no shared root;
+- shared abc;
+- shared abd;
+- shared acd;
+- shared bcd.
+
+Six pair probes are available with synthetic costs.
+
+Exact enumeration of every probe subset finds the minimum-cost portfolio whose binary response signatures distinguish all five hypotheses:
+
+```text
+ab, ac, bc
+probe count = 3
+total cost = 4
+```
+
+All gates promote `lineage-discovery-probes-use-exact-minimum-identifying-portfolio-v1`.
+
+## E053 — noisy lineage-probe robustness
+
+E053 attacks E052's noiseless optimum.
+
+The E052 signature set contains:
+
+```text
+none       = 000
+shared-bcd = 001
+```
+
+One flipped `bc` observation therefore turns the true `none` case into the exact wrong hypothesis. The E052 minimum pairwise Hamming distance is 1.
+
+To correct one arbitrary binary probe error, minimum signature distance must be at least 3.
+
+Exact subset search finds that only the full six-probe portfolio reaches distance 3, with total declared cost 12.
+
+Five hypotheses × (no error + six one-bit errors) gives 35 exhaustive decode cases; nearest-signature decoding recovers the correct hypothesis in all 35.
+
+All gates promote `lineage-probe-error-tolerance-requires-distance-three-signatures-v1`.
+
+## E054 — probe robustness compiler
+
+E054 compiles probe authority directly from a declared adversarial substitution-error budget (e).
+
+The compiler requires:
+
+```text
+d_min >= 2e + 1
+```
+
+and exactly searches the minimum-cost satisfying portfolio.
+
+Reference results:
+
+| Error budget | Required distance | Result |
+| ---: | ---: | --- |
+| 0 | 1 | ab/ac/bc, cost 4 |
+| 1 | 3 | all six probes, cost 12 |
+| 2 | 5 | UNSAT under the original six-probe alphabet |
+
+The compiler fails closed when the requested robustness cannot be represented.
+
+All gates promote `lineage-probe-authority-compiled-from-declared-error-budget-v1`.
+
+## E055 — redundant measurement synthesis after UNSAT
+
+E055 asks whether E054's two-error UNSAT can be repaired by expanding the measurement design rather than weakening the robustness contract.
+
+Each logical pair probe may be repeated through independent measurement channels.
+
+Exact repetition-count search finds the minimum-cost distance-five design:
+
+```text
+ab × 1
+ac × 2
+ad × 2
+bc × 2
+bd × 2
+cd × 1
+```
+
+This yields:
+
+```text
+10 channels
+cost = 20
+minimum Hamming distance = 5
+```
+
+Exhaustive decoding tests every zero-, one-, and two-bit error pattern:
+
+```text
+5 hypotheses × (1 + 10 + C(10,2))
+= 280 cases
+```
+
+All 280 decode correctly.
+
+The result changes the UNSAT lifecycle:
+
+```text
+compile
+→ UNSAT under current measurement alphabet
+→ expand authorized measurement design
+→ recompile
+→ exhaustive verify
+→ promote with a new certificate
+```
+
+All gates promote `unsat-probe-robustness-may-expand-independent-measurement-channels-v1`.
+
 ## Theory update
 
-The working theory after E010–E050 is:
+The working theory after E010–E055 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -966,6 +1094,6 @@ The working theory after E010–E050 is:
 78. rolling-window KPI definitions create deterministic observation memory, so warning lead time must model the measurement kernel as well as the latent business state;
 79. a rolling aggregate can be non-identifying even under monotone latent dynamics, so current-state inference must preserve ambiguity rather than invent one hidden path;
 80. one-step observability can sometimes be restored with a single indispensable boundary checkpoint instead of retaining the entire historical path;
-81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction;\n82. empirical claim precision cannot exceed the reporting resolution of the admitted evidence, and apparently excellent sub-resolution fits must lose precision authority;\n83. observability is decision-predicate scoped: an uncertainty set may be sufficient for a coarse action while remaining insufficient for a finer threshold;\n84. boundary-straddling uncertainty should produce an authorized ABSTAIN rather than a forced point-proxy decision;\n85. after ABSTAIN, additional evidence should be acquired by minimum-cost predicate resolution rather than by default full-state recovery;\n86. active-sensing cost optimization is subordinate to evidence authorization and cannot trade policy violations against downstream utility;\n87. authorized evidence can still be inadmissible when stale or defined under the wrong metric generation;\n88. evidence admission for action must bind authority, predicate sufficiency, freshness, and metric identity before optimization begins;\n89. one fresh authorized attestation is still a single failure point, so predicate authority may require an independent witness quorum;\n90. witness/failure-domain diversity does not imply observational independence when multiple witnesses consume one upstream data source;\n91. predicate quorum authority must expose and diversify upstream evidence lineage, with hidden common-mode discoveries triggering revocation and re-audit;\n92. immediate source labels are not independence proof because multiple sources can collapse onto one upstream lineage root;\n93. evidence independence is graph-structured and authority depends on the minimum independent upstream roots capable of supporting or corrupting quorum.
+81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction;\n82. empirical claim precision cannot exceed the reporting resolution of the admitted evidence, and apparently excellent sub-resolution fits must lose precision authority;\n83. observability is decision-predicate scoped: an uncertainty set may be sufficient for a coarse action while remaining insufficient for a finer threshold;\n84. boundary-straddling uncertainty should produce an authorized ABSTAIN rather than a forced point-proxy decision;\n85. after ABSTAIN, additional evidence should be acquired by minimum-cost predicate resolution rather than by default full-state recovery;\n86. active-sensing cost optimization is subordinate to evidence authorization and cannot trade policy violations against downstream utility;\n87. authorized evidence can still be inadmissible when stale or defined under the wrong metric generation;\n88. evidence admission for action must bind authority, predicate sufficiency, freshness, and metric identity before optimization begins;\n89. one fresh authorized attestation is still a single failure point, so predicate authority may require an independent witness quorum;\n90. witness/failure-domain diversity does not imply observational independence when multiple witnesses consume one upstream data source;\n91. predicate quorum authority must expose and diversify upstream evidence lineage, with hidden common-mode discoveries triggering revocation and re-audit;\n92. immediate source labels are not independence proof because multiple sources can collapse onto one upstream lineage root;\n93. evidence independence is graph-structured and authority depends on the minimum independent upstream roots capable of supporting or corrupting quorum;\n94. hidden lineage roots should be actively falsified with bounded intervention fingerprints rather than assumed absent when the declared graph looks diverse;\n95. lineage discovery is an experiment-design problem whose probe set can be optimized for identifiability and intervention cost;\n96. minimum-cost noiseless identification does not imply noise robustness, which requires an explicit hypothesis-code distance certificate;\n97. probe robustness authority should be compiled from a declared observation-error budget and fail closed when the requested distance is unsatisfiable;\n98. an UNSAT result may justify expanding the authorized measurement design, after which the stronger certificate must be recompiled and exhaustively verified.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
