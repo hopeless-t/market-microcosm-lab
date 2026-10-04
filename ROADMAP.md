@@ -77,7 +77,7 @@
 - [x] Netflix engagement + regional ARM anchors\n- [x] exact regional ARM complexity-knee oracle with temporal holdout
 - [x] Game Pass schema adapter held non-authoritative without partner values
 - [ ] regionalized empirical calibration world
-- [ ] sampled-observation empirical calibration world
+- [x] sampling-design metadata gate / SRS assumption adversary\n- [ ] sampled-observation empirical calibration world
 - SARTRAS
 - game subscription
 - video subscription
