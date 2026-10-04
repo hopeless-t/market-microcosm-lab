@@ -127,3 +127,14 @@ The neighboring Light component rejects the same decay story, so the promoted ob
 Informetis defines ARR using the trailing six-month average MRR. The metric therefore has deterministic memory: three months after an abrupt component end, half of the pre-end signal remains in a six-month window.
 
 Early-warning lead-time claims must separate underlying state change from metric-window and publication delays.
+
+
+## E040 — KPI non-identifiability
+
+A trailing ARR does not uniquely identify current MRR. In the exact bounded monotone lattice, 338 six-month paths share ARR=60 and current MRR can be any value from 0 through 5.
+
+## E041 — Minimal observability checkpoint
+
+Consecutive rolling ARR values reveal only the difference between incoming and outgoing boundary MRR. Retaining one outgoing boundary scalar restores exact newest-MRR reconstruction.
+
+The observability plane now targets minimal sufficient checkpoints rather than full-history retention.
