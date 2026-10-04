@@ -447,6 +447,28 @@ jobs:
           })
           PY
 
+      - name: Run sampled-observation assumption audit
+        run: python scripts/run_e026.py
+      - name: Validate E026 sampling assumption contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e026/sampling-observation-report.json").read_text())
+          assert x["experiment"] == "E026"
+          assert x["promoted_observation_rule"] == "sampling-design-metadata-required-before-prevalence-inference-v1"
+          p95 = x["hypothetical_srs_reference"]["detection_thresholds"]["95"]
+          assert p95["minimum_carrier_count"] == 87
+          assert 0.95 <= p95["achieved_detection_probability"] < 0.96
+          assert x["adversarial_unknown_design"]["worst_case_detection_probability_lower_bound"] == 0.0
+          assert all(x["promotion_gate"].values())
+          print({
+              "srs_95": p95,
+              "adversarial": x["adversarial_unknown_design"],
+              "promoted": x["promoted_observation_rule"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
