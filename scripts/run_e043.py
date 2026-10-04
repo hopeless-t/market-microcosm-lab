@@ -1,0 +1,26 @@
+import json
+from pathlib import Path
+
+from market_microcosm.decision_sufficient_observability import (
+    decision_sufficient_observability_report_payload,
+)
+
+
+def main() -> None:
+    payload = decision_sufficient_observability_report_payload()
+
+    out = Path("artifacts/e043")
+    out.mkdir(parents=True, exist_ok=True)
+    path = out / "decision-sufficient-observability-report.json"
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+
+    print(path)
+    print(
+        "reference="
+        + json.dumps(payload["reference"], sort_keys=True)
+    )
+    print(f"promoted-rule={payload['promoted_observability_rule']}")
+
+
+if __name__ == "__main__":
+    main()
