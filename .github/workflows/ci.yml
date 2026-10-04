@@ -896,6 +896,92 @@ jobs:
           print({"hidden": hidden, "repair": x["lineage_diversified_repair"], "promoted": x["promoted_lineage_rule"]})
           PY
 
+      - name: Run active lineage discovery
+        run: python scripts/run_e051.py
+      - name: Validate E051 active-lineage contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e051/active-lineage-discovery-report.json").read_text())
+          assert x["experiment"] == "E051"
+          assert x["reference"]["discovered_root_ids"] == ["master-warehouse"]
+          assert x["promoted_discovery_rule"] == "hidden-lineage-roots-require-active-intervention-discovery-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": x["reference"], "promoted": x["promoted_discovery_rule"]})
+          PY
+
+      - name: Run minimum lineage-probe portfolio search
+        run: python scripts/run_e052.py
+      - name: Validate E052 probe-portfolio contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e052/lineage-probe-portfolio-report.json").read_text())
+          assert x["experiment"] == "E052"
+          s = x["reference"]["selected"]
+          assert s["probe_ids"] == ["ab", "ac", "bc"]
+          assert s["total_cost"] == 4
+          assert x["promoted_probe_rule"] == "lineage-discovery-probes-use-exact-minimum-identifying-portfolio-v1"
+          assert all(x["promotion_gate"].values())
+          print({"selected": s, "promoted": x["promoted_probe_rule"]})
+          PY
+
+      - name: Run noisy lineage-probe adversary
+        run: python scripts/run_e053.py
+      - name: Validate E053 noisy-probe contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e053/noisy-lineage-probe-report.json").read_text())
+          assert x["experiment"] == "E053"
+          assert x["e052_noise_counterexample"]["single_error_causes_exact_alias"] is True
+          assert x["one_error_tolerant_search"]["selected"]["minimum_hamming_distance"] == 3
+          assert x["exhaustive_single_error_decode"]["all_correct"] is True
+          assert x["promoted_noise_rule"] == "lineage-probe-error-tolerance-requires-distance-three-signatures-v1"
+          assert all(x["promotion_gate"].values())
+          print({"robust": x["one_error_tolerant_search"], "promoted": x["promoted_noise_rule"]})
+          PY
+
+      - name: Run probe robustness compiler
+        run: python scripts/run_e054.py
+      - name: Validate E054 robustness-compiler contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e054/probe-robustness-compiler-report.json").read_text())
+          assert x["experiment"] == "E054"
+          assert x["compiled_error_budgets"]["0"]["selected"]["total_cost"] == 4
+          assert x["compiled_error_budgets"]["1"]["selected"]["total_cost"] == 12
+          assert x["compiled_error_budgets"]["2"]["status"] == "UNSAT"
+          assert x["promoted_compiler_rule"] == "lineage-probe-authority-compiled-from-declared-error-budget-v1"
+          assert all(x["promotion_gate"].values())
+          print({"compiled": x["compiled_error_budgets"], "promoted": x["promoted_compiler_rule"]})
+          PY
+
+      - name: Run redundant measurement synthesis
+        run: python scripts/run_e055.py
+      - name: Validate E055 redundant-sensing contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e055/redundant-probe-synthesis-report.json").read_text())
+          assert x["experiment"] == "E055"
+          s = x["synthesis"]["selected"]
+          assert s["channel_count"] == 10
+          assert s["total_cost"] == 20
+          assert s["minimum_hamming_distance"] == 5
+          assert x["exhaustive_decode"]["case_count"] == 280
+          assert x["exhaustive_decode"]["all_correct"] is True
+          assert x["promoted_redundancy_rule"] == "unsat-probe-robustness-may-expand-independent-measurement-channels-v1"
+          assert all(x["promotion_gate"].values())
+          print({"synthesis": x["synthesis"], "decode": x["exhaustive_decode"], "promoted": x["promoted_redundancy_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
