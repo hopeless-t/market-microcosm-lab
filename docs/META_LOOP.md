@@ -439,3 +439,33 @@ Three distinct immediate source labels can still derive from one master warehous
 The sensing plane now treats evidence independence as a dependency graph rather than a list of names. Accepted predicate authority must expose enough upstream lineage to estimate the minimum independent roots supporting the accepted view.
 
 Discovery of a hidden lineage root is an authority-changing event: prior source-diversity evidence is revoked and the quorum must be re-evaluated.
+
+
+## Active lineage discovery and robustness compilation
+
+E051-E055 turn evidence-lineage independence from a static audit into an active experiment loop.
+
+E051 uses bounded dependency probes to discover hidden common roots through downstream cross-domain response fingerprints.
+
+E052 exactly minimizes the probe portfolio needed to distinguish the finite lineage hypothesis family.
+
+E053 then attacks that minimum portfolio with one observation error and shows that noiseless identifiability is not error-correcting authority.
+
+E054 compiles the required signature distance from a declared adversarial error budget and returns either an exact minimum-cost portfolio or UNSAT.
+
+E055 treats UNSAT as a design result rather than an excuse to weaken the contract. The measurement alphabet can be expanded with authorized independent channels, then recompiled and exhaustively reverified.
+
+The loop becomes:
+
+```text
+declare lineage hypotheses
+→ design minimum identifying probes
+→ declare error budget
+→ compile robustness certificate
+→ SAT: execute with stated authority
+→ UNSAT: expand measurement design or ABSTAIN
+→ recompile
+→ exhaustive verification
+```
+
+Efficiency and robustness are separate objectives and must not inherit authority from one another.
