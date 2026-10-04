@@ -348,3 +348,12 @@ Yes. The negative-evidence corpus contains multiple strategic exits, and an exac
 BBD's published pruning period provides exactly that sign pattern. E030 therefore prevents B2B MRR churn from being silently mapped into end-user demand churn and requires both layer and cause identity.
 
 [Read the E030 ODD](ODD_E030.md)
+
+
+## E031 — Short-run signal / PMF proxy guard
+
+**Question:** can revenue, high ACV, enthusiastic users, or current sales certify PMF and long-run viability on their own?
+
+Srush, Leaner, and SalesNow provide three distinct counterexamples. E031 adds a finite ranking-reversal witness and promotes a rule requiring separate evidence for repeatability, customer success, product-vs-human delivery burden, scalability, and market headroom.
+
+[Read the E031 ODD](ODD_E031.md)
