@@ -344,7 +344,7 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <div class="mm-kicker">E062</div>
     <div class="mm-metric">6 → 8</div>
     <h3>Evidence failure domains</h3>
-    <p>Shared audit bundles save cost but enlarge proof common-mode blast; robust authority returns to independent evidence.</p>
+    <p>Shared audit bundles save cost but enlarge proof common-mode blast; robust authority can still reuse a bundle when overlapping independent corroboration bounds the blast.</p>
   </div>
   <div class="mm-card">
     <div class="mm-kicker">E063</div>
