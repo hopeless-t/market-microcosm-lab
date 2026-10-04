@@ -56,6 +56,9 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E021 · Witness Quorum** | Can anchor authority survive one or two compromised witnesses? | 3-of-5 blocks 1–2 compromises and guarantees quorum intersection; 3 compromises reach the forge boundary |
 | **E022 · Failure Domains** | Are five witness identities actually five independent failure domains? | 3-1-1 collapses to a one-domain forge; 1-1-1-1-1 requires three domains and cuts modeled forge risk 91.4% |
 | **E023 · Hidden Common Mode** | Can nominally independent domains still share an undeclared dependency? | one hidden shared-KMS shock collapses the forge boundary 3→1 and inflates modeled forge probability 1016× |\n| **E024 · Empirical Evidence Plane** | Which real-world observations are allowed to constrain future calibration? | SARTRAS accounting closes to a 1-thousand-JPY rounding delta; public/restricted evidence is admission-controlled |\n| **E025 · Regional Complexity Knee** | How much regional structure is required by admitted Netflix ARM data? | exact partition search rejects 1–2 groups at 10% tolerance; 3 groups survive a one-quarter holdout |\n| **E026 · Sampling Assumption Audit** | What can SARTRAS's published sample size actually identify? | SRS gives a useful reference knee, but unknown selection admits a zero-detection adversary; sampling design metadata becomes mandatory |\n| **E027 · Metric Definition Drift** | Can public Game Pass membership headlines be compared as one time series? | naive 34/25=1.36 ratio is quarantined; bound semantics + Core-era definition change revoke precise growth authority |
+| **E028 · Japanese Failure Corpus** | What breaks when failed/withdrawn Japanese SaaS evidence is admitted? | ten new failure mechanisms appear beyond price/cost/user-churn stress; negative evidence becomes mandatory |
+| **E029 · Strategic Exit** | Is actor exit always an insolvency event? | empirical withdrawals plus a finite counterexample require strategic exit as a separate control action |
+| **E030 · Churn Semantics** | Does higher SaaS churn always mean a worse ecosystem? | BBD churn doubles while ARR/ARPA rise under pruning; churn must be layer- and cause-typed |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -178,6 +181,12 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **Declared independence can itself be wrong.** E023 keeps the nominal 1-1-1-1-1 witness labels but adds one undeclared shared-KMS dependency affecting witnesses 0, 1, and 2. The minimum forge shock count collapses from 3 to 1, and the exact synthetic forge probability at a 1% shock rate rises from 0.000985% to 1.000975% — a 1016× inflation.\n\n**Empirical evidence needs its own admission plane.** E024 introduces a source registry and an exact public-source portfolio oracle. SARTRAS 2022 accounting reconciles to a 1-thousand-JPY rounding delta, Netflix regional ARM varies by more than 2× across reported Q2 2024 regions, and Game Pass Partner Center remains schema-only for public calibration because its report values require authorization.\n\n**Empirical data can choose model complexity.** E025 exhaustively enumerates every partition of Netflix's four reported regions over four discovery quarters. At a 10% maximum-relative-error tolerance, one and two ARM groups fail while three groups pass with the stable topology {UCAN}, {EMEA}, {LATAM+APAC}. Q1 2024 centroids predict the untouched Q2 2024 holdout with less than 10% maximum relative error.\n\n**Sample size is not a sampling-design certificate.** E026 uses SARTRAS's approximately 1,200 sampled institutions out of 35,130 applications. Under a hypothetical simple-random reference, 87 carrier institutions are enough to cross 95% one-or-more detection. But the same sample size has a zero-detection construction when the selection mechanism is left unconstrained, so prevalence inference fails closed until sampling-design metadata is identified.\n\n**Public numbers still need metric-version identity.** E027 places Microsoft's 2022 >25M Game Pass subscriber headline and 2024 34M member headline on opposite sides of the Xbox Live Gold → Game Pass Core conversion. The tempting 36% ratio is retained only as an illustrative anti-pattern because value semantics and definition generation do not match.
 
+**Failure evidence changes the state space.** E028 adds Japanese negative evidence from BBD Initiative, RickCloud, Leaner, SalesNow, and TDB. Market ceiling, customer-success non-scalability, platform substitution, engineering-maintenance burden, data-strategy mismatch, labor/cash pressure, acquisition burn, product sprawl, and deliberate pruning are not represented by the original three-axis stress core.
+
+**Exit is also a control action.** E029 shows both empirically and in a finite witness that an actor can rationally leave while cash is still positive. Future empirical worlds therefore separate forced insolvency from strategic exit/redeployment.
+
+**Churn has semantics.** E030 uses BBD's published portfolio pruning as a sign counterexample: FY2023 Q4→FY2024 Q3 churn rises 1.15%→2.33%, yet ARR rises 1,593→1,607 million JPY and ARPA rises 437,545→466,303 JPY while contracts fall. B2B MRR churn is not silently mapped into E010 end-user churn.
+
 That sequence matters:
 
 ```text
@@ -256,7 +265,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site
