@@ -66,6 +66,8 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E035 · Early Warning Tournament** | Which proxy detects the failure archetypes? | revenue/churn scalar rules have blind spots; five-axis negative-evidence warning matches the exact reference oracle |
 | **E036 · Warning Holdout Search** | Does the warning survive broad generated scenarios? | 324 threshold candidates tuned on 500 discovery states; >98% precision/recall/F1 on untouched 500-state holdout |
 | **E037 · Warning Structural Drift** | What happens when the failure law changes? | hidden interaction drops legacy recall below authority threshold; old certificate revoked and interaction-aware v2 restores >99% recall/precision |
+| **E038 · Real Longitudinal Holdout** | Does component identity help on a real quarterly series? | Informetis Standard ARR Q1–Q3 decay predicts Q4 within 0.34%; same law fails on other components |
+| **E039 · Rolling KPI Lag** | Does the KPI itself delay observation? | a six-month trailing ARR retains 50% legacy signal three months after an abrupt end; latent state and metric kernel are separated |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -208,6 +210,10 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **A new failure law revokes the warning.** E037 mutates the generator with an interaction-only `market_headroom × downstream_success` failure. The frozen E036 warning drops below its prior recall authority threshold and is explicitly revoked. Adding the interaction term restores >99% recall and precision, promoting warning generation v2.
 
+**The first real quarterly holdout is component-scoped.** E038 uses Informetis's published ARR series. A constant-retention model fit only on 2025-Q1→Q3 Smart Living Standard predicts Q4 at about 215.27 million JPY versus 216 observed (≈0.34% error). The same simple decay story fails badly on Smart Living Light, so the mechanism is kept component-scoped.
+
+**The KPI can lag the business state.** E039 models Informetis's published ARR definition — twelve times the trailing six-month average MRR. Three months after an abrupt component MRR end, a six-month window still contains 50% pre-end signal. Early-warning lead time must therefore include the metric measurement kernel, not just event and publication timestamps.
+
 That sequence matters:
 
 ```text
@@ -286,7 +292,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site
