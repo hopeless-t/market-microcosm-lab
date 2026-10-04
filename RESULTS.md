@@ -406,9 +406,65 @@ The growth-authority guard therefore rejects a precise cross-headline growth cal
 
 The empirical identity of a metric now includes value semantics and definition generation, not only numeric value, unit, and date.
 
+## E028 — Japanese negative-evidence corpus
+
+E028 adds a deliberately heterogeneous Japanese failure/withdrawal corpus so empirical calibration cannot learn only from surviving systems.
+
+The initial corpus includes:
+
+- **BBD Initiative** — portfolio pruning with published ARR/churn/ARPA/contract KPIs, plus later restructuring and impairment;
+- **RickCloud** — planned sunset under platform substitution and long-run infrastructure/engineering burden;
+- **Leaner** — prior product withdrawal after roughly one year without sales and later concern that customers would not succeed and the company would not scale;
+- **SalesNow pre-2022 portfolio** — complete pivot after management estimated a roughly 2–3 billion JPY ARR ceiling, despite large advertising spend and multiple upsell products;
+- **TDB software-industry context** — 195 bankruptcies through February FY2025, 84.6% under 100 million JPY of debt, plus labor-cost and cash-conversion pressure.
+
+The declared negative-evidence mechanism set adds ten dimensions not represented by the original price/cost/end-user-churn stress core: acquisition burn, cash-conversion lag, customer-success non-scalability, data-compounding misalignment, engineering-maintenance burden, labor-cost pressure, market ceiling, platform substitution, portfolio pruning, and product sprawl.
+
+All E028 gates pass, promoting `negative-evidence-corpus-required-for-market-calibration-v1`.
+
+## E029 — strategic exit before insolvency
+
+E029 tests the E010 simplification that actor exit occurs through negative cash.
+
+The Japanese corpus contains multiple orderly withdrawals whose published decision logic is strategic or structural rather than an explicit insolvency trigger. A finite reference grid then provides a constructive witness:
+
+```text
+cash = +100
+expected monthly net = -10
+horizon = 12
+redeployment value = 50
+sunset cost = 10
+
+continue value = -120
+exit value = +40
+```
+
+Strategic exit dominates while cash remains positive.
+
+E029 therefore promotes `separate-strategic-exit-from-insolvency-v1`: forced financial failure remains a state transition, while voluntary exit becomes an explicit governance/control action with migration, sunset, and redeployment consequences.
+
+## E030 — churn semantics counterexample
+
+BBD's published FY2024 Q3 portfolio KPIs provide a real sign counterexample to generic "churn up = system worse" reasoning.
+
+From FY2023 Q4 to FY2024 Q3:
+
+| Metric | Start | End | Change |
+| --- | ---: | ---: | ---: |
+| Churn | 1.15% | 2.33% | +1.18 pt / +102.6% relative |
+| ARR | 1,593m JPY | 1,607m JPY | +0.88% |
+| ARPA | 437,545 JPY | 466,303 JPY | +6.57% |
+| Contracts | 3,641 | 3,416 | -6.18% |
+
+The same official disclosure attributes higher churn partly to unprofitable-service exits and migration from low-price customers toward higher-price plans.
+
+E030 does not invalidate E013's synthetic **end-user** churn pressure. It rejects untyped transfer across layers. B2B account/logo/MRR churn, end-user churn, supplier exit, intentional pruning, and plan migration require separate identities.
+
+All gates promote `churn-must-be-layer-and-cause-typed-v1`.
+
 ## Theory update
 
-The working theory after E010–E027 is:
+The working theory after E010–E030 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -454,6 +510,10 @@ The working theory after E010–E027 is:
 42. declared independence requires external evidence because topology labels do not prove causal independence;
 43. a hidden dependency hyperedge can dominate the nominal failure-domain topology;
 44. model misspecification can inflate estimated trust failure by orders of magnitude even when the quorum rule is unchanged;
-45. dependency discovery and failure-domain assignment must therefore be separate verification tasks;\n46. empirical observations need a separate admission plane from synthetic and certification evidence;\n47. public schema visibility does not imply public observation visibility;\n48. real regional revenue heterogeneity can invalidate a synthetic single-price assumption before any parameter fitting begins;\n49. period, unit, sampling design, and source authority are part of an empirical value's identity, not optional metadata;\n50. admitted empirical data can select simulator/model-family complexity before full calibration;\n51. for the five-quarter Netflix ARM window, a one-global-parameter or two-group regional family is too coarse at 10% tolerance, while a three-group family crosses the fidelity knee;\n52. structural compression should earn promotion on a temporal holdout rather than on the discovery quarters alone;\n53. sample count alone does not identify an observation model or certify representativeness;\n54. optimistic sampling assumptions should be retained as reference worlds but lose empirical authority when an admissible selection adversary can overturn them;\n55. prevalence inference from sampled market observations requires sampling-frame and weighting metadata, not only n/N;\n56. a public scalar is not a time-series datum until its bound/rounding semantics and metric-definition generation are tracked;\n57. product taxonomy or membership-scope changes can create apparent growth from definition drift;\n58. time-series estimators should fail closed across unbridged metric generations instead of silently normalizing incompatible headlines.
+45. dependency discovery and failure-domain assignment must therefore be separate verification tasks;\n46. empirical observations need a separate admission plane from synthetic and certification evidence;\n47. public schema visibility does not imply public observation visibility;\n48. real regional revenue heterogeneity can invalidate a synthetic single-price assumption before any parameter fitting begins;\n49. period, unit, sampling design, and source authority are part of an empirical value's identity, not optional metadata;\n50. admitted empirical data can select simulator/model-family complexity before full calibration;\n51. for the five-quarter Netflix ARM window, a one-global-parameter or two-group regional family is too coarse at 10% tolerance, while a three-group family crosses the fidelity knee;\n52. structural compression should earn promotion on a temporal holdout rather than on the discovery quarters alone;\n53. sample count alone does not identify an observation model or certify representativeness;\n54. optimistic sampling assumptions should be retained as reference worlds but lose empirical authority when an admissible selection adversary can overturn them;\n55. prevalence inference from sampled market observations requires sampling-frame and weighting metadata, not only n/N;\n56. a public scalar is not a time-series datum until its bound/rounding semantics and metric-definition generation are tracked;\n57. product taxonomy or membership-scope changes can create apparent growth from definition drift;\n58. time-series estimators should fail closed across unbridged metric generations instead of silently normalizing incompatible headlines;
+59. success-only empirical calibration is structurally incomplete when withdrawal, sunset, pivot, and bankruptcy evidence expose additional failure mechanisms;
+60. actor exit is not synonymous with insolvency: strategic exit can dominate continuation before cash crosses zero;
+61. churn direction is not globally monotone across metric layers because deliberate pruning can raise measured churn while ARR and ARPA improve;
+62. empirical state variables need layer identity, causal/operational mechanism identity, and exit semantics before entering the simulator.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
