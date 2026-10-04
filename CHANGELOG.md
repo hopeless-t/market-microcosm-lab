@@ -4,7 +4,7 @@
 
 ### Presentation and research UX
 
-- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021/E022 JSON;
+- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021/E022/E023 JSON;
 - CI freshness check for visual result surfaces and Actions job summary;
 - dashboard page and social-preview artwork source;
 
@@ -60,7 +60,12 @@
 - minimum domains to forge measured as 1, 2, and 3 respectively;
 - modeled p=10% domain-event forge probabilities 10.0%, 2.8%, and 0.856%;
 - independent placement reduces modeled forge probability 91.44% vs concentrated;
-- Root of Trust R12 separates witness identity count from failure-domain independence.
+- Root of Trust R12 separates witness identity count from failure-domain independence;
+- E023 hidden common-mode dependency adversary;
+- nominal five-domain witness topology challenged by an undeclared shared-KMS dependency;
+- minimum shocks to forge collapse from 3 to 1;
+- exact synthetic forge probability inflates from 0.000985% to 1.000975% (1016.16×);
+- Root of Trust R13 makes independence claims explicitly falsifiable and generation-changing when common modes are discovered.
 
 ## v0.2 — Ecological market dynamics
 

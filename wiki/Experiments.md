@@ -184,3 +184,12 @@ The concentrated 3-1-1 topology needs only one compromised domain to forge a quo
 At the declared synthetic 10% independent domain-event probability, exact enumeration gives forge probabilities of 10.0%, 2.8%, and 0.856% respectively.
 
 The result makes failure-domain independence a separate trust property from witness identity count. Domain labels themselves remain hypotheses until supported by external dependency evidence.
+
+
+## E023 — hidden common-mode dependency adversary
+
+E023 keeps the nominal E022 fully separated witness labels but adds an undeclared shared-KMS dependency affecting witnesses 0, 1, and 2.
+
+The nominal model needs three independent shocks and has exact synthetic forge probability 0.000985% at p=1%. The hidden-dependency model needs one shock and reaches 1.000975%, a 1016.16× inflation.
+
+The experiment treats declared failure-domain independence as a hypothesis that can be falsified by a latent dependency hyperedge.

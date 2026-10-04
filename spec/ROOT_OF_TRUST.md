@@ -38,4 +38,7 @@ When provenance authority is distributed across witnesses, the acceptance thresh
 ## R12 — Failure-domain independence
 Witness identity count must not be treated as independent resilience by default. The failure-domain mapping, minimum independent domains required to forge or deny quorum, and material common-mode dependencies must be explicit and testable. A topology that collapses the declared quorum under fewer domains than the accepted trust contract may not be promoted.
 
+## R13 — Independence claims are falsifiable
+Declared failure-domain separation is a hypothesis, not proof of causal independence. Promotion must consider material shared dependencies and common-mode shocks that cross nominal domains. If an undeclared or newly discovered dependency reduces the accepted minimum independent shocks/domains to compromise, existing trust evidence is invalidated and must be re-evaluated.
+
 These rules are intentionally small. The meta-loop may improve almost everything else.

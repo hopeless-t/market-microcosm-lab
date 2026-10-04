@@ -438,4 +438,5 @@ jobs:
             docs/generated/e020-checkpoint-rotation.svg
             docs/generated/e021-witness-quorum.svg
             docs/generated/e022-failure-domains.svg
+            docs/generated/e023-hidden-common-mode.svg
             docs/generated/research-dashboard.md

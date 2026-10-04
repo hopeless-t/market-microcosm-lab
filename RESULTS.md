@@ -315,9 +315,24 @@ Under the declared homogeneous independent-domain model, the fully separated top
 
 The result is not evidence that real providers or regions are independent. It shows why independence must be modeled and evidenced separately from witness identity count.
 
+## E023 — hidden common-mode dependency adversary
+
+E023 attacks the strongest E022 topology without changing its nominal witness-domain labels.
+
+The nominal model contains five independent one-witness shocks at p=1%. The hidden model adds one undeclared shared-KMS shock affecting witnesses 0, 1, and 2.
+
+| Model | Min shocks to forge | Exact forge probability |
+| --- | ---: | ---: |
+| nominal independent | 3 | 0.000985% |
+| hidden shared-KMS | 1 | 1.000975% |
+
+The hidden dependency raises modeled forge probability by **1016.16×** and makes a single latent shock sufficient to satisfy the 3-of-5 quorum.
+
+This is a model-error result rather than a claim about KMS products. It demonstrates that independence cannot be established solely from distinct labels, providers, regions, or witness IDs. The causal dependency graph matters.
+
 ## Theory update
 
-The working theory after E010–E022 is:
+The working theory after E010–E023 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -360,6 +375,9 @@ The working theory after E010–E022 is:
 39. witness-count diversity and failure-domain diversity are separate quantities;
 40. correlated placement can collapse nominal 3-of-5 security to a single-domain failure;
 41. minimum domains to forge is a more informative resilience metric than witness count alone;
-42. declared independence requires external evidence because topology labels do not prove causal independence.
+42. declared independence requires external evidence because topology labels do not prove causal independence;
+43. a hidden dependency hyperedge can dominate the nominal failure-domain topology;
+44. model misspecification can inflate estimated trust failure by orders of magnitude even when the quorum rule is unchanged;
+45. dependency discovery and failure-domain assignment must therefore be separate verification tasks.
 
-Next work should stress hidden common-mode dependencies and stronger signed/transparency publication, then return to richer endogenous recommendation, pricing, and bargaining controllers.
+Next work should add heterogeneous dependency graphs and active common-mode discovery, then return to stronger signed/transparency publication and the endogenous economic controllers.

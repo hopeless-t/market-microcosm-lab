@@ -154,3 +154,16 @@ The reference placements produce minimum domain compromise boundaries of 1 for 3
 This is deliberately separate from witness quorum geometry. E021 proves identity-level intersection properties; E022 shows that correlated placement can collapse those nominal guarantees at the domain level.
 
 Root of Trust R12 therefore requires the failure-domain model itself to be explicit and testable. The current probability figures are synthetic and do not establish real-world independence.
+
+
+## Hidden common-mode dependency validation
+
+E023 treats declared independence as a falsifiable model assumption.
+
+The nominal model contains five one-witness shocks. The adversarial model adds one hidden dependency affecting three nominally separate witnesses. Every subset of shock variables is exhaustively enumerated.
+
+The nominal model requires three shocks to forge. The hidden model requires one. Under the declared homogeneous 1% synthetic shock probabilities, the exact modeled forge probability rises from 9.8506e-06 to 0.010009752094.
+
+This experiment does not estimate real KMS or infrastructure risk. Its purpose is to validate sensitivity to missing dependency structure.
+
+Root of Trust R13 therefore requires independence claims to remain revisable when shared dependencies are discovered. A newly discovered common mode is generation-changing evidence, not a cosmetic metadata update.

@@ -57,8 +57,9 @@
 - [ ] signed or transparency-log-backed checkpoint experiment
 - [x] multi-witness checkpoint quorum / split-view detection
 - [x] independent witness failure-domain / correlated-compromise stress test
-- [ ] hidden common-mode dependency / mislabeled-independence adversary
+- [x] hidden common-mode dependency / mislabeled-independence adversary
 - [ ] heterogeneous domain-risk and dependency-graph model
+- [ ] active dependency discovery / common-mode fault injection
 - [ ] multi-epoch audit portfolio planning under uncertain future drift
 - [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 

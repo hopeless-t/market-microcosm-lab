@@ -1,6 +1,6 @@
 # Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021/E022 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021/E022/E023 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -184,5 +184,18 @@ Guard contract: **PASS**.
 - Modeled forge-risk reduction, independent vs concentrated: **91.4%**
 - Availability-loss domain boundary: **1 → 2 → 3**
 - Promoted failure-domain rule: **quorum-witnesses-must-span-at-least-three-independent-domains-v1**
+
+## E023 — hidden common-mode dependency adversary
+
+![E023 hidden common mode](e023-hidden-common-mode.svg)
+
+| Model | Min shocks to forge | Exact forge probability |
+| --- | ---: | ---: |
+| nominal independent | **3** | **0.000985%** |
+| + hidden shared-KMS | **1** | **1.000975%** |
+
+- Forge-probability inflation: **1016.2×**
+- Hidden single shock reaches witnesses **0,1,2**
+- Promoted dependency rule: **declared-domain-independence-requires-hidden-dependency-audit-v1**
 
 These are model-relative synthetic results. They are not real-market recommendations.

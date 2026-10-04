@@ -19,6 +19,7 @@ E019 = ROOT / "artifacts/e019/provenance-ledger-report.json"
 E020 = ROOT / "artifacts/e020/checkpoint-rotation-report.json"
 E021 = ROOT / "artifacts/e021/witness-quorum-report.json"
 E022 = ROOT / "artifacts/e022/failure-domain-report.json"
+E023 = ROOT / "artifacts/e023/hidden-common-mode-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -837,7 +838,59 @@ def render_e022(payload: dict) -> str:
 </svg>
 '''
 
-def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict, e019: dict, e020: dict, e021: dict, e022: dict) -> str:
+
+def render_e023(payload: dict) -> str:
+    nominal = payload["nominal_model"]
+    hidden = payload["hidden_common_mode_model"]
+    comparison = payload["comparison"]
+
+    width = 1040
+    height = 430
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E023 hidden common-mode dependency adversary</title>
+<desc id="desc">A hidden shared dependency collapses nominally independent three-of-five witness resilience from three shocks to one.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .head {{ font: 700 13px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; letter-spacing: 1px; }}
+  .mode {{ font: 800 22px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .body {{ font: 14px Inter,Segoe UI,Arial,sans-serif; fill: #d8e4f2; }}
+  .ok {{ fill: #0f3d32; stroke: #22c55e; stroke-width: 2; }}
+  .bad {{ fill: #3c1721; stroke: #f43f5e; stroke-width: 2; }}
+  .blue {{ fill: #172554; stroke: #60a5fa; stroke-width: 2; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#32172e"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E023 · Hidden Common-Mode Dependency</text>
+<text x="30" y="68" class="sub">nominal 1-1-1-1-1 labels · latent shared-KMS hyperedge · exact shock-subset enumeration</text>
+
+<rect x="30" y="100" width="460" height="108" rx="18" class="ok"/>
+<text x="52" y="128" class="head">NOMINAL INDEPENDENCE</text>
+<text x="52" y="162" class="mode">{nominal["minimum_shocks_to_forge"]} SHOCKS TO FORGE</text>
+<text x="52" y="188" class="body">exact p={nominal["forge_probability"]:.6%}</text>
+
+<rect x="550" y="100" width="460" height="108" rx="18" class="bad"/>
+<text x="572" y="128" class="head">HIDDEN SHARED KMS</text>
+<text x="572" y="162" class="mode">{hidden["minimum_shocks_to_forge"]} SHOCK TO FORGE</text>
+<text x="572" y="188" class="body">exact p={hidden["forge_probability"]:.6%}</text>
+
+<rect x="30" y="252" width="980" height="103" rx="20" class="blue"/>
+<text x="52" y="282" class="head">MODEL ERROR AMPLIFICATION</text>
+<text x="52" y="318" class="mode">{comparison["forge_probability_inflation_ratio"]:.1f}× FORGE-PROBABILITY INFLATION</text>
+<text x="52" y="342" class="body">Unique labels do not prove causal independence.</text>
+
+<text x="30" y="393" class="sub">Single hidden shock affects witnesses 0,1,2 and reaches the 3-of-5 quorum.</text>
+<text x="30" y="416" class="sub">Promoted rule: {payload["promoted_dependency_rule"] or "NONE"}</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict, e019: dict, e020: dict, e021: dict, e022: dict, e023: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -925,9 +978,10 @@ def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, 
     quorum_weak = e021["quorum_geometry"]["two_of_five"]
     domain_topologies = e022["topologies"]
     domain_comparison = e022["comparison"]
+    hidden_comparison = e023["comparison"]
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021/E022 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021/E022/E023 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -1098,6 +1152,19 @@ Guard contract: **{"PASS" if e016["guard_contract_passed"] else "FAIL"}**.
 - Availability-loss domain boundary: **1 → 2 → 3**
 - Promoted failure-domain rule: **{e022["promoted_failure_domain_rule"] or "NONE"}**
 
+## E023 — hidden common-mode dependency adversary
+
+![E023 hidden common mode](e023-hidden-common-mode.svg)
+
+| Model | Min shocks to forge | Exact forge probability |
+| --- | ---: | ---: |
+| nominal independent | **{e023["nominal_model"]["minimum_shocks_to_forge"]}** | **{e023["nominal_model"]["forge_probability"]:.6%}** |
+| + hidden shared-KMS | **{e023["hidden_common_mode_model"]["minimum_shocks_to_forge"]}** | **{e023["hidden_common_mode_model"]["forge_probability"]:.6%}** |
+
+- Forge-probability inflation: **{hidden_comparison["forge_probability_inflation_ratio"]:.1f}×**
+- Hidden single shock reaches witnesses **0,1,2**
+- Promoted dependency rule: **{e023["promoted_dependency_rule"] or "NONE"}**
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
@@ -1115,6 +1182,7 @@ def generated_files(
     e020: dict,
     e021: dict,
     e022: dict,
+    e023: dict,
 ) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
@@ -1129,7 +1197,8 @@ def generated_files(
         OUT / "e020-checkpoint-rotation.svg": render_e020(e020),
         OUT / "e021-witness-quorum.svg": render_e021(e021),
         OUT / "e022-failure-domains.svg": render_e022(e022),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020, e021, e022),
+        OUT / "e023-hidden-common-mode.svg": render_e023(e023),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020, e021, e022, e023),
     }
 
 
@@ -1154,7 +1223,8 @@ def main() -> None:
     e020 = _read(E020)
     e021 = _read(E021)
     e022 = _read(E022)
-    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020, e021, e022)
+    e023 = _read(E023)
+    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020, e021, e022, e023)
 
     if args.check:
         stale: list[str] = []
