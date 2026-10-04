@@ -1002,6 +1002,96 @@ jobs:
           print({"bad": bad, "good": good, "promoted": x["promoted_domain_rule"]})
           PY
 
+      - name: Run recursive measurement-lineage discovery
+        run: python scripts/run_e057.py
+      - name: Validate E057 recursive-lineage contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e057/recursive-measurement-lineage-report.json").read_text())
+          assert x["experiment"] == "E057"
+          assert x["e056_measurement_domain_authority_after_discovery"] == "REVOKED"
+          d = x["reference"]["discoveries"][0]
+          assert d["affected_root_count"] == 3
+          assert d["affected_channel_count"] == 6
+          assert x["promoted_recursive_rule"] == "measurement-root-independence-requires-recursive-lineage-discovery-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": x["reference"], "promoted": x["promoted_recursive_rule"]})
+          PY
+
+      - name: Run minimum-cost recursive-lineage repair
+        run: python scripts/run_e058.py
+      - name: Validate E058 recursive-repair contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e058/recursive-lineage-repair-report.json").read_text())
+          assert x["experiment"] == "E058"
+          s = x["synthesis"]["selected"]
+          assert s["migrated_roots"] == ["root-1", "root-2"]
+          assert s["total_cost"] == 5
+          assert x["single_provider_fault_check"]["all_within_budget"] is True
+          assert x["promoted_repair_rule"] == "recursive-lineage-common-mode-repair-by-minimum-cost-repartition-v1"
+          assert all(x["promotion_gate"].values())
+          print({"synthesis": x["synthesis"], "promoted": x["promoted_repair_rule"]})
+          PY
+
+      - name: Run dependency-depth stopping compiler
+        run: python scripts/run_e059.py
+      - name: Validate E059 dependency-depth contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e059/dependency-depth-stopping-report.json").read_text())
+          assert x["experiment"] == "E059"
+          s = x["compiled_depth"]["selected"]
+          assert s["depth"] == 2
+          assert s["cumulative_cost"] == 5
+          assert s["maximum_unverified_blast_channels"] == 2
+          assert x["promoted_stopping_rule"] == "recursive-lineage-audit-stops-at-minimum-depth-meeting-blast-budget-v1"
+          assert all(x["promotion_gate"].values())
+          print({"compiled": x["compiled_depth"], "promoted": x["promoted_stopping_rule"]})
+          PY
+
+      - name: Run heterogeneous dependency-audit allocation
+        run: python scripts/run_e060.py
+      - name: Validate E060 heterogeneous-audit contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e060/heterogeneous-audit-allocation-report.json").read_text())
+          assert x["experiment"] == "E060"
+          a = x["allocation"]
+          assert a["selected"]["total_cost"] == 8
+          assert a["uniform_deep_cost"] == 16
+          assert a["cost_savings_vs_uniform_deep"] == 8
+          assert x["promoted_allocation_rule"] == "recursive-lineage-audit-depth-is-allocated-per-proof-obligation-v1"
+          assert all(x["promotion_gate"].values())
+          print({"allocation": a, "promoted": x["promoted_allocation_rule"]})
+          PY
+
+      - name: Run coupled dependency-audit bundle cover
+        run: python scripts/run_e061.py
+      - name: Validate E061 coupled-audit contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e061/coupled-audit-bundle-report.json").read_text())
+          assert x["experiment"] == "E061"
+          s = x["bundle_cover"]["selected"]
+          assert s["action_ids"] == ["control-plane-bundle", "infra-resilience-bundle"]
+          assert s["total_cost"] == 6
+          assert x["bundle_cover"]["savings_vs_e060"] == 2
+          assert x["promoted_bundle_rule"] == "dependency-audit-allocation-must-model-shared-evidence-bundles-v1"
+          assert all(x["promotion_gate"].values())
+          print({"cover": x["bundle_cover"], "promoted": x["promoted_bundle_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
