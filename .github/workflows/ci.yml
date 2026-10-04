@@ -811,6 +811,38 @@ jobs:
           print({"search": x["candidate_search"], "promoted": x["promoted_active_sensing_rule"]})
           PY
 
+      - name: Run authority-constrained active sensing
+        run: python scripts/run_e046.py
+      - name: Validate E046 sensing-authority contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e046/authority-constrained-sensing-report.json").read_text())
+          assert x["experiment"] == "E046"
+          assert x["candidate_search"]["naive_cost_only_selection"]["authorized"] is False
+          assert x["candidate_search"]["authorized_selection"]["name"] == "signed_predicate_attestation"
+          assert x["promoted_authority_rule"] == "active-sensing-optimizes-only-within-authorized-evidence-set-v1"
+          assert all(x["promotion_gate"].values())
+          print({"search": x["candidate_search"], "promoted": x["promoted_authority_rule"]})
+          PY
+
+      - name: Run temporal evidence admission
+        run: python scripts/run_e047.py
+      - name: Validate E047 temporal-evidence contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e047/temporal-evidence-report.json").read_text())
+          assert x["experiment"] == "E047"
+          assert x["candidate_search"]["authority_only_selection"]["admissible"] is False
+          assert x["candidate_search"]["temporal_generation_selection"]["name"] == "fresh_current_generation_attestation"
+          assert x["promoted_temporal_rule"] == "active-sensing-evidence-must-be-fresh-and-generation-aligned-v1"
+          assert all(x["promotion_gate"].values())
+          print({"search": x["candidate_search"], "promoted": x["promoted_temporal_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
