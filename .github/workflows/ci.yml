@@ -424,6 +424,29 @@ jobs:
           })
           PY
 
+      - name: Run regional empirical complexity experiment
+        run: python scripts/run_e025.py
+      - name: Validate E025 regional complexity contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e025/regional-complexity-report.json").read_text())
+          assert x["experiment"] == "E025"
+          assert x["promoted_regional_rule"] == "regional-arm-complexity-knee-k3-v1"
+          assert x["complexity_selection"]["minimum_group_count"] == 3
+          assert x["complexity_selection"]["frontier"]["2"]["worst_max_relative_error"] > 0.20
+          assert x["complexity_selection"]["frontier"]["3"]["worst_max_relative_error"] < 0.10
+          assert x["forward_holdout"]["max_relative_error"] < 0.10
+          assert all(x["promotion_gate"].values())
+          print({
+              "minimum_groups": x["complexity_selection"]["minimum_group_count"],
+              "partition": x["complexity_selection"]["selected"]["partition"],
+              "holdout_max_relative_error": x["forward_holdout"]["max_relative_error"],
+              "promoted": x["promoted_regional_rule"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
