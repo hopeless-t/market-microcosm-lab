@@ -353,6 +353,32 @@ jobs:
           })
           PY
 
+      - name: Run failure-domain diversity experiment
+        run: python scripts/run_e022.py
+      - name: Validate E022 failure-domain contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e022/failure-domain-report.json").read_text())
+          assert x["experiment"] == "E022"
+          topologies = x["topologies"]
+          assert topologies["concentrated-3-1-1"]["minimum_domains_to_forge"] == 1
+          assert topologies["balanced-2-2-1"]["minimum_domains_to_forge"] == 2
+          assert topologies["independent-1-1-1-1-1"]["minimum_domains_to_forge"] == 3
+          comparison = x["comparison"]
+          assert abs(comparison["concentrated_forge_probability"] - 0.10) < 1e-12
+          assert abs(comparison["balanced_forge_probability"] - 0.028) < 1e-12
+          assert abs(comparison["independent_forge_probability"] - 0.00856) < 1e-12
+          assert comparison["independent_forge_reduction_vs_concentrated"] > 0.90
+          assert all(x["promotion_gate"].values())
+          print({
+              "topologies": topologies,
+              "comparison": comparison,
+              "promoted": x["promoted_failure_domain_rule"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -376,6 +402,7 @@ jobs:
             artifacts/e019/provenance-ledger-report.json
             artifacts/e020/checkpoint-rotation-report.json
             artifacts/e021/witness-quorum-report.json
+            artifacts/e022/failure-domain-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
