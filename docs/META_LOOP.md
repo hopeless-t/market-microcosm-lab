@@ -233,3 +233,30 @@ The 2022 Game Pass observation is a lower bound (>25M subscribers), the 2024 obs
 A naive 36% ratio is kept in the evidence bundle as a visible counterexample but receives no inferential authority.
 
 The empirical meta-loop now versions metric definitions analogously to simulator generations. Time-series calculations require compatible definition generations and value semantics. A public number may be real and still be inadmissible for a specific estimator.
+
+
+## Negative evidence and survivorship control
+
+E028 makes failed and withdrawn systems a required empirical input rather than an anecdotal appendix.
+
+The initial Japanese corpus includes deliberate product pivots, portfolio pruning, a planned managed-cloud sunset, strategic restructuring, and industry bankruptcy context. These cases expose failure mechanisms that are absent from a success-only calibration set.
+
+The meta-loop may not declare an empirical model adequate merely because it fits surviving subscription systems. It must also report which admitted negative-evidence mechanisms the model can and cannot represent.
+
+
+## Strategic exit as a control action
+
+E029 separates voluntary exit from forced failure.
+
+The current ecological world turns developers and publishers inactive when their cash falls below zero. E029 preserves that forced-failure semantics but adds a distinct future action: an operating actor may choose orderly exit when continuation value is worse than sunset plus redeployment.
+
+This matters because voluntary exit can preserve the firm while harming catalog diversity or users. Firm-level rationality and ecosystem-level viability are therefore separate objectives.
+
+
+## Typed churn semantics
+
+E030 attacks the generic use of the word churn.
+
+BBD's portfolio pruning shows that reported MRR churn can rise while ARR and ARPA rise and contract count falls. The company attributes part of that churn to unprofitable-service withdrawal and low-price-plan migration.
+
+The meta-loop must now bind churn to both a **layer** (end user, account/logo, MRR, supplier/content) and a **cause** (distress/demand loss, intentional pruning, migration). Cross-layer coefficient reuse requires explicit evidence rather than name matching.
