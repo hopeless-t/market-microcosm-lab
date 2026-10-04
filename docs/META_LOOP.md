@@ -177,3 +177,22 @@ The meta-loop must therefore distinguish:
 - **causal dependency graph** — which shocks can actually affect them together.
 
 A topology optimizer may not promote independence solely from labels. Hidden-dependency discovery, inventory evidence, fault injection, and dependency-graph revision can invalidate previous trust generations.
+
+
+## Empirical evidence admission
+
+E024 makes evidence-source admission another meta-level control surface.
+
+The meta-loop may search for, compare, and select external datasets, but it may not silently promote a documented schema, restricted report, request-only dataset, or stale archive into authoritative calibration input.
+
+Every admitted empirical anchor carries source identity, period, unit or metric definition, granularity, access class, and limitations. The current exact source-portfolio oracle only selects sources whose observed values are publicly available under an admitted evidence class.
+
+This creates three explicit planes:
+
+- **synthetic evidence plane** — simulator-generated observations under declared mechanisms;
+- **empirical evidence plane** — real-world observations admitted through source/access checks;
+- **certification evidence plane** — independent evidence used to authorize research claims or machinery.
+
+The planes may constrain each other, but they may not be conflated. In particular, empirical fit is not causal identification, and public schema visibility is not public observation visibility.
+
+E024 also turns model-assumption rejection into a useful meta-loop output: Netflix's reported regional ARM dispersion is already sufficient to reject one global empirical revenue-per-membership constant before expensive fitting begins. SARTRAS sampling similarly requires future empirical worlds to distinguish latent population state from sampled observation.
