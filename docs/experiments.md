@@ -570,3 +570,44 @@ Yes. Independent repeated measurement channels yield a minimum-cost ten-channel 
 No. One shared collector can flip five E055 channels at once and create an exact wrong hypothesis codeword. Capping each root at two channels requires at least five roots for the ten-channel design; every single-root fault then remains inside the certified two-bit budget.
 
 [Read the E056 ODD](ODD_E056.md)
+
+
+## E057 — Recursive measurement lineage
+
+**Question:** are E056's five measurement roots really independent?
+
+No. Three share a hidden observability super-root whose fault can corrupt six certified channels, revoking the E056 authority.
+
+[Read the E057 ODD](ODD_E057.md)
+
+## E058 — Minimum-cost recursive-lineage repair
+
+**Question:** what is the cheapest topology change that restores the existing two-bit contract?
+
+Move root-1 and root-2 to independent providers for cost 5. Every single-provider fault then flips only two channels.
+
+[Read the E058 ODD](ODD_E058.md)
+
+## E059 — Dependency-depth stopping rule
+
+**Question:** how far should recursive dependency discovery continue?
+
+Until the maximum unverified correlated blast fits the downstream correction budget. The exact reference stops at depth 2 / cost 5.
+
+[Read the E059 ODD](ODD_E059.md)
+
+## E060 — Heterogeneous dependency-audit allocation
+
+**Question:** should every branch be audited to one global depth?
+
+No. Branch-specific proof obligations cut the safe audit cost from 16 to 8.
+
+[Read the E060 ODD](ODD_E060.md)
+
+## E061 — Coupled dependency-audit bundles
+
+**Question:** are branch audit costs independent?
+
+No. Shared audit actions cover multiple obligations; exact set-cover reduces the safe cost from 8 to 6.
+
+[Read the E061 ODD](ODD_E061.md)
