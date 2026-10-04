@@ -491,6 +491,69 @@ jobs:
           })
           PY
 
+      - name: Run Japanese negative-evidence corpus
+        run: python scripts/run_e028.py
+      - name: Validate E028 negative-evidence contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e028/japan-failure-corpus-report.json").read_text())
+          assert x["experiment"] == "E028"
+          assert x["promoted_failure_rule"] == "negative-evidence-corpus-required-for-market-calibration-v1"
+          assert x["survivorship_gap"]["new_mechanism_count"] == 10
+          assert len(x["exact_failure_portfolio"]["covered_mechanisms"]) == 10
+          assert all(x["promotion_gate"].values())
+          print({
+              "portfolio": x["exact_failure_portfolio"],
+              "gap": x["survivorship_gap"],
+              "promoted": x["promoted_failure_rule"],
+          })
+          PY
+
+      - name: Run strategic exit experiment
+        run: python scripts/run_e029.py
+      - name: Validate E029 strategic-exit contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e029/strategic-exit-report.json").read_text())
+          assert x["experiment"] == "E029"
+          assert x["promoted_exit_rule"] == "separate-strategic-exit-from-insolvency-v1"
+          assert x["finite_decision_grid"]["positive_cash_strategic_exit_count"] > 0
+          w = x["finite_decision_grid"]["fixed_witness"]
+          assert w["cash"] > 0
+          assert w["preferred_action"] == "strategic_exit"
+          assert all(x["promotion_gate"].values())
+          print({
+              "grid": x["finite_decision_grid"],
+              "promoted": x["promoted_exit_rule"],
+          })
+          PY
+
+      - name: Run churn semantics counterexample
+        run: python scripts/run_e030.py
+      - name: Validate E030 churn semantics contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e030/churn-semantics-report.json").read_text())
+          assert x["experiment"] == "E030"
+          assert x["promoted_churn_rule"] == "churn-must-be-layer-and-cause-typed-v1"
+          assert x["endpoint_change"]["churn_relative_change_pct"] > 100
+          assert x["endpoint_change"]["arr_change_pct"] > 0
+          assert x["endpoint_change"]["arpa_change_pct"] > 5
+          assert x["endpoint_change"]["contracts_change_pct"] < -5
+          assert all(x["promotion_gate"].values())
+          print({
+              "change": x["endpoint_change"],
+              "counterexample": x["sign_counterexample"],
+              "promoted": x["promoted_churn_rule"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
