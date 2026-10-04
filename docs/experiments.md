@@ -357,3 +357,36 @@ BBD's published pruning period provides exactly that sign pattern. E030 therefor
 Srush, Leaner, and SalesNow provide three distinct counterexamples. E031 adds a finite ranking-reversal witness and promotes a rule requiring separate evidence for repeatability, customer success, product-vs-human delivery burden, scalability, and market headroom.
 
 [Read the E031 ODD](ODD_E031.md)
+
+
+## E032 — Booked revenue / cash-conversion lag
+
+**Question:** can positive booked margin and healthy demand coexist with liquidity failure before receivables arrive?
+
+Yes. A finite witness fails in month two despite positive booked margin; exact search finds the survival buffer and a lag-aware warning catches the risk at time zero.
+
+[Read the E032 ODD](ODD_E032.md)
+
+## E033 — Upstream KPI / downstream value attenuation
+
+**Question:** can upstream funnel target achievement certify downstream value?
+
+Leaner examples and a finite ranking reversal say no. Lead/appointment volume, qualification, orders, activation, and customer success become separate empirical stages.
+
+[Read the E033 ODD](ODD_E033.md)
+
+## E034 — Hidden human-delivery cost
+
+**Question:** can high ACV and apparent software gross margin hide non-scalable human delivery?
+
+Yes. The fixed witness reverses product ranking after implementation/CS/service labor is included.
+
+[Read the E034 ODD](ODD_E034.md)
+
+## E035 — Negative-evidence early-warning tournament
+
+**Question:** do revenue-only or churn-only health proxies survive the failure mechanisms discovered in E028-E034?
+
+No. They miss or false-alarm reference archetypes. A five-axis multi-signal rule exactly matches the declared finite oracle, earning promotion only as a reference warning representation.
+
+[Read the E035 ODD](ODD_E035.md)
