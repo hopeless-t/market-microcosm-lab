@@ -68,6 +68,8 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E037 · Warning Structural Drift** | What happens when the failure law changes? | hidden interaction drops legacy recall below authority threshold; old certificate revoked and interaction-aware v2 restores >99% recall/precision |
 | **E038 · Real Longitudinal Holdout** | Does component identity help on a real quarterly series? | Informetis Standard ARR Q1–Q3 decay predicts Q4 within 0.34%; same law fails on other components |
 | **E039 · Rolling KPI Lag** | Does the KPI itself delay observation? | a six-month trailing ARR retains 50% legacy signal three months after an abrupt end; latent state and metric kernel are separated |
+| **E040 · KPI Non-identifiability** | Does one rolling ARR identify current MRR? | 338 monotone six-month paths share ARR=60 while current MRR spans 0–5; inversion is not unique |
+| **E041 · Minimal Observability Checkpoint** | What one extra datum repairs the ambiguity? | consecutive rolling ARR plus the outgoing boundary MRR reconstructs newest MRR exactly; full path retention is unnecessary |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -214,6 +216,10 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **The KPI can lag the business state.** E039 models Informetis's published ARR definition — twelve times the trailing six-month average MRR. Three months after an abrupt component MRR end, a six-month window still contains 50% pre-end signal. Early-warning lead time must therefore include the metric measurement kernel, not just event and publication timestamps.
 
+**Rolling KPI inversion is non-identifiable.** E040 exactly enumerates monotone six-month integer MRR paths with average MRR=5. There are 338 compatible paths for the identical reported ARR=60, and current MRR can be any value from 0 to 5.
+
+**One indispensable boundary checkpoint repairs one-step observability.** E041 shows that consecutive rolling ARR values reveal only `newest - outgoing`. Retaining the one MRR value leaving the window makes `newest = current_sum - previous_sum + outgoing` exact. The full historical path is unnecessary for that task.
+
 That sequence matters:
 
 ```text
@@ -292,7 +298,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 / E023 / E024 / E025 / E026 / E027 / E028 / E029 / E030 / E031 / E032 / E033 / E034 / E035 / E036 / E037 / E038 / E039 / E040 / E041 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site
