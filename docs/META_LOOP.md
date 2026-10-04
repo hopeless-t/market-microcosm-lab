@@ -334,3 +334,21 @@ latent state
 ```
 
 Lead-time claims that omit the metric window are not admissible.
+
+
+## Identifiability-driven checkpoints
+
+E040 demonstrates that a rolling KPI is not merely delayed; it may be fundamentally non-identifying. Hundreds of distinct monotone latent paths can produce one reported ARR while disagreeing materially about current MRR.
+
+E041 then searches for the smallest repair. For consecutive fixed-width rolling windows, storing the single outgoing boundary MRR is enough to reconstruct the incoming/current MRR exactly. The full path is unnecessary for that one-step task.
+
+This promotes a general meta-loop rule:
+
+```text
+find where projection loses identifiability
+→ identify the missing boundary state
+→ preserve only that indispensable checkpoint
+→ verify exact reconstruction
+```
+
+The goal is neither maximal logging nor maximal compression. It is minimal sufficient observability.
