@@ -603,9 +603,70 @@ discover → holdout → promote
 
 All gates promote `interaction-aware-warning-generation-v2`.
 
+## E038 — real longitudinal component holdout
+
+E038 moves one step outside generated worlds using Informetis's published quarterly ARR by service family.
+
+The FY2025 presentation reports:
+
+| Quarter | Total ARR | Smart Living Standard | Smart Living Light | Energy Management |
+| --- | ---: | ---: | ---: | ---: |
+| 2024-Q4 | 487 | 278 | 56 | 153 |
+| 2025-Q1 | 445 | 266 | 54 | 125 |
+| 2025-Q2 | 384 | 256 | 44 | 84 |
+| 2025-Q3 | 364 | 231 | 48 | 85 |
+| 2025-Q4 | 345 | 216 | 65 | 64 |
+
+The company states that a major rental-business service would end in March 2026, that new recruitment had stopped, and that tenant move-outs were producing natural subscriber decline.
+
+A minimal constant-retention model fit only on the Smart Living Standard Q1-Q3 discovery values gives:
+
+```text
+retention = sqrt(231 / 266) ≈ 0.931891
+Q4 prediction = 231 × retention ≈ 215.27
+observed Q4 = 216
+relative error ≈ 0.34%
+```
+
+The same decay law is not universal. Smart Living Light has more than 20% holdout error, and total ARR is less tightly fit than Standard.
+
+The real-data lesson is therefore **component identity + event annotation**, not "ARR follows geometric decay."
+
+The same public results show total ARR 487→345 million JPY from 2024-Q4 to 2025-Q4, revenue 982→530 million JPY, operating income +49→-628 million JPY, and net income +56→-721 million JPY. Those aggregate changes are recorded as concentration-shock context without assigning every change to one customer.
+
+All gates promote `event-annotated-component-longitudinal-holdout-v1`.
+
+## E039 — rolling KPI observation lag
+
+E039 attacks the assumption that the reported KPI is an instantaneous view of the business state.
+
+Informetis defines ARR as:
+
+```text
+12 × average MRR over the six months immediately preceding quarter end
+```
+
+For an abrupt reference component whose MRR falls from 10 to 0, the latent recurring-revenue equivalent immediately falls from 120 to 0. The reported six-month trailing ARR instead decays:
+
+```text
+month 0: 120
+month 1: 100
+month 2:  80
+month 3:  60
+month 4:  40
+month 5:  20
+month 6:   0
+```
+
+Three months after a full end, half of the legacy signal remains in the metric.
+
+Therefore early-warning timing must distinguish latent state, measurement window, quarter end, publication cadence, and warning observation.
+
+All gates promote `rolling-window-metric-lag-must-be-modeled-v1`.
+
 ## Theory update
 
-The working theory after E010–E037 is:
+The working theory after E010–E039 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -668,6 +729,9 @@ The working theory after E010–E037 is:
 72. high within-generator holdout performance still does not authorize external prediction because shared structural assumptions can hide common-mode model error;
 73. warning authority is structural-generation scoped, not merely seed-scoped;
 74. interaction-only failure modes can invalidate a previously strong marginal-threshold warning without changing any original single-axis threshold;
-75. empirical warning systems need explicit revoke-and-repair lifecycle semantics analogous to evaluator certificates.
+75. empirical warning systems need explicit revoke-and-repair lifecycle semantics analogous to evaluator certificates;
+76. real longitudinal validation should preserve component identity and event annotations because different ARR components can follow different mechanisms;
+77. a strong component-level holdout fit does not license the same dynamic law for aggregate or neighboring components;
+78. rolling-window KPI definitions create deterministic observation memory, so warning lead time must model the measurement kernel as well as the latent business state.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
