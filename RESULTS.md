@@ -724,9 +724,65 @@ The result operationalizes a minimal-checkpoint principle: retain the smallest b
 
 All gates promote `rolling-window-boundary-checkpoint-restores-observability-v1`.
 
+## E042 — reporting-resolution self-attack
+
+E042 attacks E038's apparently impressive sub-1% point gap.
+
+The component ARR chart is displayed in integer million JPY. Treating 266, 231, and 216 as nearest-million displays gives approximate intervals of [265.5,266.5], [230.5,231.5], and [215.5,216.5].
+
+Propagating the Q1/Q3 display intervals through the same E038 decay formula produces a prediction interval of roughly **214.37–216.17 million JPY**. That overlaps the Q4 displayed interval.
+
+The admissible result is therefore **interval consistency**, not demonstrated 0.34% real-world accuracy.
+
+E042 explicitly marks the E038 sub-1% precision authority **REVOKED** and promotes `empirical-claim-precision-cannot-exceed-reporting-resolution-v1`.
+
+## E043 — decision-sufficient observability
+
+E043 propagates reporting uncertainty into E041's boundary reconstruction.
+
+With ARR 60 and 44 displayed to the nearest unit and an exact outgoing MRR checkpoint of 10, newest MRR lies in **[1.5,2.5]**. If the boundary checkpoint is also rounded to the nearest unit, the interval widens to **[1.0,3.0]**.
+
+Exact state recovery is gone, but decision authority can survive:
+
+- `MRR > 0` is CERTIFIED_TRUE;
+- `MRR >= 2` is AMBIGUOUS.
+
+Observability authority is therefore scoped to the downstream predicate rather than to complete state recovery.
+
+All gates promote `observability-authority-is-decision-predicate-scoped-v1`.
+
+## E044 — robust abstention
+
+E044 tests the temptation to force an ambiguous interval into a midpoint decision.
+
+For newest MRR in [1.5,2.5] and threshold 2, midpoint forcing returns TRUE because the midpoint is 2. But 1.5 is also compatible with the evidence and gives FALSE.
+
+The robust set-based rule returns **ABSTAIN** whenever compatible states lie on both sides of the threshold. Clearly separated intervals still return CERTIFIED_TRUE or CERTIFIED_FALSE.
+
+All gates promote `boundary-straddling-uncertainty-must-abstain-v1`.
+
+## E045 — predicate-scoped active sensing
+
+E045 completes the loop after ABSTAIN.
+
+The reference decision is `current MRR >= 2` with prior interval [1.5,2.5]. Candidate observations carry declared information-cost weights.
+
+Cheap local refinements of one existing input remain ambiguous. An exact current-MRR query resolves the decision but has higher declared cost. A predicate-native ledger check resolves the predicate at lower cost and is selected by exact candidate search.
+
+The observation objective becomes:
+
+```text
+minimize evidence cost
+subject to every compatible state agreeing on the requested predicate
+```
+
+rather than maximizing recovered hidden-state detail.
+
+All gates promote `request-cheapest-predicate-sufficient-observation-v1`.
+
 ## Theory update
 
-The working theory after E010–E041 is:
+The working theory after E010–E045 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -795,6 +851,6 @@ The working theory after E010–E041 is:
 78. rolling-window KPI definitions create deterministic observation memory, so warning lead time must model the measurement kernel as well as the latent business state;
 79. a rolling aggregate can be non-identifying even under monotone latent dynamics, so current-state inference must preserve ambiguity rather than invent one hidden path;
 80. one-step observability can sometimes be restored with a single indispensable boundary checkpoint instead of retaining the entire historical path;
-81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction.
+81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction;\n82. empirical claim precision cannot exceed the reporting resolution of the admitted evidence, and apparently excellent sub-resolution fits must lose precision authority;\n83. observability is decision-predicate scoped: an uncertainty set may be sufficient for a coarse action while remaining insufficient for a finer threshold;\n84. boundary-straddling uncertainty should produce an authorized ABSTAIN rather than a forced point-proxy decision;\n85. after ABSTAIN, additional evidence should be acquired by minimum-cost predicate resolution rather than by default full-state recovery.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
