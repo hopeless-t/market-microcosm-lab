@@ -573,6 +573,72 @@ jobs:
           })
           PY
 
+      - name: Run cash-conversion lag experiment
+        run: python scripts/run_e032.py
+      - name: Validate E032 cash-conversion contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e032/cash-conversion-lag-report.json").read_text())
+          assert x["experiment"] == "E032"
+          assert x["promoted_liquidity_rule"] == "separate-booked-revenue-from-cash-arrival-v1"
+          assert x["warning_comparison"]["failure_month"] == 2
+          assert x["warning_comparison"]["minimum_initial_cash_for_survival"] == 160
+          assert all(x["promotion_gate"].values())
+          print({"warning": x["warning_comparison"], "promoted": x["promoted_liquidity_rule"]})
+          PY
+
+      - name: Run funnel proxy experiment
+        run: python scripts/run_e033.py
+      - name: Validate E033 funnel proxy contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e033/funnel-proxy-report.json").read_text())
+          assert x["experiment"] == "E033"
+          assert x["promoted_funnel_rule"] == "upstream-kpi-cannot-certify-downstream-value-v1"
+          assert x["finite_proxy_witness"]["ranking_reversal"] is True
+          assert all(x["promotion_gate"].values())
+          print({"observations": x["empirical_observations"], "promoted": x["promoted_funnel_rule"]})
+          PY
+
+      - name: Run human-delivery cost experiment
+        run: python scripts/run_e034.py
+      - name: Validate E034 human-delivery contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e034/human-delivery-cost-report.json").read_text())
+          assert x["experiment"] == "E034"
+          assert x["promoted_delivery_rule"] == "fully-loaded-human-delivery-cost-required-v1"
+          assert x["finite_cost_witness"]["ranking_reversal"] is True
+          assert all(x["promotion_gate"].values())
+          print({"witness": x["finite_cost_witness"], "promoted": x["promoted_delivery_rule"]})
+          PY
+
+      - name: Run early-warning tournament
+        run: python scripts/run_e035.py
+      - name: Validate E035 early-warning contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e035/early-warning-report.json").read_text())
+          assert x["experiment"] == "E035"
+          assert x["promoted_warning_rule"] == "negative-evidence-multi-signal-early-warning-v1"
+          multi = x["rule_scores"]["multi_signal"]
+          assert multi["accuracy"] == 1.0
+          assert multi["precision"] == 1.0
+          assert multi["recall"] == 1.0
+          assert x["rule_scores"]["revenue_only"]["confusion"]["false_negative"] >= 4
+          assert x["rule_scores"]["churn_only"]["confusion"]["false_positive"] >= 1
+          assert all(x["promotion_gate"].values())
+          print({"scores": x["rule_scores"], "promoted": x["promoted_warning_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
