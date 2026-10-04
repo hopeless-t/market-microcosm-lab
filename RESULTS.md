@@ -864,9 +864,40 @@ The evidence plane must therefore track both:
 
 All gates promote `predicate-quorum-must-diversify-upstream-evidence-sources-v1`.
 
+## E050 — upstream evidence-lineage roots
+
+E050 attacks E049's immediate-source diversity.
+
+The false reference view is supported by three witnesses in three failure domains and three distinct immediate sources:
+
+```text
+domain-a / source-a / master-warehouse
+domain-b / source-b / master-warehouse
+domain-c / source-c / master-warehouse
+```
+
+An E049-style domain+source verifier accepts FALSE because it sees three domains and three source labels.
+
+However, all three source paths collapse onto one upstream root.
+
+A root-aware verifier requiring three distinct lineage roots revokes the false quorum. The remaining two TRUE observations are insufficient, so the result becomes ABSTAIN.
+
+A repaired TRUE topology backed by three independent roots restores acceptance.
+
+The evidence plane therefore treats independence as a graph:
+
+```text
+witness
+→ immediate source
+→ upstream transforms
+→ warehouse/vendor/root dataset
+```
+
+All gates promote `predicate-quorum-must-audit-upstream-lineage-roots-v1`.
+
 ## Theory update
 
-The working theory after E010–E049 is:
+The working theory after E010–E050 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -935,6 +966,6 @@ The working theory after E010–E049 is:
 78. rolling-window KPI definitions create deterministic observation memory, so warning lead time must model the measurement kernel as well as the latent business state;
 79. a rolling aggregate can be non-identifying even under monotone latent dynamics, so current-state inference must preserve ambiguity rather than invent one hidden path;
 80. one-step observability can sometimes be restored with a single indispensable boundary checkpoint instead of retaining the entire historical path;
-81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction;\n82. empirical claim precision cannot exceed the reporting resolution of the admitted evidence, and apparently excellent sub-resolution fits must lose precision authority;\n83. observability is decision-predicate scoped: an uncertainty set may be sufficient for a coarse action while remaining insufficient for a finer threshold;\n84. boundary-straddling uncertainty should produce an authorized ABSTAIN rather than a forced point-proxy decision;\n85. after ABSTAIN, additional evidence should be acquired by minimum-cost predicate resolution rather than by default full-state recovery;\n86. active-sensing cost optimization is subordinate to evidence authorization and cannot trade policy violations against downstream utility;\n87. authorized evidence can still be inadmissible when stale or defined under the wrong metric generation;\n88. evidence admission for action must bind authority, predicate sufficiency, freshness, and metric identity before optimization begins;\n89. one fresh authorized attestation is still a single failure point, so predicate authority may require an independent witness quorum;\n90. witness/failure-domain diversity does not imply observational independence when multiple witnesses consume one upstream data source;\n91. predicate quorum authority must expose and diversify upstream evidence lineage, with hidden common-mode discoveries triggering revocation and re-audit.
+81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction;\n82. empirical claim precision cannot exceed the reporting resolution of the admitted evidence, and apparently excellent sub-resolution fits must lose precision authority;\n83. observability is decision-predicate scoped: an uncertainty set may be sufficient for a coarse action while remaining insufficient for a finer threshold;\n84. boundary-straddling uncertainty should produce an authorized ABSTAIN rather than a forced point-proxy decision;\n85. after ABSTAIN, additional evidence should be acquired by minimum-cost predicate resolution rather than by default full-state recovery;\n86. active-sensing cost optimization is subordinate to evidence authorization and cannot trade policy violations against downstream utility;\n87. authorized evidence can still be inadmissible when stale or defined under the wrong metric generation;\n88. evidence admission for action must bind authority, predicate sufficiency, freshness, and metric identity before optimization begins;\n89. one fresh authorized attestation is still a single failure point, so predicate authority may require an independent witness quorum;\n90. witness/failure-domain diversity does not imply observational independence when multiple witnesses consume one upstream data source;\n91. predicate quorum authority must expose and diversify upstream evidence lineage, with hidden common-mode discoveries triggering revocation and re-audit;\n92. immediate source labels are not independence proof because multiple sources can collapse onto one upstream lineage root;\n93. evidence independence is graph-structured and authority depends on the minimum independent upstream roots capable of supporting or corrupting quorum.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
