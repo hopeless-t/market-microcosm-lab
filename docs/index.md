@@ -244,6 +244,18 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Active sensing</h3>
     <p>After abstention, search for the cheapest predicate-sufficient observation instead of collecting full state.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E046</div>
+    <div class="mm-metric">authority first</div>
+    <h3>Constrained sensing</h3>
+    <p>Unauthorized evidence is rejected before predicate resolution and collection-cost optimization.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E047</div>
+    <div class="mm-metric">fresh + aligned</div>
+    <h3>Temporal evidence identity</h3>
+    <p>Authorized evidence must also be fresh and match the current metric-definition generation.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -320,7 +332,9 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E042** revokes E038's over-precise sub-resolution interpretation.  
 **E043** scopes observability authority to the requested decision predicate.  
 **E044** makes ABSTAIN an authorized result for boundary-straddling uncertainty.  
-**E045** adds minimum-cost predicate-scoped active sensing after abstention.
+**E045** adds minimum-cost predicate-scoped active sensing after abstention.  
+**E046** makes authorization a hard precondition before sensing-cost optimization.  
+**E047** further requires decision-time freshness and metric-generation alignment.
 
 This produces a repeating research pattern:
 
@@ -385,6 +399,8 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E043 ODD](ODD_E043.md)
 - [E044 ODD](ODD_E044.md)
 - [E045 ODD](ODD_E045.md)
+- [E046 ODD](ODD_E046.md)
+- [E047 ODD](ODD_E047.md)
 
 ## Run locally
 
@@ -428,6 +444,8 @@ python scripts/run_e042.py
 python scripts/run_e043.py
 python scripts/run_e044.py
 python scripts/run_e045.py
+python scripts/run_e046.py
+python scripts/run_e047.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
