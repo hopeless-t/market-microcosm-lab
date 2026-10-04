@@ -7,7 +7,7 @@ title: Research Dashboard
 
 # Research Dashboard
 
-This page exposes the current **model-relative** E011–E023 result surfaces. The underlying assets are deterministically generated from experiment JSON and checked by CI.
+This page exposes the current **model-relative** E011–E023 synthetic result surfaces. E024 adds a separately admitted empirical-evidence plane. The generated synthetic assets and the E024 JSON contract are checked by CI.
 
 ![E011 pressure resilience](generated/e011-pressure.svg)
 
@@ -38,3 +38,12 @@ This page exposes the current **model-relative** E011–E023 result surfaces. Th
 [View the generated table](generated/research-dashboard.md) · [Read the full results on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/RESULTS.md)
 
 > Synthetic evidence only. These figures summarize declared research worlds, not real-market recommendations.
+
+
+## E024 — Empirical evidence admission
+
+E024 is deliberately not rendered as another synthetic response surface. It admits real-world anchors through a source/access registry and keeps them separate from causal simulation evidence.
+
+Current anchors include SARTRAS FY2022 accounting and sampling, Netflix Q2 2024 regional ARM, and Netflix H2 2025 engagement. Game Pass Partner Center remains an adapter/schema source unless authorized observations are actually available.
+
+[Read the E024 ODD](ODD_E024.md)
