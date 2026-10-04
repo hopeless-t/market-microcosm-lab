@@ -79,6 +79,7 @@
 - [x] Japanese negative-evidence corpus / survivorship-bias guard
 - [x] strategic exit separated from forced insolvency
 - [x] churn layer/cause semantics guard
+- [x] short-run positive-signal / PMF proxy guard
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary\n- [ ] sampled-observation empirical calibration world
 - SARTRAS
