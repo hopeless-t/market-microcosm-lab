@@ -86,7 +86,9 @@
 - [x] exact negative-evidence early-warning tournament
 - [x] discovery-tuned multi-signal warning / generated holdout
 - [x] structural-drift revocation / interaction-aware warning v2
-- [ ] untouched longitudinal early-warning holdout
+- [x] real-company component longitudinal holdout
+- [x] rolling-KPI measurement-kernel lag guard
+- [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary\n- [ ] sampled-observation empirical calibration world
 - SARTRAS
