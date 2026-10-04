@@ -100,3 +100,10 @@ Srush's high-price/high-human-effort false-PMF signal becomes fully loaded accou
 ## E035 — Early-warning tournament
 
 Revenue-only and churn-only health rules have explicit blind spots on the negative-evidence reference suite. A five-axis warning vector exactly matches that finite oracle, but remains uncertified for external prediction until Monte Carlo and longitudinal holdouts are added.
+
+
+## E036 — Generated warning holdout
+
+The five-axis warning leaves the seven-case hand-built suite. Thresholds are chosen from 324 candidates on 500 discovery states and frozen before an untouched 500-state holdout.
+
+The multi-signal rule retains greater than 98% precision, recall, and F1. Revenue-only and churn-only rules remain low-recall baselines. The result is explicitly scoped to the shared synthetic generator.
