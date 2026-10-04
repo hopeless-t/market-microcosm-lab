@@ -312,7 +312,7 @@ The empirical warning plane now has the same authority lifecycle as the adaptive
 
 E038 introduces the first real-company quarterly holdout.
 
-Informetis publishes ARR by service family and an event annotation describing the planned end of a major rental-business service, stopped recruitment, and natural subscriber decline. A minimal retention model fit on 2025-Q1 through Q3 Smart Living Standard predicts the Q4 holdout within roughly 0.34%.
+Informetis publishes ARR by service family and an event annotation describing the planned end of a major rental-business service, stopped recruitment, and natural subscriber decline. A minimal retention model fit on 2025-Q1 through Q3 Smart Living Standard places its Q4 point prediction within one displayed million-JPY unit of the published Q4 value. E042 later revokes any sub-1% precision interpretation because the chart resolution is coarser than that claim.
 
 The same model does not fit every component. The meta-loop therefore promotes the evidence shape — component identity plus event annotation plus holdout isolation — rather than promoting geometric decay as a universal law.
 
@@ -352,3 +352,30 @@ find where projection loses identifiability
 ```
 
 The goal is neither maximal logging nor maximal compression. It is minimal sufficient observability.
+
+
+## Precision authority, abstention, and active sensing
+
+E042-E045 make the empirical observation plane self-limiting.
+
+E042 propagates source reporting resolution and revokes E038's sub-1% precision interpretation while retaining interval consistency.
+
+E043 then treats reconstructed hidden state as an uncertainty set and asks whether that set is sufficient for the actual decision predicate. Exact state is no longer the default objective.
+
+E044 authorizes ABSTAIN when compatible states disagree on the requested action. Point proxies such as interval midpoints may not override that ambiguity.
+
+E045 turns ABSTAIN into targeted active sensing: search only for the cheapest authorized observation that makes every compatible state agree on the requested predicate.
+
+The resulting loop is:
+
+```text
+observe
+→ propagate uncertainty
+→ evaluate predicate over every compatible state
+→ certify if unanimous
+→ otherwise ABSTAIN
+→ acquire minimum-cost predicate-sufficient evidence
+→ re-evaluate
+```
+
+This is minimal sufficient observability under uncertainty, not maximal state collection.
