@@ -222,3 +222,14 @@ A second-stage adversary removes the unverified random-selection assumption whil
 The promoted result is therefore not the optimistic SRS prevalence curve. It is the stricter evidence rule: **sampling-design metadata is required before prevalence inference**.
 
 This is the empirical analogue of E016/E023: when a hidden structural premise can dominate the result, the optimized or convenient path loses authority and the system falls back to a less committal model.
+
+
+## Metric-definition drift guard
+
+E027 attacks a different empirical shortcut: treating two public numbers as comparable merely because their labels look similar.
+
+The 2022 Game Pass observation is a lower bound (>25M subscribers), the 2024 observation is a rounded 34M member headline, and the Xbox Live Gold → Game Pass Core conversion occurs between them.
+
+A naive 36% ratio is kept in the evidence bundle as a visible counterexample but receives no inferential authority.
+
+The empirical meta-loop now versions metric definitions analogously to simulator generations. Time-series calculations require compatible definition generations and value semantics. A public number may be real and still be inadmissible for a specific estimator.
