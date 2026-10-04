@@ -554,6 +554,25 @@ jobs:
           })
           PY
 
+      - name: Run PMF proxy guard
+        run: python scripts/run_e031.py
+      - name: Validate E031 PMF proxy contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e031/pmf-proxy-guard-report.json").read_text())
+          assert x["experiment"] == "E031"
+          assert x["promoted_proxy_rule"] == "short-run-positive-signals-cannot-certify-pmf-v1"
+          assert x["finite_proxy_trap"]["proxy_reversal"] is True
+          assert len(x["postmortem_cases"]) == 3
+          assert all(x["promotion_gate"].values())
+          print({
+              "proxy_trap": x["finite_proxy_trap"],
+              "promoted": x["promoted_proxy_rule"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
