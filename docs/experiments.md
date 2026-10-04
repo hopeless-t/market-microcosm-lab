@@ -520,3 +520,44 @@ No. Three witness domains can share one corrupted upstream feed and manufacture 
 Yes. Three sources can all derive from one master warehouse. A source-diverse quorum may therefore be one-root fragile. Root-aware verification revokes that false quorum and requires diversified upstream lineage.
 
 [Read the E050 ODD](ODD_E050.md)
+
+
+## E051 — Active lineage discovery
+
+**Question:** can a hidden upstream common root be discovered rather than assumed known?
+
+Yes. Bounded candidate-dependency probes expose a common downstream fingerprint across three sources and three witness domains.
+
+[Read the E051 ODD](ODD_E051.md)
+
+## E052 — Minimum lineage-probe portfolio
+
+**Question:** what is the minimum-cost probe set that distinguishes every reference hidden-root hypothesis?
+
+Exact subset search selects ab/ac/bc: three probes, total declared cost 4.
+
+[Read the E052 ODD](ODD_E052.md)
+
+## E053 — Noisy lineage-probe robustness
+
+**Question:** does E052's noiseless optimum survive one probe error?
+
+No. Its minimum signature distance is 1. One-error correction requires distance 3; the full six-probe portfolio passes all 35 exhaustive no-error/one-error decode cases.
+
+[Read the E053 ODD](ODD_E053.md)
+
+## E054 — Probe robustness compiler
+
+**Question:** can probe-set authority be compiled from a declared adversarial error budget?
+
+Yes. The compiler requires distance 2e+1 and exactly searches the minimum satisfying portfolio. The two-error request is UNSAT under the original six-probe alphabet.
+
+[Read the E054 ODD](ODD_E054.md)
+
+## E055 — Redundant measurement synthesis after UNSAT
+
+**Question:** can the two-error UNSAT be repaired without weakening the robustness target?
+
+Yes. Independent repeated measurement channels yield a minimum-cost ten-channel distance-five design, and all 280 zero/one/two-error decode cases pass.
+
+[Read the E055 ODD](ODD_E055.md)
