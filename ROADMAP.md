@@ -56,7 +56,9 @@
 - [x] external checkpoint rotation / independently anchored provenance
 - [ ] signed or transparency-log-backed checkpoint experiment
 - [x] multi-witness checkpoint quorum / split-view detection
-- [ ] independent witness failure-domain / correlated-compromise stress test
+- [x] independent witness failure-domain / correlated-compromise stress test
+- [ ] hidden common-mode dependency / mislabeled-independence adversary
+- [ ] heterogeneous domain-risk and dependency-graph model
 - [ ] multi-epoch audit portfolio planning under uncertain future drift
 - [ ] one-dimensional refinement of platform-take / floor / ecosystem-fund pressure knees
 

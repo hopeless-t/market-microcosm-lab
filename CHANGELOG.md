@@ -4,7 +4,7 @@
 
 ### Presentation and research UX
 
-- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021 JSON;
+- deterministic live research dashboard generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021/E022 JSON;
 - CI freshness check for visual result surfaces and Actions job summary;
 - dashboard page and social-preview artwork source;
 
@@ -54,7 +54,13 @@
 - 2-of-5 counterexample exposes 15 disjoint quorum pairs;
 - explicit forge boundary at three compromised witnesses;
 - conflicting accepted views retain witness equivocation evidence;
-- Root of Trust R11 requires explicit witness quorum integrity.
+- Root of Trust R11 requires explicit witness quorum integrity;
+- E022 correlated witness failure-domain model;
+- exact domain-subset enumeration for 3-1-1, 2-2-1, and 1-1-1-1-1 witness placement;
+- minimum domains to forge measured as 1, 2, and 3 respectively;
+- modeled p=10% domain-event forge probabilities 10.0%, 2.8%, and 0.856%;
+- independent placement reduces modeled forge probability 91.44% vs concentrated;
+- Root of Trust R12 separates witness identity count from failure-domain independence.
 
 ## v0.2 — Ecological market dynamics
 

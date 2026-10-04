@@ -173,3 +173,14 @@ Exact enumeration shows all 10 three-witness quorums intersect pairwise: across 
 One or two compromised witnesses cannot forge a checkpoint quorum; three define the compromise boundary.
 
 The fixed split-view experiment gives valid conflicting quorums to witness sets {0,1,2} and {2,3,4}. Both verify, but witness 2 signed both hashes, leaving explicit equivocation evidence when attestations are retained.
+
+
+## E022 — correlated witness failure domains
+
+E022 tests the E021 3-of-5 quorum after grouping witnesses into correlated failure domains.
+
+The concentrated 3-1-1 topology needs only one compromised domain to forge a quorum. Balanced 2-2-1 needs two domains. Fully separated 1-1-1-1-1 needs three.
+
+At the declared synthetic 10% independent domain-event probability, exact enumeration gives forge probabilities of 10.0%, 2.8%, and 0.856% respectively.
+
+The result makes failure-domain independence a separate trust property from witness identity count. Domain labels themselves remain hypotheses until supported by external dependency evidence.

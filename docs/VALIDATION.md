@@ -141,3 +141,16 @@ The compromise boundary is also explicit: one or two compromised witness keys ca
 A fixed split-view attack gives two conflicting checkpoint hashes valid 3-of-5 attestations. Both views verify independently, but the quorum intersection witness signs both hashes. Retained attestations therefore expose a concrete equivocation record.
 
 The current HMAC witnesses are a deterministic research model. Real use requires independent failure domains, protected keys, authenticated publication, and durable attestation retention.
+
+
+## Correlated witness failure-domain validation
+
+E022 evaluates the E021 3-of-5 witness quorum after introducing correlated failure domains.
+
+Every subset of declared domains is enumerated. For each topology the verifier computes compromised witness count, remaining online witness count, forge feasibility, availability, and exact probability under the declared homogeneous independent-domain event model.
+
+The reference placements produce minimum domain compromise boundaries of 1 for 3-1-1, 2 for 2-2-1, and 3 for 1-1-1-1-1.
+
+This is deliberately separate from witness quorum geometry. E021 proves identity-level intersection properties; E022 shows that correlated placement can collapse those nominal guarantees at the domain level.
+
+Root of Trust R12 therefore requires the failure-domain model itself to be explicit and testable. The current probability figures are synthetic and do not establish real-world independence.

@@ -18,6 +18,7 @@ E018 = ROOT / "artifacts/e018/audit-portfolio-report.json"
 E019 = ROOT / "artifacts/e019/provenance-ledger-report.json"
 E020 = ROOT / "artifacts/e020/checkpoint-rotation-report.json"
 E021 = ROOT / "artifacts/e021/witness-quorum-report.json"
+E022 = ROOT / "artifacts/e022/failure-domain-report.json"
 OUT = ROOT / "docs/generated"
 
 
@@ -776,7 +777,67 @@ def render_e021(payload: dict) -> str:
 </svg>
 '''
 
-def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict, e019: dict, e020: dict, e021: dict) -> str:
+
+def render_e022(payload: dict) -> str:
+    topologies = payload["topologies"]
+    concentrated = topologies["concentrated-3-1-1"]
+    balanced = topologies["balanced-2-2-1"]
+    independent = topologies["independent-1-1-1-1-1"]
+    comparison = payload["comparison"]
+
+    width = 1040
+    height = 430
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">E022 correlated witness failure domains</title>
+<desc id="desc">Nominal three-of-five witness security changes sharply when witnesses share correlated failure domains.</desc>
+<style>
+  .title {{ font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }}
+  .sub {{ font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }}
+  .head {{ font: 700 13px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; letter-spacing: 1px; }}
+  .mode {{ font: 800 22px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }}
+  .body {{ font: 14px Inter,Segoe UI,Arial,sans-serif; fill: #d8e4f2; }}
+  .bad {{ fill: #3c1721; stroke: #f43f5e; stroke-width: 2; }}
+  .warn {{ fill: #3b2a14; stroke: #f59e0b; stroke-width: 2; }}
+  .ok {{ fill: #0f3d32; stroke: #22c55e; stroke-width: 2; }}
+  .blue {{ fill: #172554; stroke: #60a5fa; stroke-width: 2; }}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#301726"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E022 · Correlated Witness Failure Domains</text>
+<text x="30" y="68" class="sub">same 3-of-5 quorum · different domain placement · exact subset enumeration</text>
+
+<rect x="30" y="100" width="300" height="108" rx="18" class="bad"/>
+<text x="52" y="128" class="head">CONCENTRATED 3-1-1</text>
+<text x="52" y="162" class="mode">{concentrated["minimum_domains_to_forge"]} DOMAIN TO FORGE</text>
+<text x="52" y="188" class="body">p=10% → {concentrated["forge_probability"]:.3%}</text>
+
+<rect x="370" y="100" width="300" height="108" rx="18" class="warn"/>
+<text x="392" y="128" class="head">BALANCED 2-2-1</text>
+<text x="392" y="162" class="mode">{balanced["minimum_domains_to_forge"]} DOMAINS TO FORGE</text>
+<text x="392" y="188" class="body">p=10% → {balanced["forge_probability"]:.3%}</text>
+
+<rect x="710" y="100" width="300" height="108" rx="18" class="ok"/>
+<text x="732" y="128" class="head">INDEPENDENT 1-1-1-1-1</text>
+<text x="732" y="162" class="mode">{independent["minimum_domains_to_forge"]} DOMAINS TO FORGE</text>
+<text x="732" y="188" class="body">p=10% → {independent["forge_probability"]:.3%}</text>
+
+<rect x="30" y="252" width="980" height="103" rx="20" class="blue"/>
+<text x="52" y="282" class="head">EFFECTIVE INDEPENDENCE</text>
+<text x="52" y="318" class="mode">{comparison["independent_forge_reduction_vs_concentrated"]:.1%} MODELED FORGE-RISK REDUCTION</text>
+<text x="52" y="342" class="body">Witness identity count is not failure-domain independence.</text>
+
+<text x="30" y="393" class="sub">Availability-loss boundary mirrors quorum loss: 1 → 2 → 3 domains</text>
+<text x="30" y="416" class="sub">Promoted rule: {payload["promoted_failure_domain_rule"] or "NONE"}</text>
+</svg>
+'''
+
+def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, e016: dict, e017: dict, e018: dict, e019: dict, e020: dict, e021: dict, e022: dict) -> str:
     auc = _rounded_auc(e011)
     knees = e011["knees"]
     order = sorted(auc, key=lambda name: (-auc[name], name))
@@ -862,9 +923,11 @@ def render_markdown(e011: dict, e012: dict, e013: dict, e014: dict, e015: dict, 
     rotation_attacks = e020["attacks"]
     quorum_strong = e021["quorum_geometry"]["three_of_five"]
     quorum_weak = e021["quorum_geometry"]["two_of_five"]
+    domain_topologies = e022["topologies"]
+    domain_comparison = e022["comparison"]
     return f"""# Generated research dashboard
 
-> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021 report JSON by `scripts/render_research_dashboard.py`.
+> Generated from E011/E012/E013/E014/E015/E016/E017/E018/E019/E020/E021/E022 report JSON by `scripts/render_research_dashboard.py`.
 > Do not hand-edit this file.
 
 ## E011 — pressure resilience
@@ -1021,6 +1084,20 @@ Guard contract: **{"PASS" if e016["guard_contract_passed"] else "FAIL"}**.
 - Invalid signature rejected: **{"YES" if e021["invalid_signature_rejected"] else "NO"}**
 - Promoted witness contract: **{e021["promoted_witness_contract"] or "NONE"}**
 
+## E022 — correlated witness failure domains
+
+![E022 failure-domain diversity](e022-failure-domains.svg)
+
+| Topology | Min domains to forge | Forge probability @ 10% domain event |
+| --- | ---: | ---: |
+| concentrated 3-1-1 | **{domain_topologies["concentrated-3-1-1"]["minimum_domains_to_forge"]}** | **{domain_topologies["concentrated-3-1-1"]["forge_probability"]:.3%}** |
+| balanced 2-2-1 | **{domain_topologies["balanced-2-2-1"]["minimum_domains_to_forge"]}** | **{domain_topologies["balanced-2-2-1"]["forge_probability"]:.3%}** |
+| independent 1-1-1-1-1 | **{domain_topologies["independent-1-1-1-1-1"]["minimum_domains_to_forge"]}** | **{domain_topologies["independent-1-1-1-1-1"]["forge_probability"]:.3%}** |
+
+- Modeled forge-risk reduction, independent vs concentrated: **{domain_comparison["independent_forge_reduction_vs_concentrated"]:.1%}**
+- Availability-loss domain boundary: **1 → 2 → 3**
+- Promoted failure-domain rule: **{e022["promoted_failure_domain_rule"] or "NONE"}**
+
 These are model-relative synthetic results. They are not real-market recommendations.
 """
 
@@ -1037,6 +1114,7 @@ def generated_files(
     e019: dict,
     e020: dict,
     e021: dict,
+    e022: dict,
 ) -> dict[Path, str]:
     return {
         OUT / "e011-pressure.svg": render_e011(e011),
@@ -1050,7 +1128,8 @@ def generated_files(
         OUT / "e019-provenance.svg": render_e019(e019),
         OUT / "e020-checkpoint-rotation.svg": render_e020(e020),
         OUT / "e021-witness-quorum.svg": render_e021(e021),
-        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020, e021),
+        OUT / "e022-failure-domains.svg": render_e022(e022),
+        OUT / "research-dashboard.md": render_markdown(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020, e021, e022),
     }
 
 
@@ -1074,7 +1153,8 @@ def main() -> None:
     e019 = _read(E019)
     e020 = _read(E020)
     e021 = _read(E021)
-    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020, e021)
+    e022 = _read(E022)
+    outputs = generated_files(e011, e012, e013, e014, e015, e016, e017, e018, e019, e020, e021, e022)
 
     if args.check:
         stale: list[str] = []

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="430" viewBox="0 0 1040 430" role="img" aria-labelledby="title desc">
+<title id="title">E022 correlated witness failure domains</title>
+<desc id="desc">Nominal three-of-five witness security changes sharply when witnesses share correlated failure domains.</desc>
+<style>
+  .title { font: 700 28px Inter,Segoe UI,Arial,sans-serif; fill: #eff6ff; }
+  .sub { font: 15px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; }
+  .head { font: 700 13px Inter,Segoe UI,Arial,sans-serif; fill: #9fb0c8; letter-spacing: 1px; }
+  .mode { font: 800 22px Inter,Segoe UI,Arial,sans-serif; fill: #ffffff; }
+  .body { font: 14px Inter,Segoe UI,Arial,sans-serif; fill: #d8e4f2; }
+  .bad { fill: #3c1721; stroke: #f43f5e; stroke-width: 2; }
+  .warn { fill: #3b2a14; stroke: #f59e0b; stroke-width: 2; }
+  .ok { fill: #0f3d32; stroke: #22c55e; stroke-width: 2; }
+  .blue { fill: #172554; stroke: #60a5fa; stroke-width: 2; }
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0b1020"/>
+    <stop offset="1" stop-color="#301726"/>
+  </linearGradient>
+</defs>
+<rect width="100%" height="100%" rx="22" fill="url(#bg)"/>
+<text x="30" y="42" class="title">E022 · Correlated Witness Failure Domains</text>
+<text x="30" y="68" class="sub">same 3-of-5 quorum · different domain placement · exact subset enumeration</text>
+
+<rect x="30" y="100" width="300" height="108" rx="18" class="bad"/>
+<text x="52" y="128" class="head">CONCENTRATED 3-1-1</text>
+<text x="52" y="162" class="mode">1 DOMAIN TO FORGE</text>
+<text x="52" y="188" class="body">p=10% → 10.000%</text>
+
+<rect x="370" y="100" width="300" height="108" rx="18" class="warn"/>
+<text x="392" y="128" class="head">BALANCED 2-2-1</text>
+<text x="392" y="162" class="mode">2 DOMAINS TO FORGE</text>
+<text x="392" y="188" class="body">p=10% → 2.800%</text>
+
+<rect x="710" y="100" width="300" height="108" rx="18" class="ok"/>
+<text x="732" y="128" class="head">INDEPENDENT 1-1-1-1-1</text>
+<text x="732" y="162" class="mode">3 DOMAINS TO FORGE</text>
+<text x="732" y="188" class="body">p=10% → 0.856%</text>
+
+<rect x="30" y="252" width="980" height="103" rx="20" class="blue"/>
+<text x="52" y="282" class="head">EFFECTIVE INDEPENDENCE</text>
+<text x="52" y="318" class="mode">91.4% MODELED FORGE-RISK REDUCTION</text>
+<text x="52" y="342" class="body">Witness identity count is not failure-domain independence.</text>
+
+<text x="30" y="393" class="sub">Availability-loss boundary mirrors quorum loss: 1 → 2 → 3 domains</text>
+<text x="30" y="416" class="sub">Promoted rule: quorum-witnesses-must-span-at-least-three-independent-domains-v1</text>
+</svg>

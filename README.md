@@ -54,6 +54,7 @@ The target is not maximum one-period profit, watch time, play time, or another s
 | **E019 · Provenance Ledger** | Can certificate history be replayed and tampering detected? | local corruption is caught by the chain; fully rehashed history requires an external checkpoint |
 | **E020 · Checkpoint Rotation** | Can external trust be rotated without forgetting older anchors? | latest-only forgery passes weak verification; pinned continuity rejects rewritten history |
 | **E021 · Witness Quorum** | Can anchor authority survive one or two compromised witnesses? | 3-of-5 blocks 1–2 compromises and guarantees quorum intersection; 3 compromises reach the forge boundary |
+| **E022 · Failure Domains** | Are five witness identities actually five independent failure domains? | 3-1-1 collapses to a one-domain forge; 1-1-1-1-1 requires three domains and cuts modeled forge risk 91.4% |
 
 See **[RESULTS.md](RESULTS.md)** for model-relative results, collapse modes, and the current theory update.
 
@@ -172,6 +173,8 @@ E000 computes this exactly by fixed-point enumeration. Larger approximate worlds
 
 **External anchoring can be distributed.** E021 replaces the single witness assumption with a 3-of-5 quorum. Exact enumeration shows every pair of 3-of-5 quorums intersects, while 2-of-5 admits 15 disjoint quorum pairs. One or two compromised witnesses cannot forge; three define the compromise boundary. Conflicting 3-of-5 views necessarily expose at least one equivocating witness when attestations are retained.
 
+**Witness identities are not independent failure domains.** E022 groups the same five witnesses into correlated topologies. A 3-1-1 placement lets one domain compromise reach the three-witness threshold; 2-2-1 needs two domains; full 1-1-1-1-1 separation needs three. Under the declared independent 10% per-domain synthetic model, forge probability falls from 10.0% to 2.8% to 0.856%.
+
 That sequence matters:
 
 ```text
@@ -192,6 +195,7 @@ neutral saturation
   → external checkpoint anchoring
   → checkpoint rotation / anchor continuity
   → multi-witness quorum / split-view evidence
+  → correlated failure-domain analysis
 ```
 
 ## Verification stack
@@ -236,6 +240,7 @@ python scripts/run_e018.py
 python scripts/run_e019.py
 python scripts/run_e020.py
 python scripts/run_e021.py
+python scripts/run_e022.py
 ```
 
 GitHub Actions reruns the research chain and uploads the experiment reports as artifacts.
@@ -246,7 +251,7 @@ GitHub Actions reruns the research chain and uploads the experiment reports as a
 market-microcosm-lab/
 ├── spec/                 # Root of Trust / constitutional invariants
 ├── src/market_microcosm/ # worlds, policies, evaluators, self-improvement
-├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 protocols
+├── experiments/          # E000 / E010 / E011 / E012 / E013 / E014 / E015 / E016 / E017 / E018 / E019 / E020 / E021 / E022 protocols
 ├── scripts/              # executable experiment entrypoints
 ├── tests/                # invariants and research-harness verification
 ├── docs/                 # architecture + GitHub Pages site
