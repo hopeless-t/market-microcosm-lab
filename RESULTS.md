@@ -780,9 +780,62 @@ rather than maximizing recovered hidden-state detail.
 
 All gates promote `request-cheapest-predicate-sufficient-observation-v1`.
 
+## E046 — authority-constrained active sensing
+
+E046 attacks E045's cost objective.
+
+The reference candidate set contains an unauthorized raw customer-ledger predicate query with cost 1, an authorized but non-resolving partial refinement with cost 1, a signed predicate attestation with cost 3, and an authorized exact-state query with cost 5.
+
+A naive cost-only optimizer chooses the raw customer-ledger evidence because it resolves the predicate at minimum cost.
+
+That evidence is inadmissible.
+
+The corrected selection order is:
+
+```text
+authorized
+→ predicate-resolving
+→ minimum declared collection cost
+```
+
+The selected candidate becomes the signed predicate attestation.
+
+Authority is therefore a hard admissibility constraint rather than a soft cost term.
+
+All gates promote `active-sensing-optimizes-only-within-authorized-evidence-set-v1`.
+
+## E047 — freshness and metric-generation alignment
+
+E047 attacks E046's remaining assumption that authorized predicate-resolving evidence is automatically current enough for the decision.
+
+The reference decision requires metric generation `mrr-v2` at period 3 with a maximum evidence age of one period.
+
+Candidate evidence includes:
+
+- stale but current-generation attestation;
+- fresh but old-generation `mrr-v1` attestation;
+- fresh current-generation attestation;
+- fresh exact current-state query.
+
+Authorization-only selection picks the cheaper fresh old-generation attestation, but that candidate is inadmissible for the current decision.
+
+The corrected selection order becomes:
+
+```text
+authorized
+→ predicate-resolving
+→ fresh enough
+→ metric-generation aligned
+→ minimum cost
+```
+
+The fresh `mrr-v2` predicate attestation is selected.
+
+All gates promote `active-sensing-evidence-must-be-fresh-and-generation-aligned-v1`.
+
 ## Theory update
 
-The working theory after E010–E045 is:
+The working theory after E010–E047 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -851,6 +904,6 @@ The working theory after E010–E045 is:
 78. rolling-window KPI definitions create deterministic observation memory, so warning lead time must model the measurement kernel as well as the latent business state;
 79. a rolling aggregate can be non-identifying even under monotone latent dynamics, so current-state inference must preserve ambiguity rather than invent one hidden path;
 80. one-step observability can sometimes be restored with a single indispensable boundary checkpoint instead of retaining the entire historical path;
-81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction;\n82. empirical claim precision cannot exceed the reporting resolution of the admitted evidence, and apparently excellent sub-resolution fits must lose precision authority;\n83. observability is decision-predicate scoped: an uncertainty set may be sufficient for a coarse action while remaining insufficient for a finer threshold;\n84. boundary-straddling uncertainty should produce an authorized ABSTAIN rather than a forced point-proxy decision;\n85. after ABSTAIN, additional evidence should be acquired by minimum-cost predicate resolution rather than by default full-state recovery.
+81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction;\n82. empirical claim precision cannot exceed the reporting resolution of the admitted evidence, and apparently excellent sub-resolution fits must lose precision authority;\n83. observability is decision-predicate scoped: an uncertainty set may be sufficient for a coarse action while remaining insufficient for a finer threshold;\n84. boundary-straddling uncertainty should produce an authorized ABSTAIN rather than a forced point-proxy decision;\n85. after ABSTAIN, additional evidence should be acquired by minimum-cost predicate resolution rather than by default full-state recovery;\n86. active-sensing cost optimization is subordinate to evidence authorization and cannot trade policy violations against downstream utility;\n87. authorized evidence can still be inadmissible when stale or defined under the wrong metric generation;\n88. evidence admission for action must bind authority, predicate sufficiency, freshness, and metric identity before optimization begins.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
