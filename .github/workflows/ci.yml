@@ -379,6 +379,28 @@ jobs:
           })
           PY
 
+      - name: Run hidden common-mode dependency experiment
+        run: python scripts/run_e023.py
+      - name: Validate E023 hidden common-mode contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e023/hidden-common-mode-report.json").read_text())
+          assert x["experiment"] == "E023"
+          assert x["nominal_model"]["minimum_shocks_to_forge"] == 3
+          assert x["hidden_common_mode_model"]["minimum_shocks_to_forge"] == 1
+          assert x["comparison"]["forge_probability_inflation_ratio"] > 1000
+          assert x["hidden_common_mode_model"]["forge_probability"] > 0.01
+          assert all(x["promotion_gate"].values())
+          print({
+              "nominal_probability": x["nominal_model"]["forge_probability"],
+              "hidden_probability": x["hidden_common_mode_model"]["forge_probability"],
+              "inflation_ratio": x["comparison"]["forge_probability_inflation_ratio"],
+              "promoted": x["promoted_dependency_rule"],
+          })
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
@@ -403,6 +425,7 @@ jobs:
             artifacts/e020/checkpoint-rotation-report.json
             artifacts/e021/witness-quorum-report.json
             artifacts/e022/failure-domain-report.json
+            artifacts/e023/hidden-common-mode-report.json
             docs/generated/e011-pressure.svg
             docs/generated/e012-evaluator.svg
             docs/generated/e013-decomposition.svg
