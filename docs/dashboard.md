@@ -199,3 +199,8 @@ The tolerated probe-error budget becomes an explicit compiler input. The compile
 ## E055 — Redundant measurement synthesis
 
 A two-error UNSAT under the original probe alphabet is repaired by expanding to ten independent measurement channels. The resulting distance-five code passes all 280 exhaustive zero-, one-, and two-error cases.
+
+
+## E056 — Measurement failure domains
+
+Repeated channels are not independent merely because the code contains more bits. A shared collector can flip five certified bits at once and manufacture an exact wrong codeword. The repaired ten-channel reference uses at least five measurement roots so any one root fault remains within the two-bit correction certificate.
