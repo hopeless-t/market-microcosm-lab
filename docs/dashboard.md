@@ -107,3 +107,10 @@ Revenue-only and churn-only health rules have explicit blind spots on the negati
 The five-axis warning leaves the seven-case hand-built suite. Thresholds are chosen from 324 candidates on 500 discovery states and frozen before an untouched 500-state holdout.
 
 The multi-signal rule retains greater than 98% precision, recall, and F1. Revenue-only and churn-only rules remain low-recall baselines. The result is explicitly scoped to the shared synthetic generator.
+
+
+## E037 — Warning structural drift
+
+A new interaction-only failure law is enough to invalidate E036 despite its strong untouched-seed holdout. Legacy recall falls below the prior authority threshold, so the warning certificate is revoked.
+
+Adding the interaction term restores greater than 99% precision and recall on the shifted generation. Warning authority is now explicitly structural-generation scoped.
