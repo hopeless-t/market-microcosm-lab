@@ -659,6 +659,24 @@ jobs:
           print({"selection": x["selection"], "holdout": x["holdout_scores"], "promoted": x["promoted_warning_search_rule"]})
           PY
 
+      - name: Run warning structural-drift adversary
+        run: python scripts/run_e037.py
+      - name: Validate E037 warning drift contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e037/warning-structural-drift-report.json").read_text())
+          assert x["experiment"] == "E037"
+          assert x["legacy_authority_after_shift"] == "REVOKED"
+          assert x["legacy_e036_score"]["recall"] < 0.98
+          assert x["interaction_aware_score"]["recall"] > 0.99
+          assert x["interaction_aware_score"]["precision"] > 0.99
+          assert x["promoted_repair_rule"] == "interaction-aware-warning-generation-v2"
+          assert all(x["promotion_gate"].values())
+          print({"legacy": x["legacy_e036_score"], "repaired": x["interaction_aware_score"], "promoted": x["promoted_repair_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
