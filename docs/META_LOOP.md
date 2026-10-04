@@ -306,3 +306,31 @@ The frozen E036 warning is moved to a new structural generation with an interact
 A repaired candidate adds the interaction term and restores greater than 99% precision and recall on the shifted generation.
 
 The empirical warning plane now has the same authority lifecycle as the adaptive experimenter: strong prior evidence is generation-scoped and can be explicitly revoked when the failure topology changes.
+
+
+## Real longitudinal component holdout
+
+E038 introduces the first real-company quarterly holdout.
+
+Informetis publishes ARR by service family and an event annotation describing the planned end of a major rental-business service, stopped recruitment, and natural subscriber decline. A minimal retention model fit on 2025-Q1 through Q3 Smart Living Standard predicts the Q4 holdout within roughly 0.34%.
+
+The same model does not fit every component. The meta-loop therefore promotes the evidence shape — component identity plus event annotation plus holdout isolation — rather than promoting geometric decay as a universal law.
+
+
+## Measurement-kernel lag
+
+E039 adds another state layer between reality and evidence.
+
+Informetis ARR is a trailing-six-month average MRR transformed to an annual value. An abrupt underlying service change is therefore spread across six months of reported ARR.
+
+Empirical warning authority must now track:
+
+```text
+latent state
+→ measurement kernel
+→ reported metric
+→ publication
+→ warning decision
+```
+
+Lead-time claims that omit the metric window are not admissible.
