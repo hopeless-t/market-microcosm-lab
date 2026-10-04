@@ -83,3 +83,20 @@ Churn therefore requires layer and cause identity before it can enter an empiric
 Japanese postmortems now attack the success side as well as the failure side. Paying users, high ACV, revenue, or enthusiastic customers remain useful observations, but they do not certify a repeatable, scalable market.
 
 The promoted guard requires separate evidence for repeatability, customer success, product-delivered value rather than continuous human service, scalability, and market headroom.
+
+
+## E032 — Cash conversion lag
+
+Positive booked margin is no longer treated as liquidity. A fixed two-month collection-lag witness fails before cash arrives, and the exact minimum bridge buffer is 160.
+
+## E033 — Funnel attenuation
+
+Leaner evidence shows upstream KPI success can attenuate sharply before orders. The empirical funnel is now stage-typed instead of represented by one acquisition scalar.
+
+## E034 — Human delivery cost
+
+Srush's high-price/high-human-effort false-PMF signal becomes fully loaded accounting. Apparent software margin and true delivery margin can select opposite products.
+
+## E035 — Early-warning tournament
+
+Revenue-only and churn-only health rules have explicit blind spots on the negative-evidence reference suite. A five-axis warning vector exactly matches that finite oracle, but remains uncertified for external prediction until Monte Carlo and longitudinal holdouts are added.
