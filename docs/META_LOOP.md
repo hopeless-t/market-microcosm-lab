@@ -260,3 +260,12 @@ E030 attacks the generic use of the word churn.
 BBD's portfolio pruning shows that reported MRR churn can rise while ARR and ARPA rise and contract count falls. The company attributes part of that churn to unprofitable-service withdrawal and low-price-plan migration.
 
 The meta-loop must now bind churn to both a **layer** (end user, account/logo, MRR, supplier/content) and a **cause** (distress/demand loss, intentional pruning, migration). Cross-layer coefficient reuse requires explicit evidence rather than name matching.
+
+
+## PMF proxy guard
+
+E031 attacks success-side proxy Goodharting.
+
+Srush, Leaner, and SalesNow each provide a different counterexample to the idea that revenue or enthusiastic users certify long-run fit. Positive local signals can coexist with non-repeatable targeting, high human delivery burden, poor customer success, weak scalability, or a market ceiling.
+
+The meta-loop must therefore keep **observation** and **certification** separate on the success side too. Revenue, ACV, engagement, and usage can propose a hypothesis; they cannot promote PMF without separate evidence for repeatability, customer success, product-delivered value, scalability, and market headroom.
