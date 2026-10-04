@@ -275,3 +275,14 @@ The conclusion is structural: domain labels are not evidence of causal independe
 Model heterogeneous and overlapping dependency graphs, then add active dependency discovery and common-mode fault injection instead of relying only on declared topology.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).
+
+
+## E024 — Empirical evidence plane
+
+**Question:** can public real-world observations constrain future model calibration without allowing restricted, schema-only, stale, or period-misaligned evidence to gain silent authority?
+
+The experiment registers SARTRAS, Netflix, MovieLens, Game Pass Partner Center, and Spotify evidence classes; exhaustively selects the smallest eligible public source portfolio for the initial target observables; reconciles the SARTRAS FY2022 published accounting; and checks Netflix regional ARM dispersion.
+
+The promotion rule is an evidence-admission rule. It does not promote an empirical causal model.
+
+[Read the E024 ODD](ODD_E024.md)
