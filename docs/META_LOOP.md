@@ -534,3 +534,27 @@ maximum proof-obligation blast per evidence artifact
 ```
 
 A cost-only optimum can therefore be revoked even when its set-cover mathematics remains correct.
+
+
+## Re-anchor in real prospective evidence
+
+E063-E065 deliberately pull the loop back from synthetic trust topology into real longitudinal market evidence.
+
+E063 uses one company-year of BBD public KPIs to show that churn direction does not determine ARR direction during a product/portfolio transition.
+
+E064 prevents the subsequent explanation from leaking backward in time: evidence published with Q4 can explain Q4 but cannot enter a Q3 prospective warning.
+
+E065 then checks the structural warning contract against what was actually public at Q3. The public KPI set does not directly observe any of the five structural warning axes, so the correct result is ABSTAIN.
+
+This adds a research-allocation discipline to the meta-loop:
+
+```text
+develop structural mechanism
+→ stress its trust/evidence path
+→ return to real longitudinal evidence
+→ enforce decision-time availability
+→ measure feature-contract coverage
+→ ABSTAIN when the real dataset is insufficient
+```
+
+A stronger model is not automatically a more deployable model.
