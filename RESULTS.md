@@ -330,9 +330,29 @@ The hidden dependency raises modeled forge probability by **1016.16×** and make
 
 This is a model-error result rather than a claim about KMS products. It demonstrates that independence cannot be established solely from distinct labels, providers, regions, or witness IDs. The causal dependency graph matters.
 
+## E024 — empirical evidence plane
+
+E024 opens the first empirical-evidence plane while preserving the separation between observation, simulation, and causal certification.
+
+The source registry classifies evidence by access and authority rather than treating every documented dataset as equally observable. The exact public-source portfolio covers the declared initial observables while excluding restricted Game Pass values and request-only Spotify values.
+
+Initial anchors:
+
+| Anchor | Published observation | Model consequence |
+| --- | --- | --- |
+| SARTRAS FY2022 | tax-exclusive receipt components sum to 4,662,378 thousand JPY; allocation components sum to 4,662,379 thousand JPY | conservation closes to a 1-thousand-JPY published-rounding delta |
+| SARTRAS sampling | about 1,200 sampled institutions from 35,130 applications; about 46,600 usage reports and 118,600 works | empirical observation must be modeled separately from world truth |
+| Netflix Q2 2024 | regional ARM ranges from USD 7.17 (APAC) to USD 17.17 (UCAN) | one global fixed revenue-per-membership value is rejected for empirical calibration |
+| Netflix H2 2025 | 96 billion hours watched from July through December 2025 | period-scoped engagement anchor; cross-period normalization is forbidden by default |
+| Game Pass Partner Center | title-month-platform usage/purchase schema is documented | schema adapter is allowed, but partner-only values cannot enter the public calibration portfolio |
+
+The Q2 2024 Netflix ARM max/min ratio is greater than 2.3. ARM is not relabelled as posted subscription price; the result only establishes that an empirical Netflix-like world needs regional revenue heterogeneity.
+
+All E024 promotion gates pass, promoting `empirical-evidence-plane-v1` as an evidence-admission rule, not as a calibrated causal market model.
+
 ## Theory update
 
-The working theory after E010–E023 is:
+The working theory after E010–E024 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -378,6 +398,6 @@ The working theory after E010–E023 is:
 42. declared independence requires external evidence because topology labels do not prove causal independence;
 43. a hidden dependency hyperedge can dominate the nominal failure-domain topology;
 44. model misspecification can inflate estimated trust failure by orders of magnitude even when the quorum rule is unchanged;
-45. dependency discovery and failure-domain assignment must therefore be separate verification tasks.
+45. dependency discovery and failure-domain assignment must therefore be separate verification tasks;\n46. empirical observations need a separate admission plane from synthetic and certification evidence;\n47. public schema visibility does not imply public observation visibility;\n48. real regional revenue heterogeneity can invalidate a synthetic single-price assumption before any parameter fitting begins;\n49. period, unit, sampling design, and source authority are part of an empirical value's identity, not optional metadata.
 
-Next work should add heterogeneous dependency graphs and active common-mode discovery, then return to stronger signed/transparency publication and the endogenous economic controllers.
+Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
