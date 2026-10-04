@@ -392,9 +392,23 @@ The meta-loop then attacks its own assumption. If the selection mechanism is unc
 
 E026 keeps the SRS calculation as a mathematical reference world but revokes its authority as an empirical calibration. All gates promote `sampling-design-metadata-required-before-prevalence-inference-v1`.
 
+## E027 — Game Pass metric-definition drift guard
+
+E027 tests whether two official public membership headlines automatically form a valid time series.
+
+Microsoft reported **more than 25 million Game Pass subscribers** in January 2022. Xbox later reported **34 million Game Pass members** in February 2024. Between those observations, Xbox Live Gold members were automatically converted to Game Pass Core.
+
+The mechanically tempting calculation is (34 / 25 - 1 = 36\%\). E027 retains that ratio only as an illustrative anti-pattern.
+
+The earlier observation is a strict lower bound rather than an exact 25M point. The later observation is a rounded headline. Most importantly, the two observations are assigned different metric-definition generations because a membership-scope event occurs between them.
+
+The growth-authority guard therefore rejects a precise cross-headline growth calculation and promotes `metric-definition-version-required-for-time-series-growth-v1`.
+
+The empirical identity of a metric now includes value semantics and definition generation, not only numeric value, unit, and date.
+
 ## Theory update
 
-The working theory after E010–E026 is:
+The working theory after E010–E027 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -440,6 +454,6 @@ The working theory after E010–E026 is:
 42. declared independence requires external evidence because topology labels do not prove causal independence;
 43. a hidden dependency hyperedge can dominate the nominal failure-domain topology;
 44. model misspecification can inflate estimated trust failure by orders of magnitude even when the quorum rule is unchanged;
-45. dependency discovery and failure-domain assignment must therefore be separate verification tasks;\n46. empirical observations need a separate admission plane from synthetic and certification evidence;\n47. public schema visibility does not imply public observation visibility;\n48. real regional revenue heterogeneity can invalidate a synthetic single-price assumption before any parameter fitting begins;\n49. period, unit, sampling design, and source authority are part of an empirical value's identity, not optional metadata;\n50. admitted empirical data can select simulator/model-family complexity before full calibration;\n51. for the five-quarter Netflix ARM window, a one-global-parameter or two-group regional family is too coarse at 10% tolerance, while a three-group family crosses the fidelity knee;\n52. structural compression should earn promotion on a temporal holdout rather than on the discovery quarters alone;\n53. sample count alone does not identify an observation model or certify representativeness;\n54. optimistic sampling assumptions should be retained as reference worlds but lose empirical authority when an admissible selection adversary can overturn them;\n55. prevalence inference from sampled market observations requires sampling-frame and weighting metadata, not only n/N.
+45. dependency discovery and failure-domain assignment must therefore be separate verification tasks;\n46. empirical observations need a separate admission plane from synthetic and certification evidence;\n47. public schema visibility does not imply public observation visibility;\n48. real regional revenue heterogeneity can invalidate a synthetic single-price assumption before any parameter fitting begins;\n49. period, unit, sampling design, and source authority are part of an empirical value's identity, not optional metadata;\n50. admitted empirical data can select simulator/model-family complexity before full calibration;\n51. for the five-quarter Netflix ARM window, a one-global-parameter or two-group regional family is too coarse at 10% tolerance, while a three-group family crosses the fidelity knee;\n52. structural compression should earn promotion on a temporal holdout rather than on the discovery quarters alone;\n53. sample count alone does not identify an observation model or certify representativeness;\n54. optimistic sampling assumptions should be retained as reference worlds but lose empirical authority when an admissible selection adversary can overturn them;\n55. prevalence inference from sampled market observations requires sampling-frame and weighting metadata, not only n/N;\n56. a public scalar is not a time-series datum until its bound/rounding semantics and metric-definition generation are tracked;\n57. product taxonomy or membership-scope changes can create apparent growth from definition drift;\n58. time-series estimators should fail closed across unbridged metric generations instead of silently normalizing incompatible headlines.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
