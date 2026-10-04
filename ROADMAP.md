@@ -80,6 +80,12 @@
 - [x] strategic exit separated from forced insolvency
 - [x] churn layer/cause semantics guard
 - [x] short-run positive-signal / PMF proxy guard
+- [x] cash-conversion lag / liquidity runway guard
+- [x] funnel-stage proxy attenuation guard
+- [x] fully-loaded human-delivery cost guard
+- [x] exact negative-evidence early-warning tournament
+- [ ] Monte Carlo early-warning threshold search
+- [ ] untouched longitudinal early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary\n- [ ] sampled-observation empirical calibration world
 - SARTRAS
