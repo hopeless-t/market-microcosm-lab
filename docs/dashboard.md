@@ -118,7 +118,7 @@ Adding the interaction term restores greater than 99% precision and recall on th
 
 ## E038 — Real longitudinal component holdout
 
-Informetis supplies the first real-company quarterly holdout. Smart Living Standard ARR values 266→256→231 fit a frozen retention model that predicts Q4 at about 215.27 million JPY versus 216 observed.
+Informetis supplies the first real-company quarterly holdout. Smart Living Standard ARR values 266→256→231 produce a frozen point prediction near 215.27 million JPY versus a displayed 216. E042 later revokes interpreting that sub-unit gap as source-supported sub-1% precision.
 
 The neighboring Light component rejects the same decay story, so the promoted object is an event-annotated component model rather than a universal ARR law.
 
@@ -138,3 +138,20 @@ A trailing ARR does not uniquely identify current MRR. In the exact bounded mono
 Consecutive rolling ARR values reveal only the difference between incoming and outgoing boundary MRR. Retaining one outgoing boundary scalar restores exact newest-MRR reconstruction.
 
 The observability plane now targets minimal sufficient checkpoints rather than full-history retention.
+
+
+## E042 — Reporting-resolution self-attack
+
+The source chart is displayed to integer million JPY, so E038's apparently tiny point gap is smaller than the source resolution. Rounding-aware prediction and holdout intervals overlap. The strong precision claim is revoked; interval consistency remains.
+
+## E043 — Decision-sufficient observability
+
+With reporting uncertainty, newest MRR is an interval rather than a point. The same interval can certify `MRR > 0` while leaving `MRR >= 2` ambiguous.
+
+## E044 — Robust abstention
+
+When compatible latent states lie on both sides of a requested threshold, the controller returns ABSTAIN. Midpoint forcing is not authorized.
+
+## E045 — Predicate-scoped active sensing
+
+ABSTAIN now triggers a targeted observation search. The objective is minimum-cost predicate resolution, not maximum hidden-state reconstruction.
