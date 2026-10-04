@@ -208,6 +208,18 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Rolling KPI lag</h3>
     <p>A trailing-six-month ARR can retain half of a pre-shock signal three months after the underlying component ends.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E040</div>
+    <div class="mm-metric">338 paths</div>
+    <h3>KPI non-identifiability</h3>
+    <p>The same trailing ARR can represent current MRR anywhere from zero to five even under monotone decline.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E041</div>
+    <div class="mm-metric">1 scalar</div>
+    <h3>Minimal checkpoint</h3>
+    <p>One outgoing boundary MRR plus consecutive rolling ARR values restores exact newest-MRR observability.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -278,7 +290,9 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E036** tunes that vector on generated discovery states and verifies it on an untouched generated holdout.  
 **E037** changes the failure law itself, revokes the old warning, and promotes an interaction-aware replacement.  
 **E038** moves to a real Informetis component-ARR holdout and keeps the successful decay law component-scoped.  
-**E039** models the six-month ARR measurement window itself as an observation-delay kernel.
+**E039** models the six-month ARR measurement window itself as an observation-delay kernel.  
+**E040** proves that one rolling ARR still cannot identify current MRR.  
+**E041** finds the minimal one-scalar boundary checkpoint that restores exact one-step observability.
 
 This produces a repeating research pattern:
 
@@ -337,6 +351,8 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E037 ODD](ODD_E037.md)
 - [E038 ODD](ODD_E038.md)
 - [E039 ODD](ODD_E039.md)
+- [E040 ODD](ODD_E040.md)
+- [E041 ODD](ODD_E041.md)
 
 ## Run locally
 
@@ -374,6 +390,8 @@ python scripts/run_e036.py
 python scripts/run_e037.py
 python scripts/run_e038.py
 python scripts/run_e039.py
+python scripts/run_e040.py
+python scripts/run_e041.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
