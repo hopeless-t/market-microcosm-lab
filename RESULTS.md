@@ -1127,9 +1127,42 @@ Together they cover every unsafe proof obligation for total cost **6**, beating 
 
 All gates promote `dependency-audit-allocation-must-model-shared-evidence-bundles-v1`.
 
+## E062 — audit-evidence failure domains
+
+E062 attacks E061's cheapest shared-evidence cover.
+
+The E061 cost-6 plan uses two artifacts:
+
+```text
+control-plane-bundle
+  network + identity
+
+infra-resilience-bundle
+  power + operator
+```
+
+Each artifact is the sole support for two proof obligations. If one artifact fails, two obligations are falsely discharged at once.
+
+Under a declared maximum proof-obligation blast of 1, the cost-6 E061 plan loses authority.
+
+Exact subset search returns the independent branch audits:
+
+```text
+network-targeted
+identity-targeted
+power-deep
+operator-targeted
+```
+
+for total cost **8**, with one uniquely dependent obligation per artifact.
+
+E061's cost-only optimization remains mathematically correct for its original model, but its evidence-failure-domain authority is marked **REVOKED**.
+
+All gates promote `audit-evidence-reuse-must-model-proof-obligation-failure-blast-v1`.
+
 ## Theory update
 
-The working theory after E010–E061 is:
+The working theory after E010–E062 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -1235,6 +1268,8 @@ The working theory after E010–E061 is:
 102. a discovered recursive common mode should trigger topology repair before increasing the tolerated error budget;
 103. recursive dependency audit should stop at the minimum depth whose remaining unverified blast radius fits the downstream authority contract;
 104. audit depth is branch/proof-obligation specific rather than one global scalar;
-105. shared evidence couples branch obligations, so globally optimal audit allocation can require exact bundle/set-cover reasoning.
+105. shared evidence couples branch obligations, so globally optimal audit allocation can require exact bundle/set-cover reasoning;
+106. shared audit evidence is itself a failure-domain choice, so cost savings from reuse require an explicit proof-obligation blast certificate;
+107. the cheapest evidence cover and the cheapest failure-domain-safe evidence cover can differ, and cost-only authority must be revoked when that distinction matters.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
