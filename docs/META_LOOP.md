@@ -404,3 +404,27 @@ enumerate observation candidates
 ```
 
 This connects the empirical evidence plane directly to the uncertainty-aware control loop.
+
+
+## Predicate witness quorum and source diversity
+
+E048-E049 reuse the trust-plane machinery inside active empirical sensing.
+
+E048 removes the final-authority role from one signed predicate attestation. Predicate truth requires a matching quorum across declared independent witness domains; unresolved conflicts ABSTAIN.
+
+E049 then attacks the domain map itself. Three administratively distinct witnesses can still consume one shared upstream feed and fail together. The sensing plane therefore tracks both witness/failure-domain topology and upstream data-lineage topology.
+
+The acceptance path becomes:
+
+```text
+authorized
+→ predicate resolving
+→ fresh
+→ metric-generation aligned
+→ witness quorum
+→ failure-domain diversity
+→ upstream source diversity
+→ predicate authority
+```
+
+As in E023, discovered hidden common modes invalidate prior independence authority and require re-evaluation.
