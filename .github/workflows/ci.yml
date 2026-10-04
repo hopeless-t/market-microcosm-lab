@@ -677,6 +677,40 @@ jobs:
           print({"legacy": x["legacy_e036_score"], "repaired": x["interaction_aware_score"], "promoted": x["promoted_repair_rule"]})
           PY
 
+      - name: Run real longitudinal component holdout
+        run: python scripts/run_e038.py
+      - name: Validate E038 real longitudinal contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e038/real-longitudinal-holdout-report.json").read_text())
+          assert x["experiment"] == "E038"
+          standard = x["component_holdouts"]["smart_living_standard"]
+          assert standard["relative_error"] < 0.01
+          assert x["component_holdouts"]["smart_living_light"]["relative_error"] > 0.20
+          assert x["promoted_longitudinal_rule"] == "event-annotated-component-longitudinal-holdout-v1"
+          assert all(x["promotion_gate"].values())
+          print({"standard": standard, "shock": x["concentration_shock_context"], "promoted": x["promoted_longitudinal_rule"]})
+          PY
+
+      - name: Run rolling KPI observation-lag experiment
+        run: python scripts/run_e039.py
+      - name: Validate E039 rolling KPI contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e039/rolling-metric-lag-report.json").read_text())
+          assert x["experiment"] == "E039"
+          m3 = x["abrupt_end_reference"]["three_month_post_shock"]
+          assert m3["legacy_signal_fraction"] == 0.5
+          assert m3["reported_arr"] == 60.0
+          assert x["promoted_observation_rule"] == "rolling-window-metric-lag-must-be-modeled-v1"
+          assert all(x["promotion_gate"].values())
+          print({"month3": m3, "promoted": x["promoted_observation_rule"]})
+          PY
+
       - name: Verify generated research dashboard
         run: python scripts/render_research_dashboard.py --check
 
