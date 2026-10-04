@@ -323,3 +323,28 @@ No. The 2022 figure is a lower bound (>25M subscribers), the 2024 figure is a ro
 E027 deliberately computes the tempting 36% ratio but marks it illustrative-only. The promoted estimator rule requires compatible metric-definition generations and value semantics before time-series growth gains authority.
 
 [Read the E027 ODD](ODD_E027.md)
+
+
+## E028 — Japanese negative-evidence corpus
+
+**Question:** which failure mechanisms become visible when Japanese withdrawal, sunset, pivot, pruning, and bankruptcy evidence is admitted alongside surviving subscription systems?
+
+The first corpus includes BBD Initiative, RickCloud, Leaner, SalesNow, and TDB industry context. It adds ten declared failure mechanisms beyond the current synthetic price/cost/end-user-churn stress core and promotes a rule requiring negative evidence for empirical market calibration.
+
+[Read the E028 ODD](ODD_E028.md)
+
+## E029 — Strategic exit before insolvency
+
+**Question:** does an insolvency-only exit rule omit rational withdrawals by still-operating actors?
+
+Yes. The negative-evidence corpus contains multiple strategic exits, and an exact finite reference grid contains positive-cash states where orderly exit/redeployment dominates continued operation.
+
+[Read the E029 ODD](ODD_E029.md)
+
+## E030 — Churn semantics counterexample
+
+**Question:** can higher reported SaaS churn coexist with higher ARR and ARPA?
+
+BBD's published pruning period provides exactly that sign pattern. E030 therefore prevents B2B MRR churn from being silently mapped into end-user demand churn and requires both layer and cause identity.
+
+[Read the E030 ODD](ODD_E030.md)
