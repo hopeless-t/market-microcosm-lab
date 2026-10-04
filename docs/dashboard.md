@@ -178,3 +178,24 @@ Witness-domain diversity is not enough when multiple witnesses consume one commo
 ## E050 — Evidence lineage roots
 
 Distinct source labels do not guarantee independent observations. A false three-source quorum can still collapse onto one master warehouse. Predicate authority now follows the upstream evidence-lineage graph and requires independent roots.
+
+
+## E051 — Active lineage discovery
+
+Hidden lineage roots become actively testable. Bounded dependency probes expose a three-source, three-domain common-mode response and reopen prior independence authority.
+
+## E052 — Minimum probe portfolio
+
+Exact subset search chooses the lowest-cost lineage experiment that uniquely identifies the reference hidden-root hypothesis.
+
+## E053 — Noisy probe robustness
+
+The minimum noiseless probe set has Hamming distance one and can be misidentified by one bit flip. A one-error-correcting certificate requires all six pair probes and distance three.
+
+## E054 — Robustness compiler
+
+The tolerated probe-error budget becomes an explicit compiler input. The compiler returns a minimum-cost distance certificate or UNSAT.
+
+## E055 — Redundant measurement synthesis
+
+A two-error UNSAT under the original probe alphabet is repaired by expanding to ten independent measurement channels. The resulting distance-five code passes all 280 exhaustive zero-, one-, and two-error cases.
