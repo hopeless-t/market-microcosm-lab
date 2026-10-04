@@ -118,6 +118,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Evidence admission</h3>
     <p>Public observations are source-, period-, and access-scoped before they may constrain calibration.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E025</div>
+    <div class="mm-metric">k = 3</div>
+    <h3>Regional complexity knee</h3>
+    <p>Exact partition search finds the smallest Netflix ARM regional model that survives a temporal holdout.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -173,7 +179,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E021** distributes checkpoint authority across a 3-of-5 witness quorum and retains equivocation evidence for conflicting accepted views.  
 **E022** measures correlated witness placement and distinguishes nominal witness count from independent failure-domain resilience.  
 **E023** attacks declared independence with a hidden shared-dependency hyperedge and measures model-error amplification.  
-**E024** adds an empirical evidence plane with exact source admission, public/restricted separation, and real accounting/engagement anchors.
+**E024** adds an empirical evidence plane with exact source admission, public/restricted separation, and real accounting/engagement anchors.  
+**E025** uses admitted Netflix regional ARM data to locate a model-complexity knee and validate the selected three-group structure on a temporal holdout.
 
 This produces a repeating research pattern:
 
@@ -217,6 +224,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E022 ODD](ODD_E022.md)
 - [E023 ODD](ODD_E023.md)
 - [E024 ODD](ODD_E024.md)
+- [E025 ODD](ODD_E025.md)
 
 ## Run locally
 
@@ -239,6 +247,7 @@ python scripts/run_e021.py
 python scripts/run_e022.py
 python scripts/run_e023.py
 python scripts/run_e024.py
+python scripts/run_e025.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
