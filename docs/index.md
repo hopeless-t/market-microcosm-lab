@@ -16,7 +16,7 @@ title: Market Microcosm Lab
 Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Users, developers, publishers, content, and platforms exchange value over time, and a locally efficient rule can still destroy the long-run system that generated the value.
 
 <div class="mm-warning">
-<strong>Synthetic evidence only.</strong> Current experiments are structural research worlds, not empirical estimates or policy recommendations for a named service.
+<strong>Evidence planes are separated.</strong> E000–E023 are synthetic structural worlds. E024 admits sourced empirical anchors, but empirical fit is not causal identification or a policy recommendation.
 </div>
 
 ## Research dashboard
@@ -112,6 +112,12 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Hidden dependency</h3>
     <p>One undeclared shared dependency collapses nominal independence and dominates modeled forge risk.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E024</div>
+    <div class="mm-metric">Empirical</div>
+    <h3>Evidence admission</h3>
+    <p>Public observations are source-, period-, and access-scoped before they may constrain calibration.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -166,7 +172,8 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E020** rotates those anchors without forgetting previously trusted history and detects checkpoint forks.  
 **E021** distributes checkpoint authority across a 3-of-5 witness quorum and retains equivocation evidence for conflicting accepted views.  
 **E022** measures correlated witness placement and distinguishes nominal witness count from independent failure-domain resilience.  
-**E023** attacks declared independence with a hidden shared-dependency hyperedge and measures model-error amplification.
+**E023** attacks declared independence with a hidden shared-dependency hyperedge and measures model-error amplification.  
+**E024** adds an empirical evidence plane with exact source admission, public/restricted separation, and real accounting/engagement anchors.
 
 This produces a repeating research pattern:
 
@@ -209,6 +216,7 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E021 ODD](ODD_E021.md)
 - [E022 ODD](ODD_E022.md)
 - [E023 ODD](ODD_E023.md)
+- [E024 ODD](ODD_E024.md)
 
 ## Run locally
 
@@ -230,6 +238,7 @@ python scripts/run_e020.py
 python scripts/run_e021.py
 python scripts/run_e022.py
 python scripts/run_e023.py
+python scripts/run_e024.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
