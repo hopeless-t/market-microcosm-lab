@@ -155,3 +155,12 @@ When compatible latent states lie on both sides of a requested threshold, the co
 ## E045 — Predicate-scoped active sensing
 
 ABSTAIN now triggers a targeted observation search. The objective is minimum-cost predicate resolution, not maximum hidden-state reconstruction.
+
+
+## E046 — Authority-constrained sensing
+
+A cost-only active-sensing optimizer can prefer unauthorized raw evidence. The evidence plane now filters authorization before considering collection cost.
+
+## E047 — Temporal evidence identity
+
+Authorization is still not sufficient. Evidence used for a current predicate must be fresh enough for the decision and belong to the required metric-definition generation before cost optimization.
