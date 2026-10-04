@@ -91,7 +91,7 @@
 - [x] real-company component longitudinal holdout
 - [x] rolling-KPI measurement-kernel lag guard
 - [x] rolling-KPI non-identifiability proof
-- [x] minimal boundary checkpoint for exact one-step reconstruction\n- [x] reporting-resolution / empirical claim-precision guard\n- [x] decision-predicate-scoped observability\n- [x] robust ABSTAIN output for unresolved predicates\n- [x] minimum-cost predicate-scoped active sensing
+- [x] minimal boundary checkpoint for exact one-step reconstruction\n- [x] reporting-resolution / empirical claim-precision guard\n- [x] decision-predicate-scoped observability\n- [x] robust ABSTAIN output for unresolved predicates\n- [x] minimum-cost predicate-scoped active sensing\n- [x] authority-constrained active sensing\n- [x] freshness + metric-generation aligned evidence admission
 - [ ] prospective real-company early-warning holdout
 - [ ] regionalized empirical calibration world
 - [x] sampling-design metadata gate / SRS assumption adversary
