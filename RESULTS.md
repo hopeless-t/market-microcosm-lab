@@ -549,9 +549,35 @@ The multi-signal rule reaches 100% precision/recall on this **hand-constructed e
 
 All gates promote `negative-evidence-multi-signal-early-warning-v1`.
 
+## E036 — discovery-tuned warning with untouched generated holdout
+
+E036 moves beyond E035's seven hand-built reference cases.
+
+A deterministic generator creates 500 discovery and 500 holdout states with separate seeds. Each state varies cash, booked revenue, cash costs, collection lag, fully-loaded margin, market headroom, downstream success, continuation/exit value, revenue growth, and churn.
+
+The six-month intervention oracle is structural: cash failure, very low fully-loaded margin, very low market headroom, very low downstream success, or strategic-exit dominance.
+
+A 324-candidate threshold grid is searched on discovery only.
+
+The selected thresholds are:
+
+```text
+cash coverage ratio = 1.0
+fully-loaded margin = 5%
+market headroom = 15%
+downstream success = 10%
+strategic-exit gap = 0
+```
+
+On the untouched 500-state holdout, the multi-signal rule retains greater than **98% precision, recall, and F1**. Revenue-only recall remains below 25%, and churn-only recall remains below 30%.
+
+This upgrades E035 from hand-built compilation fidelity to within-generator generalization. It still does not establish real-company predictive validity because discovery and holdout share the same structural family.
+
+All gates promote `discovery-tuned-multi-signal-warning-with-holdout-v1`.
+
 ## Theory update
 
-The working theory after E010–E035 is:
+The working theory after E010–E036 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -609,6 +635,8 @@ The working theory after E010–E035 is:
 67. upstream funnel attainment cannot certify downstream orders or customer success;
 68. software-only gross margin can materially overstate scalability when recurring human delivery is excluded;
 69. early warning should be a vector over empirically distinct failure mechanisms rather than one revenue or churn scalar;
-70. exact success on a hand-constructed warning suite is only a compilation check — thresholds still require Monte Carlo stress, holdouts, and real longitudinal validation.
+70. exact success on a hand-constructed warning suite is only a compilation check — thresholds still require Monte Carlo stress, holdouts, and real longitudinal validation;
+71. hand-built warning success can be strengthened by isolating threshold discovery from generated holdout evaluation;
+72. high within-generator holdout performance still does not authorize external prediction because shared structural assumptions can hide common-mode model error.
 
 Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.
