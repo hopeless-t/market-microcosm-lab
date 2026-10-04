@@ -515,3 +515,22 @@ certify failure domains
 ```
 
 "More auditing" is not a monotone objective. The target is minimum sufficient, reusable evidence for the declared authority claim.
+
+
+## Audit-evidence failure domains
+
+E062 attacks E061's shared-evidence cost optimum.
+
+Reusing one audit artifact across multiple obligations saves collection cost but also creates a proof common mode. If the artifact is wrong, every obligation uniquely dependent on it can be falsely discharged together.
+
+The meta-loop now treats audit evidence reuse like any other dependency topology:
+
+```text
+minimize evidence cost
+subject to
+coverage
++
+maximum proof-obligation blast per evidence artifact
+```
+
+A cost-only optimum can therefore be revoked even when its set-cover mathematics remains correct.
