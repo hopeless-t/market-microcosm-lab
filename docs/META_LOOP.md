@@ -177,3 +177,473 @@ The meta-loop must therefore distinguish:
 - **causal dependency graph** — which shocks can actually affect them together.
 
 A topology optimizer may not promote independence solely from labels. Hidden-dependency discovery, inventory evidence, fault injection, and dependency-graph revision can invalidate previous trust generations.
+
+
+## Empirical evidence admission
+
+E024 makes evidence-source admission another meta-level control surface.
+
+The meta-loop may search for, compare, and select external datasets, but it may not silently promote a documented schema, restricted report, request-only dataset, or stale archive into authoritative calibration input.
+
+Every admitted empirical anchor carries source identity, period, unit or metric definition, granularity, access class, and limitations. The current exact source-portfolio oracle only selects sources whose observed values are publicly available under an admitted evidence class.
+
+This creates three explicit planes:
+
+- **synthetic evidence plane** — simulator-generated observations under declared mechanisms;
+- **empirical evidence plane** — real-world observations admitted through source/access checks;
+- **certification evidence plane** — independent evidence used to authorize research claims or machinery.
+
+The planes may constrain each other, but they may not be conflated. In particular, empirical fit is not causal identification, and public schema visibility is not public observation visibility.
+
+E024 also turns model-assumption rejection into a useful meta-loop output: Netflix's reported regional ARM dispersion is already sufficient to reject one global empirical revenue-per-membership constant before expensive fitting begins. SARTRAS sampling similarly requires future empirical worlds to distinguish latent population state from sampled observation.
+
+
+## Empirical model-complexity selection
+
+E025 turns admitted empirical structure into a meta-level choice over model complexity.
+
+Rather than immediately fitting every published regional value, the laboratory enumerates every partition of the four Netflix reporting regions and asks for the smallest model family that keeps worst regional ARM error below a declared tolerance.
+
+Discovery and temporal validation are separated. Q2 2023 through Q1 2024 choose the structural partition. Q2 2024 is withheld. After selection, Q1 2024 group centroids are frozen for a one-quarter-forward check.
+
+At a 10% maximum-relative-error threshold, one and two groups fail, while three groups pass with the topology `{UCAN}`, `{EMEA}`, `{LATAM, APAC}`. The frozen one-quarter-forward prediction also remains inside tolerance.
+
+This adds another allowed meta-loop move: **change model complexity when admitted external evidence falsifies a cheaper family**. The loop still may not relabel ARM as subscription price or infer causal regional effects from descriptive aggregates.
+
+
+## Sampling-assumption self-attack
+
+E026 demonstrates a meta-loop that improves itself by attacking an assumption introduced only moments earlier.
+
+The published SARTRAS counts make a simple-random-sampling reference mathematically convenient. Under that reference, exact hypergeometric detection has a clear rarity knee. But the laboratory does not promote convenience into empirical authority.
+
+A second-stage adversary removes the unverified random-selection assumption while keeping the same population and sample counts. It can place all carriers outside the selected institutions, collapsing the sample-size-only detection lower bound to zero.
+
+The promoted result is therefore not the optimistic SRS prevalence curve. It is the stricter evidence rule: **sampling-design metadata is required before prevalence inference**.
+
+This is the empirical analogue of E016/E023: when a hidden structural premise can dominate the result, the optimized or convenient path loses authority and the system falls back to a less committal model.
+
+
+## Metric-definition drift guard
+
+E027 attacks a different empirical shortcut: treating two public numbers as comparable merely because their labels look similar.
+
+The 2022 Game Pass observation is a lower bound (>25M subscribers), the 2024 observation is a rounded 34M member headline, and the Xbox Live Gold → Game Pass Core conversion occurs between them.
+
+A naive 36% ratio is kept in the evidence bundle as a visible counterexample but receives no inferential authority.
+
+The empirical meta-loop now versions metric definitions analogously to simulator generations. Time-series calculations require compatible definition generations and value semantics. A public number may be real and still be inadmissible for a specific estimator.
+
+
+## Negative evidence and survivorship control
+
+E028 makes failed and withdrawn systems a required empirical input rather than an anecdotal appendix.
+
+The initial Japanese corpus includes deliberate product pivots, portfolio pruning, a planned managed-cloud sunset, strategic restructuring, and industry bankruptcy context. These cases expose failure mechanisms that are absent from a success-only calibration set.
+
+The meta-loop may not declare an empirical model adequate merely because it fits surviving subscription systems. It must also report which admitted negative-evidence mechanisms the model can and cannot represent.
+
+
+## Strategic exit as a control action
+
+E029 separates voluntary exit from forced failure.
+
+The current ecological world turns developers and publishers inactive when their cash falls below zero. E029 preserves that forced-failure semantics but adds a distinct future action: an operating actor may choose orderly exit when continuation value is worse than sunset plus redeployment.
+
+This matters because voluntary exit can preserve the firm while harming catalog diversity or users. Firm-level rationality and ecosystem-level viability are therefore separate objectives.
+
+
+## Typed churn semantics
+
+E030 attacks the generic use of the word churn.
+
+BBD's portfolio pruning shows that reported MRR churn can rise while ARR and ARPA rise and contract count falls. The company attributes part of that churn to unprofitable-service withdrawal and low-price-plan migration.
+
+The meta-loop must now bind churn to both a **layer** (end user, account/logo, MRR, supplier/content) and a **cause** (distress/demand loss, intentional pruning, migration). Cross-layer coefficient reuse requires explicit evidence rather than name matching.
+
+
+## PMF proxy guard
+
+E031 attacks success-side proxy Goodharting.
+
+Srush, Leaner, and SalesNow each provide a different counterexample to the idea that revenue or enthusiastic users certify long-run fit. Positive local signals can coexist with non-repeatable targeting, high human delivery burden, poor customer success, weak scalability, or a market ceiling.
+
+The meta-loop must therefore keep **observation** and **certification** separate on the success side too. Revenue, ACV, engagement, and usage can propose a hypothesis; they cannot promote PMF without separate evidence for repeatability, customer success, product-delivered value, scalability, and market headroom.
+
+
+## Cash timing and early-warning compilation
+
+E032-E035 turn the Japanese negative-evidence corpus into a first warning architecture.
+
+E032 separates booked revenue from cash arrival. A positive booked margin can coexist with imminent liquidity failure when collection lags behind payroll and fixed costs.
+
+E033 separates upstream funnel activity from downstream value. Large lead or appointment attainment cannot self-certify orders, activation, or customer success.
+
+E034 separates software cost from recurring human-delivery cost. High ACV and software-only margin can hide a service burden that reverses product rankings after fully loaded accounting.
+
+E035 compiles these failure mechanisms together with market-headroom and strategic-exit signals into a finite multi-signal warning tournament. Revenue-only and churn-only proxies have explicit blind spots; the multi-signal vector matches the exact reference oracle.
+
+The meta-loop is **not** allowed to treat that exact match as external predictive validation. The next authority step requires broad generated scenario families, threshold search on discovery sets, untouched holdouts, and eventually real longitudinal company data.
+
+
+## Generated warning holdout
+
+E036 attacks the possibility that E035 merely memorized its hand-built archetypes.
+
+A broad deterministic generator creates isolated discovery and holdout populations. The meta-loop searches 324 warning-threshold combinations only on discovery, freezes the winner, then evaluates an untouched seed bank.
+
+The selected multi-signal rule keeps greater than 98% precision, recall, and F1 on the generated holdout while revenue-only and churn-only rules retain severe recall blind spots.
+
+Authority remains limited: discovery and holdout still share one structural generator. The next falsification must change the generator itself rather than only the random seed.
+
+
+## Warning structural-drift revocation
+
+E037 attacks E036's shared-generator assumption.
+
+The frozen E036 warning is moved to a new structural generation with an interaction-only market-headroom × downstream-success failure. Its recall falls below the prior authority threshold and the warning is revoked.
+
+A repaired candidate adds the interaction term and restores greater than 99% precision and recall on the shifted generation.
+
+The empirical warning plane now has the same authority lifecycle as the adaptive experimenter: strong prior evidence is generation-scoped and can be explicitly revoked when the failure topology changes.
+
+
+## Real longitudinal component holdout
+
+E038 introduces the first real-company quarterly holdout.
+
+Informetis publishes ARR by service family and an event annotation describing the planned end of a major rental-business service, stopped recruitment, and natural subscriber decline. A minimal retention model fit on 2025-Q1 through Q3 Smart Living Standard places its Q4 point prediction within one displayed million-JPY unit of the published Q4 value. E042 later revokes any sub-1% precision interpretation because the chart resolution is coarser than that claim.
+
+The same model does not fit every component. The meta-loop therefore promotes the evidence shape — component identity plus event annotation plus holdout isolation — rather than promoting geometric decay as a universal law.
+
+
+## Measurement-kernel lag
+
+E039 adds another state layer between reality and evidence.
+
+Informetis ARR is a trailing-six-month average MRR transformed to an annual value. An abrupt underlying service change is therefore spread across six months of reported ARR.
+
+Empirical warning authority must now track:
+
+```text
+latent state
+→ measurement kernel
+→ reported metric
+→ publication
+→ warning decision
+```
+
+Lead-time claims that omit the metric window are not admissible.
+
+
+## Identifiability-driven checkpoints
+
+E040 demonstrates that a rolling KPI is not merely delayed; it may be fundamentally non-identifying. Hundreds of distinct monotone latent paths can produce one reported ARR while disagreeing materially about current MRR.
+
+E041 then searches for the smallest repair. For consecutive fixed-width rolling windows, storing the single outgoing boundary MRR is enough to reconstruct the incoming/current MRR exactly. The full path is unnecessary for that one-step task.
+
+This promotes a general meta-loop rule:
+
+```text
+find where projection loses identifiability
+→ identify the missing boundary state
+→ preserve only that indispensable checkpoint
+→ verify exact reconstruction
+```
+
+The goal is neither maximal logging nor maximal compression. It is minimal sufficient observability.
+
+
+## Precision authority, abstention, and active sensing
+
+E042-E045 make the empirical observation plane self-limiting.
+
+E042 propagates source reporting resolution and revokes E038's sub-1% precision interpretation while retaining interval consistency.
+
+E043 then treats reconstructed hidden state as an uncertainty set and asks whether that set is sufficient for the actual decision predicate. Exact state is no longer the default objective.
+
+E044 authorizes ABSTAIN when compatible states disagree on the requested action. Point proxies such as interval midpoints may not override that ambiguity.
+
+E045 turns ABSTAIN into targeted active sensing: search only for the cheapest authorized observation that makes every compatible state agree on the requested predicate.
+
+The resulting loop is:
+
+```text
+observe
+→ propagate uncertainty
+→ evaluate predicate over every compatible state
+→ certify if unanimous
+→ otherwise ABSTAIN
+→ acquire minimum-cost predicate-sufficient evidence
+→ re-evaluate
+```
+
+This is minimal sufficient observability under uncertainty, not maximal state collection.
+
+
+## Authority and temporal admission for active sensing
+
+E046-E047 close two remaining loopholes in minimum-cost observation selection.
+
+E046 demonstrates that a cost-only optimizer can choose unauthorized evidence. Authorization is therefore a hard admissibility filter, not a soft penalty.
+
+E047 shows that authorization alone is still insufficient. Evidence must be fresh enough for the current hazard and aligned with the metric-definition generation required by the decision.
+
+The active-sensing sequence is now:
+
+```text
+enumerate observation candidates
+→ authority filter
+→ predicate-sufficiency filter
+→ freshness filter
+→ metric-generation filter
+→ cost optimization
+→ acquire
+→ propagate uncertainty
+→ re-evaluate predicate
+```
+
+This connects the empirical evidence plane directly to the uncertainty-aware control loop.
+
+
+## Predicate witness quorum and source diversity
+
+E048-E049 reuse the trust-plane machinery inside active empirical sensing.
+
+E048 removes the final-authority role from one signed predicate attestation. Predicate truth requires a matching quorum across declared independent witness domains; unresolved conflicts ABSTAIN.
+
+E049 then attacks the domain map itself. Three administratively distinct witnesses can still consume one shared upstream feed and fail together. The sensing plane therefore tracks both witness/failure-domain topology and upstream data-lineage topology.
+
+The acceptance path becomes:
+
+```text
+authorized
+→ predicate resolving
+→ fresh
+→ metric-generation aligned
+→ witness quorum
+→ failure-domain diversity
+→ upstream source diversity
+→ predicate authority
+```
+
+As in E023, discovered hidden common modes invalidate prior independence authority and require re-evaluation.
+
+
+## Evidence-lineage root audit
+
+E050 attacks the flat source-diversity model promoted by E049.
+
+Three distinct immediate source labels can still derive from one master warehouse or vendor dataset. A quorum that appears domain-diverse and source-diverse can therefore remain one-root fragile.
+
+The sensing plane now treats evidence independence as a dependency graph rather than a list of names. Accepted predicate authority must expose enough upstream lineage to estimate the minimum independent roots supporting the accepted view.
+
+Discovery of a hidden lineage root is an authority-changing event: prior source-diversity evidence is revoked and the quorum must be re-evaluated.
+
+
+## Active lineage discovery and robustness compilation
+
+E051-E055 turn evidence-lineage independence from a static audit into an active experiment loop.
+
+E051 uses bounded dependency probes to discover hidden common roots through downstream cross-domain response fingerprints.
+
+E052 exactly minimizes the probe portfolio needed to distinguish the finite lineage hypothesis family.
+
+E053 then attacks that minimum portfolio with one observation error and shows that noiseless identifiability is not error-correcting authority.
+
+E054 compiles the required signature distance from a declared adversarial error budget and returns either an exact minimum-cost portfolio or UNSAT.
+
+E055 treats UNSAT as a design result rather than an excuse to weaken the contract. The measurement alphabet can be expanded with authorized independent channels, then recompiled and exhaustively reverified.
+
+The loop becomes:
+
+```text
+declare lineage hypotheses
+→ design minimum identifying probes
+→ declare error budget
+→ compile robustness certificate
+→ SAT: execute with stated authority
+→ UNSAT: expand measurement design or ABSTAIN
+→ recompile
+→ exhaustive verification
+```
+
+Efficiency and robustness are separate objectives and must not inherit authority from one another.
+
+
+## Measurement failure-domain certificate
+
+E056 attacks E055's repeated-channel independence assumption.
+
+A distance-five code can correct two arbitrary bit substitutions, but one physical measurement-root failure may flip many bits simultaneously. The code certificate and the physical failure model must therefore be connected explicitly.
+
+The repaired reference caps each measurement root at two certified channels. With ten channels, at least five roots are required for one-root faults to remain inside the declared two-bit correction budget.
+
+Robust sensing authority now requires both:
+
+```text
+logical signature-distance certificate
++
+physical measurement failure-domain certificate
+```
+
+Neither certificate inherits the other automatically.
+
+
+## Recursive lineage repair and bounded audit depth
+
+E057 recursively attacks the measurement roots promoted by E056 and discovers a hidden super-root whose single failure exceeds the certified bit budget.
+
+E058 restores the original contract by exact minimum-cost topology repair rather than by silently weakening the threat model.
+
+E059 then gives recursive dependency discovery a stopping certificate: continue only until the maximum remaining unverified common-mode blast radius is inside the downstream correction budget.
+
+E060 makes that depth branch-specific, and E061 further recognizes that one shared audit action can discharge multiple branch proof obligations.
+
+The resulting loop is:
+
+```text
+certify failure domains
+→ recursively probe roots
+→ hidden super-root discovered
+→ revoke
+→ synthesize minimum-cost topology repair
+→ compile required audit depth from downstream blast budget
+→ allocate depth per proof obligation
+→ reuse shared evidence through coupled audit bundles
+→ reverify
+```
+
+"More auditing" is not a monotone objective. The target is minimum sufficient, reusable evidence for the declared authority claim.
+
+
+## Audit-evidence failure domains
+
+E062 attacks E061's shared-evidence cost optimum.
+
+Reusing one audit artifact across multiple obligations saves collection cost but also creates a proof common mode. If the artifact is wrong, every obligation uniquely dependent on it can be falsely discharged together.
+
+The meta-loop now treats audit evidence reuse like any other dependency topology:
+
+```text
+minimize evidence cost
+subject to
+coverage
++
+maximum proof-obligation blast per evidence artifact
+```
+
+A cost-only optimum can therefore be revoked even when its set-cover mathematics remains correct.
+
+
+## Re-anchor in real prospective evidence
+
+E063-E065 deliberately pull the loop back from synthetic trust topology into real longitudinal market evidence.
+
+E063 uses one company-year of BBD public KPIs to show that churn direction does not determine ARR direction during a product/portfolio transition.
+
+E064 prevents the subsequent explanation from leaking backward in time: evidence published with Q4 can explain Q4 but cannot enter a Q3 prospective warning.
+
+E065 then checks the structural warning contract against what was actually public at Q3. The public KPI set does not directly observe any of the five structural warning axes, so the correct result is ABSTAIN.
+
+This adds a research-allocation discipline to the meta-loop:
+
+```text
+develop structural mechanism
+→ stress its trust/evidence path
+→ return to real longitudinal evidence
+→ enforce decision-time availability
+→ measure feature-contract coverage
+→ ABSTAIN when the real dataset is insufficient
+```
+
+A stronger model is not automatically a more deployable model.
+
+
+## Partial public evidence portfolios
+
+E066 replaces binary public feature coverage with direct / partial / absent evidence. Partial evidence can constrain hypotheses and prioritize collection, but direct authority remains fail-closed until the feature contract is actually observed.
+
+
+## Direct evidence acquisition after ABSTAIN
+
+E067 connects E066 back to E045/E046. Once the real-company feature contract is incomplete, the controller searches evidence bundles rather than forcing an estimate.
+
+```text
+ABSTAIN
+→ require direct feature coverage
+→ filter authorization/privacy
+→ exact bundle search
+→ request minimum admitted portfolio
+```
+
+
+## Decision-sufficient acquisition
+
+E068 reuses decision-scoped observability at the multi-axis warning layer. A positive OR warning can terminate after one sufficient failing witness; a SAFE certificate cannot.
+
+The next meta target is no longer static portfolio size but **sequential observation order under uncertainty**.
+
+
+## Sequential evidence acquisition
+
+E069 converts static evidence portfolios into a stopping policy. The controller requests the action with minimum expected total decision cost, terminates on a certified warning, and continues only along safe observations.
+
+The next attack target is the prior itself: a strong policy under one failure distribution may be brittle under drift or correlation.
+
+
+## Prior-drift revocation
+
+E070 attacks the prior used by E069. The frozen observation order is evaluated on shifted failure distributions and loses authority when regret exceeds a declared threshold.
+
+The next target is to reduce dependence on one estimated prior by compiling a policy across a prior uncertainty set.
+
+
+## Minimax prior-set acquisition
+
+E071 converts prior drift from a revoke-only mechanism into a robust optimization problem. Instead of betting on one prior, every admitted prior scenario participates in the promotion gate.
+
+The robust order reduces worst-case regret but loses reference-prior efficiency. Both metrics stay visible.
+
+
+## Joint-dependence attack
+
+E072 attacks the independence assumption beneath E069–E071. Same marginals can hide different conditional structure, so policy certificates must declare the joint model or an ambiguity set rather than only per-axis probabilities.
+
+
+## Policy identity vs performance-bound authority
+
+E073 records a non-binary certification outcome. A new adversary can fail to dethrone the policy while still widening its certified regret bound.
+
+The meta-loop now renews policy identity and performance metrics independently.
+
+
+## Tight dependence ambiguity
+
+E074 moves from sampled joint adversaries to an analytic ambiguity set. Tight Fréchet bounds plus a constructive nested-event witness certify the worst case for every bundle order.
+
+When the robust objective ties, a declared secondary objective — here reference-prior efficiency — selects among equally robust policies.
+
+
+## Marginal interval ambiguity
+
+E075 expands E074 from exact marginals to intervals. The meta-loop records that the adversarial parameter direction depends on the objective: for collection cost, low failure rates can be worse than high ones because they prolong SAFE-path sensing.
+
+
+## Certificate meta-sensing
+
+E076 recursively applies active sensing to the verifier. A robustness target is declared first; calibration evidence is then selected only for its ability to tighten the certificate enough to cross that target at minimum cost.
+
+This converts uncertainty reduction from an open-ended research goal into a proof-obligation-scoped acquisition problem.
+
+
+## Calibration Pareto frontier
+
+E077 turns one-shot certificate meta-sensing into a reusable compiler. The non-dominated calibration frontier is computed once, and robustness targets are mapped to the cheapest sufficient point. Targets beyond the frontier fail closed.
+
+
+## Cross-company empirical re-anchor
+
+E078 deliberately returns the loop from synthetic ambiguity certificates to independent public SaaS evidence. The BBD sign counterexample is challenged on Allied Architects and survives: churn deterioration and ARR growth coexist, with product-level decomposition and downgrade semantics.
+
+The loop should continue alternating between structural abstraction and fresh empirical counterexamples rather than letting either plane become self-referential.

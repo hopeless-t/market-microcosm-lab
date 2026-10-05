@@ -2,7 +2,13 @@ name: CI
 
 on:
   push:
+    branches:
+      - main
   pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   reference:
@@ -399,6 +405,990 @@ jobs:
               "inflation_ratio": x["comparison"]["forge_probability_inflation_ratio"],
               "promoted": x["promoted_dependency_rule"],
           })
+          PY
+
+      - name: Run empirical evidence plane
+        run: python scripts/run_e024.py
+      - name: Validate E024 empirical evidence contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e024/empirical-evidence-report.json").read_text())
+          assert x["experiment"] == "E024"
+          assert x["promoted_evidence_rule"] == "empirical-evidence-plane-v1"
+          assert x["anchors"]["sartras_2022"]["absolute_rounding_delta"] <= 1
+          assert x["anchors"]["netflix_q2_2024_regions"]["arm_max_min_ratio"] > 2.0
+          assert not x["public_portfolio"]["missing_observables"]
+          assert "gamepass-partner-center-schema" not in x["public_portfolio"]["selected_source_ids"]
+          assert all(x["promotion_gate"].values())
+          print({
+              "portfolio": x["public_portfolio"],
+              "sartras_delta": x["anchors"]["sartras_2022"]["rounding_delta"],
+              "netflix_arm_ratio": x["anchors"]["netflix_q2_2024_regions"]["arm_max_min_ratio"],
+              "promoted": x["promoted_evidence_rule"],
+          })
+          PY
+
+      - name: Run regional empirical complexity experiment
+        run: python scripts/run_e025.py
+      - name: Validate E025 regional complexity contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e025/regional-complexity-report.json").read_text())
+          assert x["experiment"] == "E025"
+          assert x["promoted_regional_rule"] == "regional-arm-complexity-knee-k3-v1"
+          assert x["complexity_selection"]["minimum_group_count"] == 3
+          assert x["complexity_selection"]["frontier"]["2"]["worst_max_relative_error"] > 0.20
+          assert x["complexity_selection"]["frontier"]["3"]["worst_max_relative_error"] < 0.10
+          assert x["forward_holdout"]["max_relative_error"] < 0.10
+          assert all(x["promotion_gate"].values())
+          print({
+              "minimum_groups": x["complexity_selection"]["minimum_group_count"],
+              "partition": x["complexity_selection"]["selected"]["partition"],
+              "holdout_max_relative_error": x["forward_holdout"]["max_relative_error"],
+              "promoted": x["promoted_regional_rule"],
+          })
+          PY
+
+      - name: Run sampled-observation assumption audit
+        run: python scripts/run_e026.py
+      - name: Validate E026 sampling assumption contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e026/sampling-observation-report.json").read_text())
+          assert x["experiment"] == "E026"
+          assert x["promoted_observation_rule"] == "sampling-design-metadata-required-before-prevalence-inference-v1"
+          p95 = x["hypothetical_srs_reference"]["detection_thresholds"]["95"]
+          assert p95["minimum_carrier_count"] == 87
+          assert 0.95 <= p95["achieved_detection_probability"] < 0.96
+          assert x["adversarial_unknown_design"]["worst_case_detection_probability_lower_bound"] == 0.0
+          assert all(x["promotion_gate"].values())
+          print({
+              "srs_95": p95,
+              "adversarial": x["adversarial_unknown_design"],
+              "promoted": x["promoted_observation_rule"],
+          })
+          PY
+
+      - name: Run Game Pass metric-definition drift guard
+        run: python scripts/run_e027.py
+      - name: Validate E027 metric-definition contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e027/metric-definition-drift-report.json").read_text())
+          assert x["experiment"] == "E027"
+          assert x["promoted_metric_rule"] == "metric-definition-version-required-for-time-series-growth-v1"
+          assert x["growth_authority"]["authorized"] is False
+          assert x["growth_authority"]["same_definition"] is False
+          assert x["naive_headline_growth"]["authority"] == "illustrative_only"
+          assert abs(x["naive_headline_growth"]["naive_growth_fraction"] - 0.36) < 1e-12
+          assert all(x["promotion_gate"].values())
+          print({
+              "naive": x["naive_headline_growth"],
+              "authority": x["growth_authority"],
+              "promoted": x["promoted_metric_rule"],
+          })
+          PY
+
+      - name: Run Japanese negative-evidence corpus
+        run: python scripts/run_e028.py
+      - name: Validate E028 negative-evidence contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e028/japan-failure-corpus-report.json").read_text())
+          assert x["experiment"] == "E028"
+          assert x["promoted_failure_rule"] == "negative-evidence-corpus-required-for-market-calibration-v1"
+          assert x["survivorship_gap"]["new_mechanism_count"] == 10
+          assert len(x["exact_failure_portfolio"]["covered_mechanisms"]) == 10
+          assert all(x["promotion_gate"].values())
+          print({
+              "portfolio": x["exact_failure_portfolio"],
+              "gap": x["survivorship_gap"],
+              "promoted": x["promoted_failure_rule"],
+          })
+          PY
+
+      - name: Run strategic exit experiment
+        run: python scripts/run_e029.py
+      - name: Validate E029 strategic-exit contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e029/strategic-exit-report.json").read_text())
+          assert x["experiment"] == "E029"
+          assert x["promoted_exit_rule"] == "separate-strategic-exit-from-insolvency-v1"
+          assert x["finite_decision_grid"]["positive_cash_strategic_exit_count"] > 0
+          w = x["finite_decision_grid"]["fixed_witness"]
+          assert w["cash"] > 0
+          assert w["preferred_action"] == "strategic_exit"
+          assert all(x["promotion_gate"].values())
+          print({
+              "grid": x["finite_decision_grid"],
+              "promoted": x["promoted_exit_rule"],
+          })
+          PY
+
+      - name: Run churn semantics counterexample
+        run: python scripts/run_e030.py
+      - name: Validate E030 churn semantics contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e030/churn-semantics-report.json").read_text())
+          assert x["experiment"] == "E030"
+          assert x["promoted_churn_rule"] == "churn-must-be-layer-and-cause-typed-v1"
+          assert x["endpoint_change"]["churn_relative_change_pct"] > 100
+          assert x["endpoint_change"]["arr_change_pct"] > 0
+          assert x["endpoint_change"]["arpa_change_pct"] > 5
+          assert x["endpoint_change"]["contracts_change_pct"] < -5
+          assert all(x["promotion_gate"].values())
+          print({
+              "change": x["endpoint_change"],
+              "counterexample": x["sign_counterexample"],
+              "promoted": x["promoted_churn_rule"],
+          })
+          PY
+
+      - name: Run PMF proxy guard
+        run: python scripts/run_e031.py
+      - name: Validate E031 PMF proxy contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e031/pmf-proxy-guard-report.json").read_text())
+          assert x["experiment"] == "E031"
+          assert x["promoted_proxy_rule"] == "short-run-positive-signals-cannot-certify-pmf-v1"
+          assert x["finite_proxy_trap"]["proxy_reversal"] is True
+          assert len(x["postmortem_cases"]) == 3
+          assert all(x["promotion_gate"].values())
+          print({
+              "proxy_trap": x["finite_proxy_trap"],
+              "promoted": x["promoted_proxy_rule"],
+          })
+          PY
+
+      - name: Run cash-conversion lag experiment
+        run: python scripts/run_e032.py
+      - name: Validate E032 cash-conversion contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e032/cash-conversion-lag-report.json").read_text())
+          assert x["experiment"] == "E032"
+          assert x["promoted_liquidity_rule"] == "separate-booked-revenue-from-cash-arrival-v1"
+          assert x["warning_comparison"]["failure_month"] == 2
+          assert x["warning_comparison"]["minimum_initial_cash_for_survival"] == 160
+          assert all(x["promotion_gate"].values())
+          print({"warning": x["warning_comparison"], "promoted": x["promoted_liquidity_rule"]})
+          PY
+
+      - name: Run funnel proxy experiment
+        run: python scripts/run_e033.py
+      - name: Validate E033 funnel proxy contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e033/funnel-proxy-report.json").read_text())
+          assert x["experiment"] == "E033"
+          assert x["promoted_funnel_rule"] == "upstream-kpi-cannot-certify-downstream-value-v1"
+          assert x["finite_proxy_witness"]["ranking_reversal"] is True
+          assert all(x["promotion_gate"].values())
+          print({"observations": x["empirical_observations"], "promoted": x["promoted_funnel_rule"]})
+          PY
+
+      - name: Run human-delivery cost experiment
+        run: python scripts/run_e034.py
+      - name: Validate E034 human-delivery contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e034/human-delivery-cost-report.json").read_text())
+          assert x["experiment"] == "E034"
+          assert x["promoted_delivery_rule"] == "fully-loaded-human-delivery-cost-required-v1"
+          assert x["finite_cost_witness"]["ranking_reversal"] is True
+          assert all(x["promotion_gate"].values())
+          print({"witness": x["finite_cost_witness"], "promoted": x["promoted_delivery_rule"]})
+          PY
+
+      - name: Run early-warning tournament
+        run: python scripts/run_e035.py
+      - name: Validate E035 early-warning contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e035/early-warning-report.json").read_text())
+          assert x["experiment"] == "E035"
+          assert x["promoted_warning_rule"] == "negative-evidence-multi-signal-early-warning-v1"
+          multi = x["rule_scores"]["multi_signal"]
+          assert multi["accuracy"] == 1.0
+          assert multi["precision"] == 1.0
+          assert multi["recall"] == 1.0
+          assert x["rule_scores"]["revenue_only"]["confusion"]["false_negative"] >= 4
+          assert x["rule_scores"]["churn_only"]["confusion"]["false_positive"] >= 1
+          assert all(x["promotion_gate"].values())
+          print({"scores": x["rule_scores"], "promoted": x["promoted_warning_rule"]})
+          PY
+
+      - name: Run generated warning holdout
+        run: python scripts/run_e036.py
+      - name: Validate E036 warning holdout contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e036/warning-monte-carlo-report.json").read_text())
+          assert x["experiment"] == "E036"
+          assert x["promoted_warning_search_rule"] == "discovery-tuned-multi-signal-warning-with-holdout-v1"
+          multi = x["holdout_scores"]["multi_signal"]
+          assert multi["precision"] > 0.98
+          assert multi["recall"] > 0.98
+          assert multi["f1"] > 0.98
+          assert x["holdout_scores"]["revenue_only"]["recall"] < 0.25
+          assert x["holdout_scores"]["churn_only"]["recall"] < 0.30
+          assert all(x["promotion_gate"].values())
+          print({"selection": x["selection"], "holdout": x["holdout_scores"], "promoted": x["promoted_warning_search_rule"]})
+          PY
+
+      - name: Run warning structural-drift adversary
+        run: python scripts/run_e037.py
+      - name: Validate E037 warning drift contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e037/warning-structural-drift-report.json").read_text())
+          assert x["experiment"] == "E037"
+          assert x["legacy_authority_after_shift"] == "REVOKED"
+          assert x["legacy_e036_score"]["recall"] < 0.98
+          assert x["interaction_aware_score"]["recall"] > 0.99
+          assert x["interaction_aware_score"]["precision"] > 0.99
+          assert x["promoted_repair_rule"] == "interaction-aware-warning-generation-v2"
+          assert all(x["promotion_gate"].values())
+          print({"legacy": x["legacy_e036_score"], "repaired": x["interaction_aware_score"], "promoted": x["promoted_repair_rule"]})
+          PY
+
+      - name: Run real longitudinal component holdout
+        run: python scripts/run_e038.py
+      - name: Validate E038 real longitudinal contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e038/real-longitudinal-holdout-report.json").read_text())
+          assert x["experiment"] == "E038"
+          standard = x["component_holdouts"]["smart_living_standard"]
+          assert standard["relative_error"] < 0.01
+          assert x["component_holdouts"]["smart_living_light"]["relative_error"] > 0.20
+          assert x["promoted_longitudinal_rule"] == "event-annotated-component-longitudinal-holdout-v1"
+          assert all(x["promotion_gate"].values())
+          print({"standard": standard, "shock": x["concentration_shock_context"], "promoted": x["promoted_longitudinal_rule"]})
+          PY
+
+      - name: Run rolling KPI observation-lag experiment
+        run: python scripts/run_e039.py
+      - name: Validate E039 rolling KPI contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e039/rolling-metric-lag-report.json").read_text())
+          assert x["experiment"] == "E039"
+          m3 = x["abrupt_end_reference"]["three_month_post_shock"]
+          assert m3["legacy_signal_fraction"] == 0.5
+          assert m3["reported_arr"] == 60.0
+          assert x["promoted_observation_rule"] == "rolling-window-metric-lag-must-be-modeled-v1"
+          assert all(x["promotion_gate"].values())
+          print({"month3": m3, "promoted": x["promoted_observation_rule"]})
+          PY
+
+      - name: Run rolling KPI non-identifiability experiment
+        run: python scripts/run_e040.py
+      - name: Validate E040 identifiability contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e040/rolling-metric-nonidentifiability-report.json").read_text())
+          assert x["experiment"] == "E040"
+          a = x["exact_ambiguity"]
+          assert a["path_count"] == 338
+          assert a["possible_current_mrr_values"] == [0, 1, 2, 3, 4, 5]
+          assert x["promoted_identifiability_rule"] == "rolling-kpi-current-state-nonidentifiable-without-path-state-v1"
+          assert all(x["promotion_gate"].values())
+          print({"ambiguity": a, "promoted": x["promoted_identifiability_rule"]})
+          PY
+
+      - name: Run minimal observability checkpoint
+        run: python scripts/run_e041.py
+      - name: Validate E041 checkpoint contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e041/minimal-observability-checkpoint-report.json").read_text())
+          assert x["experiment"] == "E041"
+          r = x["reference"]
+          assert r["unresolved_pairs_without_boundary"] == [[8, 0], [9, 1], [10, 2]]
+          assert r["reconstructed_newest_mrr_with_boundary"] == 2
+          assert x["promoted_checkpoint_rule"] == "rolling-window-boundary-checkpoint-restores-observability-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": r, "promoted": x["promoted_checkpoint_rule"]})
+          PY
+
+      - name: Run reporting-resolution self-attack
+        run: python scripts/run_e042.py
+      - name: Validate E042 reporting-resolution contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e042/reporting-resolution-report.json").read_text())
+          assert x["experiment"] == "E042"
+          assert x["legacy_e038_sub1pct_precision_authority"] == "REVOKED"
+          assert x["e038_reassessment"]["intervals_overlap"] is True
+          assert x["promoted_resolution_rule"] == "empirical-claim-precision-cannot-exceed-reporting-resolution-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reassessment": x["e038_reassessment"], "promoted": x["promoted_resolution_rule"]})
+          PY
+
+      - name: Run decision-sufficient observability
+        run: python scripts/run_e043.py
+      - name: Validate E043 decision-observability contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e043/decision-sufficient-observability-report.json").read_text())
+          assert x["experiment"] == "E043"
+          r = x["reference"]
+          assert r["newest_mrr_interval_with_exact_boundary"] == [1.5, 2.5]
+          assert r["predicates"]["active_gt_0"]["exact_boundary"] == "CERTIFIED_TRUE"
+          assert r["predicates"]["at_least_2"]["exact_boundary"] == "AMBIGUOUS"
+          assert x["promoted_observability_rule"] == "observability-authority-is-decision-predicate-scoped-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": r, "promoted": x["promoted_observability_rule"]})
+          PY
+
+      - name: Run robust abstention experiment
+        run: python scripts/run_e044.py
+      - name: Validate E044 abstention contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e044/robust-abstention-report.json").read_text())
+          assert x["experiment"] == "E044"
+          assert x["reference"]["ambiguous_robust_result"] == "ABSTAIN"
+          assert x["reference"]["midpoint_forced_decision_is_unsound"] is True
+          assert x["promoted_decision_rule"] == "boundary-straddling-uncertainty-must-abstain-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": x["reference"], "promoted": x["promoted_decision_rule"]})
+          PY
+
+      - name: Run predicate-scoped active sensing
+        run: python scripts/run_e045.py
+      - name: Validate E045 active-sensing contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e045/active-sensing-report.json").read_text())
+          assert x["experiment"] == "E045"
+          assert x["candidate_search"]["selected"]["name"] == "predicate_native_ledger_check"
+          assert x["candidate_search"]["selected"]["cost"] == 2
+          assert x["promoted_active_sensing_rule"] == "request-cheapest-predicate-sufficient-observation-v1"
+          assert all(x["promotion_gate"].values())
+          print({"search": x["candidate_search"], "promoted": x["promoted_active_sensing_rule"]})
+          PY
+
+      - name: Run authority-constrained active sensing
+        run: python scripts/run_e046.py
+      - name: Validate E046 sensing-authority contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e046/authority-constrained-sensing-report.json").read_text())
+          assert x["experiment"] == "E046"
+          assert x["candidate_search"]["naive_cost_only_selection"]["authorized"] is False
+          assert x["candidate_search"]["authorized_selection"]["name"] == "signed_predicate_attestation"
+          assert x["promoted_authority_rule"] == "active-sensing-optimizes-only-within-authorized-evidence-set-v1"
+          assert all(x["promotion_gate"].values())
+          print({"search": x["candidate_search"], "promoted": x["promoted_authority_rule"]})
+          PY
+
+      - name: Run temporal evidence admission
+        run: python scripts/run_e047.py
+      - name: Validate E047 temporal-evidence contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e047/temporal-evidence-report.json").read_text())
+          assert x["experiment"] == "E047"
+          assert x["candidate_search"]["authority_only_selection"]["admissible"] is False
+          assert x["candidate_search"]["temporal_generation_selection"]["name"] == "fresh_current_generation_attestation"
+          assert x["promoted_temporal_rule"] == "active-sensing-evidence-must-be-fresh-and-generation-aligned-v1"
+          assert all(x["promotion_gate"].values())
+          print({"search": x["candidate_search"], "promoted": x["promoted_temporal_rule"]})
+          PY
+
+      - name: Run predicate evidence quorum
+        run: python scripts/run_e048.py
+      - name: Validate E048 evidence-quorum contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e048/evidence-quorum-report.json").read_text())
+          assert x["experiment"] == "E048"
+          assert x["single_witness_reference"]["single_witness_disagrees_with_quorum"] is True
+          assert x["single_witness_reference"]["quorum_result"]["accepted_value"] is True
+          assert x["conflict_reference"]["accepted"] is False
+          assert x["promoted_quorum_rule"] == "predicate-attestation-requires-independent-witness-quorum-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": x["single_witness_reference"], "conflict": x["conflict_reference"], "promoted": x["promoted_quorum_rule"]})
+          PY
+
+      - name: Run upstream evidence-source diversity adversary
+        run: python scripts/run_e049.py
+      - name: Validate E049 source-diversity contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e049/upstream-source-diversity-report.json").read_text())
+          assert x["experiment"] == "E049"
+          hidden = x["hidden_common_source_reference"]
+          assert hidden["domain_only_quorum"]["accepted_value"] is False
+          assert hidden["source_aware_quorum"]["accepted"] is False
+          assert x["diversified_repair_reference"]["accepted_value"] is True
+          assert x["promoted_source_rule"] == "predicate-quorum-must-diversify-upstream-evidence-sources-v1"
+          assert all(x["promotion_gate"].values())
+          print({"hidden": hidden, "repair": x["diversified_repair_reference"], "promoted": x["promoted_source_rule"]})
+          PY
+
+      - name: Run upstream evidence-lineage root adversary
+        run: python scripts/run_e050.py
+      - name: Validate E050 lineage-root contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e050/evidence-lineage-report.json").read_text())
+          assert x["experiment"] == "E050"
+          hidden = x["hidden_root_reference"]
+          assert hidden["source_aware_quorum"]["accepted_value"] is False
+          assert hidden["root_aware_quorum"]["accepted"] is False
+          assert x["lineage_diversified_repair"]["accepted_value"] is True
+          assert x["promoted_lineage_rule"] == "predicate-quorum-must-audit-upstream-lineage-roots-v1"
+          assert all(x["promotion_gate"].values())
+          print({"hidden": hidden, "repair": x["lineage_diversified_repair"], "promoted": x["promoted_lineage_rule"]})
+          PY
+
+      - name: Run active lineage discovery
+        run: python scripts/run_e051.py
+      - name: Validate E051 active-lineage contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e051/active-lineage-discovery-report.json").read_text())
+          assert x["experiment"] == "E051"
+          assert x["reference"]["discovered_root_ids"] == ["master-warehouse"]
+          assert x["promoted_discovery_rule"] == "hidden-lineage-roots-require-active-intervention-discovery-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": x["reference"], "promoted": x["promoted_discovery_rule"]})
+          PY
+
+      - name: Run minimum lineage-probe portfolio search
+        run: python scripts/run_e052.py
+      - name: Validate E052 probe-portfolio contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e052/lineage-probe-portfolio-report.json").read_text())
+          assert x["experiment"] == "E052"
+          s = x["reference"]["selected"]
+          assert s["probe_ids"] == ["ab", "ac", "bc"]
+          assert s["total_cost"] == 4
+          assert x["promoted_probe_rule"] == "lineage-discovery-probes-use-exact-minimum-identifying-portfolio-v1"
+          assert all(x["promotion_gate"].values())
+          print({"selected": s, "promoted": x["promoted_probe_rule"]})
+          PY
+
+      - name: Run noisy lineage-probe adversary
+        run: python scripts/run_e053.py
+      - name: Validate E053 noisy-probe contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e053/noisy-lineage-probe-report.json").read_text())
+          assert x["experiment"] == "E053"
+          assert x["e052_noise_counterexample"]["single_error_causes_exact_alias"] is True
+          assert x["one_error_tolerant_search"]["selected"]["minimum_hamming_distance"] == 3
+          assert x["exhaustive_single_error_decode"]["all_correct"] is True
+          assert x["promoted_noise_rule"] == "lineage-probe-error-tolerance-requires-distance-three-signatures-v1"
+          assert all(x["promotion_gate"].values())
+          print({"robust": x["one_error_tolerant_search"], "promoted": x["promoted_noise_rule"]})
+          PY
+
+      - name: Run probe robustness compiler
+        run: python scripts/run_e054.py
+      - name: Validate E054 robustness-compiler contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e054/probe-robustness-compiler-report.json").read_text())
+          assert x["experiment"] == "E054"
+          assert x["compiled_error_budgets"]["0"]["selected"]["total_cost"] == 4
+          assert x["compiled_error_budgets"]["1"]["selected"]["total_cost"] == 12
+          assert x["compiled_error_budgets"]["2"]["status"] == "UNSAT"
+          assert x["promoted_compiler_rule"] == "lineage-probe-authority-compiled-from-declared-error-budget-v1"
+          assert all(x["promotion_gate"].values())
+          print({"compiled": x["compiled_error_budgets"], "promoted": x["promoted_compiler_rule"]})
+          PY
+
+      - name: Run redundant measurement synthesis
+        run: python scripts/run_e055.py
+      - name: Validate E055 redundant-sensing contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e055/redundant-probe-synthesis-report.json").read_text())
+          assert x["experiment"] == "E055"
+          s = x["synthesis"]["selected"]
+          assert s["channel_count"] == 10
+          assert s["total_cost"] == 20
+          assert s["minimum_hamming_distance"] == 5
+          assert x["exhaustive_decode"]["case_count"] == 280
+          assert x["exhaustive_decode"]["all_correct"] is True
+          assert x["promoted_redundancy_rule"] == "unsat-probe-robustness-may-expand-independent-measurement-channels-v1"
+          assert all(x["promotion_gate"].values())
+          print({"synthesis": x["synthesis"], "decode": x["exhaustive_decode"], "promoted": x["promoted_redundancy_rule"]})
+          PY
+
+      - name: Run measurement failure-domain adversary
+        run: python scripts/run_e056.py
+      - name: Validate E056 measurement-domain contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e056/measurement-failure-domain-report.json").read_text())
+          assert x["experiment"] == "E056"
+          bad = x["bad_common_mode_counterexample"]
+          good = x["diversified_root_fault_check"]
+          assert bad["flipped_channel_count"] == 5
+          assert bad["misdecoded"] is True
+          assert good["root_count"] == 5
+          assert good["all_correct"] is True
+          assert x["promoted_domain_rule"] == "redundant-probe-channels-must-diversify-measurement-failure-roots-v1"
+          assert all(x["promotion_gate"].values())
+          print({"bad": bad, "good": good, "promoted": x["promoted_domain_rule"]})
+          PY
+
+      - name: Run recursive measurement-lineage discovery
+        run: python scripts/run_e057.py
+      - name: Validate E057 recursive-lineage contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e057/recursive-measurement-lineage-report.json").read_text())
+          assert x["experiment"] == "E057"
+          assert x["e056_measurement_domain_authority_after_discovery"] == "REVOKED"
+          d = x["reference"]["discoveries"][0]
+          assert d["affected_root_count"] == 3
+          assert d["affected_channel_count"] == 6
+          assert x["promoted_recursive_rule"] == "measurement-root-independence-requires-recursive-lineage-discovery-v1"
+          assert all(x["promotion_gate"].values())
+          print({"reference": x["reference"], "promoted": x["promoted_recursive_rule"]})
+          PY
+
+      - name: Run minimum-cost recursive-lineage repair
+        run: python scripts/run_e058.py
+      - name: Validate E058 recursive-repair contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e058/recursive-lineage-repair-report.json").read_text())
+          assert x["experiment"] == "E058"
+          s = x["synthesis"]["selected"]
+          assert s["migrated_roots"] == ["root-1", "root-2"]
+          assert s["total_cost"] == 5
+          assert x["single_provider_fault_check"]["all_within_budget"] is True
+          assert x["promoted_repair_rule"] == "recursive-lineage-common-mode-repair-by-minimum-cost-repartition-v1"
+          assert all(x["promotion_gate"].values())
+          print({"synthesis": x["synthesis"], "promoted": x["promoted_repair_rule"]})
+          PY
+
+      - name: Run dependency-depth stopping compiler
+        run: python scripts/run_e059.py
+      - name: Validate E059 dependency-depth contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e059/dependency-depth-stopping-report.json").read_text())
+          assert x["experiment"] == "E059"
+          s = x["compiled_depth"]["selected"]
+          assert s["depth"] == 2
+          assert s["cumulative_cost"] == 5
+          assert s["maximum_unverified_blast_channels"] == 2
+          assert x["promoted_stopping_rule"] == "recursive-lineage-audit-stops-at-minimum-depth-meeting-blast-budget-v1"
+          assert all(x["promotion_gate"].values())
+          print({"compiled": x["compiled_depth"], "promoted": x["promoted_stopping_rule"]})
+          PY
+
+      - name: Run heterogeneous dependency-audit allocation
+        run: python scripts/run_e060.py
+      - name: Validate E060 heterogeneous-audit contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e060/heterogeneous-audit-allocation-report.json").read_text())
+          assert x["experiment"] == "E060"
+          a = x["allocation"]
+          assert a["selected"]["total_cost"] == 8
+          assert a["uniform_deep_cost"] == 16
+          assert a["cost_savings_vs_uniform_deep"] == 8
+          assert x["promoted_allocation_rule"] == "recursive-lineage-audit-depth-is-allocated-per-proof-obligation-v1"
+          assert all(x["promotion_gate"].values())
+          print({"allocation": a, "promoted": x["promoted_allocation_rule"]})
+          PY
+
+      - name: Run coupled dependency-audit bundle cover
+        run: python scripts/run_e061.py
+      - name: Validate E061 coupled-audit contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e061/coupled-audit-bundle-report.json").read_text())
+          assert x["experiment"] == "E061"
+          s = x["bundle_cover"]["selected"]
+          assert s["action_ids"] == ["control-plane-bundle", "infra-resilience-bundle"]
+          assert s["total_cost"] == 6
+          assert x["bundle_cover"]["savings_vs_e060"] == 2
+          assert x["promoted_bundle_rule"] == "dependency-audit-allocation-must-model-shared-evidence-bundles-v1"
+          assert all(x["promotion_gate"].values())
+          print({"cover": x["bundle_cover"], "promoted": x["promoted_bundle_rule"]})
+          PY
+
+      - name: Run audit-evidence failure-domain adversary
+        run: python scripts/run_e062.py
+      - name: Validate E062 audit-evidence failure-domain contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e062/audit-evidence-failure-domain-report.json").read_text())
+          assert x["experiment"] == "E062"
+          assert x["e061_cost_authority_after_evidence_failure_model"] == "REVOKED"
+          e061 = x["robust_cover"]["e061_bundle_plan"]
+          selected = x["robust_cover"]["selected"]
+          assert e061["evidence_failure_blast"]["maximum_obligation_blast"] == 2
+          assert selected["total_cost"] == 8
+          assert selected["evidence_failure_blast"]["maximum_obligation_blast"] == 1
+          assert x["promoted_failure_domain_rule"] == "audit-evidence-reuse-must-model-proof-obligation-failure-blast-v1"
+          assert all(x["promotion_gate"].values())
+          print({"e061": e061, "selected": selected, "promoted": x["promoted_failure_domain_rule"]})
+          PY
+
+      - name: Run real portfolio-transition sign experiment
+        run: python scripts/run_e063.py
+      - name: Validate E063 portfolio-transition contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e063/real-portfolio-transition-report.json").read_text())
+          assert x["experiment"] == "E063"
+          assert x["naive_churn_direction_predictor"]["correct_count"] == 1
+          assert x["naive_churn_direction_predictor"]["transition_count"] == 3
+          q4 = x["transitions"][-1]
+          assert q4["churn_direction"] == "down"
+          assert q4["arr_direction"] == "down"
+          assert q4["arpa_direction"] == "down"
+          assert x["promoted_transition_rule"] == "portfolio-transition-kpi-direction-requires-event-semantics-v1"
+          assert all(x["promotion_gate"].values())
+          print({"transitions": x["transitions"], "promoted": x["promoted_transition_rule"]})
+          PY
+
+      - name: Run prospective evidence-cutoff guard
+        run: python scripts/run_e064.py
+      - name: Validate E064 prospective-cutoff contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e064/prospective-evidence-cutoff-report.json").read_text())
+          assert x["experiment"] == "E064"
+          assert x["feature_sets"]["prospective_all_available"] is True
+          assert x["feature_sets"]["retrospective_contains_future_leakage"] is True
+          assert x["feature_sets"]["leaked_feature_ids"] == [
+              "q4_launch_delay_annotation",
+              "q4_withdrawal_prep_annotation",
+          ]
+          assert x["promoted_cutoff_rule"] == "prospective-warning-evidence-must-exist-before-decision-cutoff-v1"
+          assert all(x["promotion_gate"].values())
+          print({"availability": x["availability"], "promoted": x["promoted_cutoff_rule"]})
+          PY
+
+      - name: Run public warning feature-sufficiency guard
+        run: python scripts/run_e065.py
+      - name: Validate E065 public-warning sufficiency contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path("artifacts/e065/public-warning-sufficiency-report.json").read_text())
+          assert x["experiment"] == "E065"
+          assert x["coverage"]["coverage_fraction"] == 0.0
+          assert len(x["coverage"]["missing_axes"]) == 5
+          assert x["prospective_warning"]["status"] == "ABSTAIN"
+          assert x["prospective_warning"]["imputation_permitted"] is False
+          assert x["promoted_sufficiency_rule"] == "structural-warning-must-abstain-when-public-feature-contract-is-incomplete-v1"
+          assert all(x["promotion_gate"].values())
+          print({"coverage": x["coverage"], "decision": x["prospective_warning"], "promoted": x["promoted_sufficiency_rule"]})
+          PY
+
+      - name: Run partial public-evidence portfolio
+        run: python scripts/run_e066.py
+      - name: Validate E066 public-evidence granularity contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e066/partial-public-evidence-report.json").read_text())
+          s=x["portfolio"]["selected"]
+          assert x["experiment"]=="E066"
+          assert s["artifact_ids"]==["q3-financial-summary","q3-market-environment"]
+          assert s["total_cost"]==2
+          assert (s["coverage"]["direct_count"],s["coverage"]["partial_count"],s["coverage"]["absent_count"])==(0,2,3)
+          assert x["prospective_warning"]["status"]=="ABSTAIN"
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run direct-evidence acquisition portfolio
+        run: python scripts/run_e067.py
+      - name: Validate E067 direct-evidence acquisition contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e067/direct-evidence-acquisition-report.json").read_text())
+          n=x["naive_cost_only"]["selected"]
+          a=x["authorized_search"]["selected"]
+          assert "raw-board-minutes" in n["acquisition_ids"]
+          assert n["total_cost"]==10
+          assert a["acquisition_ids"]==["finance-pack","gtm-pack","signed-strategy-gap-attestation"]
+          assert a["total_cost"]==14
+          assert len(a["covered_axes"])==5
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run decision-sufficient acquisition bound
+        run: python scripts/run_e068.py
+      - name: Validate E068 decision-sufficient acquisition contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e068/decision-sufficient-acquisition-report.json").read_text())
+          assert x["world_results"]["downstream_funnel_success-only-bad"]["selected"]["total_cost"]==2
+          assert x["world_results"]["all-safe"]["selected"]["total_cost"]==14
+          assert x["world_results"]["all-safe"]["selected"]["decision"]=="CERTIFIED_SAFE"
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run sequential evidence acquisition
+        run: python scripts/run_e069.py
+      - name: Validate E069 sequential-acquisition contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e069/sequential-evidence-acquisition-report.json").read_text())
+          assert x["optimal_policy"]["initial_action"]=="gtm-pack"
+          assert round(x["optimal_policy"]["initial_expected_cost"],4)==9.0225
+          assert x["optimal_policy"]["safe_path"]==["gtm-pack","signed-strategy-gap-attestation","finance-pack"]
+          assert round(x["baselines"]["cost_only_bundle_order_expected_cost"],5)==9.32385
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run prior-drift acquisition adversary
+        run: python scripts/run_e070.py
+      - name: Validate E070 prior-drift revocation contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e070/prior-drift-acquisition-report.json").read_text())
+          assert x["e069_policy_authority_under_shift"]=="REVOKED"
+          assert x["scenarios"]["finance-shift"]["reoptimized"]["initial_action"]=="finance-pack"
+          assert x["scenarios"]["finance-shift"]["regret"]>3.7
+          assert x["scenarios"]["strategy-shift"]["reoptimized"]["initial_action"]=="signed-strategy-gap-attestation"
+          assert x["scenarios"]["strategy-shift"]["regret"]>1.5
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run minimax prior-set acquisition
+        run: python scripts/run_e071.py
+      - name: Validate E071 minimax prior-set contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e071/robust-prior-acquisition-report.json").read_text())
+          s=x["minimax_search"]["selected"]
+          assert s["order"]==["signed-strategy-gap-attestation","finance-pack","gtm-pack"]
+          assert round(s["worst_case_expected_cost"],3)==11.315
+          assert round(s["worst_case_regret"],4)==2.2925
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run joint-dependence acquisition adversary
+        run: python scripts/run_e072.py
+      - name: Validate E072 joint-dependence contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e072/joint-dependence-acquisition-report.json").read_text())
+          assert x["marginals"]=={
+              "cash_collection_gap":0.05,
+              "fully_loaded_delivery_margin":0.10,
+              "market_headroom":0.30,
+              "downstream_funnel_success":0.18,
+              "strategic_exit_value_gap":0.25,
+          }
+          assert x["joint_aware_optimum"]["safe_path"]==["gtm-pack","finance-pack","signed-strategy-gap-attestation"]
+          assert round(x["joint_aware_optimum"]["expected_cost"],2)==8.45
+          assert round(x["regret"],2)==0.75
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run joint-extended robustness search
+        run: python scripts/run_e073.py
+      - name: Validate E073 robustness-certificate split
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e073/joint-extended-robustness-report.json").read_text())
+          s=x["extended_search"]["selected"]
+          assert s["order"]==["signed-strategy-gap-attestation","finance-pack","gtm-pack"]
+          assert round(s["worst_case_expected_cost"],3)==11.315
+          assert round(s["worst_case_regret"],2)==2.70
+          assert x["e071_order_authority"]=="RETAINED"
+          assert x["e071_regret_bound_authority"]=="REISSUED"
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run dependence-ambiguity minimax
+        run: python scripts/run_e074.py
+      - name: Validate E074 dependence-ambiguity contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e074/dependence-ambiguity-acquisition-report.json").read_text())
+          s=x["search"]["selected"]
+          assert x["search"]["minimax_tie_count"]==2
+          assert s["order"]==["gtm-pack","signed-strategy-gap-attestation","finance-pack"]
+          assert round(s["worst_case_expected_cost"],3)==11.0
+          assert round(s["reference_independent_expected_cost"],4)==9.0225
+          assert all(row["bound_is_tight"] for row in x["search"]["rows"])
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run interval-dependence ambiguity
+        run: python scripts/run_e075.py
+      - name: Validate E075 interval-dependence contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e075/interval-dependence-ambiguity-report.json").read_text())
+          s=x["search"]["selected"]
+          assert x["search"]["minimax_tie_count"]==2
+          assert s["order"]==["gtm-pack","signed-strategy-gap-attestation","finance-pack"]
+          assert round(s["worst_case_expected_cost"],3)==12.0
+          assert all(row["bound_is_tight"] for row in x["search"]["rows"])
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run certificate meta-sensing
+        run: python scripts/run_e076.py
+      - name: Validate E076 certificate-meta-sensing contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e076/certificate-meta-sensing-report.json").read_text())
+          s=x["calibration_search"]["selected"]
+          assert s["calibration_ids"]==["gtm-incidence-study"]
+          assert s["calibration_cost"]==2
+          assert round(s["policy"]["worst_case_expected_cost"],3)==11.2
+          assert s["meets_target"] is True
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run calibration Pareto frontier
+        run: python scripts/run_e077.py
+      - name: Validate E077 calibration-frontier contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e077/calibration-frontier-report.json").read_text())
+          assert len(x["frontier"])==3
+          assert x["compiled_targets"]["11.9"]["selected"]["calibration_ids"]==["strategy-incidence-study"]
+          assert x["compiled_targets"]["11.3"]["selected"]["calibration_ids"]==["gtm-incidence-study"]
+          assert x["compiled_targets"]["11.1"]["status"]=="UNSAT"
+          assert all(x["promotion_gate"].values())
+          PY
+
+      - name: Run cross-company sign replication
+        run: python scripts/run_e078.py
+      - name: Validate E078 cross-company replication contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/e078/cross-company-sign-replication-report.json").read_text())
+          q4=x["allied_transitions"][-1]
+          d=x["q3_q4_product_decomposition"]
+          assert q4["arr_delta_jpy_millions"]==70
+          assert round(q4["churn_delta_percentage_points"],1)==1.5
+          assert q4["arr_direction"]=="up" and q4["churn_direction"]=="up"
+          assert d["components_jpy_millions"]=={"letro":65,"letro_studio":16,"monipla_fan_blog":-11}
+          assert d["reconciles"] is True
+          assert all(x["promotion_gate"].values())
           PY
 
       - name: Verify generated research dashboard

@@ -275,3 +275,490 @@ The conclusion is structural: domain labels are not evidence of causal independe
 Model heterogeneous and overlapping dependency graphs, then add active dependency discovery and common-mode fault injection instead of relying only on declared topology.
 
 See the [Roadmap on GitHub](https://github.com/hopeless-t/market-microcosm-lab/blob/main/ROADMAP.md).
+
+
+## E024 — Empirical evidence plane
+
+**Question:** can public real-world observations constrain future model calibration without allowing restricted, schema-only, stale, or period-misaligned evidence to gain silent authority?
+
+The experiment registers SARTRAS, Netflix, MovieLens, Game Pass Partner Center, and Spotify evidence classes; exhaustively selects the smallest eligible public source portfolio for the initial target observables; reconciles the SARTRAS FY2022 published accounting; and checks Netflix regional ARM dispersion.
+
+The promotion rule is an evidence-admission rule. It does not promote an empirical causal model.
+
+[Read the E024 ODD](ODD_E024.md)
+
+
+## E025 — Regional empirical complexity knee
+
+**Question:** what is the smallest regional ARM model family that preserves the admitted Netflix aggregate structure to a 10% maximum-relative-error tolerance?
+
+E025 enumerates every partition of UCAN, EMEA, LATAM, and APAC. Four discovery quarters select model complexity and topology; Q2 2024 is held out. One and two groups remain too coarse, while three groups cross the fidelity knee with `{UCAN}`, `{EMEA}`, and `{LATAM, APAC}`.
+
+A stronger one-quarter-forward test freezes the Q1 2024 centroids and remains below 10% maximum relative error on Q2 2024.
+
+The result is structural compression, not a causal segmentation or a claim that ARM equals posted subscription price.
+
+[Read the E025 ODD](ODD_E025.md)
+
+
+## E026 — Sampled-observation assumption audit
+
+**Question:** what can the published SARTRAS sample count establish about detection and prevalence when the institution-selection mechanism is not yet identified?
+
+A hypothetical simple-random-sampling reference gives an exact rarity curve: with 35,130 applications and a 1,200-institution sample, 87 carrier institutions cross 95% one-or-more detection.
+
+The meta-loop then removes the unverified random-selection assumption. The same nominal sample size can avoid all 87 carriers under an unconstrained selection mechanism, so sample count alone has a 0% worst-case detection lower bound.
+
+The SRS curve remains a mathematical reference, but the promoted empirical rule requires sampling-design metadata before prevalence or observation-noise inference.
+
+[Read the E026 ODD](ODD_E026.md)
+
+
+## E027 — Game Pass metric-definition drift guard
+
+**Question:** can official Game Pass membership headlines from 2022 and 2024 authorize a precise growth calculation across the Xbox Live Gold → Game Pass Core transition?
+
+No. The 2022 figure is a lower bound (>25M subscribers), the 2024 figure is a rounded 34M member headline, and a membership-definition event lies between them.
+
+E027 deliberately computes the tempting 36% ratio but marks it illustrative-only. The promoted estimator rule requires compatible metric-definition generations and value semantics before time-series growth gains authority.
+
+[Read the E027 ODD](ODD_E027.md)
+
+
+## E028 — Japanese negative-evidence corpus
+
+**Question:** which failure mechanisms become visible when Japanese withdrawal, sunset, pivot, pruning, and bankruptcy evidence is admitted alongside surviving subscription systems?
+
+The first corpus includes BBD Initiative, RickCloud, Leaner, SalesNow, and TDB industry context. It adds ten declared failure mechanisms beyond the current synthetic price/cost/end-user-churn stress core and promotes a rule requiring negative evidence for empirical market calibration.
+
+[Read the E028 ODD](ODD_E028.md)
+
+## E029 — Strategic exit before insolvency
+
+**Question:** does an insolvency-only exit rule omit rational withdrawals by still-operating actors?
+
+Yes. The negative-evidence corpus contains multiple strategic exits, and an exact finite reference grid contains positive-cash states where orderly exit/redeployment dominates continued operation.
+
+[Read the E029 ODD](ODD_E029.md)
+
+## E030 — Churn semantics counterexample
+
+**Question:** can higher reported SaaS churn coexist with higher ARR and ARPA?
+
+BBD's published pruning period provides exactly that sign pattern. E030 therefore prevents B2B MRR churn from being silently mapped into end-user demand churn and requires both layer and cause identity.
+
+[Read the E030 ODD](ODD_E030.md)
+
+
+## E031 — Short-run signal / PMF proxy guard
+
+**Question:** can revenue, high ACV, enthusiastic users, or current sales certify PMF and long-run viability on their own?
+
+Srush, Leaner, and SalesNow provide three distinct counterexamples. E031 adds a finite ranking-reversal witness and promotes a rule requiring separate evidence for repeatability, customer success, product-vs-human delivery burden, scalability, and market headroom.
+
+[Read the E031 ODD](ODD_E031.md)
+
+
+## E032 — Booked revenue / cash-conversion lag
+
+**Question:** can positive booked margin and healthy demand coexist with liquidity failure before receivables arrive?
+
+Yes. A finite witness fails in month two despite positive booked margin; exact search finds the survival buffer and a lag-aware warning catches the risk at time zero.
+
+[Read the E032 ODD](ODD_E032.md)
+
+## E033 — Upstream KPI / downstream value attenuation
+
+**Question:** can upstream funnel target achievement certify downstream value?
+
+Leaner examples and a finite ranking reversal say no. Lead/appointment volume, qualification, orders, activation, and customer success become separate empirical stages.
+
+[Read the E033 ODD](ODD_E033.md)
+
+## E034 — Hidden human-delivery cost
+
+**Question:** can high ACV and apparent software gross margin hide non-scalable human delivery?
+
+Yes. The fixed witness reverses product ranking after implementation/CS/service labor is included.
+
+[Read the E034 ODD](ODD_E034.md)
+
+## E035 — Negative-evidence early-warning tournament
+
+**Question:** do revenue-only or churn-only health proxies survive the failure mechanisms discovered in E028-E034?
+
+No. They miss or false-alarm reference archetypes. A five-axis multi-signal rule exactly matches the declared finite oracle, earning promotion only as a reference warning representation.
+
+[Read the E035 ODD](ODD_E035.md)
+
+
+## E036 — Discovery-tuned warning with generated holdout
+
+**Question:** does E035's multi-signal warning survive broad generated scenarios when thresholds are chosen on discovery only?
+
+E036 searches 324 threshold candidates over 500 discovery states, freezes the winner, and evaluates 500 states from an untouched seed. Holdout precision, recall, and F1 remain above 98%; scalar revenue/churn baselines retain severe blind spots.
+
+This is within-generator generalization, not real-world predictive certification.
+
+[Read the E036 ODD](ODD_E036.md)
+
+
+## E037 — Structural-drift revocation
+
+**Question:** does E036 remain authoritative when the failure law itself changes rather than only the random seed?
+
+No. An interaction-only market-headroom × downstream-success failure drops the frozen E036 warning below its prior recall authority threshold. The old certificate is revoked, and an interaction-aware v2 candidate restores greater than 99% precision and recall on the shifted generation.
+
+[Read the E037 ODD](ODD_E037.md)
+
+
+## E038 — Real longitudinal component holdout
+
+**Question:** does a component-scoped mechanism survive a real-company quarterly holdout?
+
+Informetis's published Smart Living Standard ARR for 2025-Q1 through Q3 yields a frozen Q4 point prediction near 215.27 million JPY versus a displayed 216. E042 later limits the authority of that point gap to reporting-resolution consistency. The same law fails on other components, so component identity and event annotations remain the durable result.
+
+[Read the E038 ODD](ODD_E038.md)
+
+## E039 — Rolling KPI observation lag
+
+**Question:** can the KPI definition itself delay observation of an abrupt business-state change?
+
+Yes. Informetis ARR uses a trailing six-month average MRR. An abrupt MRR end can leave 50% legacy signal in the reported ARR three months later. Warning lead-time accounting must include the metric measurement window.
+
+[Read the E039 ODD](ODD_E039.md)
+
+
+## E040 — Rolling KPI current-state non-identifiability
+
+**Question:** does one six-month rolling ARR uniquely determine current MRR?
+
+No. Exact enumeration finds 338 monotone integer MRR paths with the same ARR=60, while current MRR spans 0–5.
+
+[Read the E040 ODD](ODD_E040.md)
+
+## E041 — Minimal observability checkpoint
+
+**Question:** what is the smallest extra state needed to reconstruct the newest MRR from consecutive rolling ARR values?
+
+One outgoing boundary MRR is sufficient. Without it, multiple incoming/outgoing pairs remain compatible; with it, the rolling-sum identity reconstructs newest MRR exactly.
+
+[Read the E041 ODD](ODD_E041.md)
+
+
+## E042 — Reporting-resolution self-attack
+
+**Question:** can integer-million-JPY chart values support E038's apparent sub-1% point-error claim?
+
+No. Propagating nearest-million display intervals through the same model produces an overlapping prediction/holdout interval. The component model remains consistent with the rounded holdout, but sub-1% precision authority is revoked.
+
+[Read the E042 ODD](ODD_E042.md)
+
+## E043 — Decision-sufficient observability
+
+**Question:** when rounded measurements only identify a hidden-state interval, can that still be enough for a specific decision?
+
+Yes. The reference interval certifies `MRR > 0` while leaving `MRR >= 2` ambiguous. Observability authority becomes predicate-scoped.
+
+[Read the E043 ODD](ODD_E043.md)
+
+## E044 — Robust abstention
+
+**Question:** should a controller force a midpoint decision when the compatible-state interval crosses a threshold?
+
+No. The midpoint has a compatible counterexample. The robust controller returns ABSTAIN until evidence makes every compatible state agree.
+
+[Read the E044 ODD](ODD_E044.md)
+
+## E045 — Predicate-scoped active sensing
+
+**Question:** after ABSTAIN, what extra evidence should be requested?
+
+Search candidate observations by declared collection cost and predicate resolution. The reference chooses cheaper predicate-native evidence over expensive full-state recovery.
+
+[Read the E045 ODD](ODD_E045.md)
+
+
+## E046 — Authority-constrained active sensing
+
+**Question:** can minimum-cost sensing choose evidence that is not authorized?
+
+Yes. A cheap raw-ledger predicate query wins naive cost search but is inadmissible. Authorization becomes a hard filter before predicate-resolution and cost optimization.
+
+[Read the E046 ODD](ODD_E046.md)
+
+## E047 — Freshness and metric-generation alignment
+
+**Question:** is authorized predicate-resolving evidence enough for a current decision?
+
+No. Stale evidence and old metric generations are rejected before cost optimization. The selected observation must be authorized, resolving, fresh, and generation-aligned.
+
+[Read the E047 ODD](ODD_E047.md)
+
+
+## E048 — Predicate-evidence witness quorum
+
+**Question:** can one fresh, authorized, generation-aligned predicate attestation be final authority?
+
+No. A 3-of-5 independent-domain quorum absorbs one bad witness; conflicts without quorum return ABSTAIN.
+
+[Read the E048 ODD](ODD_E048.md)
+
+## E049 — Upstream evidence-source diversity
+
+**Question:** are distinct witness failure domains sufficient evidence independence?
+
+No. Three witness domains can share one corrupted upstream feed and manufacture a false domain-diverse quorum. Requiring upstream source diversity revokes the false view.
+
+[Read the E049 ODD](ODD_E049.md)
+
+
+## E050 — Upstream evidence-lineage roots
+
+**Question:** can three distinct immediate source labels still form one hidden common-mode failure?
+
+Yes. Three sources can all derive from one master warehouse. A source-diverse quorum may therefore be one-root fragile. Root-aware verification revokes that false quorum and requires diversified upstream lineage.
+
+[Read the E050 ODD](ODD_E050.md)
+
+
+## E051 — Active lineage discovery
+
+**Question:** can a hidden upstream common root be discovered rather than assumed known?
+
+Yes. Bounded candidate-dependency probes expose a common downstream fingerprint across three sources and three witness domains.
+
+[Read the E051 ODD](ODD_E051.md)
+
+## E052 — Minimum lineage-probe portfolio
+
+**Question:** what is the minimum-cost probe set that distinguishes every reference hidden-root hypothesis?
+
+Exact subset search selects ab/ac/bc: three probes, total declared cost 4.
+
+[Read the E052 ODD](ODD_E052.md)
+
+## E053 — Noisy lineage-probe robustness
+
+**Question:** does E052's noiseless optimum survive one probe error?
+
+No. Its minimum signature distance is 1. One-error correction requires distance 3; the full six-probe portfolio passes all 35 exhaustive no-error/one-error decode cases.
+
+[Read the E053 ODD](ODD_E053.md)
+
+## E054 — Probe robustness compiler
+
+**Question:** can probe-set authority be compiled from a declared adversarial error budget?
+
+Yes. The compiler requires distance 2e+1 and exactly searches the minimum satisfying portfolio. The two-error request is UNSAT under the original six-probe alphabet.
+
+[Read the E054 ODD](ODD_E054.md)
+
+## E055 — Redundant measurement synthesis after UNSAT
+
+**Question:** can the two-error UNSAT be repaired without weakening the robustness target?
+
+Yes. Independent repeated measurement channels yield a minimum-cost ten-channel distance-five design, and all 280 zero/one/two-error decode cases pass.
+
+[Read the E055 ODD](ODD_E055.md)
+
+
+## E056 — Measurement-channel failure domains
+
+**Question:** does repeated measurement automatically create independent error-correcting redundancy?
+
+No. One shared collector can flip five E055 channels at once and create an exact wrong hypothesis codeword. Capping each root at two channels requires at least five roots for the ten-channel design; every single-root fault then remains inside the certified two-bit budget.
+
+[Read the E056 ODD](ODD_E056.md)
+
+
+## E057 — Recursive measurement lineage
+
+**Question:** are E056's five measurement roots really independent?
+
+No. Three share a hidden observability super-root whose fault can corrupt six certified channels, revoking the E056 authority.
+
+[Read the E057 ODD](ODD_E057.md)
+
+## E058 — Minimum-cost recursive-lineage repair
+
+**Question:** what is the cheapest topology change that restores the existing two-bit contract?
+
+Move root-1 and root-2 to independent providers for cost 5. Every single-provider fault then flips only two channels.
+
+[Read the E058 ODD](ODD_E058.md)
+
+## E059 — Dependency-depth stopping rule
+
+**Question:** how far should recursive dependency discovery continue?
+
+Until the maximum unverified correlated blast fits the downstream correction budget. The exact reference stops at depth 2 / cost 5.
+
+[Read the E059 ODD](ODD_E059.md)
+
+## E060 — Heterogeneous dependency-audit allocation
+
+**Question:** should every branch be audited to one global depth?
+
+No. Branch-specific proof obligations cut the safe audit cost from 16 to 8.
+
+[Read the E060 ODD](ODD_E060.md)
+
+## E061 — Coupled dependency-audit bundles
+
+**Question:** are branch audit costs independent?
+
+No. Shared audit actions cover multiple obligations; exact set-cover reduces the safe cost from 8 to 6.
+
+[Read the E061 ODD](ODD_E061.md)
+
+
+## E062 — Audit-evidence failure domains
+
+**Question:** can shared audit evidence become a common-mode failure even when it is the cheapest complete proof cover?
+
+Yes. Each E061 bundle uniquely supports two obligations, so one artifact failure has blast 2. Under a one-obligation blast budget, exact robust cover costs 8 and keeps one shared control-plane bundle with independent identity corroboration.
+
+[Read the E062 ODD](ODD_E062.md)
+
+
+## E063 — Real portfolio-transition sign reversal
+
+**Question:** can churn direction certify ARR or portfolio direction inside one company-year?
+
+No. BBD FY2025 contains both churn-down/ARR-up and churn-down/ARR-down transitions under the same KPI definitions.
+
+[Read the E063 ODD](ODD_E063.md)
+
+## E064 — Prospective evidence cutoff
+
+**Question:** can Q4 event explanations be used as features in a Q3 warning evaluation?
+
+No. Public evidence is timestamped; future-only annotations support retrospective explanation but are rejected from prospective feature sets.
+
+[Read the E064 ODD](ODD_E064.md)
+
+## E065 — Public warning feature sufficiency
+
+**Question:** does the public Q3 evidence satisfy the five-axis structural warning contract?
+
+No. Direct coverage is 0/5. The prospective public-data evaluator ABSTAINS instead of inventing hidden structural state.
+
+[Read the E065 ODD](ODD_E065.md)
+
+
+## E066 — Direct / partial / absent public evidence
+
+**Question:** does E065's 0/5 direct coverage mean no useful structural information?
+
+No. Public Q3 material has partial evidence for delivery economics and market headroom. Exact coverage is direct 0 / partial 2 / absent 3, and the warning still ABSTAINS.
+
+[Read the E066 ODD](ODD_E066.md)
+
+
+## E067 — Minimum authorized direct-evidence acquisition
+
+**Question:** after E066 ABSTAIN, what is the cheapest admissible observation bundle that directly covers all five warning axes?
+
+Exact search rejects a cheaper plan using unauthorized raw board minutes and selects finance-pack + gtm-pack + signed strategy attestation for cost 14.
+
+[Read the E067 ODD](ODD_E067.md)
+
+
+## E068 — Decision-sufficient evidence acquisition
+
+**Question:** must a five-axis OR warning recover all five direct features before it can decide?
+
+No. Any observed failing axis certifies WARN; single-bad-axis reference worlds require cost 2–5. SAFE still requires the full cost-14 direct portfolio.
+
+[Read the E068 ODD](ODD_E068.md)
+
+
+## E069 — Sequential evidence acquisition
+
+**Question:** without knowing the failing axis, what evidence order minimizes expected warning-decision cost?
+
+Exact DP selects GTM → strategy → finance along the all-safe path. Expected cost is 9.0225, below cost-only bundle ordering at 9.32385 and static full acquisition at 14.
+
+[Read the E069 ODD](ODD_E069.md)
+
+
+## E070 — Prior-drift revocation
+
+**Question:** does the E069 sequential policy remain optimal after the axis-failure distribution changes?
+
+No. Finance- and strategy-heavy shifts change the exact first observation and create regret above the declared revocation threshold.
+
+[Read the E070 ODD](ODD_E070.md)
+
+
+## E071 — Minimax prior-set acquisition
+
+**Question:** can one fixed observation order reduce worst-case acquisition cost across the E070 prior uncertainty set?
+
+Yes. Exact search over all six bundle orders selects strategy → finance → GTM, improving worst-case cost and regret while sacrificing some reference-prior efficiency.
+
+[Read the E071 ODD](ODD_E071.md)
+
+
+## E072 — Joint-dependence attack
+
+**Question:** do identical marginal failure priors imply the same evidence order?
+
+No. A same-marginal correlated finite world changes the exact safe-path order from GTM → strategy → finance to GTM → finance → strategy and reduces expected cost by 0.75.
+
+[Read the E072 ODD](ODD_E072.md)
+
+
+## E073 — Robustness certificate split
+
+**Question:** does E071 remain authoritative after adding the E072 joint-dependence adversary?
+
+The order survives, but the performance bound changes. Strategy → finance → GTM remains minimax at worst-case cost 11.315, while worst-case regret widens to 2.70.
+
+[Read the E073 ODD](ODD_E073.md)
+
+
+## E074 — Tight dependence ambiguity
+
+**Question:** which observation order minimizes worst-case expected cost over every joint distribution with the E069 marginals?
+
+Tight Fréchet bounds leave two GTM-first orders tied at worst-case cost 11.0. Reference-prior efficiency selects GTM → strategy → finance.
+
+[Read the E074 ODD](ODD_E074.md)
+
+
+## E075 — Interval marginals × arbitrary dependence
+
+**Question:** what is the tight worst acquisition cost when failure marginals are intervals and dependence is arbitrary?
+
+The adversarial direction is the lower failure bound because rarer WARN events prolong SAFE-path sensing. Two GTM-first orders tie at worst-case cost 12.0.
+
+[Read the E075 ODD](ODD_E075.md)
+
+
+## E076 — Certificate meta-sensing
+
+**Question:** what is the cheapest calibration observation that tightens the E075 robust bound below 11.3?
+
+Exact search selects GTM incidence calibration only, cost 2, reducing the worst-case acquisition certificate from 12.0 to 11.2.
+
+[Read the E076 ODD](ODD_E076.md)
+
+
+## E077 — Calibration Pareto frontier
+
+**Question:** can certificate-calibration decisions be reused across changing robustness targets?
+
+Yes. The exact non-dominated frontier has only three points. Targets compile to the cheapest sufficient calibration; targets tighter than 11.2 are UNSAT in the current catalog.
+
+[Read the E077 ODD](ODD_E077.md)
+
+
+## E078 — Cross-company churn / ARR sign replication
+
+**Question:** does the BBD churn-up / ARR-up counterexample replicate in an independent public SaaS company?
+
+Yes. Allied Architects 2023-Q3→Q4 ARR rises by 70m JPY while churn worsens by 1.5pp. Product-level ARR changes reconcile exactly, including strategic legacy-product decline.
+
+[Read the E078 ODD](ODD_E078.md)

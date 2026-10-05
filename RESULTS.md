@@ -330,9 +330,1052 @@ The hidden dependency raises modeled forge probability by **1016.16×** and make
 
 This is a model-error result rather than a claim about KMS products. It demonstrates that independence cannot be established solely from distinct labels, providers, regions, or witness IDs. The causal dependency graph matters.
 
+## E024 — empirical evidence plane
+
+E024 opens the first empirical-evidence plane while preserving the separation between observation, simulation, and causal certification.
+
+The source registry classifies evidence by access and authority rather than treating every documented dataset as equally observable. The exact public-source portfolio covers the declared initial observables while excluding restricted Game Pass values and request-only Spotify values.
+
+Initial anchors:
+
+| Anchor | Published observation | Model consequence |
+| --- | --- | --- |
+| SARTRAS FY2022 | tax-exclusive receipt components sum to 4,662,378 thousand JPY; allocation components sum to 4,662,379 thousand JPY | conservation closes to a 1-thousand-JPY published-rounding delta |
+| SARTRAS sampling | about 1,200 sampled institutions from 35,130 applications; about 46,600 usage reports and 118,600 works | empirical observation must be modeled separately from world truth |
+| Netflix Q2 2024 | regional ARM ranges from USD 7.17 (APAC) to USD 17.17 (UCAN) | one global fixed revenue-per-membership value is rejected for empirical calibration |
+| Netflix H2 2025 | 96 billion hours watched from July through December 2025 | period-scoped engagement anchor; cross-period normalization is forbidden by default |
+| Game Pass Partner Center | title-month-platform usage/purchase schema is documented | schema adapter is allowed, but partner-only values cannot enter the public calibration portfolio |
+
+The Q2 2024 Netflix ARM max/min ratio is greater than 2.3. ARM is not relabelled as posted subscription price; the result only establishes that an empirical Netflix-like world needs regional revenue heterogeneity.
+
+All E024 promotion gates pass, promoting `empirical-evidence-plane-v1` as an evidence-admission rule, not as a calibrated causal market model.
+
+## E025 — regional empirical complexity knee
+
+E025 uses the admitted Netflix regional ARM source to decide how much regional structure an empirical model needs before building a larger calibrated world.
+
+Every set partition of UCAN, EMEA, LATAM, and APAC is enumerated exactly. Discovery uses Q2 2023 through Q1 2024; Q2 2024 is held out.
+
+At a declared 10% maximum-relative-error tolerance:
+
+| ARM groups | Best discovery worst max-relative error | Status |
+| ---: | ---: | --- |
+| 1 | >50% | reject |
+| 2 | >20% | reject |
+| 3 | <9% | admit |
+| 4 | 0% | exact but unnecessary |
+
+The minimum admissible complexity is therefore **3 groups**. The exact selected topology is `{UCAN}`, `{EMEA}`, `{LATAM, APAC}`.
+
+For a stronger temporal check, the selected topology is calibrated on Q1 2024 and those centroids are frozen for Q2 2024. The one-quarter-forward holdout remains below the 10% maximum-relative-error threshold.
+
+This is a compression and model-family rejection result, not a causal geographic segmentation claim. ARM remains average revenue per membership rather than posted subscription price.
+
+All E025 gates pass, promoting `regional-arm-complexity-knee-k3-v1`.
+
+## E026 — sampled-observation assumption audit
+
+E026 uses the admitted SARTRAS FY2022 sample counts to test how much observation confidence can be justified from sample size alone.
+
+The empirical anchor contains 35,130 applications and approximately 1,200 sampled institutions. In a **hypothetical simple-random-sampling reference world**, exact without-replacement detection gives:
+
+| Detection target | Minimum carrier institutions | Population fraction |
+| ---: | ---: | ---: |
+| 50% | 20 | ~0.057% |
+| 90% | 67 | ~0.191% |
+| 95% | 87 | ~0.248% |
+| 99% | 133 | ~0.379% |
+
+A one-per-thousand phenomenon (35 institutions after rounding) is detected only about 70.4% of the time in that SRS reference.
+
+The meta-loop then attacks its own assumption. If the selection mechanism is unconstrained, the same 1,200-institution sample can avoid all 87 carrier institutions, so the worst-case detection lower bound is **0%**. The published sample count therefore cannot, by itself, certify prevalence uncertainty or representativeness.
+
+E026 keeps the SRS calculation as a mathematical reference world but revokes its authority as an empirical calibration. All gates promote `sampling-design-metadata-required-before-prevalence-inference-v1`.
+
+## E027 — Game Pass metric-definition drift guard
+
+E027 tests whether two official public membership headlines automatically form a valid time series.
+
+Microsoft reported **more than 25 million Game Pass subscribers** in January 2022. Xbox later reported **34 million Game Pass members** in February 2024. Between those observations, Xbox Live Gold members were automatically converted to Game Pass Core.
+
+The mechanically tempting calculation is (34 / 25 - 1 = 36\%\). E027 retains that ratio only as an illustrative anti-pattern.
+
+The earlier observation is a strict lower bound rather than an exact 25M point. The later observation is a rounded headline. Most importantly, the two observations are assigned different metric-definition generations because a membership-scope event occurs between them.
+
+The growth-authority guard therefore rejects a precise cross-headline growth calculation and promotes `metric-definition-version-required-for-time-series-growth-v1`.
+
+The empirical identity of a metric now includes value semantics and definition generation, not only numeric value, unit, and date.
+
+## E028 — Japanese negative-evidence corpus
+
+E028 adds a deliberately heterogeneous Japanese failure/withdrawal corpus so empirical calibration cannot learn only from surviving systems.
+
+The initial corpus includes:
+
+- **BBD Initiative** — portfolio pruning with published ARR/churn/ARPA/contract KPIs, plus later restructuring and impairment;
+- **RickCloud** — planned sunset under platform substitution and long-run infrastructure/engineering burden;
+- **Leaner** — prior product withdrawal after roughly one year without sales and later concern that customers would not succeed and the company would not scale;
+- **SalesNow pre-2022 portfolio** — complete pivot after management estimated a roughly 2–3 billion JPY ARR ceiling, despite large advertising spend and multiple upsell products;
+- **TDB software-industry context** — 195 bankruptcies through February FY2025, 84.6% under 100 million JPY of debt, plus labor-cost and cash-conversion pressure.
+
+The declared negative-evidence mechanism set adds ten dimensions not represented by the original price/cost/end-user-churn stress core: acquisition burn, cash-conversion lag, customer-success non-scalability, data-compounding misalignment, engineering-maintenance burden, labor-cost pressure, market ceiling, platform substitution, portfolio pruning, and product sprawl.
+
+All E028 gates pass, promoting `negative-evidence-corpus-required-for-market-calibration-v1`.
+
+## E029 — strategic exit before insolvency
+
+E029 tests the E010 simplification that actor exit occurs through negative cash.
+
+The Japanese corpus contains multiple orderly withdrawals whose published decision logic is strategic or structural rather than an explicit insolvency trigger. A finite reference grid then provides a constructive witness:
+
+```text
+cash = +100
+expected monthly net = -10
+horizon = 12
+redeployment value = 50
+sunset cost = 10
+
+continue value = -120
+exit value = +40
+```
+
+Strategic exit dominates while cash remains positive.
+
+E029 therefore promotes `separate-strategic-exit-from-insolvency-v1`: forced financial failure remains a state transition, while voluntary exit becomes an explicit governance/control action with migration, sunset, and redeployment consequences.
+
+## E030 — churn semantics counterexample
+
+BBD's published FY2024 Q3 portfolio KPIs provide a real sign counterexample to generic "churn up = system worse" reasoning.
+
+From FY2023 Q4 to FY2024 Q3:
+
+| Metric | Start | End | Change |
+| --- | ---: | ---: | ---: |
+| Churn | 1.15% | 2.33% | +1.18 pt / +102.6% relative |
+| ARR | 1,593m JPY | 1,607m JPY | +0.88% |
+| ARPA | 437,545 JPY | 466,303 JPY | +6.57% |
+| Contracts | 3,641 | 3,416 | -6.18% |
+
+The same official disclosure attributes higher churn partly to unprofitable-service exits and migration from low-price customers toward higher-price plans.
+
+E030 does not invalidate E013's synthetic **end-user** churn pressure. It rejects untyped transfer across layers. B2B account/logo/MRR churn, end-user churn, supplier exit, intentional pruning, and plan migration require separate identities.
+
+All gates promote `churn-must-be-layer-and-cause-typed-v1`.
+
+## E031 — short-run signal / PMF proxy guard
+
+E031 triangulates three Japanese SaaS/startup postmortems to test whether locally positive signals can certify PMF.
+
+- **Srush** reports paying/high-value/enthusiastic customers during a period that management later characterized as false PMF: customer attributes were inconsistent, human effort was high, and people sometimes solved the problem instead of the product. The founder describes an initial PLG SaaS as withdrawn soon after launch and roughly four years from founding to the later repeatable STP/PMF state.
+- **Leaner** reports that revenue eventually existed for the prior product, yet the company still withdrew it because expected customer success and company scalability were inadequate.
+- **SalesNow** reports deep customer pain and an operating prior business, but management estimated a roughly 2–3 billion JPY ARR ceiling and chose complete withdrawal/pivot.
+
+A finite reference witness then gives the higher-current-revenue candidate poor repeatability, customer-success, scalability, and market-headroom values, while a lower-current-revenue candidate is strong on all four. Ranking by revenue and ranking by viability select different candidates.
+
+E031 therefore promotes `short-run-positive-signals-cannot-certify-pmf-v1`.
+
+Revenue, ACV, engagement, and enthusiastic users remain observations. Promotion authority requires independent evidence for repeatability, customer success, product-vs-human delivery burden, scalability, and market headroom.
+
+## E032 — booked revenue / cash-conversion lag
+
+TDB's software-industry reports identify a useful failure mechanism: demand can remain strong while package-software firms face a delay between earning revenue and turning it into cash, during which labor and fixed costs continue.
+
+E032 creates a finite witness:
+
+```text
+initial cash = 100
+booked revenue/month = 100
+cash cost/month = 80
+collection lag = 2 months
+```
+
+Booked margin is +20 per month, yet cash is +20 after month 1 and -60 after month 2. Cumulative booked profit at failure is already +40.
+
+Exact integer search finds the minimum initial cash required to survive the six-month reference horizon is **160**.
+
+A booked-margin warning stays silent at time zero; a lag-aware liquidity guard warns immediately.
+
+All gates promote `separate-booked-revenue-from-cash-arrival-v1`.
+
+## E033 — upstream KPI / downstream value attenuation
+
+Leaner provides two empirical proxy-gap observations:
+
+- historical appointment KPI attainment 150% versus order KGI attainment 20%;
+- later lead-acquisition attainment 300% versus order attainment 80%.
+
+The downstream/upstream attainment ratios are roughly 0.133 and 0.267 respectively.
+
+A finite funnel witness then gives the higher-volume policy weak qualification, close, and customer-success rates. The lower-volume policy produces more successful customers, reversing the upstream ranking.
+
+All gates promote `upstream-kpi-cannot-certify-downstream-value-v1`.
+
+## E034 — hidden human-delivery cost
+
+Srush's false-PMF postmortem explicitly identifies high unit price plus substantial human work as a misleading success signal.
+
+E034 constructs:
+
+| Candidate | Apparent software-only GM | Fully-loaded GM |
+| --- | ---: | ---: |
+| human-heavy high ACV | 80% | 10% |
+| product-led lower ACV | 75% | 62.5% |
+
+The software-only winner loses once recurring human delivery cost is included.
+
+All gates promote `fully-loaded-human-delivery-cost-required-v1`.
+
+## E035 — negative-evidence early-warning tournament
+
+E035 compiles E028-E034 into seven exact reference scenarios: healthy scalable, liquidity lag, human-delivery burden, market ceiling, funnel-quality failure, strategic exit, and healthy intentional pruning with elevated churn.
+
+Three warning rules compete:
+
+| Rule | Key failure |
+| --- | --- |
+| revenue-only | misses positive-growth failure archetypes |
+| churn-only | misses non-churn failures and false-alarms on healthy pruning |
+| multi-signal | exact match on the declared reference suite |
+
+The promoted warning vector contains:
+
+- cash collection gap;
+- fully-loaded delivery margin;
+- market headroom;
+- downstream funnel success;
+- strategic-exit value gap.
+
+The multi-signal rule reaches 100% precision/recall on this **hand-constructed exact reference suite**. This is not production predictive validation; it proves that the empirically motivated failure mechanisms can be compiled into a machine-checkable warning representation.
+
+All gates promote `negative-evidence-multi-signal-early-warning-v1`.
+
+## E036 — discovery-tuned warning with untouched generated holdout
+
+E036 moves beyond E035's seven hand-built reference cases.
+
+A deterministic generator creates 500 discovery and 500 holdout states with separate seeds. Each state varies cash, booked revenue, cash costs, collection lag, fully-loaded margin, market headroom, downstream success, continuation/exit value, revenue growth, and churn.
+
+The six-month intervention oracle is structural: cash failure, very low fully-loaded margin, very low market headroom, very low downstream success, or strategic-exit dominance.
+
+A 324-candidate threshold grid is searched on discovery only.
+
+The selected thresholds are:
+
+```text
+cash coverage ratio = 1.0
+fully-loaded margin = 5%
+market headroom = 15%
+downstream success = 10%
+strategic-exit gap = 0
+```
+
+On the untouched 500-state holdout, the multi-signal rule retains greater than **98% precision, recall, and F1**. Revenue-only recall remains below 25%, and churn-only recall remains below 30%.
+
+This upgrades E035 from hand-built compilation fidelity to within-generator generalization. It still does not establish real-company predictive validity because discovery and holdout share the same structural family.
+
+All gates promote `discovery-tuned-multi-signal-warning-with-holdout-v1`.
+
+## E037 — structural-drift revocation of early warning
+
+E037 attacks the fact that E036 discovery and holdout still share one structural generator.
+
+The shifted generation adds an interaction-only failure:
+
+```text
+market_headroom * downstream_success_ratio < 0.15
+```
+
+The frozen E036 warning is evaluated without retuning. Its recall falls below the prior 98% authority threshold, so its certificate is marked **REVOKED**.
+
+An interaction-aware candidate keeps the E036 warning vector and adds the new joint term. On the 1,000-state shifted generation, recall and precision both rise above **99%**, and F1 improves over the legacy rule.
+
+The warning lifecycle now mirrors the earlier adaptive-sampler lifecycle:
+
+```text
+discover → holdout → promote
+→ structural generation changes
+→ revoke
+→ diagnose interaction
+→ repair
+→ re-evaluate
+→ promote v2
+```
+
+All gates promote `interaction-aware-warning-generation-v2`.
+
+## E038 — real longitudinal component holdout
+
+E038 moves one step outside generated worlds using Informetis's published quarterly ARR by service family.
+
+The FY2025 presentation reports:
+
+| Quarter | Total ARR | Smart Living Standard | Smart Living Light | Energy Management |
+| --- | ---: | ---: | ---: | ---: |
+| 2024-Q4 | 487 | 278 | 56 | 153 |
+| 2025-Q1 | 445 | 266 | 54 | 125 |
+| 2025-Q2 | 384 | 256 | 44 | 84 |
+| 2025-Q3 | 364 | 231 | 48 | 85 |
+| 2025-Q4 | 345 | 216 | 65 | 64 |
+
+The company states that a major rental-business service would end in March 2026, that new recruitment had stopped, and that tenant move-outs were producing natural subscriber decline.
+
+A minimal constant-retention model fit only on the Smart Living Standard Q1-Q3 discovery values gives:
+
+```text
+retention = sqrt(231 / 266) ≈ 0.931891
+Q4 prediction = 231 × retention ≈ 215.27
+observed Q4 = 216
+relative error ≈ 0.34%
+```
+
+The same decay law is not universal. Smart Living Light has more than 20% holdout error, and total ARR is less tightly fit than Standard.
+
+The real-data lesson is therefore **component identity + event annotation**, not "ARR follows geometric decay."
+
+The same public results show total ARR 487→345 million JPY from 2024-Q4 to 2025-Q4, revenue 982→530 million JPY, operating income +49→-628 million JPY, and net income +56→-721 million JPY. Those aggregate changes are recorded as concentration-shock context without assigning every change to one customer.
+
+All gates promote `event-annotated-component-longitudinal-holdout-v1`.
+
+## E039 — rolling KPI observation lag
+
+E039 attacks the assumption that the reported KPI is an instantaneous view of the business state.
+
+Informetis defines ARR as:
+
+```text
+12 × average MRR over the six months immediately preceding quarter end
+```
+
+For an abrupt reference component whose MRR falls from 10 to 0, the latent recurring-revenue equivalent immediately falls from 120 to 0. The reported six-month trailing ARR instead decays:
+
+```text
+month 0: 120
+month 1: 100
+month 2:  80
+month 3:  60
+month 4:  40
+month 5:  20
+month 6:   0
+```
+
+Three months after a full end, half of the legacy signal remains in the metric.
+
+Therefore early-warning timing must distinguish latent state, measurement window, quarter end, publication cadence, and warning observation.
+
+All gates promote `rolling-window-metric-lag-must-be-modeled-v1`.
+
+## E040 — rolling KPI current-state non-identifiability
+
+E040 asks whether one trailing-six-month ARR value uniquely determines current MRR.
+
+A finite proof lattice restricts six monthly MRR values to integers 0–10, requires monotone non-increasing paths, and fixes average MRR at 5:
+
+```text
+six-month sum = 30
+reported ARR = 60
+```
+
+Exact enumeration finds **338 distinct monotone latent paths** with the same ARR.
+
+The current sixth-month MRR spans every integer from **0 through 5**.
+
+Therefore identical reported ARR can represent both a component that is already at zero and one that still has MRR 5.
+
+All gates promote `rolling-kpi-current-state-nonidentifiable-without-path-state-v1`.
+
+## E041 — minimal observability checkpoint
+
+E041 asks how little extra state is needed to repair the ambiguity.
+
+For a fixed-width rolling sum:
+
+```text
+S_t = S_(t-1) - outgoing_oldest + newest
+```
+
+Two consecutive rolling metrics identify only the difference between the incoming and outgoing boundary values.
+
+In the reference:
+
+```text
+previous window = [10, 8, 6, 4, 2, 0]
+current window  = [ 8, 6, 4, 2, 0, 2]
+previous ARR = 60
+current ARR = 44
+```
+
+Without the outgoing boundary MRR, three bounded pairs remain compatible:
+
+```text
+(8,0), (9,1), (10,2)
+```
+
+Retaining the single outgoing value 10 yields:
+
+```text
+newest = current_sum - previous_sum + outgoing
+       = 22 - 30 + 10
+       = 2
+```
+
+exactly.
+
+The result operationalizes a minimal-checkpoint principle: retain the smallest boundary state whose absence makes the transition non-identifiable.
+
+All gates promote `rolling-window-boundary-checkpoint-restores-observability-v1`.
+
+## E042 — reporting-resolution self-attack
+
+E042 attacks E038's apparently impressive sub-1% point gap.
+
+The component ARR chart is displayed in integer million JPY. Treating 266, 231, and 216 as nearest-million displays gives approximate intervals of [265.5,266.5], [230.5,231.5], and [215.5,216.5].
+
+Propagating the Q1/Q3 display intervals through the same E038 decay formula produces a prediction interval of roughly **214.37–216.17 million JPY**. That overlaps the Q4 displayed interval.
+
+The admissible result is therefore **interval consistency**, not demonstrated 0.34% real-world accuracy.
+
+E042 explicitly marks the E038 sub-1% precision authority **REVOKED** and promotes `empirical-claim-precision-cannot-exceed-reporting-resolution-v1`.
+
+## E043 — decision-sufficient observability
+
+E043 propagates reporting uncertainty into E041's boundary reconstruction.
+
+With ARR 60 and 44 displayed to the nearest unit and an exact outgoing MRR checkpoint of 10, newest MRR lies in **[1.5,2.5]**. If the boundary checkpoint is also rounded to the nearest unit, the interval widens to **[1.0,3.0]**.
+
+Exact state recovery is gone, but decision authority can survive:
+
+- `MRR > 0` is CERTIFIED_TRUE;
+- `MRR >= 2` is AMBIGUOUS.
+
+Observability authority is therefore scoped to the downstream predicate rather than to complete state recovery.
+
+All gates promote `observability-authority-is-decision-predicate-scoped-v1`.
+
+## E044 — robust abstention
+
+E044 tests the temptation to force an ambiguous interval into a midpoint decision.
+
+For newest MRR in [1.5,2.5] and threshold 2, midpoint forcing returns TRUE because the midpoint is 2. But 1.5 is also compatible with the evidence and gives FALSE.
+
+The robust set-based rule returns **ABSTAIN** whenever compatible states lie on both sides of the threshold. Clearly separated intervals still return CERTIFIED_TRUE or CERTIFIED_FALSE.
+
+All gates promote `boundary-straddling-uncertainty-must-abstain-v1`.
+
+## E045 — predicate-scoped active sensing
+
+E045 completes the loop after ABSTAIN.
+
+The reference decision is `current MRR >= 2` with prior interval [1.5,2.5]. Candidate observations carry declared information-cost weights.
+
+Cheap local refinements of one existing input remain ambiguous. An exact current-MRR query resolves the decision but has higher declared cost. A predicate-native ledger check resolves the predicate at lower cost and is selected by exact candidate search.
+
+The observation objective becomes:
+
+```text
+minimize evidence cost
+subject to every compatible state agreeing on the requested predicate
+```
+
+rather than maximizing recovered hidden-state detail.
+
+All gates promote `request-cheapest-predicate-sufficient-observation-v1`.
+
+## E046 — authority-constrained active sensing
+
+E046 attacks E045's cost objective.
+
+The reference candidate set contains an unauthorized raw customer-ledger predicate query with cost 1, an authorized but non-resolving partial refinement with cost 1, a signed predicate attestation with cost 3, and an authorized exact-state query with cost 5.
+
+A naive cost-only optimizer chooses the raw customer-ledger evidence because it resolves the predicate at minimum cost.
+
+That evidence is inadmissible.
+
+The corrected selection order is:
+
+```text
+authorized
+→ predicate-resolving
+→ minimum declared collection cost
+```
+
+The selected candidate becomes the signed predicate attestation.
+
+Authority is therefore a hard admissibility constraint rather than a soft cost term.
+
+All gates promote `active-sensing-optimizes-only-within-authorized-evidence-set-v1`.
+
+## E047 — freshness and metric-generation alignment
+
+E047 attacks E046's remaining assumption that authorized predicate-resolving evidence is automatically current enough for the decision.
+
+The reference decision requires metric generation `mrr-v2` at period 3 with a maximum evidence age of one period.
+
+Candidate evidence includes:
+
+- stale but current-generation attestation;
+- fresh but old-generation `mrr-v1` attestation;
+- fresh current-generation attestation;
+- fresh exact current-state query.
+
+Authorization-only selection picks the cheaper fresh old-generation attestation, but that candidate is inadmissible for the current decision.
+
+The corrected selection order becomes:
+
+```text
+authorized
+→ predicate-resolving
+→ fresh enough
+→ metric-generation aligned
+→ minimum cost
+```
+
+The fresh `mrr-v2` predicate attestation is selected.
+
+All gates promote `active-sensing-evidence-must-be-fresh-and-generation-aligned-v1`.
+
+## E048 — predicate-evidence witness quorum
+
+E048 attacks the assumption that one fresh, authorized, generation-aligned predicate attestation is final authority.
+
+The reference has five witnesses in five declared failure domains. Four attest TRUE and one compromised witness attests FALSE.
+
+A consumer that trusts only the compromised witness receives the wrong predicate result. A 3-of-5 verifier requiring three matching votes from three distinct failure domains accepts TRUE despite the one false witness.
+
+A separate 2-TRUE / 2-FALSE reference has no 3-vote quorum and correctly returns ABSTAIN rather than choosing a side.
+
+All gates promote `predicate-attestation-requires-independent-witness-quorum-v1`.
+
+## E049 — upstream evidence-source diversity
+
+E049 attacks E048's declared witness independence.
+
+Three FALSE witnesses occupy three different failure domains but all consume one `shared-feed`. Two independent witnesses attest TRUE.
+
+A domain-only 3-of-5 verifier accepts FALSE because the false view spans three witness domains.
+
+When the verifier also requires three distinct upstream evidence sources, the false quorum loses authority. The remaining two TRUE observations are insufficient, so the correct output becomes ABSTAIN.
+
+A repaired topology with three TRUE witnesses backed by three independent upstream sources restores acceptance.
+
+The evidence plane must therefore track both:
+
+- witness / failure-domain topology;
+- upstream data-lineage / source topology.
+
+All gates promote `predicate-quorum-must-diversify-upstream-evidence-sources-v1`.
+
+## E050 — upstream evidence-lineage roots
+
+E050 attacks E049's immediate-source diversity.
+
+The false reference view is supported by three witnesses in three failure domains and three distinct immediate sources:
+
+```text
+domain-a / source-a / master-warehouse
+domain-b / source-b / master-warehouse
+domain-c / source-c / master-warehouse
+```
+
+An E049-style domain+source verifier accepts FALSE because it sees three domains and three source labels.
+
+However, all three source paths collapse onto one upstream root.
+
+A root-aware verifier requiring three distinct lineage roots revokes the false quorum. The remaining two TRUE observations are insufficient, so the result becomes ABSTAIN.
+
+A repaired TRUE topology backed by three independent roots restores acceptance.
+
+The evidence plane therefore treats independence as a graph:
+
+```text
+witness
+→ immediate source
+→ upstream transforms
+→ warehouse/vendor/root dataset
+```
+
+All gates promote `predicate-quorum-must-audit-upstream-lineage-roots-v1`.
+
+## E051 — active lineage discovery
+
+E051 removes E050's assumption that the upstream lineage graph is already known.
+
+The reference topology hides one `master-warehouse` behind source-a, source-b, and source-c, even though those sources appear in three separate witness domains.
+
+A bounded candidate-dependency probe targeting the hidden root simultaneously affects all three sources across all three domains. Local and unrelated probes do not produce the same cross-domain fingerprint.
+
+The discovery criterion therefore promotes an intervention-based common-root hypothesis and reopens prior independence authority.
+
+All gates promote `hidden-lineage-roots-require-active-intervention-discovery-v1`.
+
+## E052 — exact minimum lineage-probe portfolio
+
+E052 turns lineage discovery into experiment design.
+
+The reference family contains five hypotheses over sources a,b,c,d:
+
+- no shared root;
+- shared abc;
+- shared abd;
+- shared acd;
+- shared bcd.
+
+Six pair probes are available with synthetic costs.
+
+Exact enumeration of every probe subset finds the minimum-cost portfolio whose binary response signatures distinguish all five hypotheses:
+
+```text
+ab, ac, bc
+probe count = 3
+total cost = 4
+```
+
+All gates promote `lineage-discovery-probes-use-exact-minimum-identifying-portfolio-v1`.
+
+## E053 — noisy lineage-probe robustness
+
+E053 attacks E052's noiseless optimum.
+
+The E052 signature set contains:
+
+```text
+none       = 000
+shared-bcd = 001
+```
+
+One flipped `bc` observation therefore turns the true `none` case into the exact wrong hypothesis. The E052 minimum pairwise Hamming distance is 1.
+
+To correct one arbitrary binary probe error, minimum signature distance must be at least 3.
+
+Exact subset search finds that only the full six-probe portfolio reaches distance 3, with total declared cost 12.
+
+Five hypotheses × (no error + six one-bit errors) gives 35 exhaustive decode cases; nearest-signature decoding recovers the correct hypothesis in all 35.
+
+All gates promote `lineage-probe-error-tolerance-requires-distance-three-signatures-v1`.
+
+## E054 — probe robustness compiler
+
+E054 compiles probe authority directly from a declared adversarial substitution-error budget (e).
+
+The compiler requires:
+
+```text
+d_min >= 2e + 1
+```
+
+and exactly searches the minimum-cost satisfying portfolio.
+
+Reference results:
+
+| Error budget | Required distance | Result |
+| ---: | ---: | --- |
+| 0 | 1 | ab/ac/bc, cost 4 |
+| 1 | 3 | all six probes, cost 12 |
+| 2 | 5 | UNSAT under the original six-probe alphabet |
+
+The compiler fails closed when the requested robustness cannot be represented.
+
+All gates promote `lineage-probe-authority-compiled-from-declared-error-budget-v1`.
+
+## E055 — redundant measurement synthesis after UNSAT
+
+E055 asks whether E054's two-error UNSAT can be repaired by expanding the measurement design rather than weakening the robustness contract.
+
+Each logical pair probe may be repeated through independent measurement channels.
+
+Exact repetition-count search finds the minimum-cost distance-five design:
+
+```text
+ab × 1
+ac × 2
+ad × 2
+bc × 2
+bd × 2
+cd × 1
+```
+
+This yields:
+
+```text
+10 channels
+cost = 20
+minimum Hamming distance = 5
+```
+
+Exhaustive decoding tests every zero-, one-, and two-bit error pattern:
+
+```text
+5 hypotheses × (1 + 10 + C(10,2))
+= 280 cases
+```
+
+All 280 decode correctly.
+
+The result changes the UNSAT lifecycle:
+
+```text
+compile
+→ UNSAT under current measurement alphabet
+→ expand authorized measurement design
+→ recompile
+→ exhaustive verify
+→ promote with a new certificate
+```
+
+All gates promote `unsat-probe-robustness-may-expand-independent-measurement-channels-v1`.
+
+## E056 — measurement-channel failure domains
+
+E056 attacks E055's independent-channel assumption.
+
+The E055 distance-five code contains five channels whose TRUE pattern distinguishes `shared-abc` from `none`:
+
+```text
+ab × 1
+ac × 2
+bc × 2
+```
+
+If all five sit behind one `shared-collector`, one root fault flips all five bits. Starting from the true `none` codeword, that common-mode fault creates the exact `shared-abc` codeword and nearest-codeword decoding confidently returns the wrong hypothesis.
+
+The code-distance theorem remains correct; the operational error unit was misidentified.
+
+For a declared two-bit correction budget, one measurement-root failure must therefore corrupt at most two certified channels. Ten channels imply a counting lower bound of five independent measurement roots.
+
+The repaired reference places at most two channels per root. Five hypotheses × five single-root faults gives 25 exact cases, and all 25 decode correctly.
+
+All gates promote `redundant-probe-channels-must-diversify-measurement-failure-roots-v1`.
+
+## E057 — recursive measurement-lineage discovery
+
+E057 attacks E056's repaired five-root topology.
+
+Three of the five declared measurement roots secretly share one deeper `shared-observability-plane`. A bounded recursive probe perturbs all three roots, corresponding to six certified channels — well beyond the two-bit operating budget.
+
+E056 measurement-domain authority is therefore marked **REVOKED**.
+
+All gates promote `measurement-root-independence-requires-recursive-lineage-discovery-v1`.
+
+## E058 — minimum-cost recursive-lineage repair
+
+E058 repairs the E057 super-root without weakening the original two-bit contract.
+
+Exact enumeration of migration subsets moves:
+
+```text
+root-1
+root-2
+```
+
+onto fresh independent providers, with total declared cost **5**.
+
+The repaired topology has five providers, one two-channel measurement root per provider. Every single-provider fault is again inside the two-bit code budget.
+
+All gates promote `recursive-lineage-common-mode-repair-by-minimum-cost-repartition-v1`.
+
+## E059 — dependency-depth stopping rule
+
+E059 prevents recursive dependency discovery from becoming unbounded.
+
+The downstream authority budget tolerates at most two correlated certified-channel failures. Declared audit depth gives these maximum unresolved blast bounds:
+
+| Depth | Cost | Max unresolved blast |
+| ---: | ---: | ---: |
+| 0 | 0 | 10 |
+| 1 | 2 | 4 |
+| 2 | 5 | 2 |
+| 3 | 9 | 2 |
+
+The exact stopping compiler selects **depth 2 / cost 5**. Depth 3 adds evidence detail but no stronger cross-provider blast authority.
+
+All gates promote `recursive-lineage-audit-stops-at-minimum-depth-meeting-blast-budget-v1`.
+
+## E060 — heterogeneous dependency-audit allocation
+
+E060 attacks the assumption that every dependency branch should be audited to one global depth.
+
+Exact branch allocation selects:
+
+| Branch | Audit | Cost | Residual blast |
+| --- | --- | ---: | ---: |
+| network | targeted | 2 | 2 |
+| identity | targeted | 1 | 2 |
+| power | deep | 3 | 2 |
+| vendor | none | 0 | 2 |
+| operator | targeted | 2 | 2 |
+
+Total cost is **8**, versus **16** for uniform deep audit.
+
+All gates promote `recursive-lineage-audit-depth-is-allocated-per-proof-obligation-v1`.
+
+## E061 — coupled dependency-audit bundles
+
+E061 attacks E060's branch-separable cost model.
+
+The exact set-cover optimizer can reuse shared evidence:
+
+```text
+control-plane-bundle
+  covers network + identity
+  cost 2
+
+infra-resilience-bundle
+  covers power + operator
+  cost 4
+```
+
+Together they cover every unsafe proof obligation for total cost **6**, beating E060's cost-8 branch-specific optimum and the cost-7 monolithic full-platform audit.
+
+All gates promote `dependency-audit-allocation-must-model-shared-evidence-bundles-v1`.
+
+## E062 — audit-evidence failure domains
+
+E062 attacks E061's cheapest shared-evidence cover.
+
+The E061 cost-6 plan uses two artifacts:
+
+```text
+control-plane-bundle
+  network + identity
+
+infra-resilience-bundle
+  power + operator
+```
+
+Each artifact is the sole support for two proof obligations. If one artifact fails, two obligations are falsely discharged at once.
+
+Under a declared maximum proof-obligation blast of 1, the cost-6 E061 plan loses authority.
+
+Exact subset search returns a partially reused, corroborated plan:
+
+```text
+control-plane-bundle
+identity-targeted
+power-deep
+operator-targeted
+```
+
+for total cost **8**. Identity is covered both by the bundle and an independent artifact, so failure of the shared bundle leaves only network uniquely unsupported. The robust optimum therefore keeps evidence reuse where overlapping coverage constrains proof blast.
+
+E061's cost-only optimization remains mathematically correct for its original model, but its evidence-failure-domain authority is marked **REVOKED**.
+
+All gates promote `audit-evidence-reuse-must-model-proof-obligation-failure-blast-v1`.
+
+## E063 — real portfolio-transition KPI sign reversal
+
+E063 re-anchors the extended trust/lineage loop in real longitudinal evidence.
+
+BBD Initiative's FY2025 public SaaS KPI series is:
+
+| Quarter | ARR (JPY m) | Churn | Contracts | ARPA (JPY) |
+| --- | ---: | ---: | ---: | ---: |
+| Q1 | 1,605 | 1.93% | 3,390 | 473,682 |
+| Q2 | 1,640 | 1.76% | 3,358 | 488,431 |
+| Q3 | 1,688 | 2.16% | 3,304 | 511,090 |
+| Q4 | 1,662 | 1.67% | 3,265 | 509,166 |
+
+The observed sign transitions are:
+
+```text
+Q1→Q2: churn down, ARR up, ARPA up, contracts down
+Q2→Q3: churn up,   ARR up, ARPA up, contracts down
+Q3→Q4: churn down, ARR down, ARPA down, contracts down
+```
+
+Therefore the same churn-improvement sign coexists with both ARR growth and ARR decline inside one company-year and one KPI-definition generation.
+
+A naive sign rule "churn down => ARR up; churn up => ARR down" is correct in only one of the three transitions.
+
+The Q4 material separately annotates launch delay, continuing low-price-plan cancellations, and service-withdrawal preparation. Those are retained as transition-event annotations rather than treated as independently identified causal estimates.
+
+All gates promote `portfolio-transition-kpi-direction-requires-event-semantics-v1`.
+
+## E064 — prospective evidence cutoff
+
+E064 attacks a subtle leakage path in E063.
+
+The prospective decision cutoff is the FY2025 Q3 disclosure date:
+
+```text
+2025-08-14
+```
+
+At that time, Q3 KPIs and Q3 management commentary are public.
+
+The Q4 outcome, the later Knowledge Suite+ launch-delay explanation, and the service-withdrawal-preparation annotation are not yet public. They may explain the realized Q4 transition retrospectively, but they cannot be input features to a Q3 prospective warning.
+
+The evidence plane therefore separates:
+
+```text
+retrospective explanation authority
+!=
+prospective prediction authority
+```
+
+All gates promote `prospective-warning-evidence-must-exist-before-decision-cutoff-v1`.
+
+## E065 — public warning feature sufficiency
+
+E065 asks whether the admitted public Q3 dataset can actually evaluate the five-axis structural warning promoted earlier.
+
+The warning requires:
+
+- cash collection gap;
+- fully-loaded delivery margin;
+- market headroom;
+- downstream funnel success;
+- strategic-exit value gap.
+
+The public Q3 BBD material provides ARR, churn, contract count, and ARPA, but none is a direct observation of those five structural axes.
+
+Direct public feature coverage is therefore:
+
+```text
+0 / 5
+```
+
+The prospective evaluator returns:
+
+`ABSTAIN — INSUFFICIENT_PUBLIC_EVIDENCE`
+
+and does not silently map ARR/churn/ARPA/contracts into the missing structural state.
+
+All gates promote `structural-warning-must-abstain-when-public-feature-contract-is-incomplete-v1`.
+
+## E066 — direct / partial / absent public evidence
+
+E066 confirms E065's zero-direct-coverage result but refines public observability. FY2025 Q3 gross-margin/cost evidence partially informs fully-loaded delivery economics, while TAM/SAM/SOM context partially informs market headroom.
+
+Exact public-artifact search selects `q3-financial-summary + q3-market-environment` at cost **2**, yielding direct 0 / partial 2 / absent 3. Partial evidence may constrain hypotheses and prioritize acquisition but cannot satisfy the direct warning contract, so the prospective result remains **ABSTAIN**.
+
+All gates promote `public-warning-evidence-separates-direct-partial-absent-v1`.
+
+## E067 — minimum authorized direct-evidence acquisition
+
+E067 turns E066's prospective ABSTAIN into an active evidence request.
+
+A naive minimum-cost complete portfolio costs **10** only because it consumes unauthorized raw board minutes for the strategic-exit axis. After authorization is treated as a hard constraint, exact search selects `finance-pack + gtm-pack + signed-strategy-gap-attestation` for total declared cost **14**, directly covering all five structural warning axes. A broad full dataroom costs 18 and loses.
+
+The order is direct feature sufficiency → authority/privacy admission → minimum collection cost.
+
+All gates promote `acquire-minimum-authorized-direct-feature-portfolio-v1`.
+
+## E068 — decision-sufficient evidence acquisition
+
+E068 attacks E067's full-feature objective. Under OR warning semantics, any directly observed failing axis certifies WARN, while SAFE requires all five axes to be directly observed safe.
+
+Exact finite-world search finds single-bad-axis warning certificates costing **2–5**, all below the E067 full-contract cost 14. A downstream-funnel failure needs only `crm-funnel-export` at cost 2. The all-safe world still requires `finance-pack + gtm-pack + signed-strategy-gap-attestation` at cost 14.
+
+This is an information lower bound rather than a deployable chooser; a real controller does not know the failing axis in advance.
+
+All gates promote `warning-evidence-acquisition-is-decision-sufficient-not-full-state-v1`.
+
+## E069 — sequential evidence acquisition
+
+E069 removes E068's oracle knowledge of the failing axis. With synthetic independent failure priors, evidence acquisition becomes a dynamic program over the set of axes already observed safe.
+
+The exact safe-path order is `gtm-pack → signed-strategy-gap-attestation → finance-pack`, with expected decision cost **9.0225**. A simple cost-only bundle order `gtm → finance → strategy` costs **9.32385** in expectation, while static E067 acquisition always costs 14.
+
+If every axis is safe, the exact sequential policy still spends 14 and observes the complete direct contract. Expected savings therefore come only from early WARN stopping.
+
+All gates promote `sequential-warning-acquisition-minimizes-expected-decision-cost-v1`.
+
+## E070 — prior-drift revocation
+
+E070 freezes the E069 policy and changes the declared failure distribution.
+
+The reference prior keeps E069 optimal. A finance-heavy shift changes the exact first action to `finance-pack`; the frozen policy costs 12.57375 versus reoptimized 8.8731875, regret >3.70. A strategy-heavy shift changes the first action to the signed strategy attestation; frozen-policy regret exceeds 1.5.
+
+Both shifted generations exceed the declared regret revocation threshold of 1.0. E069's mathematics remains valid for its reference prior, but its deployment authority is revoked outside that generation.
+
+All gates promote `sequential-acquisition-policy-authority-is-prior-generation-scoped-v1`.
+
+## E071 — minimax prior-set acquisition
+
+E071 treats E070's three prior generations as an admitted uncertainty set rather than selecting one as truth.
+
+All six orders of the three E067 bundles are evaluated. The minimax order is `signed strategy attestation → finance-pack → gtm-pack`, with worst-case expected cost **11.315** and worst-case regret **2.2925**. This improves the frozen E069 order's worst-case cost 12.57375 and regret 3.7005625.
+
+The robust order is intentionally worse under the original reference prior: 11.315 versus 9.0225. Robustness and single-prior efficiency are separate objectives.
+
+All gates promote `uncertain-prior-sequential-acquisition-uses-minimax-order-v1`.
+
+## E072 — joint-dependence attack
+
+E072 keeps all five E069 marginal failure probabilities exactly unchanged and alters only their joint structure.
+
+A finite joint world makes headroom and strategic-exit failures co-occur with probability 0.25 instead of the independent product 0.075. The frozen E069 order GTM → strategy → finance costs **9.20**, while joint-aware exact DP selects GTM → finance → strategy at **8.45**. Regret is **0.75** despite identical marginals.
+
+Marginal priors therefore do not identify conditional risk after safe observations.
+
+All gates promote `sequential-acquisition-requires-joint-failure-model-not-marginals-only-v1`.
+
+## E073 — robustness certificate split
+
+E073 adds the E072 joint-dependence adversary to E071's prior uncertainty set and reruns all six complete-coverage bundle orders.
+
+The minimax order remains `strategy → finance → GTM`, and worst-case expected cost remains **11.315**. E071's policy identity therefore survives.
+
+The performance certificate does not remain unchanged: worst-case regret increases from **2.2925** to **2.70** because the new joint scenario has cost 11.15 under the robust order versus a joint-aware oracle at 8.45.
+
+Policy identity authority is **RETAINED** while regret-bound authority is **REISSUED**.
+
+All gates promote `robust-policy-order-and-performance-bound-have-separate-authority-v1`.
+
+## E074 — tight dependence ambiguity
+
+E074 replaces E072's single joint counterexample with the full ambiguity set of all joint distributions sharing the E069 marginals.
+
+For any observed-axis prefix, the maximum all-safe probability is the tight Fréchet upper bound (1 - max p_i). A nested bad-event construction preserves every marginal and simultaneously attains those bounds.
+
+Across all six complete bundle orders, both GTM-first orders have tight worst-case expected cost **11.0**. Reference-prior efficiency breaks the tie in favor of `GTM → strategy → finance`, with independent-reference expected cost 9.0225 versus 9.32385 for `GTM → finance → strategy`.
+
+All gates promote `fixed-marginal-dependence-ambiguity-uses-frechet-minimax-order-v1`.
+
+## E075 — interval marginals × arbitrary dependence
+
+E075 widens each E069 failure marginal into a synthetic interval while retaining arbitrary dependence.
+
+For collection-cost robustness, the adversarial marginal direction is the lower failure bound: rarer failures delay WARN and force more SAFE-path evidence. Tight Fréchet prefix bounds therefore use (1 - max ell_i), where (ell_i) is the lower failure bound. A nested-event construction at those lower marginals attains the bound.
+
+Both GTM-first orders tie at tight worst-case expected cost **12.0**. Reference-prior efficiency again selects `GTM → strategy → finance`.
+
+All gates promote `interval-marginal-dependence-ambiguity-uses-lower-risk-frechet-bound-v1`.
+
+## E076 — certificate meta-sensing
+
+E076 applies active sensing to the robustness certificate itself.
+
+Starting from E075's tight worst-case acquisition cost **12.0**, the target is declared as **≤11.3**. Every subset of synthetic calibration actions is enumerated; after each candidate update, the interval/dependence robust policy is recompiled.
+
+The exact minimum target-reaching action is `gtm-incidence-study` at calibration cost **2**. It tightens the GTM failure lower bounds and reduces the robust acquisition certificate **12.0 → 11.2**. Finance-only and strategy-only calibration do not meet the target.
+
+All gates promote `acquire-minimum-calibration-evidence-to-meet-certificate-target-v1`.
+
+## E077 — calibration Pareto frontier
+
+E077 removes E076's single target and extracts the non-dominated calibration frontier.
+
+The exact frontier is **(cost 0, bound 12.0)**, **(cost 1, bound 11.85)** via strategy calibration, and **(cost 2, bound 11.2)** via GTM calibration. All other current calibration portfolios are dominated.
+
+A target compiler chooses the cheapest sufficient frontier point: target 11.9 selects strategy; target 11.3 selects GTM; target 11.1 is **UNSAT** under the admitted calibration catalog.
+
+All gates promote `certificate-calibration-uses-pareto-frontier-and-fail-closed-target-compiler-v1`.
+
+## E078 — cross-company churn / ARR sign replication
+
+E078 re-anchors the ambiguity/calibration loop in an independent real-company public dataset.
+
+Allied Architects domestic SaaS moves from 2023-Q3 ARR 1,010m JPY / churn 3.0% to Q4 ARR 1,080m / churn 4.5%. ARR therefore rises **+70m** while churn worsens **+1.5pp**.
+
+The Q4 ARR delta exactly decomposes to Letro **+65**, LetroStudio **+16**, and strategically declining Monipla Fan Blog **−11**, reconciling to +70. The company separately states account cancellations remained controlled while increased downgrades temporarily worsened MRR-based gross revenue churn.
+
+BBD and Allied Architects now independently contain churn-up / ARR-up transitions.
+
+All gates promote `churn-arr-sign-counterexample-replicates-cross-company-v1`.
+
 ## Theory update
 
-The working theory after E010–E023 is:
+The working theory after E010–E078 is:
 
 1. neutral survival can saturate and become uninformative;
 2. useful allocation comparisons require locating the viability boundary;
@@ -378,6 +1421,100 @@ The working theory after E010–E023 is:
 42. declared independence requires external evidence because topology labels do not prove causal independence;
 43. a hidden dependency hyperedge can dominate the nominal failure-domain topology;
 44. model misspecification can inflate estimated trust failure by orders of magnitude even when the quorum rule is unchanged;
-45. dependency discovery and failure-domain assignment must therefore be separate verification tasks.
+45. dependency discovery and failure-domain assignment must therefore be separate verification tasks;
+46. empirical observations need a separate admission plane from synthetic and certification evidence;
+47. public schema visibility does not imply public observation visibility;
+48. real regional revenue heterogeneity can invalidate a synthetic single-price assumption before any parameter fitting begins;
+49. period, unit, sampling design, and source authority are part of an empirical value's identity, not optional metadata;
+50. admitted empirical data can select simulator/model-family complexity before full calibration;
+51. for the five-quarter Netflix ARM window, a one-global-parameter or two-group regional family is too coarse at 10% tolerance, while a three-group family crosses the fidelity knee;
+52. structural compression should earn promotion on a temporal holdout rather than on the discovery quarters alone;
+53. sample count alone does not identify an observation model or certify representativeness;
+54. optimistic sampling assumptions should be retained as reference worlds but lose empirical authority when an admissible selection adversary can overturn them;
+55. prevalence inference from sampled market observations requires sampling-frame and weighting metadata, not only n/N;
+56. a public scalar is not a time-series datum until its bound/rounding semantics and metric-definition generation are tracked;
+57. product taxonomy or membership-scope changes can create apparent growth from definition drift;
+58. time-series estimators should fail closed across unbridged metric generations instead of silently normalizing incompatible headlines;
+59. success-only empirical calibration is structurally incomplete when withdrawal, sunset, pivot, and bankruptcy evidence expose additional failure mechanisms;
+60. actor exit is not synonymous with insolvency: strategic exit can dominate continuation before cash crosses zero;
+61. churn direction is not globally monotone across metric layers because deliberate pruning can raise measured churn while ARR and ARPA improve;
+62. empirical state variables need layer identity, causal/operational mechanism identity, and exit semantics before entering the simulator;
+63. locally positive business signals such as revenue, high ACV, or enthusiastic users can coexist with non-repeatability, human-service burden, poor customer success, low scalability, or insufficient market headroom;
+64. PMF is therefore a multi-constraint certification problem rather than a scalar revenue threshold;
+65. the empirical meta-loop should attack success proxies with the same adversarial discipline used for failure assumptions;
+66. booked revenue and cash arrival are separate state variables, and collection lag can kill a positive-margin actor before receivables arrive;
+67. upstream funnel attainment cannot certify downstream orders or customer success;
+68. software-only gross margin can materially overstate scalability when recurring human delivery is excluded;
+69. early warning should be a vector over empirically distinct failure mechanisms rather than one revenue or churn scalar;
+70. exact success on a hand-constructed warning suite is only a compilation check — thresholds still require Monte Carlo stress, holdouts, and real longitudinal validation;
+71. hand-built warning success can be strengthened by isolating threshold discovery from generated holdout evaluation;
+72. high within-generator holdout performance still does not authorize external prediction because shared structural assumptions can hide common-mode model error;
+73. warning authority is structural-generation scoped, not merely seed-scoped;
+74. interaction-only failure modes can invalidate a previously strong marginal-threshold warning without changing any original single-axis threshold;
+75. empirical warning systems need explicit revoke-and-repair lifecycle semantics analogous to evaluator certificates;
+76. real longitudinal validation should preserve component identity and event annotations because different ARR components can follow different mechanisms;
+77. a strong component-level holdout fit does not license the same dynamic law for aggregate or neighboring components;
+78. rolling-window KPI definitions create deterministic observation memory, so warning lead time must model the measurement kernel as well as the latent business state;
+79. a rolling aggregate can be non-identifying even under monotone latent dynamics, so current-state inference must preserve ambiguity rather than invent one hidden path;
+80. one-step observability can sometimes be restored with a single indispensable boundary checkpoint instead of retaining the entire historical path;
+81. checkpoint design should be driven by identifiability loss: preserve exactly the state whose absence prevents reconstruction;
+82. empirical claim precision cannot exceed the reporting resolution of the admitted evidence, and apparently excellent sub-resolution fits must lose precision authority;
+83. observability is decision-predicate scoped: an uncertainty set may be sufficient for a coarse action while remaining insufficient for a finer threshold;
+84. boundary-straddling uncertainty should produce an authorized ABSTAIN rather than a forced point-proxy decision;
+85. after ABSTAIN, additional evidence should be acquired by minimum-cost predicate resolution rather than by default full-state recovery;
+86. active-sensing cost optimization is subordinate to evidence authorization and cannot trade policy violations against downstream utility;
+87. authorized evidence can still be inadmissible when stale or defined under the wrong metric generation;
+88. evidence admission for action must bind authority, predicate sufficiency, freshness, and metric identity before optimization begins;
+89. one fresh authorized attestation is still a single failure point, so predicate authority may require an independent witness quorum;
+90. witness/failure-domain diversity does not imply observational independence when multiple witnesses consume one upstream data source;
+91. predicate quorum authority must expose and diversify upstream evidence lineage, with hidden common-mode discoveries triggering revocation and re-audit;
+92. immediate source labels are not independence proof because multiple sources can collapse onto one upstream lineage root;
+93. evidence independence is graph-structured and authority depends on the minimum independent upstream roots capable of supporting or corrupting quorum;
+94. hidden lineage roots should be actively falsified with bounded intervention fingerprints rather than assumed absent when the declared graph looks diverse;
+95. lineage discovery is an experiment-design problem whose probe set can be optimized for identifiability and intervention cost;
+96. minimum-cost noiseless identification does not imply noise robustness, which requires an explicit hypothesis-code distance certificate;
+97. probe robustness authority should be compiled from a declared observation-error budget and fail closed when the requested distance is unsatisfiable;
+98. an UNSAT result may justify expanding the authorized measurement design, after which the stronger certificate must be recompiled and exhaustively verified;
+99. error-correcting code distance does not imply physical measurement independence, because one failure root can corrupt multiple certified bits at once;
+100. robust repeated sensing requires a failure-domain certificate that bounds the number of code bits any admitted root fault can corrupt;
+101. failure-domain independence is recursive, so admitted roots themselves require bounded hidden-super-root discovery;
+102. a discovered recursive common mode should trigger topology repair before increasing the tolerated error budget;
+103. recursive dependency audit should stop at the minimum depth whose remaining unverified blast radius fits the downstream authority contract;
+104. audit depth is branch/proof-obligation specific rather than one global scalar;
+105. shared evidence couples branch obligations, so globally optimal audit allocation can require exact bundle/set-cover reasoning;
+106. shared audit evidence is itself a failure-domain choice, so cost savings from reuse require an explicit proof-obligation blast certificate and may need overlapping independent corroboration;
+107. the cheapest evidence cover and the cheapest failure-domain-safe evidence cover can differ, and cost-only authority must be revoked when that distinction matters;
+108. KPI direction within one company and one metric generation can reverse its relationship to portfolio outcomes during product transition, so sign alone is not a health label;
+109. retrospective event explanations and prospective prediction features require separate evidence-time authority boundaries;
+110. a structurally rich warning model may be unevaluable from public company KPIs, and missing structural axes should produce ABSTAIN rather than proxy imputation;
+111. zero direct feature coverage does not imply zero structural information, so public observability should distinguish direct, partial, and absent evidence;
+112. partial evidence may constrain hypotheses or prioritize acquisition but cannot silently satisfy a direct feature contract;
+113. evidence-acquisition portfolios should maximize admitted information quality before minimizing collection cost;
+114. ABSTAIN can compile into a minimum authorized direct-evidence portfolio rather than a generic request for more data;
+115. authorization and privacy are hard feasibility constraints in acquisition, not soft penalties that cheaper raw evidence may buy through;
+116. evidence requirements are decision-asymmetric: one sufficient failing witness can certify an OR warning, while SAFE may require complete direct coverage;
+117. full-state acquisition is therefore not a universal optimum, and deployable systems should optimize sequential decision resolution rather than feature completeness alone;
+118. sequential evidence ordering should minimize expected decision cost under declared priors while preserving the complete all-safe certification path;
+119. collection-cost order and expected-decision-cost order can differ even when both use the same evidence bundles;
+120. sequential evidence-policy authority is scoped to the failure-prior generation that earned it;
+121. prior drift can change the optimal first observation and should trigger regret-based revocation / recompilation rather than silent reuse;
+122. prior uncertainty can be compiled into a minimax evidence order that reduces worst-case cost/regret across an admitted scenario set;
+123. robust sequential sensing may intentionally sacrifice efficiency under the reference prior, so single-prior efficiency and uncertainty robustness must remain separate reported objectives;
+124. identical marginal failure probabilities do not identify a sequential observation policy when axis failures are dependent;
+125. joint dependence changes conditional risk after safe evidence and can reorder later acquisitions without any marginal drift;
+126. adding an adversarial scenario can leave the selected robust policy unchanged while invalidating its previous regret or performance bound;
+127. policy identity and certificate metrics therefore need separate revoke / renew lifecycles;
+128. fixed marginals admit a full dependence ambiguity set whose sequential worst case can be bounded tightly with Fréchet prefix probabilities;
+129. constructive nested bad events can witness the worst-case bound, separating a tight robustness certificate from arbitrary scenario sampling;
+130. dependence-robust minimax can leave multiple policies tied, requiring an explicit secondary objective such as reference-prior efficiency;
+131. when the objective is evidence-collection cost, lower failure probabilities can be adversarial because they delay positive warning termination;
+132. rectangular marginal uncertainty plus arbitrary dependence admits a tight worst-case certificate using lower marginal bounds and nested bad events;
+133. active sensing can target uncertainty in the certificate itself rather than only uncertainty in market state;
+134. certificate-calibration evidence should be acquired only until a declared robustness target is discharged, not until every uncertain parameter is maximally estimated;
+135. calibration choices form a cost-vs-certification Pareto frontier, so dominated uncertainty-reduction plans should not receive authority;
+136. robustness targets can be compiled against that frontier, with unattainable targets returning UNSAT rather than fabricated precision;
+137. churn deterioration can coexist with ARR growth across independent public SaaS companies, so the sign contradiction is not confined to the original BBD case;
+138. product-level portfolio decomposition can reconcile aggregate ARR growth while a legacy product deliberately contracts;
+139. downgrade-driven revenue churn, account cancellation, product pruning, and aggregate ARR growth require separate empirical state semantics.
 
-Next work should add heterogeneous dependency graphs and active common-mode discovery, then return to stronger signed/transparency publication and the endogenous economic controllers.
+Next work should add a regionalized empirical calibration world and a sampled-observation calibration world while continuing heterogeneous dependency discovery. Stronger signed/transparency publication and endogenous economic controllers remain parallel targets.

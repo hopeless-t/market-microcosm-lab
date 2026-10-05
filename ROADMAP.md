@@ -71,6 +71,68 @@
 - sensitivity and identifiability reports
 
 ## v0.5 — Empirical case studies
+- [x] empirical evidence registry / access-authority plane
+- [x] exact public-source portfolio oracle
+- [x] SARTRAS accounting + sampling anchor
+- [x] Netflix engagement + regional ARM anchors
+- [x] exact regional ARM complexity-knee oracle with temporal holdout
+- [x] Game Pass schema adapter held non-authoritative without partner values
+- [x] Game Pass public-headline metric-definition versioning guard
+- [x] Japanese negative-evidence corpus / survivorship-bias guard
+- [x] strategic exit separated from forced insolvency
+- [x] churn layer/cause semantics guard
+- [x] short-run positive-signal / PMF proxy guard
+- [x] cash-conversion lag / liquidity runway guard
+- [x] funnel-stage proxy attenuation guard
+- [x] fully-loaded human-delivery cost guard
+- [x] exact negative-evidence early-warning tournament
+- [x] discovery-tuned multi-signal warning / generated holdout
+- [x] structural-drift revocation / interaction-aware warning v2
+- [x] real-company component longitudinal holdout
+- [x] rolling-KPI measurement-kernel lag guard
+- [x] rolling-KPI non-identifiability proof
+- [x] minimal boundary checkpoint for exact one-step reconstruction
+- [x] reporting-resolution / empirical claim-precision guard
+- [x] decision-predicate-scoped observability
+- [x] robust ABSTAIN output for unresolved predicates
+- [x] minimum-cost predicate-scoped active sensing
+- [x] authority-constrained active sensing
+- [x] freshness + metric-generation aligned evidence admission
+- [x] predicate-evidence witness quorum
+- [x] upstream evidence-source diversity / hidden common-mode guard
+- [x] upstream evidence-lineage root audit
+- [x] active lineage-root intervention discovery
+- [x] exact minimum lineage-probe portfolio
+- [x] one-error-correcting lineage-probe certificate
+- [x] robustness compiler from declared probe-error budget
+- [x] redundant measurement synthesis after probe-compiler UNSAT
+- [x] measurement-channel failure-domain certificate
+- [x] recursive measurement-root lineage discovery
+- [x] minimum-cost recursive-lineage topology repair
+- [x] dependency-depth stopping certificate
+- [x] heterogeneous branch-specific audit allocation
+- [x] coupled shared-evidence audit bundle optimization
+- [x] audit-evidence failure-domain guard
+- [x] real-company portfolio-transition sign reversal
+- [x] prospective evidence cutoff / future-leakage guard
+- [x] public warning feature-contract sufficiency / ABSTAIN
+- [x] direct / partial / absent public evidence portfolio
+- [x] minimum authorized direct-evidence acquisition portfolio
+- [x] decision-sufficient asymmetric warning acquisition bound
+- [x] exact sequential warning-evidence acquisition policy
+- [x] prior-generation drift revocation for sequential acquisition
+- [x] minimax sequential acquisition across prior uncertainty set
+- [x] same-marginal joint-dependence adversary for acquisition policy
+- [x] separate robust policy identity from performance-bound authority
+- [x] tight fixed-marginal dependence-ambiguity acquisition certificate
+- [x] interval-marginal plus arbitrary-dependence acquisition certificate
+- [x] minimum targeted calibration for robustness-certificate target
+- [x] calibration cost / robust-bound Pareto frontier + UNSAT compiler
+- [x] cross-company public churn/ARR sign counterexample replication
+- [ ] prospective real-company early-warning holdout
+- [ ] regionalized empirical calibration world
+- [x] sampling-design metadata gate / SRS assumption adversary
+- [ ] sampled-observation empirical calibration world
 - SARTRAS
 - game subscription
 - video subscription

@@ -16,7 +16,7 @@ title: Market Microcosm Lab
 Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Users, developers, publishers, content, and platforms exchange value over time, and a locally efficient rule can still destroy the long-run system that generated the value.
 
 <div class="mm-warning">
-<strong>Synthetic evidence only.</strong> Current experiments are structural research worlds, not empirical estimates or policy recommendations for a named service.
+<strong>Evidence planes are separated.</strong> E000–E023 are synthetic structural worlds. E024 admits sourced empirical anchors, but empirical fit is not causal identification or a policy recommendation.
 </div>
 
 ## Research dashboard
@@ -112,6 +112,336 @@ Market Microcosm Lab studies pooled-revenue markets as miniature ecosystems. Use
     <h3>Hidden dependency</h3>
     <p>One undeclared shared dependency collapses nominal independence and dominates modeled forge risk.</p>
   </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E024</div>
+    <div class="mm-metric">Empirical</div>
+    <h3>Evidence admission</h3>
+    <p>Public observations are source-, period-, and access-scoped before they may constrain calibration.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E025</div>
+    <div class="mm-metric">k = 3</div>
+    <h3>Regional complexity knee</h3>
+    <p>Exact partition search finds the smallest Netflix ARM regional model that survives a temporal holdout.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E026</div>
+    <div class="mm-metric">fail closed</div>
+    <h3>Sampling assumption audit</h3>
+    <p>Sample count gets an SRS reference curve, then loses prevalence authority when selection design is unknown.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E027</div>
+    <div class="mm-metric">versioned</div>
+    <h3>Metric definition drift</h3>
+    <p>Public Game Pass headlines cannot authorize a growth rate across incompatible value semantics and a membership-definition event.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E028</div>
+    <div class="mm-metric">10 modes</div>
+    <h3>Japanese failure corpus</h3>
+    <p>Withdrawal, sunset, pivot, pruning, and bankruptcy evidence expands the failure state space beyond success-only calibration.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E029</div>
+    <div class="mm-metric">exit ≠ broke</div>
+    <h3>Strategic exit</h3>
+    <p>An operating actor can rationally exit before insolvency when continuation value is dominated by orderly redeployment.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E030</div>
+    <div class="mm-metric">+102.6%</div>
+    <h3>Churn semantics</h3>
+    <p>BBD churn more than doubles while ARR and ARPA rise, forcing churn to be typed by layer and cause.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E031</div>
+    <div class="mm-metric">proxy trap</div>
+    <h3>PMF signal guard</h3>
+    <p>Revenue, high ACV, or enthusiastic users cannot certify repeatability, customer success, scalability, or market headroom by themselves.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E032</div>
+    <div class="mm-metric">cash ≠ revenue</div>
+    <h3>Collection lag</h3>
+    <p>Positive booked margin can fail before receivables arrive; liquidity timing becomes explicit state.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E033</div>
+    <div class="mm-metric">150→20</div>
+    <h3>Funnel attenuation</h3>
+    <p>Upstream target attainment cannot certify downstream orders or customer outcomes.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E034</div>
+    <div class="mm-metric">80%→10%</div>
+    <h3>Human delivery cost</h3>
+    <p>Software-only margin can collapse after recurring human delivery burden is included.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E035</div>
+    <div class="mm-metric">5 signals</div>
+    <h3>Early warning</h3>
+    <p>Negative-evidence mechanisms compile into a multi-signal warning vector that beats scalar proxies on the exact reference suite.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E036</div>
+    <div class="mm-metric">&gt;98%</div>
+    <h3>Warning holdout</h3>
+    <p>Thresholds tuned on one generated population retain high precision and recall on an untouched seed bank.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E037</div>
+    <div class="mm-metric">revoke → v2</div>
+    <h3>Warning structural drift</h3>
+    <p>A hidden interaction invalidates the prior warning certificate; interaction-aware repair restores the shifted generation.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E038</div>
+    <div class="mm-metric">interval-fit</div>
+    <h3>Real longitudinal holdout</h3>
+    <p>Informetis Smart Living Standard Q1-Q3 decay is consistent with the rounded Q4 component holdout; E042 revokes sub-resolution precision claims.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E039</div>
+    <div class="mm-metric">6-month memory</div>
+    <h3>Rolling KPI lag</h3>
+    <p>A trailing-six-month ARR can retain half of a pre-shock signal three months after the underlying component ends.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E040</div>
+    <div class="mm-metric">338 paths</div>
+    <h3>KPI non-identifiability</h3>
+    <p>The same trailing ARR can represent current MRR anywhere from zero to five even under monotone decline.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E041</div>
+    <div class="mm-metric">1 scalar</div>
+    <h3>Minimal checkpoint</h3>
+    <p>One outgoing boundary MRR plus consecutive rolling ARR values restores exact newest-MRR observability.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E042</div>
+    <div class="mm-metric">precision revoked</div>
+    <h3>Reporting resolution</h3>
+    <p>Sub-resolution fit claims lose authority; rounded empirical values are propagated as intervals.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E043</div>
+    <div class="mm-metric">predicate-scoped</div>
+    <h3>Decision observability</h3>
+    <p>An uncertain hidden-state interval can certify some decisions while leaving finer thresholds unresolved.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E044</div>
+    <div class="mm-metric">ABSTAIN</div>
+    <h3>Robust boundary control</h3>
+    <p>When compatible states straddle the threshold, midpoint forcing is rejected and abstention is authorized.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E045</div>
+    <div class="mm-metric">minimum evidence</div>
+    <h3>Active sensing</h3>
+    <p>After abstention, search for the cheapest predicate-sufficient observation instead of collecting full state.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E046</div>
+    <div class="mm-metric">authority first</div>
+    <h3>Constrained sensing</h3>
+    <p>Unauthorized evidence is rejected before predicate resolution and collection-cost optimization.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E047</div>
+    <div class="mm-metric">fresh + aligned</div>
+    <h3>Temporal evidence identity</h3>
+    <p>Authorized evidence must also be fresh and match the current metric-definition generation.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E048</div>
+    <div class="mm-metric">3 / 5</div>
+    <h3>Predicate evidence quorum</h3>
+    <p>One attestation is not final authority; three matching independent-domain witnesses are required.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E049</div>
+    <div class="mm-metric">3 sources</div>
+    <h3>Upstream source diversity</h3>
+    <p>Distinct witness domains still fail together when they consume one common feed; source lineage becomes part of quorum authority.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E050</div>
+    <div class="mm-metric">root graph</div>
+    <h3>Evidence lineage</h3>
+    <p>Three distinct source labels can still share one master root; quorum authority follows lineage dependencies, not names.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E051</div>
+    <div class="mm-metric">active probe</div>
+    <h3>Lineage discovery</h3>
+    <p>Bounded interventions expose a hidden common root across multiple sources and witness domains.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E052</div>
+    <div class="mm-metric">3 probes</div>
+    <h3>Minimum probe set</h3>
+    <p>Exact experiment design finds the lowest-cost noiseless portfolio that distinguishes every reference lineage hypothesis.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E053</div>
+    <div class="mm-metric">d=3</div>
+    <h3>Noisy probe code</h3>
+    <p>The noiseless minimum breaks on one bit error; all six probes are required for a one-error-correcting distance-three code.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E054</div>
+    <div class="mm-metric">SAT / UNSAT</div>
+    <h3>Robustness compiler</h3>
+    <p>Error budget becomes an explicit input that compiles to a minimum probe certificate or fails closed.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E055</div>
+    <div class="mm-metric">10 channels</div>
+    <h3>Redundant sensing</h3>
+    <p>Measurement-design expansion repairs two-error UNSAT with a distance-five, exhaustively verified code.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E056</div>
+    <div class="mm-metric">5 roots</div>
+    <h3>Measurement domains</h3>
+    <p>Distance-five redundancy is only operationally valid when one physical root cannot corrupt more than the certified bit budget.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E057</div>
+    <div class="mm-metric">6-bit blast</div>
+    <h3>Recursive lineage</h3>
+    <p>Three admitted measurement roots still share one hidden super-root, revoking the lower-level certificate.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E058</div>
+    <div class="mm-metric">cost 5</div>
+    <h3>Topology repair</h3>
+    <p>Exact migration synthesis restores the original two-bit fault contract without inflating the threat budget.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E059</div>
+    <div class="mm-metric">depth 2</div>
+    <h3>Audit stopping rule</h3>
+    <p>Recursive discovery stops at the shallowest depth whose unresolved blast radius fits downstream authority.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E060</div>
+    <div class="mm-metric">16 → 8</div>
+    <h3>Heterogeneous audit</h3>
+    <p>Each dependency branch is audited only as deeply as its own proof obligation requires.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E061</div>
+    <div class="mm-metric">8 → 6</div>
+    <h3>Shared audit bundles</h3>
+    <p>Coupled evidence actions discharge multiple obligations and beat branch-separable allocation.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E062</div>
+    <div class="mm-metric">6 → 8</div>
+    <h3>Evidence failure domains</h3>
+    <p>Shared audit bundles save cost but enlarge proof common-mode blast; robust authority can still reuse a bundle when overlapping independent corroboration bounds the blast.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E063</div>
+    <div class="mm-metric">sign reversal</div>
+    <h3>Real portfolio transition</h3>
+    <p>BBD FY2025 shows churn improvement with both ARR growth and ARR decline under one metric generation.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E064</div>
+    <div class="mm-metric">no future leak</div>
+    <h3>Prospective cutoff</h3>
+    <p>Q4 event explanations remain retrospective evidence and cannot become Q3 warning features.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E065</div>
+    <div class="mm-metric">0 / 5</div>
+    <h3>Public feature sufficiency</h3>
+    <p>Public Q3 KPIs do not directly cover the structural warning axes, so prospective public-data authority abstains.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E066</div>
+    <div class="mm-metric">0 / 2 / 3</div>
+    <h3>Public evidence granularity</h3>
+    <p>Q3 evidence has zero direct warning features, two partial structural signals, and three absent axes; ABSTAIN remains authoritative.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E067</div>
+    <div class="mm-metric">cost 14</div>
+    <h3>Evidence acquisition</h3>
+    <p>ABSTAIN compiles into the minimum authorized direct-feature bundle instead of a broad request for internal state.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E068</div>
+    <div class="mm-metric">2–5 vs 14</div>
+    <h3>Decision-sufficient evidence</h3>
+    <p>WARN can terminate on one failing-axis witness; SAFE still needs complete direct coverage.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E069</div>
+    <div class="mm-metric">E[cost]=9.0225</div>
+    <h3>Sequential sensing</h3>
+    <p>Exact DP orders evidence by expected decision value and stops early on WARN while preserving the full SAFE path.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E070</div>
+    <div class="mm-metric">REVOKED</div>
+    <h3>Prior drift</h3>
+    <p>Finance- and strategy-heavy shifts reorder the optimal first observation and revoke the frozen E069 policy.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E071</div>
+    <div class="mm-metric">minimax 11.315</div>
+    <h3>Prior-set robustness</h3>
+    <p>Strategy → finance → GTM reduces worst-case acquisition cost and regret across three admitted prior generations.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E072</div>
+    <div class="mm-metric">same marginals</div>
+    <h3>Joint dependence</h3>
+    <p>Headroom/exit dependence reorders the evidence policy even though every axis-level failure probability is unchanged.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E073</div>
+    <div class="mm-metric">order kept / bound widened</div>
+    <h3>Certificate split</h3>
+    <p>The robust order survives the joint adversary, but its regret certificate expands from 2.2925 to 2.70.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E074</div>
+    <div class="mm-metric">tight WC = 11.0</div>
+    <h3>Dependence ambiguity</h3>
+    <p>Fréchet bounds cover arbitrary joint dependence at fixed marginals; two GTM-first orders tie and reference efficiency breaks the tie.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E075</div>
+    <div class="mm-metric">tight WC = 12.0</div>
+    <h3>Interval ambiguity</h3>
+    <p>With marginal intervals and arbitrary dependence, lower failure bounds maximize collection cost by prolonging the SAFE path.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E076</div>
+    <div class="mm-metric">12.0 → 11.2</div>
+    <h3>Certificate meta-sensing</h3>
+    <p>Targeted GTM calibration is the cheapest observation that tightens the robust bound below the declared 11.3 target.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E077</div>
+    <div class="mm-metric">3-point frontier</div>
+    <h3>Calibration compiler</h3>
+    <p>Cost/bound Pareto points compile robustness targets directly; an unattainable 11.1 target returns UNSAT.</p>
+  </div>
+  <div class="mm-card">
+    <div class="mm-kicker">E078</div>
+    <div class="mm-metric">+70 ARR / +1.5pp churn</div>
+    <h3>Cross-company replication</h3>
+    <p>Allied Architects independently reproduces churn deterioration with ARR growth and an exact product-level portfolio decomposition.</p>
+  </div>
 </div>
 
 ## Live result surfaces
@@ -166,7 +496,62 @@ These figures are generated from experiment JSON and checked by CI so the public
 **E020** rotates those anchors without forgetting previously trusted history and detects checkpoint forks.  
 **E021** distributes checkpoint authority across a 3-of-5 witness quorum and retains equivocation evidence for conflicting accepted views.  
 **E022** measures correlated witness placement and distinguishes nominal witness count from independent failure-domain resilience.  
-**E023** attacks declared independence with a hidden shared-dependency hyperedge and measures model-error amplification.
+**E023** attacks declared independence with a hidden shared-dependency hyperedge and measures model-error amplification.  
+**E024** adds an empirical evidence plane with exact source admission, public/restricted separation, and real accounting/engagement anchors.  
+**E025** uses admitted Netflix regional ARM data to locate a model-complexity knee and validate the selected three-group structure on a temporal holdout.  
+**E026** attacks the SARTRAS sample-size assumption: a hypothetical SRS curve is informative, but prevalence inference loses authority when the actual selection design is unknown.  
+**E027** versions Game Pass membership definitions and quarantines a tempting 36% headline ratio that crosses incompatible value semantics and the Gold → Core transition.  
+**E028** adds Japanese negative evidence and makes survivorship-bias coverage explicit.  
+**E029** separates strategic exit from forced insolvency.  
+**E030** uses BBD portfolio pruning to reject untyped churn as a universal health signal.  
+**E031** triangulates Japanese postmortems to reject revenue/high-ACV/enthusiastic-user signals as sufficient PMF certification.  
+**E032** separates booked revenue from delayed cash collection and liquidity runway.  
+**E033** separates upstream funnel KPIs from downstream customer value.  
+**E034** prices recurring human delivery into fully loaded margin.  
+**E035** compiles the resulting failure mechanisms into a first exact multi-signal early-warning benchmark.  
+**E036** tunes that vector on generated discovery states and verifies it on an untouched generated holdout.  
+**E037** changes the failure law itself, revokes the old warning, and promotes an interaction-aware replacement.  
+**E038** moves to a real Informetis component-ARR holdout and keeps the successful decay law component-scoped.  
+**E039** models the six-month ARR measurement window itself as an observation-delay kernel.  
+**E040** proves that one rolling ARR still cannot identify current MRR.  
+**E041** finds the minimal one-scalar boundary checkpoint for exact-input one-step observability.  
+**E042** revokes E038's over-precise sub-resolution interpretation.  
+**E043** scopes observability authority to the requested decision predicate.  
+**E044** makes ABSTAIN an authorized result for boundary-straddling uncertainty.  
+**E045** adds minimum-cost predicate-scoped active sensing after abstention.  
+**E046** makes authorization a hard precondition before sensing-cost optimization.  
+**E047** further requires decision-time freshness and metric-generation alignment.  
+**E048** distributes predicate authority across an independent 3-of-5 evidence quorum.  
+**E049** attacks that quorum with a hidden shared upstream feed and adds evidence-source diversity.  
+**E050** pushes the audit through the source labels to upstream lineage roots.  
+**E051** actively probes for hidden roots.  
+**E052** minimizes the lineage-discovery probe portfolio.  
+**E053** separates noiseless identification from one-error-correcting robustness.  
+**E054** compiles probe authority from the declared error budget and can return UNSAT.  
+**E055** expands independent measurement channels to repair a stronger robustness requirement.  
+**E056** proves that those channels also need physical failure-domain diversity; repetition alone is not redundancy.  
+**E057** recursively probes those roots and discovers a hidden super-root.  
+**E058** synthesizes the minimum-cost topology repair.  
+**E059** compiles the minimum sufficient recursive audit depth.  
+**E060** allocates depth per dependency proof obligation.  
+**E061** reuses shared audit evidence through exact bundle cover.  
+**E062** then treats those shared artifacts as failure domains and revokes the cost-only optimum.  
+**E063** returns to real BBD longitudinal KPI transitions.  
+**E064** separates retrospective explanation from prospective feature availability.  
+**E065** measures the public-data feature gap and ABSTAINS rather than imputing hidden structural state.  
+**E066** refines that gap into direct, partial, and absent public evidence without promoting partial signals into direct features.  
+**E067** compiles the remaining ABSTAIN into a minimum authorized direct-evidence acquisition portfolio.  
+**E068** proves that warning evidence is decision-asymmetric: positive WARN certificates can be much cheaper than SAFE certificates.  
+**E069** removes oracle knowledge and computes the exact sequential evidence policy under declared failure priors.  
+**E070** freezes that policy, shifts the prior generation, and revokes it when expected-cost regret crosses threshold.  
+**E071** compiles the admitted prior set into a minimax evidence order and exposes the efficiency/robustness trade-off.  
+**E072** shows that marginal priors are insufficient: joint dependence alone can reorder the policy.  
+**E073** adds that adversary to the robust set: the policy survives, but its old performance bound does not.  
+**E074** replaces sampled dependence with a tight all-joints-at-fixed-marginals ambiguity certificate.  
+**E075** also makes the marginals uncertain and shows that lower failure bounds drive worst collection cost.  
+**E076** actively senses the certificate and buys only the calibration needed to cross a declared robust-bound target.  
+**E077** extracts the complete non-dominated calibration frontier and compiles arbitrary targets against it.  
+**E078** re-anchors in public data and reproduces the churn-up / ARR-up counterexample at Allied Architects.
 
 This produces a repeating research pattern:
 
@@ -209,6 +594,61 @@ The project explicitly separates **World truth**, **Operational truth**, and **C
 - [E021 ODD](ODD_E021.md)
 - [E022 ODD](ODD_E022.md)
 - [E023 ODD](ODD_E023.md)
+- [E024 ODD](ODD_E024.md)
+- [E025 ODD](ODD_E025.md)
+- [E026 ODD](ODD_E026.md)
+- [E027 ODD](ODD_E027.md)
+- [E028 ODD](ODD_E028.md)
+- [E029 ODD](ODD_E029.md)
+- [E030 ODD](ODD_E030.md)
+- [E031 ODD](ODD_E031.md)
+- [E032 ODD](ODD_E032.md)
+- [E033 ODD](ODD_E033.md)
+- [E034 ODD](ODD_E034.md)
+- [E035 ODD](ODD_E035.md)
+- [E036 ODD](ODD_E036.md)
+- [E037 ODD](ODD_E037.md)
+- [E038 ODD](ODD_E038.md)
+- [E039 ODD](ODD_E039.md)
+- [E040 ODD](ODD_E040.md)
+- [E041 ODD](ODD_E041.md)
+- [E042 ODD](ODD_E042.md)
+- [E043 ODD](ODD_E043.md)
+- [E044 ODD](ODD_E044.md)
+- [E045 ODD](ODD_E045.md)
+- [E046 ODD](ODD_E046.md)
+- [E047 ODD](ODD_E047.md)
+- [E048 ODD](ODD_E048.md)
+- [E049 ODD](ODD_E049.md)
+- [E050 ODD](ODD_E050.md)
+- [E051 ODD](ODD_E051.md)
+- [E052 ODD](ODD_E052.md)
+- [E053 ODD](ODD_E053.md)
+- [E054 ODD](ODD_E054.md)
+- [E055 ODD](ODD_E055.md)
+- [E056 ODD](ODD_E056.md)
+- [E057 ODD](ODD_E057.md)
+- [E058 ODD](ODD_E058.md)
+- [E059 ODD](ODD_E059.md)
+- [E060 ODD](ODD_E060.md)
+- [E061 ODD](ODD_E061.md)
+- [E062 ODD](ODD_E062.md)
+- [E063 ODD](ODD_E063.md)
+- [E064 ODD](ODD_E064.md)
+- [E065 ODD](ODD_E065.md)
+- [E066 ODD](ODD_E066.md)
+- [E067 ODD](ODD_E067.md)
+- [E068 ODD](ODD_E068.md)
+- [E069 ODD](ODD_E069.md)
+- [E070 ODD](ODD_E070.md)
+- [E071 ODD](ODD_E071.md)
+- [E072 ODD](ODD_E072.md)
+- [E073 ODD](ODD_E073.md)
+- [E074 ODD](ODD_E074.md)
+- [E075 ODD](ODD_E075.md)
+- [E076 ODD](ODD_E076.md)
+- [E077 ODD](ODD_E077.md)
+- [E078 ODD](ODD_E078.md)
 
 ## Run locally
 
@@ -230,6 +670,61 @@ python scripts/run_e020.py
 python scripts/run_e021.py
 python scripts/run_e022.py
 python scripts/run_e023.py
+python scripts/run_e024.py
+python scripts/run_e025.py
+python scripts/run_e026.py
+python scripts/run_e027.py
+python scripts/run_e028.py
+python scripts/run_e029.py
+python scripts/run_e030.py
+python scripts/run_e031.py
+python scripts/run_e032.py
+python scripts/run_e033.py
+python scripts/run_e034.py
+python scripts/run_e035.py
+python scripts/run_e036.py
+python scripts/run_e037.py
+python scripts/run_e038.py
+python scripts/run_e039.py
+python scripts/run_e040.py
+python scripts/run_e041.py
+python scripts/run_e042.py
+python scripts/run_e043.py
+python scripts/run_e044.py
+python scripts/run_e045.py
+python scripts/run_e046.py
+python scripts/run_e047.py
+python scripts/run_e048.py
+python scripts/run_e049.py
+python scripts/run_e050.py
+python scripts/run_e051.py
+python scripts/run_e052.py
+python scripts/run_e053.py
+python scripts/run_e054.py
+python scripts/run_e055.py
+python scripts/run_e056.py
+python scripts/run_e057.py
+python scripts/run_e058.py
+python scripts/run_e059.py
+python scripts/run_e060.py
+python scripts/run_e061.py
+python scripts/run_e062.py
+python scripts/run_e063.py
+python scripts/run_e064.py
+python scripts/run_e065.py
+python scripts/run_e066.py
+python scripts/run_e067.py
+python scripts/run_e068.py
+python scripts/run_e069.py
+python scripts/run_e070.py
+python scripts/run_e071.py
+python scripts/run_e072.py
+python scripts/run_e073.py
+python scripts/run_e074.py
+python scripts/run_e075.py
+python scripts/run_e076.py
+python scripts/run_e077.py
+python scripts/run_e078.py
 ```
 
 **Visualization is not evidence. Simulation output is not truth. Promotion requires independent evidence.**
