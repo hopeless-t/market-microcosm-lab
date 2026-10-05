@@ -77,5 +77,6 @@
 - music streaming
 - publishing subscription
 - AI data-rights pools
+- [Japan intergenerational capital ecology](docs/JAPAN_CAPITAL_ECOLOGY.md): regional retention, migration, succession, concentration, and long-run national/regional viability
 
 Real-world calibration remains separate from causal claims unless identification is justified.
