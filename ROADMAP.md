@@ -41,6 +41,8 @@
 - causal contribution vs observed usage
 - mechanism gaming / Goodhart stress tests
 - adaptive adversarial agents
+- [ ] E024 wage-pressure reallocation: separate productivity selection from bargaining-power selection, worker transition friction, automation substitution, and concentration feedback
+- [ ] E024 transition-runway knee: test when worker liquidity / bridge support changes successful reallocation under otherwise identical destination opportunities
 - [x] two-dimensional interaction surfaces around E013 knees
 - [x] quantify pairwise interaction-only regions and survival-loss super-additivity
 - [x] adaptive frontier sampling versus exhaustive E014 oracle
