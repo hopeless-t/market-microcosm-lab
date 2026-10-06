@@ -69,6 +69,10 @@
 - domain randomization / structural stress tests
 - rare collapse search and failure-state biopsy
 - sensitivity and identifiability reports
+- [ ] technology-shock task-rebundling model that treats AI and prior automation on one production-function axis
+- [ ] human-ecosystem viability constraints across income, participation, mobility, skill reproduction, and welfare
+- [ ] delayed apprenticeship/skill-pipeline adversary after junior-task automation
+- [ ] technology-access concentration vs democratized-tool counterfactual
 
 ## v0.5 — Empirical case studies
 - SARTRAS
@@ -77,5 +81,6 @@
 - music streaming
 - publishing subscription
 - AI data-rights pools
+- technology-transition analogues: typist/word processing, photo processing/digital imaging, spreadsheet bookkeeping, information retrieval, generative AI
 
 Real-world calibration remains separate from causal claims unless identification is justified.
