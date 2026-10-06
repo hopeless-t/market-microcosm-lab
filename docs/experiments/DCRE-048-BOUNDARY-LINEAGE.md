@@ -2,13 +2,13 @@
 
 ## Trigger
 
-DCRE-047 derives a conditional lower bound on Google data-center compute growth, but refuses to promote it because the bound crosses report vintages and depends on a public compute-efficiency endpoint metric whose lineage is not reproducible.
+DCRE-047 retains a conditional Google compute-growth lower bound but blocks promotion because the calculation crosses report vintages and relies on an opaque compute-efficiency metric.
 
-DCRE-048 asks whether the electricity side of that lineage can be narrowed without pretending that all reporting-boundary questions are solved.
+DCRE-048 audits the electricity series itself.
 
-## Observed report-vintage overlap
+The first hypothesis was that visible overlapping total-electricity values were fully stable across the 2023, 2024, and 2025 Environmental Report vintages. A direct table-level check falsified that hypothesis before promotion.
 
-Google's published environmental data tables expose a stable total-electricity sequence across visible overlapping report vintages.
+## Report-vintage comparison
 
 ### 2023 Environmental Report
 
@@ -32,55 +32,65 @@ Google's published environmental data tables expose a stable total-electricity s
 ### 2025 Environmental Report
 
 ```text
-2020  15,138,500 MWh
+2020  15,166,800 MWh
 2021  18,287,100 MWh
 2022  21,776,200 MWh
 2023  25,307,000 MWh
 2024  32,179,900 MWh
 ```
 
-For every year that appears in more than one of these visible tables, the total-electricity value is identical.
-
-Therefore DCRE-048 promotes the narrow statement:
+The overlap therefore partitions into:
 
 ```text
-VISIBLE_TOTAL_ELECTRICITY_OVERLAP = STABLE
+stable years = 2019, 2021, 2022, 2023
+vintage drift = 2020
+2020 absolute drift = 28,300 MWh
 ```
 
-## Why this does not close the lineage
+The initial `OVERLAP_STABLE` interpretation is rejected.
 
-Google explicitly maintains a recalculation policy for historical environmental metrics. The 2024 report states that selected energy-consumption metrics were recalculated, including prior total-energy values after changes to the reporting boundary for purchased steam and cooling. The 2025 report likewise notes recalculation of certain previously reported energy and carbon-free-energy metrics for improved accuracy.
+## Why the 2020 discrepancy matters
 
-The stable electricity overlap is therefore useful evidence, but not permission to assume that every historical denominator used by every data-center efficiency statement has an identical lineage.
+Google explicitly maintains an internal recalculation policy for historical environmental metrics. The 2024 report states that selected historical energy-consumption metrics were recalculated after reporting-boundary changes, including purchased steam and cooling. The 2025 report likewise notes recalculation of certain previously reported energy-consumption and carbon-free-energy metrics for improved accuracy.
 
-Three gaps remain.
+DCRE-048 therefore treats the observed 2020 drift as expected evidence that report vintages are not interchangeable simply because a metric label is identical.
 
-### 1. The current report does not restate 2019 total electricity
+## A useful semantic correction
 
-The 2025 report's tabular history begins in 2020. The 2019 `12,237,200 MWh` value is visible in the 2023 and 2024 report vintages, not restated in the 2025 table.
+The 2019 value used by DCRE-047 is correctly labeled:
 
-### 2. 2019 data-center-only electricity is not disclosed in the same table lineage
+```text
+Total electricity consumption = 12,237,200 MWh
+Purchased electricity         = 12,226,200 MWh
+```
 
-DCRE-047 deliberately used total-company electricity as a conservative upper bound on data-center electricity. That is an inequality construction, not a directly observed 2019 data-center denominator.
+These are distinct metrics. Total electricity includes purchased and self-generated electricity.
 
-### 3. `Computing power` remains opaque
-
-The 2025 report anchors the six-times statement to 2024 versus five years earlier, so the endpoint years are now clear. But the report does not expose a reproducible annual compute-power index, normalization rule, or raw metric series.
+The DCRE-047 inequality did not accidentally use the purchased-electricity value. The remaining problem is lineage compatibility, not metric-name confusion.
 
 ## Result
 
-DCRE-048 replaces one coarse blocker with a more precise state:
+Machine-readable state:
 
 ```text
-visible total-electricity overlap consistency = PASS
-full cross-report lineage                     = OPEN
-2019 data-center electricity                  = UNKNOWN
-compute metric definition                     = UNKNOWN
-DCRE-047 conditional lower bound              = RETAINED
-DCRE-047 promoted lower bound                 = BLOCKED
+visible_total_electricity_lineage = PARTIAL_DRIFT_DETECTED
+stable_overlap_years              = [2019, 2021, 2022, 2023]
+drift_years                       = [2020]
+maximum_observed_drift            = 28,300 MWh
+full_cross_report_lineage         = OPEN
+2019 data-center-only electricity = UNKNOWN
+compute metric definition         = UNKNOWN
+DCRE-047 promoted bound           = BLOCKED
 ```
 
-This matters because empirical uncertainty is not binary. Some parts of a provenance chain can be independently strengthened while other links remain unresolved.
+This is stronger than either of the two naive positions:
+
+```text
+"all vintages are incompatible"
+"all matching labels are directly comparable"
+```
+
+Instead, compatibility is itself an empirical property that can vary by year and metric.
 
 ## Sources
 
@@ -89,19 +99,25 @@ Google environmental reports and report index:
 - `https://sustainability.google/reports/`
 - `https://sustainability.google/reports/google-2025-environmental-report/`
 
-The visible total-electricity tables are preserved across Google's 2023, 2024, and 2025 Environmental Report vintages. DCRE records the values as evidence-lineage observations, not as causal model coefficients.
+The 2025 report also decomposes 2024 total electricity into:
 
-Google's 2025 report also explicitly states that in 2024 its data centers delivered over six times more computing power per unit electricity than five years earlier.
+```text
+data centers                30,825,600 MWh
+offices and other facilities 1,354,300 MWh
+total                       32,179,900 MWh
+```
+
+This confirms the subset semantics at the 2024 endpoint but does not supply an equivalent 2019 data-center-only observation.
 
 ## Claim ceiling
 
 ```text
 authority_effect = NONE
-claim_ceiling = REPORTING_LINEAGE_AUDIT_ONLY
+claim_ceiling = REPORTING_LINEAGE_DRIFT_AUDIT_ONLY
 ```
 
-No real-world elasticity, rebound coefficient, or promoted compute-growth bound is produced.
+No real-world elasticity or promoted compute-growth bound is produced.
 
 ## Next falsifier
 
-DCRE-049 should test whether the inequality structure itself can survive the remaining denominator-scope uncertainty. Instead of requiring an exact 2019 data-center value, it should formalize which subset relations are sufficient for a valid lower bound, and which reporting-boundary changes could invalidate those relations. If the subset relation cannot be source-certified, the conditional bound remains non-promoted.
+DCRE-049 should formalize the subset inequality used in DCRE-047. It should distinguish an exact historical denominator from an upper-bound denominator and enumerate which boundary changes preserve or invalidate the lower-bound proof. The goal is not another point estimate; it is a proof obligation for cross-scope partial identification.
